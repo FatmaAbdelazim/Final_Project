@@ -1,0 +1,26 @@
+<div class="row justify-content-center align-items-center mb-4">
+    <h2 class="text-center m-4 fw-bold col-6">Matching Results: <strong class="text-primary">{{TherapistFilterList.length}} Therapists</strong></h2>
+    <button class="btn btn-outline-primary col-3" [routerLink]="['/user/FindATherapist']">Get Anthor Matching</button>
+</div>
+<div class="row justify-content-center align-items-center">
+         @if (TherapistFilterList.length == 0) {
+            <div>
+                <h2 class="text-danger">No results matching your search keywords</h2>
+            </div>
+            <div class="image-wrapper">
+                <img src="/images/cat.png" alt="Penguin" class="penguin-img" />
+                <div class="water-effect"></div>
+            </div>
+            }
+                <div class="row">
+                    <!-- <div>
+                        {{selectedGender}}
+                        {{selectedMaxPrice}}
+                        {{selectedSpecialization}}
+                    </div> -->
+                @for(myTherapist of TherapistFilterList ; track myTherapist.id)
+                {
+                <app-therapist-card class="col-4 mt-4" [therapist]="myTherapist"></app-therapist-card>
+                }
+            </div>
+</div>

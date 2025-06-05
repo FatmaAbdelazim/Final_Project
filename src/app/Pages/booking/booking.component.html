@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <h1 class="text-center text-primary fw-bold m-3 mb-5">Session booking</h1>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card shadow-sm mb-3">
+        <div class="card-body text-center">
+          <img src="/images/{{selectedTherapist.profilePictureUrl}}.jpg"  clalt="Therapist" class="therapist-img mb-2">
+          <h5>{{selectedTherapist.name}}</h5>
+          @for (item of selectedTherapist.specialization; track $index) {
+          <p class="text-muted mb-1">{{item}}</p>
+          }
+          <p><i class="fas fa-star text-warning"></i> 32 Reviews</p>
+
+          <hr>
+          <h6>Session Duration</h6>
+          <div class="d-flex">
+            <div class="form-check text-start me-4">
+              <input class="form-check-input" type="radio" id="d30" name="duration" checked>
+              <label class="form-check-label" for="d30">30 Minutes</label>
+            </div>
+            <div class="form-check text-start">
+              <input class="form-check-input" type="radio" id="d60" name="duration">
+              <label class="form-check-label" for="d60">60 Minutes</label>
+            </div>
+          </div>
+          <div class="mt-3">
+            <p class="mb-1"><strong>Selected Slots:</strong> {{ selectedSlots.length }}</p>
+            <p class="mb-2"><strong>Total:</strong> {{ totalPrice }} EGP</p>
+            <button class="btn btn-primary w-100" [disabled]="selectedSlots.length === 0" [routerLink]="['//user/ConfirmBooking']">
+              <i class="fas fa-check-circle me-2"></i> Book Now
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8 mb-5">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6><i class="fas fa-calendar-alt me-2"></i>Select a Slot</h6>
+          <div class="row mt-4 justify-content-center">
+            <div class="col-md-2 mb-4" *ngFor="let day of slotsByDay">
+              <h6 class="text-primary">{{ day.day }}</h6>
+              <div *ngFor="let slot of day.slots">
+                <div class="slot-btn btn-primary" [ngClass]="{
+                    'booked': slot.booked,
+                    'selected': isSelected(slot.time)
+                  }" [class.disabled]="slot.booked" (click)="!slot.booked && toggleSlot(slot.time)">
+                  {{ slot.time }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a class="text-primary small text-decoration-none m-4 fs-5 d-inline-flex align-items-center gap-2"
+        [routerLink]="['/user/ThirapistList']">
+        <i class="bi bi-arrow-left-circle-fill"></i>
+        Back to Therapist List
+      </a>
+    </div>
+  </div>
+
+</div>

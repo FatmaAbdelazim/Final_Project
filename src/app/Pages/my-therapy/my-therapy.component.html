@@ -1,0 +1,98 @@
+<div class="container m-5">
+    <div class="main-body">
+        <div class="row gutters-sm">
+            <h1 class="text-center mb-5">My Therapy</h1>
+
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="User Image"
+                                class="rounded-circle" width="150">
+                            <div class="mt-3">
+                                <h4>{{userInfo?.fullName}}</h4>
+                                <div class="d-flex">
+                                    <i class="bi bi-credit-card-2-back-fill me-2"></i>
+                                    <p class="text-secondary mb-1">Wallet <strong class="text-success">(0 EGP)</strong>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 content">
+                <div class="tabs">
+                    <span [class.active]="selectedTab === 'Upcoming'" (click)="setTab('Upcoming')">Upcoming</span>
+                    <span [class.active]="selectedTab === 'Previous'" (click)="setTab('Previous')">Previous</span>
+                    <span [class.active]="selectedTab === 'Requests'" (click)="setTab('Requests')">Requests</span>
+                    <span [class.active]="selectedTab === 'Wallet'" (click)="setTab('Wallet')">Wallet</span>
+                </div>
+                @if(selectedTab == 'Upcoming')
+                {
+                @if(session == 0 )
+                {
+                <div class="row">
+                    <p class="bold text-primary">Let's help you book your first session</p>
+                    <div>
+                        <ul>
+                            <li> 1- Choose your therapist from our therapist list
+                                Choose your therapist from therapist list or let Shezlong chooses for you</li>
+                            <li> 2- Book a Session
+                                Choose time and date suit you</li>
+                            <li>
+                                3- Payment
+                                Choose your payment method among 3 different payment methods
+                            </li>
+                            <li> 4- Start your session Talk to your therapist online privately anytime anywhere!
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="btn btn-primary rounded m-4 col-3" [routerLink]="['/user/FindATherapist']">Book You first Session</button>
+
+                </div>
+                }
+                }
+                @else if(selectedTab == 'Previous'){
+                @if(session == 0 )
+                {
+                <div class="row justify-content-center align-items-center text-center">
+                    <p class="bold">There are no booked sessions</p>
+                    <button class="btn btn-primary rounded col-3" [routerLink]="['/user/FindATherapist']">Book now</button>
+                </div>
+                }
+                @else {
+                <table class="session-table">
+                    <thead class="bg-primary bg-opacity-25 text-primary">
+                        <tr>
+                            <th>Therapist Name</th>
+                            <th>Session time</th>
+                            <th>Session Duration</th>
+                            <th>Paid Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Abdelbaset Abdallah</td>
+                            <td>Monday<br>28/04<br>from 12:00 AM to 12:30 AM</td>
+                            <td>30 mins</td>
+                            <td>£0</td>
+                            <td>Finished</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="actions">
+                    <button class="btn btn-primary">Book another session</button>
+                    <button class="btn btn-primary">Book a session with another therapist</button>
+                </div>
+                }
+
+                }
+                @else {
+                <p class="fs-2 text-center">There is no time slots requests</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

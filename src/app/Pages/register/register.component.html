@@ -1,0 +1,145 @@
+<div class="container-fluid bg-white">
+  <div class="row">
+    <div class="col-sm-5 px-5 " >
+      <div class="row text-center">
+        <div class="logo mt-5">
+          <img src="/images/Logo.png" alt="StrongerYou Logo" class="w-25" />
+        </div>
+        <h5 class="mb-4 mt-4">All fields marked with * are required</h5>
+      </div>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="px-5">
+
+        <!--UserName -->
+        <div class="form-group">
+          <label>Enter userName</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person text-primary"></i></span>
+            <input type="text" formControlName="UserName" class="form-control" placeholder="Enter userName" />
+          </div>
+          @if(UserName?.touched && UserName?.errors){
+          <span class="text-danger">UserName is required</span>
+          }
+          @else {
+          <small class="form-text text-muted">You can use letters a-z, numbers and periods (- . _)</small>
+          }
+        </div>
+
+        <!-- Email -->
+        <div class="form-group mb-3">
+          <label>Enter Email</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope text-primary"></i></span>
+            <input type="email" formControlName="Email" class="form-control" placeholder="Enter Email" />
+          </div>
+          @if(Email?.touched && Email?.errors){
+          <span class="text-danger">Valid email is required</span>
+          }
+        </div>
+
+        <!-- Password -->
+        <div class="form-group mb-3">
+          <label>Password</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock text-primary"></i></span>
+            <input [type]="showPassword ? 'text' : 'password'" formControlName="Password" class="form-control"
+              placeholder="Password" />
+          </div>
+          @if(Password?.touched && Password?.errors){
+          <span class="text-danger">Password must meet requirements</span>
+          }@else{
+          <small class="form-text text-muted">Use 6+ characters with a mix of letters and at least one number</small>
+          }
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group mb-3">
+          <label>Confirm Password *</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock-fill text-primary"></i></span>
+            <input type="password" formControlName="ConfirmPassword" class="form-control"
+              placeholder="Confirm Password" />
+          </div>
+          @if(ConfirmPassword?.touched && ConfirmPassword?.errors){
+          <span class="text-danger">Please confirm your password</span>
+          }
+          @if(ConfirmPassword?.touched && Password?.value !== ConfirmPassword?.value){
+          <span class="text-danger">Passwords do not match</span>
+          }
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group mb-3">
+          <label>Phone *</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-telephone text-primary"></i></span>
+            <input type="tel" formControlName="Phone" class="form-control" placeholder="+20xxxxxxxxxx" />
+          </div>
+          @if(Phone?.touched && Phone?.errors){
+          <span class="text-danger">Valid phone number is required</span>
+          }
+          @else {
+          <small class="form-text text-muted">Please make sure you enter a valid phone number</small>
+          }
+        </div>
+
+        <!-- Birth Date -->
+        <div class="form-group mb-3">
+          <label>Birth Date *</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-calendar-date text-primary"></i></span>
+            <input type="date" formControlName="DateOfBirth" class="form-control" />
+          </div>
+          @if(DateOfBirth?.touched && DateOfBirth?.errors){
+          <span class="text-danger">Birth date is required</span>
+          }
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group mb-3">
+          <label>Gender *</label><br />
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="Gender" [value]="'male'" />
+            <label class="form-check-label"><i class="bi bi-gender-male"></i> Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="Gender" [value]="'female'" />
+            <label class="form-check-label"><i class="bi bi-gender-female"></i> Female</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" formControlName="Gender" [value]="'notsay'" />
+            <label class="form-check-label"><i class="bi bi-question-circle"></i> Prefer Not to Say</label>
+          </div>
+          @if(Gender?.touched && Gender?.errors){
+          <div><span class="text-danger">Please select a gender</span></div>
+          }
+        </div>
+
+
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="Agree" formControlName="Agree" />
+          <label class="form-check-label" for="Agree">
+            I agree to the terms and conditions
+          </label>
+          @if(Agree?.touched && Agree?.invalid)
+          {
+          <div class="text-danger">
+            You must accept the terms
+          </div>
+          }
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+          <i class="bi bi-person-plus"></i> Register
+        </button>
+      </form>
+
+    </div>
+
+    <div class="col-sm-7 px-0 d-none d-sm-block">
+      <h2>A journey of a thousand miles begins with a single step</h2>
+      <img src="/images/3.jpg" alt="Login image" class="w-100"
+        style="object-fit: cover; object-position: left; height: 59.5rem" />
+    </div>
+  </div>
+</div>

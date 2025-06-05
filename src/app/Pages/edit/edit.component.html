@@ -1,0 +1,65 @@
+<div class="edit-container px-5">
+  <h2 class="mb-4">Edit Profile</h2>
+
+  <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+
+    <!-- Full Name -->
+    <div class="form-group mb-3">
+      <label for="fullName">Full Name</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-person-lines-fill text-primary"></i></span>
+        <input id="fullName" type="text" formControlName="FullName" class="form-control" placeholder="Enter Full Name" />
+      </div>
+      @if(FullName.touched && FullName.errors){
+        <span class="text-danger">Full name is required</span>
+      }
+    </div>
+
+    <!-- Phone Number -->
+    <div class="form-group mb-3">
+      <label for="phoneNumber">Phone Number</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-telephone text-primary"></i></span>
+        <input id="PhoneNumber" type="tel" formControlName="PhoneNumber" class="form-control" placeholder="+20xxxxxxxxxx" />
+      </div>
+      @if(PhoneNumber.touched && PhoneNumber.errors){
+        <span class="text-danger">Valid phone number is required</span>
+      }
+    </div>
+
+    <!-- Date of Birth -->
+    <div class="form-group mb-3">
+      <label for="dateOfBirth">Date of Birth</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-calendar-date text-primary"></i></span>
+        <input id="dateOfBirth" type="date" formControlName="DateOfBirth" class="form-control" />
+      </div>
+      @if(DateOfBirth.touched && DateOfBirth.errors){
+        <span class="text-danger">Birth date is required</span>
+      }
+    </div>
+
+    <!-- Gender -->
+    <div class="form-group mb-4">
+      <label for="gender">Gender</label>
+      <div class="input-group">
+        <span class="input-group-text"><i class="bi bi-gender-ambiguous text-primary"></i></span>
+        <select id="gender" formControlName="Gender" class="form-select">
+          <option value="">Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+        </select>
+      </div>
+      @if(Gender.touched && Gender.errors){
+        <span class="text-danger">Gender is required</span>
+      }
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-success w-100">
+      <i class="bi bi-check-circle"></i> Save Changes
+    </button>
+
+  </form>
+</div>
