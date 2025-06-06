@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
-  imports: [RouterLink],
+  imports: [RouterLink,RouterLinkActive],
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
