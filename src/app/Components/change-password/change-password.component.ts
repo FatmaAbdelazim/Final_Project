@@ -38,7 +38,7 @@ export class ChangePasswordComponent {
       this.userService.changePassword(this.passwordForm.value).subscribe({
         next: (res) => {
           alert("Password changed successfully");
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/user/profile']);
         },
         error: (err) => {
           alert("Error changing password");

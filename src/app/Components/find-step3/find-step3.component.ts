@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-find-step3',
@@ -9,7 +9,11 @@ import { RouterLink } from '@angular/router';
   styleUrl: './find-step3.component.css'
 })
 export class FindStep3Component {
-  selectedPrice: Number = 50;
+  selectedPrice!: Number;
   selectedGender!: string;
-  selectedSpecialization: string = "Select Specialization";
+  selectedSpecialization!: string ;
+    constructor(private route: ActivatedRoute) { 
+    this.selectedSpecialization = this.route.snapshot.paramMap.get('selectedSpecialization')!;
+    this.selectedGender = this.route.snapshot.paramMap.get('selectedGender')!;
+    }
 }

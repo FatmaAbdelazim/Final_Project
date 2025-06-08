@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
 })
 export class FindStep1Component implements OnInit {
   TherapistList: any[] = [];
-  selectedSpecialization: string = "Select Specialization";
+  selectedSpecialization!: string ;
   SpecializationList!: string[];
   constructor(private therapistService: TherapistService) { }
 
@@ -25,15 +25,13 @@ export class FindStep1Component implements OnInit {
   this.therapistService.getAll().subscribe((response: TherapistResponse) => {
     if (response.isPass) {
       this.TherapistList = response.data;
-      // console.log(this.selectedSpecialization);
-
+      console.log(this.selectedSpecialization);
       const allSpecializations = this.TherapistList
         .flatMap(t => t.specializations || []); 
       this.SpecializationList = [...new Set(allSpecializations)];
     }
   });
 }
-
 
 }
 

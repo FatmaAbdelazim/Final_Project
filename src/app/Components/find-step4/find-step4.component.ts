@@ -14,17 +14,18 @@ export class FindStep4Component {
   selectedTherapist: any;
   TherapistList: any[] = [];
   TherapistFilterList: any[] = [];
-  selectedSpecialization: string = "Select Specialization";
-  selectedGender: string = "All";
-  selectedMaxPrice: number = 50;
-  constructor(private therapistService: TherapistService,private route: ActivatedRoute) { }
-
-  ngOnInit(): void {
+  selectedSpecialization!: string;
+  selectedGender!: string ;
+  selectedMaxPrice!: number;
+  constructor(private therapistService: TherapistService,private route: ActivatedRoute) { 
     this.selectedSpecialization = this.route.snapshot.paramMap.get('selectedSpecialization')!;
     this.selectedGender = this.route.snapshot.paramMap.get('selectedGender')!;
     this.selectedMaxPrice = Number(this.route.snapshot.paramMap.get('selectedPrice')!);
+  }
+
+
+  ngOnInit(): void {
     this.getAllTherapists();
-    this.applyFilters();
   }
 
   getAllTherapists(): void {
@@ -32,6 +33,7 @@ export class FindStep4Component {
       if (response.isPass) {
         this.TherapistList = response.data;
         this.TherapistFilterList = this.TherapistList;
+            this.applyFilters();
       }
     });
   }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-find-step2',
@@ -10,5 +10,8 @@ import { RouterLink } from '@angular/router';
 })
 export class FindStep2Component {
   selectedGender!: string;
-  selectedSpecialization: string = "Select Specialization";
+  selectedSpecialization!: string;
+  constructor(private route: ActivatedRoute){
+        this.selectedSpecialization = this.route.snapshot.paramMap.get('selectedSpecialization')!;
+  }
 }
