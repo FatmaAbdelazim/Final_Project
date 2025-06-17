@@ -28,7 +28,7 @@ export class RegisterComponent {
   serverErrors: string[] = [];
   showServerErrors = false;
   acceptedTerms = false;
-
+  isLoading = false;
   get UserName() { return this.registerForm.get('UserName'); }
   get Email() { return this.registerForm.get('Email'); }
   get Password() { return this.registerForm.get('Password'); }
@@ -38,6 +38,7 @@ export class RegisterComponent {
   get Gender() { return this.registerForm.get('Gender'); }
   get Agree() { return this.registerForm.get('Agree'); }
   onSubmit() {
+    this.isLoading = true;
     this.serverErrors = [];
     this.showServerErrors = false;
 
@@ -54,13 +55,15 @@ export class RegisterComponent {
       return;
     }
 
-    const dto = this.registerForm.value ;
+    const dto = this.registerForm.value;
     this.authService.register(dto).subscribe({
       next: (res) => {
+        this.isLoading = false;
         alert("Registered successfully");
         this.router.navigate(['/']);
       },
       error: (err) => {
+        this.isLoading = false;
         // console.error("Registration failed:", err);
         alert("Registration failed. Please check your credentials.");
       }

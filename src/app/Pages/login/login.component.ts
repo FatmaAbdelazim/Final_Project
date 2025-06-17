@@ -18,7 +18,7 @@ export class LoginComponent {
   serverErrors: string[] = [];
   showServerErrors = false;
   showPassword = false;
-
+  isLoading= false;
 
   get UserName() { return this.loginForm.get('UserName'); }
 
@@ -29,6 +29,7 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) { }
 
   onSubmit() {
+    this.isLoading = true;
     this.serverErrors = [];
     this.showServerErrors = false;
 
@@ -41,6 +42,7 @@ export class LoginComponent {
   formData.append("Password", this.loginForm.value.Password || '');
     this.authService.login(formData).subscribe({
       next: (res) => {
+        this.isLoading = false;
         alert("Logged in successfully!");
         if(this.authService.isAdmin())
         {
@@ -50,7 +52,7 @@ export class LoginComponent {
         }
       },
       error: (err) => {
-        // console.error("Login failed:", err.error?.message);
+        this.isLoading = false;
         alert("Login failed. Please check your credentials.");
       }
     });
