@@ -1,0 +1,12 @@
+:root{
+    --btn-color:#9333EA;
+}
+.btn-color{
+    color: var(--btn-color) !important;
+}
+.btn-bgColor{
+    background-color: var(--btn-color) !important;
+}
+ul{
+    list-style: none;
+}
