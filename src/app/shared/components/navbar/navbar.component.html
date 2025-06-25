@@ -1,8 +1,7 @@
 <nav
-    class="navbar navbar-expand-sm navbar-light bg-light"
+    class="navbar navbar-expand-sm navbar-light bg-light p-2"
 >
     <div class="container">
-        <a class="navbar-brand" href="#">بصمة</a>
         <button
             class="navbar-toggler d-lg-none"
             type="button"
@@ -15,24 +14,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#" aria-current="page"
-                        >الرئيسية
-                        <span class="visually-hidden">(current)</span></a
-                    >
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">من نحن</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">الفرق</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">الفرص</a>
-                </li>
-                <button class="btn btn-bgColor">تسجيل الدخول</button>
-                <li class="nav-item dropdown">
+            <ul class="navbar-nav me-auto mt-2 mt-lg-0 d-flex">
+                <button class="btn btn-login me-2 p-1">تسجيل الدخول</button>
+                <li class="nav-item dropdown btn-bgColor border rounded mar">
                     <a
                         class="nav-link dropdown-toggle"
                         href="#"
@@ -54,8 +38,26 @@
                         >
                     </div>
                 </li>
+                <div class="d-flex justify-content-around">
+                    <li class="nav-item">
+                    <a class="nav-link" href="#">من نحن</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">الفرق</a>
+                </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">الفرص</a>
+                </li>
+                   <li class="nav-item">
+                    <a class="nav-link active" href="#" aria-current="page"
+                        >الرئيسية
+                        <span class="visually-hidden">(current)</span></a
+                    >
+                </li>
+                </div>
             </ul>
   
         </div>
+                <a class="navbar-brand" href="#">بصمة</a>
     </div>
 </nav>
