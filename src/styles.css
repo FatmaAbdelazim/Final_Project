@@ -1,0 +1,10 @@
+:root{
+    --btn-color:#9333EA;
+}
+.btn-color{
+    color: var(--btn-color);
+}
+
+ul{
+    list-style: none;
+}
