@@ -23,6 +23,7 @@
     "bootstrap-icons": "^1.13.1",
     "chart.js": "^4.4.9",
     "json-server": "^1.0.0-beta.3",
+    "jwt-decode": "^4.0.0",
     "ng-apexcharts": "^1.15.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
