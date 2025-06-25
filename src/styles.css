@@ -1,6 +1,10 @@
 :root{
     --btn-color:#9333EA;
 }
+body {
+  font-family: 'Cairo', sans-serif;
+}
+
 .btn-color{
     color: var(--btn-color) !important;
 }
@@ -10,3 +14,4 @@
 ul{
     list-style: none;
 }
+
