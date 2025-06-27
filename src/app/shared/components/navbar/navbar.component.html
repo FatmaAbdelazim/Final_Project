@@ -1,63 +1,44 @@
-<nav
-    class="navbar navbar-expand-sm navbar-light bg-light p-2"
->
+<nav class="navbar navbar-expand-sm navbar-light  p-2">
     <div class="container">
-        <button
-            class="navbar-toggler d-lg-none"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapsibleNavId"
-            aria-controls="collapsibleNavId"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-        >
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavId">
-            <ul class="navbar-nav me-auto mt-2 mt-lg-0 d-flex">
-                <button class="btn btn-login me-2 p-1">تسجيل الدخول</button>
-                <li class="nav-item dropdown btn-bgColor border rounded mar">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        id="dropdownId"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        >انشاء حساب</a>
-                    
-                    <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownId"
-                    >
-                        <a class="dropdown-item" href="#"
-                            >متطوع</a
-                        >
-                        <a class="dropdown-item" href="#"
-                            >منظمة</a
-                        >
-                    </div>
-                </li>
-                <div class="d-flex justify-content-around">
+        <div class="collapse navbar-collapse me-4" id="collapsibleNavId">
+            <ul class="navbar-nav mt-2 me-2 mt-lg-0">
+                <div class="d-flex mar">
+
+                    <li class="nav-item dropdown btn-bgColor border rounded mar me-2">
+                        <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">انشاء حساب</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" [routerLink]="['/volunteer_register']" [routerLinkActive]="'btn-color'">متطوع</a>
+                            <a class="dropdown-item" [routerLink]="['voluntary_organization_register']" [routerLinkActive]="'btn-color'">منظمة</a>
+                        </div>
+                    </li>
+                    <button class="btn btn-login me-4 p-1" [routerLink]="['/login']">تسجيل الدخول</button>
+                </div>
+                <div class="d-flex marl">
                     <li class="nav-item">
-                    <a class="nav-link" href="#">من نحن</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">الفرق</a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">الفرص</a>
-                </li>
-                   <li class="nav-item">
-                    <a class="nav-link active" href="#" aria-current="page"
-                        >الرئيسية
-                        <span class="visually-hidden">(current)</span></a
-                    >
-                </li>
+                        <a class="nav-link" [routerLink]="['/chatbot']" [routerLinkActive]="'btn-color'">المساعد الذكي</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/about']" [routerLinkActive]="'btn-color'">من نحن</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/teams']" [routerLinkActive]="'btn-color'">الفرق</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/opportunities']" [routerLinkActive]="'btn-color'">الفرص</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" [routerLink]="['/home']" [routerLinkActive]="'btn-color'">الرئيسية
+                            <span class="visually-hidden">(current)</span></a>
+                    </li>
                 </div>
             </ul>
-  
         </div>
-                <a class="navbar-brand" href="#">بصمة</a>
+        <img src="/assets/logo2.jpg" alt="" class="marl">
     </div>
 </nav>

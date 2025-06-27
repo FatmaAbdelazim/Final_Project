@@ -2,5 +2,8 @@
    border-color: var(--btn-color);
 }
 .mar{
-    margin-right: 20rem;
+    margin-right: 5rem;
+}
+.marl{
+    margin-left: 5rem;
 }
