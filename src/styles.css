@@ -8,6 +8,9 @@ body {
 .btn-color{
     color: var(--btn-color) !important;
 }
+.main-color{
+    color: var(--btn-color) !important;
+}
 .btn-bgColor{
     background-color: var(--btn-color) !important;
 }

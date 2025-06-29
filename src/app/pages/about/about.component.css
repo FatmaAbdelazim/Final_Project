@@ -1,0 +1,95 @@
+#divAbout {
+    height: 536px;
+    width: 100%;
+    background-image: url(/assets/about.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+    opacity: 60%;
+}
+
+#divSmall {
+    background-color: #FFFFFF80;
+    border-radius: 48px;
+    width: 96px;
+    height: 96px;
+    padding: 20px;
+}
+
+#divSmall1 {
+    background-color: #7000FF;
+    border-radius: 40px;
+    width: 70px;
+    height: 70px;
+    padding: 20px;
+}
+
+#divSmall2 {
+    background-color: #E9A1F0;
+    border-radius: 40px;
+    width: 70px;
+    height: 70px;
+    padding: 20px;
+}
+
+#divSmall3 {
+    background-color: #A1A6F0;
+    border-radius: 40px;
+    width: 70px;
+    height: 70px;
+    padding: 20px;
+}
+
+.divBorder {
+    border: #E5E7EB 1px solid;
+    width: 384px;
+    height: 246px;
+    padding: 4px;
+    text-align: center;
+    align-content: center;
+    margin: 15px;
+}
+
+.section2 {
+    background-color: #F8F9FA;
+}
+
+#imgPepole {
+    width: 564px;
+    height: 384px;
+    border-radius: 12px;
+    box-shadow: 0px 2px 25px gray;
+}
+
+.color2 {
+    color: #E9A1F0;
+}
+
+.color3 {
+    color: #A1A6F0;
+}
+
+.imgSponser {
+    width: 128px;
+    height: 128px;
+    border-radius: 70px;
+    border: #16A34A solid 3px;
+}
+
+.section3 {
+    background-color: #F9FAFB;
+}
+
+#divFinal {
+    background: linear-gradient(to left, #9333EA, #7C3AED);
+    width: 130px;
+    height: 130px;
+    padding: 32px;
+    margin: 10px;
+    border-radius: 10px;
+}
+.smallDiv{
+    background-color: #FFFFFF;
+    height: 60px;
+    border-radius: 5.67px;
+}
