@@ -1,0 +1,34 @@
+#imgCard {
+    /* width: 405.33px; */
+    width: 360px;
+
+    height: 192px;
+}
+
+.myCard {
+    /* width: 405.33px; */
+    width: 360px;
+    height: 457px;
+    border-radius: 5px;
+    /* margin: 8px; */
+    border: 1px solid #CCCCD6;
+}
+
+.myCard:hover {
+    transform: scale(1.1);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 35px;
+}
+
+#divM {
+    margin-right: 95px;
+}
+
+.btn-bgcolor {
+    background-color: #7000FF;
+}
+
+.btn-border {
+    border: solid 1px #7000FF;
+}
