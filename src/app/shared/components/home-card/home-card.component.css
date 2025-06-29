@@ -3,6 +3,7 @@
     width: 360px;
 
     height: 192px;
+
 }
 
 .myCard {
@@ -12,6 +13,7 @@
     border-radius: 5px;
     /* margin: 8px; */
     border: 1px solid #CCCCD6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .myCard:hover {
@@ -19,6 +21,8 @@
     margin-top: 20px;
     margin-bottom: 30px;
     margin-right: 35px;
+    z-index: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 #divM {
