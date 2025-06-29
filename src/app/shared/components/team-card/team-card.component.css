@@ -1,0 +1,41 @@
+.myCard {
+    width: 350px;
+    height: 318px;
+    border-radius: 5px;
+    padding: 32px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* margin-right: 80px !important; */
+    border: 1px solid #9333EA;
+    
+}
+
+.myCard:hover {
+    transform: scale(1.1);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    z-index: 9999;
+    margin-right: 50px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#divM {
+    margin-right: 25px;
+}
+
+.btn-bgcolor {
+    background-color: #7000FF;
+}
+
+.btn-border {
+    border: solid 1px #7000FF;
+}
+.spe{
+    background-color: #A1A6F080;
+    width: 59px;
+    height: 36;
+    border-radius: 12px;
+    margin-right: 75px;
+}
+.pSmall{
+font-size: smaller;
+}
