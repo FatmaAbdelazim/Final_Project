@@ -1,15 +1,126 @@
-<section >
-  <div>
+<section class="p-5">
+  <div class="text-center d-flex flex-column align-items-center mb-4">
     <img src="assets/image.png">
+    <h2 class="mb-4">انضم الي عائلة بصمة</h2>
+    <p class="text-muted">ابدأ رحلتك في العمل التطوعي وكن جزءاً من التغيير الإيجابي</p>
   </div>
-  <h2>انضم الي عائلة بصمة</h2>
-  <p class="text-muted">ابدأ رحلتك في العمل التطوعي وكن جزءاً من التغيير الإيجابي</p>
-  <div class="bg-white">
-    <form>
-      <div class="d-flex">
+
+  <div>
+    <form class="rounded-4 shadow-lg p-3 w-75 m-auto bg-white gap-1 pb-5" >
+      <div class="d-flex justify-content-end p-3">
         <h6> المعلومات الشخصية </h6>
-        <i class="fa-regular fa-user"></i>
+        <i class="fa-regular fa-user m-1"></i>
       </div>
+      <div class="row g-3">
+        <div class="col-12 col-md-6 position-relative">
+          <label for="phone" class="form-label my-3">رقم الجوال</label>
+          <input class="form-control p-2 rounded-3 text-end" type="tel" name="phone" id="phone" placeholder="01xxxxxxxx">
+          <i class="fa-solid fa-phone position-absolute top-50 end-100 translate-middle-y text-muted opacity-75"></i>
+        </div>
+        <div class="col-12 col-md-6 position-relative">
+          <label for="name" class="form-label my-3">الاسم الكامل</label>
+          <input class="form-control p-2 rounded-3 text-end" type="text" name="name" id="name" placeholder="ادخل اسمك الكامل">
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <label for="dropdownMenuButton" class="form-label my-3">المدينة</label>
+          <div class="dropdown">
+            <button class="form-control dropdown-toggle w-100 text-muted p-2 d-flex flex-row-reverse justify-content-between align-items-center"
+    type="button"
+    id="dropdownMenuButton"
+    data-bs-toggle="dropdown"
+    aria-expanded="false">
+              اختر المدينة
+            </button>
+            <ul class="dropdown-menu col-12 text-end" aria-labelledby="dropdownMenuButton">
+              <li><a class="dropdown-item" href="#">الخيار الأول</a></li>
+              <li><a class="dropdown-item" href="#">الخيار الثاني</a></li>
+              <li><a class="dropdown-item" href="#">الخيار الثالث</a></li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="email" class="form-label my-3">البريد الالكتروني</label>
+          <input class="form-control p-2 rounded-3" type="email" name="email" id="email" placeholder="example@email.com">
+        </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <label for="rePassword" class="form-label my-3">تأكيد كلمة المرور  </label>
+          <input class="form-control p-2 rounded-3 text-end" type="password" name="rePassword" id="rePassword" placeholder="اعد إدخال كلمة المرور">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="password" class="form-label my-3"> كلمة المرور </label>
+          <input class="form-control p-2 rounded-3 text-end" type="password" name="password" id="password" placeholder="أدخل كلمة مرور قوية">
+        </div>
+      </div>
+
+      <div class="mx-auto w-75">
+        <div class="d-flex justify-content-end mt-2 p-3">
+          <h6>مجالات الاهتمام</h6>
+          <i class="fa-regular fa-heart m-1"></i>
+        </div>
+
+        <div class="row g-3 justify-content-end">
+  <div class="col-12 col-sm-6 col-md-4">
+    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
+      <input class="form-check-input border-dark" type="checkbox" id="check1">
+      <label class="form-check-label" for="check1">التنمية الاجتماعية</label>
+    </div>
+  </div>
+
+  <div class="col-12 col-sm-6 col-md-4">
+    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
+      <input class="form-check-input border-dark" type="checkbox" id="check2">
+      <label class="form-check-label" for="check2">الأطفال</label>
+    </div>
+  </div>
+
+  <div class="col-12 col-sm-6 col-md-4">
+    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
+      <input class="form-check-input border-dark" type="checkbox" id="check3">
+      <label class="form-check-label" for="check3">الصحة</label>
+    </div>
+  </div>
+
+  <div class="col-12 col-sm-6 col-md-4">
+    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
+      <input class="form-check-input border-dark" type="checkbox" id="check4">
+      <label class="form-check-label" for="check4">البيئة</label>
+    </div>
+  </div>
+
+  <div class="col-12 col-sm-6 col-md-4">
+    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
+      <input class="form-check-input border-dark" type="checkbox" id="check5">
+      <label class="form-check-label" for="check5">التكنولوجيا</label>
+    </div>
+  </div>
+
+  <div class="col-12 col-sm-6 col-md-4">
+    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
+      <input class="form-check-input border-dark" type="checkbox" id="check6">
+      <label class="form-check-label" for="check6">كبار السن</label>
+    </div>
+  </div>
+</div>
+</div>
+
+        <div class="form-check form-check-reverse m-5 mx-auto text-center" style="width: fit-content;">
+          <input class="form-check-input border-dark border-opacity-50" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label text-muted" for="flexCheckDefault">
+            أوافق علي <span>سياسة الخصوصية والشروط والاحكام</span>
+          </label>
+        </div>
+<div class="text-center">
+  <button type="submit" class="btn">التسجيل كمتطوع</button><br>
+  <p class="text-muted d-inline">لديك حساب بالفعل؟ </p>
+  <span>تسجيل الدخول</span>
+</div>
     </form>
   </div>
 </section>

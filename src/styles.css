@@ -18,3 +18,10 @@ body {
 ul{
     list-style: none;
 }
+.form-control::placeholder {
+  color: #6c757d;
+}
+a{
+  color: black;
+  text-decoration: none;
+}

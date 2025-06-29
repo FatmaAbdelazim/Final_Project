@@ -1,1 +1,36 @@
-<p>verify-code works!</p>
+<section class="container-fluid p-5">
+  <form class="rounded-4 shadow-lg py-4 px-1 m-5 w-40 m-auto bg-white" >
+  <div class="d-flex flex-column align-items-center mb-4">
+    <div class="circle">
+      <i class="fa-solid fa-lock"></i>
+    </div>
+    <p class="fs-4"> التحقق من البريد الإلكتروني</p>
+    <p class="w-50 text-center text-muted">لقد أرسلنا رمز تحقق إلى بريدك الإلكتروني المسجل. يرجى إدخال الرمز أدناه لإكمال العملية.</p>
+
+      <div class="w-80">
+          <label class="form-label my-2"> رمز التحقق</label>
+          <div class="d-flex justify-content-evenly gap-3">
+            <input class="form-control p-2 rounded-3 text-end" type="text" name="num1" id="num1">
+            <input class="form-control p-2 rounded-3 text-end" type="text" name="num2" id="num2">
+            <input class="form-control p-2 rounded-3 text-end" type="text" name="num3" id="num3">
+            <input class="form-control p-2 rounded-3 text-end" type="text" name="num4" id="num4">
+            <input class="form-control p-2 rounded-3 text-end" type="text" name="num5" id="num5">
+            <input class="form-control p-2 rounded-3 text-end" type="text" name="num6" id="num6">
+          </div>
+      </div>
+
+        <p class="text-center text-muted my-3">مكون من 6 أرقام</p>
+        <p class="text-center text-muted my-2">يمكنك إعادة إرسال الرمز خلال ثانية 60 </p>
+<div class="text-center w-100">
+  <button type="submit" class="btn mt-3"  [routerLink]="[ '/reset-pass' ]"> تحقق </button>
+</div>
+
+<a class="d-flex align-items-center gap-2 mt-2" [routerLink]="[ '/login' ]">
+  <p class="text-muted mt-2">الرجوع لتسجيل الدخول</p>
+  <i class="fa-solid fa-arrow-right fs-4 text-muted opacity-50"></i>
+</a>
+
+
+   </div>
+  </form>
+</section>

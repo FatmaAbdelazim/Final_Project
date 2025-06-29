@@ -1,1 +1,43 @@
-<p>login works!</p>
+<section class="container-fluid p-5">
+  <form class="rounded-4 shadow-lg p-3 m-5 w-50 m-auto bg-white pb-5" >
+  <div class="d-flex flex-column align-items-center mb-4">
+    <img src="assets/image.png">
+    <h3 class="mb-4 fw-bold">بصمة</h3>
+    <p class="fs-5">قم بتسجيل الدخول للوصول لحسابك</p>
+
+
+      <div class="w-75">
+          <label for="email" class="form-label my-3">البريد الالكتروني</label>
+          <input class="form-control p-2 rounded-3 text-end" type="email" name="email" id="email" placeholder="أدخل بريدك الإلكتروني">
+      </div>
+
+        <div class="w-75">
+          <label for="password" class="form-label my-3"> كلمة المرور </label>
+          <input class="form-control p-2 rounded-3 text-end" type="password" name="password" id="password" placeholder="أدخل كلمة المرور ">
+        </div>
+
+        <div class="d-flex justify-content-between align-items-center w-75 my-4">
+        <div class="form-check form-check-reverse" style="width: fit-content;">
+          <input class="form-check-input border-dark border-opacity-50" type="checkbox" value="" id="flexCheckDefault">
+          <label class="form-check-label text-muted" for="flexCheckDefault">
+            تذكرنى
+          </label>
+        </div>
+          <span><a [routerLink]="['/verify-code']" routerLinkActive="router-link-active" >نسيت كلمة المرور؟</a></span>
+
+        </div>
+<div class="text-center w-75">
+  <button type="submit" class="btn">تسجيل الدخول</button>
+</div>
+
+<div class="d-flex gap-3">
+  <hr><span class="text-muted"> أو </span><hr>
+</div>
+<p class="text-muted mt-2">ليس لديك حساب؟ </p>
+<div class="text-center w-75">
+  <button type="submit" class="btn2">التسجيل كمتطوع</button>
+  <button type="submit" class="btn3">التسجيل كمنظمة</button>
+</div>
+   </div>
+  </form>
+</section>
