@@ -1,0 +1,50 @@
+.section {
+    background-color: #F9FAFB;
+}
+
+.marl {
+    width: 71px;
+    height: 70px;
+}
+
+.rCard {
+    border: #CCCCD6 1px solid;
+    width: 50%;
+    background-color: #FFFFFF;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+/*  */
+.input-container {
+    position: relative;
+    width: fit-content;
+}
+
+.input-container input {
+    padding-left: 35px;
+    /* مساحة للأيقونة */
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 490px;
+}
+
+.input-container i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+    pointer-events: none;
+    /* عشان لما تضغطي ما تضغطيش على الأيقونة بالغلط */
+}
+
+.dropdown button {
+    width: 490px;
+    height: 48px;
+}
+
+.dropdown-menu {
+    width: 490px;
+}

@@ -1,0 +1,57 @@
+#divSection1{
+    height: 400px;
+    width: 100%;
+    background-image: url(/assets/oppDetails.jpg);
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    border: #E5E7EB solid 1px;
+}
+.btn-bgcolor {
+    background-color: #7000FF;
+}
+
+.btn-border {
+    border: solid 1px #7000FF;
+}
+.spe{
+    background-color: #A1A6F080;
+    width: 95px;
+    height: 40px;
+    border-radius: 12px;
+}
+.div{
+    width: 306px;
+    height: 56px;
+}
+.card{
+    border: #E9A1F0 1px solid;
+}
+#imgLogo{
+    width: 92px;
+    height: 92px;
+    border-radius: 9999px;
+    padding: 5px;
+}
+.btn-bgcolor {
+    background-color: #7000FF;
+}
+.btn-bgcolor2{
+    background-color: #7000FF;
+    width: 170px;
+}
+.btn-border {
+    border: solid 1px #7000FF;
+}
+.br{
+    border: #CCCCD6 1px solid;
+}
+.orCard{
+    border: #FFFFFF 1px solid;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        /* padding: 0px; */
+}
+.comCard{
+        border: #CCCCD6 1px solid;
+        width: 97%;
+}

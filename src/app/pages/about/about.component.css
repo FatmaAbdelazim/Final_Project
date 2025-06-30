@@ -5,7 +5,7 @@
     background-size: cover;
     background-position: center;
     height: 80vh;
-    opacity: 60%;
+    opacity: 90% #00000080;
 }
 
 #divSmall {

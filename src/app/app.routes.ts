@@ -6,6 +6,7 @@ import { VoluntaryOrganizationRegisterComponent } from './features/voluntary_org
 import { AboutComponent } from './pages/about/about.component';
 import { OpportunitiesComponent } from './pages/opportunities/opportunities.component';
 import { TeamsComponent } from './pages/teams/teams.component';
+import { OpportunityDetailsComponent } from './pages/opportunity-details/opportunity-details.component';
 import { VerifyCodeComponent } from './shared/components/verify-code/verify-code.component';
 import { ResetPasswordComponent } from './shared/components/reset-password/reset-password.component';
 import { JoinOppComponent } from './features/volunteer/join-opp/join-opp.component';
@@ -18,6 +19,7 @@ export const routes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'opportunities', component: OpportunitiesComponent },
       { path: 'teams', component: TeamsComponent },
+      {path: 'opportunity-details' , component: OpportunityDetailsComponent},
       { path: 'verify-code', component: VerifyCodeComponent },
       { path: 'reset-pass', component: ResetPasswordComponent }
       { path: 'join-opp', component: join }
