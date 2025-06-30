@@ -21,6 +21,6 @@ export const routes: Routes = [
       { path: 'teams', component: TeamsComponent },
       {path: 'opportunity-details' , component: OpportunityDetailsComponent},
       { path: 'verify-code', component: VerifyCodeComponent },
-      { path: 'reset-pass', component: ResetPasswordComponent }
-      { path: 'join-opp', component: join }
+      { path: 'reset-pass', component: ResetPasswordComponent },
+      { path: 'join-opp', component:  JoinOppComponent}
 ];
