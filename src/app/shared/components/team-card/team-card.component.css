@@ -17,7 +17,16 @@
     margin-right: 50px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
+.details:hover {
+    background-color: #7000FF !important;
+    color: white;
+}
 
+.details {
+    color: #7000FF;
+    background-color: #FFFFFF !important;
+    border: solid 1px #7000FF;
+}
 #divM {
     margin-right: 25px;
 }

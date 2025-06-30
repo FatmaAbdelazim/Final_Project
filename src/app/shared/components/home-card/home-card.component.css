@@ -29,6 +29,17 @@
     margin-right: 95px;
 }
 
+.details:hover {
+    background-color: #7000FF !important;
+    color: white;
+}
+
+.details {
+    color: #7000FF;
+    background-color: #FFFFFF !important;
+    border: solid 1px #7000FF;
+}
+
 .btn-bgcolor {
     background-color: #7000FF;
 }

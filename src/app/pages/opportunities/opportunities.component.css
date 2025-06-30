@@ -14,3 +14,9 @@
   border-color:#E9A1F0E5;
   color: white;
 }
+.main-bg{
+background-color: #ffffff !important;
+box-shadow: none !important;
+  border: none !important;
+
+}
