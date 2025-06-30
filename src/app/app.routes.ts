@@ -8,6 +8,7 @@ import { OpportunitiesComponent } from './pages/opportunities/opportunities.comp
 import { TeamsComponent } from './pages/teams/teams.component';
 import { VerifyCodeComponent } from './shared/components/verify-code/verify-code.component';
 import { ResetPasswordComponent } from './shared/components/reset-password/reset-password.component';
+import { JoinOppComponent } from './features/volunteer/join-opp/join-opp.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -19,5 +20,5 @@ export const routes: Routes = [
       { path: 'teams', component: TeamsComponent },
       { path: 'verify-code', component: VerifyCodeComponent },
       { path: 'reset-pass', component: ResetPasswordComponent }
-
+      { path: 'join-opp', component: join }
 ];
