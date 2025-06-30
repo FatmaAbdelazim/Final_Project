@@ -10,6 +10,7 @@ import { OpportunityDetailsComponent } from './pages/opportunity-details/opportu
 import { VerifyCodeComponent } from './shared/components/verify-code/verify-code.component';
 import { ResetPasswordComponent } from './shared/components/reset-password/reset-password.component';
 import { JoinOppComponent } from './features/volunteer/join-opp/join-opp.component';
+import { JoinTeamComponent } from './features/volunteer/join-team/join-team.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -22,5 +23,6 @@ export const routes: Routes = [
       {path: 'opportunity-details' , component: OpportunityDetailsComponent},
       { path: 'verify-code', component: VerifyCodeComponent },
       { path: 'reset-pass', component: ResetPasswordComponent },
-      { path: 'join-opp', component:  JoinOppComponent}
+      { path: 'join-opp', component:  JoinOppComponent},
+      { path: 'join-team', component:  JoinTeamComponent}
 ];
