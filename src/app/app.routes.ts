@@ -11,6 +11,7 @@ import { VerifyCodeComponent } from './shared/components/verify-code/verify-code
 import { ResetPasswordComponent } from './shared/components/reset-password/reset-password.component';
 import { JoinOppComponent } from './features/volunteer/join-opp/join-opp.component';
 import { JoinTeamComponent } from './features/volunteer/join-team/join-team.component';
+import { TeamDetailsComponent } from './pages/team-details/team-details/team-details.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -24,5 +25,6 @@ export const routes: Routes = [
       { path: 'verify-code', component: VerifyCodeComponent },
       { path: 'reset-pass', component: ResetPasswordComponent },
       { path: 'join-opp', component:  JoinOppComponent},
-      { path: 'join-team', component:  JoinTeamComponent}
+      { path: 'join-team', component:  JoinTeamComponent},
+      { path: 'team-details', component:  TeamDetailsComponent}
 ];
