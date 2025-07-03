@@ -22,7 +22,7 @@ export class LoginComponent {
  login(){
   if (this.loginForm.invalid) {
       console.log(this.loginForm.value);
-    alert('الرجاء تعبئة جميع الحقول بشكل صحيح.');
+    alert('الرجاء تعبئة جميع الحقول بشكل صحيح');
     return;
   }
 
