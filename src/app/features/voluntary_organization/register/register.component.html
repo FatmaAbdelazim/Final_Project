@@ -4,7 +4,7 @@
         <h1 class="text-center mb-3 mt-2">انضم الى عائلة بصمة</h1>
         <p class="text-center text-muted">انضم إلى منصة بصمة كمنظمة تطوعية</p>
         <div class="card rCard d-flex align-items-center justify-content-end mt-1 mb-5 col-lg-7 col-sm-10 bg-white">
-            <div class="form mt-5" [formGroup]="registerForm">
+            <form class="form mt-5" [formGroup]="registerForm" (ngSubmit)="register()">
                 <div class="m-2">
                     <p class="mt-3 text-end">اسم المنظمة</p>
                     <div class="input-container">
@@ -24,7 +24,7 @@
                         <input type="email" placeholder="example@gmail.com" class="py-4 text-end px-3"
                             formControlName="organizationEmail">
                     </div>
-                    @if(organizationEmail?.touched)
+                    @if(organizationEmail?.touched && organizationEmail?.getError('required'))
                     {
                     <span class="text-danger mt-1">البريد الالكتروني مطلوب</span>
                     }
@@ -47,8 +47,12 @@
                 </div>
                 <div class="m-2">
                     <p class="mt-3 text-end">المدينة</p>
-
-                    <div class="custom-select-icon-wrapper">
+                    <div class="input-container">
+                        <i class="bi bi-geo-alt mx-2"></i>
+                        <input type="tel" placeholder="المنيا" class="py-4 text-end px-3"
+                            formControlName="organizationLocationCity">
+                    </div>
+                    <!-- <div class="custom-select-icon-wrapper">
                         <span class="icon">
                             <i class="fa fa-chevron-down"></i> 
                         </span>
@@ -59,7 +63,7 @@
                             <option value="المنيا">المنيا</option>
                             <option value="اسيوط">أسيوط</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     @if(organizationLocationCity?.touched && organizationLocationCity?.errors)
                     {
@@ -83,11 +87,13 @@
                     <div class="input-container">
                         <i class="bi bi-lock mx-2"></i>
                         <input type="password" placeholder="ادخل كلمة مرور قوية" class="py-4 text-end px-3"
-                            formControlName="organizationPassword">
+                            formControlName="organizationPassword" autocomplete="new-password">
                     </div>
-                    @if(organizationPassword?.touched && organizationPassword?.errors)
+                    @if(organizationPassword?.touched && organizationPassword?.getError('required'))
                     {
                     <span class="text-danger mt-1">كلمة المرور مطلوبة</span>
+                    }@else if(organizationPassword?.getError('minlength')){
+                    <span class="text-danger mt-1">يجب ان تكون كلمة المرور اكثر من 6 حروف و ارقام</span>
                     }
                 </div>
                 <div class="m-2 mb-3">
@@ -95,11 +101,13 @@
                     <div class="input-container">
                         <i class="bi bi-lock mx-2"></i>
                         <input type="password" placeholder="اعد ادخال كلمة المرور" class="py-4 text-end px-3"
-                            formControlName="organizationConfirmPassword">
+                            formControlName="organizationConfirmPassword" autocomplete="new-password">
                     </div>
-                    @if(organizationConfirmPassword?.touched && organizationConfirmPassword?.errors)
+                    @if(organizationConfirmPassword?.touched && organizationConfirmPassword?.getError('required'))
                     {
                     <span class="text-danger mt-1">كلمة المرور مطلوبة</span>
+                    }@else if(registerForm.errors?.['passwordmatch']){
+                    <span class="text-danger mt-1">يجب تطابق تأكيد كلمة المرور مع كلمة المرور</span>
                     }
                 </div>
                 <div class="m-2 mb-5">
@@ -110,9 +118,10 @@
                             <p class="mb-1">اضغط لتحميل الشعار</p>
                             <p class="text-muted small">(PNG,SVG, JPG, JPEG — حد أقصى 5MB)</p>
                             <input type="file" #fileInput accept="image/*" class="form-control d-none"
-                                (click)="onFileSelected($event)" formControlName="organizationImage">
+                                (change)="onFileSelected($event)">
                         </div>
                     </div>
+
                     @if(fileName != null && fileName != '')
                     {
                     <p class="text-muted m-2 smaller text-end">تم اختيار الملف: {{ fileName }}</p>
@@ -122,10 +131,10 @@
                     <span class="text-danger mt-1">شعار المنظمة مطلوب</span>
                     }
                 </div>
-                <button class="btn btn-bgColor text-white w-100 py-2 mb-4 fw-bold">التسجيل كمنظمة</button>
+                <button class="btn btn-bgColor text-white w-100 py-2 mb-4 fw-bold" type="submit">التسجيل كمنظمة</button>
                 <p class="mb-5 text-center"><a class="main-color fw-bold" [routerLink]="['/login']">تسجيل الدخول</a>
                     لديك حساب بالفعل؟</p>
-            </div>
+            </form>
         </div>
     </div>
 </div>

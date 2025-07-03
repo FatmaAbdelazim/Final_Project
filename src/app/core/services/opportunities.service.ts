@@ -30,5 +30,16 @@ export class OpportunitiesService {
   searchByLocation(location:string):Observable<Opportunity[]>{
         return this.http.get<Opportunity[]>(`${this.baseUrl}/api/VolunteerOpportunity/bylocation?location=${location}`);
   }
-
+  getAllLocations():Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/api/VolunteerOpportunity/Allllocations`);
+  }
+  getAllCategory():Observable<any>{
+    return this.http.get<any>(`${this.baseUrl}/api/Category/names`);
+  }
+   searchByName(name:string):Observable<Opportunity[]>{
+        return this.http.get<Opportunity[]>(`${this.baseUrl}/api/VolunteerOpportunity/SearchByTitle?title=${name}`);
+  }
+   searchByCategory(category:string):Observable<Opportunity[]>{
+        return this.http.get<Opportunity[]>(`${this.baseUrl}/api/VolunteerOpportunity/byCategory?CatName=${category}`);
+  }
 }
