@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { TeamsService } from '../../../core/services/teams.service';
+import { TeamDetails } from '../../../models/team-details';
 
 @Component({
   selector: 'app-join-team',
@@ -7,7 +9,28 @@ import { RouterLink } from '@angular/router';
   templateUrl: './join-team.component.html',
   styleUrl: './join-team.component.css'
 })
-export class JoinTeamComponent {
+export class JoinTeamComponent implements OnInit, OnDestroy{
+  private readonly _ActivatedRoute = inject(ActivatedRoute)
+  private readonly _TeamsService = inject(TeamsService)
+  team! :TeamDetails;
+  id : string | null = null;
+
+  ngOnInit(): void {
+    this._ActivatedRoute.paramMap.subscribe({
+      next:(value) => {
+        this.id= value.get("id");
+        this._TeamsService.getTeamDetails(this.id).subscribe({
+          next:(res)=> {
+            this.team =res;
+          },
+        })
+      },
+    })
+
+  }
+  ngOnDestroy(): void {
+
+  }
 
   selectedFile: File | null = null;
 

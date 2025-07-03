@@ -25,6 +25,6 @@ export const routes: Routes = [
       { path: 'verify-code', component: VerifyCodeComponent },
       { path: 'reset-pass', component: ResetPasswordComponent },
       { path: 'join-opp', component:  JoinOppComponent},
-      { path: 'join-team', component:  JoinTeamComponent},
-      { path: 'team-details', component:  TeamDetailsComponent}
+      { path: 'join-team/:id', component:  JoinTeamComponent},
+      { path: 'Team/:id', component:  TeamDetailsComponent}
 ];

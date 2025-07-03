@@ -17,7 +17,7 @@
             <span class="text-muted"> :اسم الفريق  </span>
             <i class="fa-solid fa-users"></i>
           </div>
-          <h5>  فريق التطوير المجتمعي</h5>
+          <h5> {{team.name}}</h5>
         </div>
 
 
@@ -26,7 +26,7 @@
             <span class="text-muted"> :اسم المنظمة  </span>
             <i class="fa-solid fa-building-columns"></i>
           </div>
-          <h5> جمعية الخير التطوعية </h5>
+          <h5>{{team.organizationName}}</h5>
         </div>
 
         <div class="col-12 text-end">
@@ -34,7 +34,7 @@
             <span class="text-muted"> :المجال   </span>
             <i class="fa-solid fa-code"></i>
           </div>
-          <h5> التنمية المجتمعية والتعليم </h5>
+          <h5> {{team.categoryName}} </h5>
         </div>
 
       </div>
@@ -109,7 +109,7 @@
 <div class="d-flex gap-2">
 
   <button [routerLink]="['/routePath']" type="submit" class="btn"> إرسال الطلب <i class="fa-solid fa-paper-plane"></i> </button><br>
-  <button [routerLink]="['/routePath']"  class="btn-cancel">  الغاء </button><br>
+  <button [routerLink]="[`/Team/${id}`]"  class="btn-cancel">  الغاء </button><br>
 </div>
     </form>
 </section>
