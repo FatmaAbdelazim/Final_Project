@@ -1,63 +1,130 @@
 <div class="container-fluid section">
     <div class="row justify-content-center align-items-center p-5">
-        <img src="/assets/logoR.png" alt="" class="marl mt-5">
+        <img src="/assets/image.png" alt="" class="marl mt-5 p-1">
         <h1 class="text-center mb-3 mt-2">انضم الى عائلة بصمة</h1>
         <p class="text-center text-muted">انضم إلى منصة بصمة كمنظمة تطوعية</p>
         <div class="card rCard d-flex align-items-center justify-content-end mt-1 mb-5 col-lg-7 col-sm-10 bg-white">
-            <div class="m-2">
-                <p class="mt-3 text-end">اسم المنظمة</p>
-                <div class="input-container">
-                    <i class="fa fa-search"></i>
-                    <input type="text" placeholder="Search..." class="py-4">
+            <div class="form mt-5" [formGroup]="registerForm">
+                <div class="m-2">
+                    <p class="mt-3 text-end">اسم المنظمة</p>
+                    <div class="input-container">
+                        <i class="bi bi-buildings mx-2"></i>
+                        <input type="text" placeholder="ادخل اسم المنظمة" class="py-4 text-end px-3"
+                            formControlName="organizationName">
+                    </div>
+                    @if(organizationName?.touched && organizationName?.errors)
+                    {
+                    <span class="text-danger mt-1">اسم المنظمة مطلوب</span>
+                    }
                 </div>
-            </div>
-            <div class="m-2">
-                <p class="mt-3 text-end">اسم المنظمة</p>
-                <div class="input-container">
-                    <i class="fa fa-search"></i>
-                    <input type="text" placeholder="Search..." class="py-4">
+                <div class="m-2">
+                    <p class="mt-3 text-end">البريد الالكتروني الرسمي</p>
+                    <div class="input-container">
+                        <i class="bi bi-envelope mx-2"></i>
+                        <input type="email" placeholder="example@gmail.com" class="py-4 text-end px-3"
+                            formControlName="organizationEmail">
+                    </div>
+                    @if(organizationEmail?.touched)
+                    {
+                    <span class="text-danger mt-1">البريد الالكتروني مطلوب</span>
+                    }
+                    @else if(organizationEmail?.getError('email'))
+                    {
+                    <span class="text-danger mt-1">البريد الالكتروني غير صالح</span>
+                    }
                 </div>
-            </div>
-            <div class="m-2">
-                <p class="mt-3 text-end">اسم المنظمة</p>
-                <div class="input-container">
-                    <i class="fa fa-search"></i>
-                    <input type="text" placeholder="Search..." class="py-4">
+                <div class="m-2">
+                    <p class="mt-3 text-end">رقم الجوال</p>
+                    <div class="input-container">
+                        <i class="bi bi-telephone mx-2"></i>
+                        <input type="tel" placeholder="01xxxxxxxxx" class="py-4 text-end px-3"
+                            formControlName="organizationPhone">
+                    </div>
+                    @if(organizationPhone?.touched && organizationPhone?.errors)
+                    {
+                    <span class="text-danger mt-1">رقم الجوال مطلوب</span>
+                    }
                 </div>
-            </div>
-            <div class="m-2">
-                <p class="mt-3 text-end">اسم المنظمة</p>
-                <div class="dropdown">
-                    <button class="btn border dropdown-toggle py-2 px-4 text-end" type="button" data-bs-toggle="dropdown">
-                        اختار المدينه
-                    </button>
-                    <ul class="dropdown-menu text-end">
-                        <li><a class="dropdown-item" href="#">القاهرة</a></li>
-                        <li><a class="dropdown-item" href="#">المنيا</a></li>
-                        <li><a class="dropdown-item" href="#">اسيوط</a></li>
-                    </ul>
+                <div class="m-2">
+                    <p class="mt-3 text-end">المدينة</p>
+
+                    <div class="custom-select-icon-wrapper">
+                        <span class="icon">
+                            <i class="fa fa-chevron-down"></i> 
+                        </span>
+
+                        <select formControlName="organizationLocationCity" class="text-end text-muted">
+                            <option value="">اختر المدينة</option>
+                            <option value="القاهرة">القاهرة</option>
+                            <option value="المنيا">المنيا</option>
+                            <option value="اسيوط">أسيوط</option>
+                        </select>
+                    </div>
+
+                    @if(organizationLocationCity?.touched && organizationLocationCity?.errors)
+                    {
+                    <span class="text-danger mt-1">المدينه مطلوبة</span>
+                    }
                 </div>
-            </div>
-            <div class="m-2">
-                <p class="mt-3 text-end">اسم المنظمة</p>
-                <div class="input-container">
-                    <i class="fa fa-search"></i>
-                    <input type="text" placeholder="Search..." class="py-4">
+                <div class="m-2">
+                    <p class="mt-3 text-end">رقم الترخيص</p>
+                    <div class="input-container">
+                        <i class="bi bi-globe mx-2"></i>
+                        <input type="text" placeholder="ادخل رقم الترخيص" class="py-4 text-end px-3"
+                            formControlName="organizationNumber">
+                    </div>
+                    @if(organizationNumber?.touched && organizationNumber?.errors)
+                    {
+                    <span class="text-danger mt-1">رقم الترخيص مطلوب</span>
+                    }
                 </div>
-            </div>
-            <div class="m-2">
-                <p class="mt-3 text-end">اسم المنظمة</p>
-                <div class="input-container">
-                    <i class="fa fa-search"></i>
-                    <input type="text" placeholder="Search..." class="py-4">
+                <div class="m-2">
+                    <p class="mt-3 text-end">كلمة المرور</p>
+                    <div class="input-container">
+                        <i class="bi bi-lock mx-2"></i>
+                        <input type="password" placeholder="ادخل كلمة مرور قوية" class="py-4 text-end px-3"
+                            formControlName="organizationPassword">
+                    </div>
+                    @if(organizationPassword?.touched && organizationPassword?.errors)
+                    {
+                    <span class="text-danger mt-1">كلمة المرور مطلوبة</span>
+                    }
                 </div>
-            </div>
-            <div class="m-2">
-                <p class="mt-3 text-end">اسم المنظمة</p>
-                <div class="input-container">
-                    <i class="fa fa-search"></i>
-                    <input type="text" placeholder="Search..." class="py-4">
+                <div class="m-2 mb-3">
+                    <p class="mt-3 text-end">تأكيد كلمة المرور </p>
+                    <div class="input-container">
+                        <i class="bi bi-lock mx-2"></i>
+                        <input type="password" placeholder="اعد ادخال كلمة المرور" class="py-4 text-end px-3"
+                            formControlName="organizationConfirmPassword">
+                    </div>
+                    @if(organizationConfirmPassword?.touched && organizationConfirmPassword?.errors)
+                    {
+                    <span class="text-danger mt-1">كلمة المرور مطلوبة</span>
+                    }
                 </div>
+                <div class="m-2 mb-5">
+                    <div class="mb-4 text-end">
+                        <label class="form-label">شعار منظمة</label>
+                        <div class="border rounded-3 p-1 text-center upload-area" (click)="fileInput.click()">
+                            <i class="bi bi-cloud-arrow-up fs-2 text-secondary mb-2"></i>
+                            <p class="mb-1">اضغط لتحميل الشعار</p>
+                            <p class="text-muted small">(PNG,SVG, JPG, JPEG — حد أقصى 5MB)</p>
+                            <input type="file" #fileInput accept="image/*" class="form-control d-none"
+                                (click)="onFileSelected($event)" formControlName="organizationImage">
+                        </div>
+                    </div>
+                    @if(fileName != null && fileName != '')
+                    {
+                    <p class="text-muted m-2 smaller text-end">تم اختيار الملف: {{ fileName }}</p>
+                    }
+                    @if(fileName == '')
+                    {
+                    <span class="text-danger mt-1">شعار المنظمة مطلوب</span>
+                    }
+                </div>
+                <button class="btn btn-bgColor text-white w-100 py-2 mb-4 fw-bold">التسجيل كمنظمة</button>
+                <p class="mb-5 text-center"><a class="main-color fw-bold" [routerLink]="['/login']">تسجيل الدخول</a>
+                    لديك حساب بالفعل؟</p>
             </div>
         </div>
     </div>

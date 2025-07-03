@@ -9,9 +9,11 @@
             <h1>اترك</h1>
             <p class="text-muted mt-4">انضم إلى أكبر منصة تطوعية في المنطقة واكتشف فرص التطوع التي تناسب اهتماماتك
                 ومهاراتك</p>
-            <button class="btn me-4 mt-3 main-color btn-border bt">سجل منظمتك<i
+            <button class="btn me-4 mt-3 main-color btn-border bt"
+                [routerLink]="['/voluntary_organization_register']">سجل منظمتك<i
                     class="bi bi-buildings mx-2"></i></button>
-            <button class="btn  mt-3 text-light btn-bgcolor bt">انضم كمتطوع<i class="bi bi-person mx-2"></i></button>
+            <button class="btn  mt-3 text-light btn-bgcolor bt" [routerLink]="['/volunteer_register']">انضم كمتطوع<i
+                    class="bi bi-person mx-2"></i></button>
         </div>
     </div>
 </div>
@@ -44,9 +46,16 @@
     <div class="row justify-content-center align-items-center text-center mx-5">
         <h1 class="mt-4">فرص تطوعية مميزة</h1>
         <h3 class="text-muted mt-3 mb-5">اكتشف أحدث الفرص التطوعية المتاحة</h3>
-        <app-home-card class="col-4"></app-home-card>
-        <app-home-card class="col-4"></app-home-card>
-        <app-home-card class="col-4"></app-home-card>
+        @if(noOpportunities == false)
+        {
+
+        <app-home-card class="col-4" [Opportunity]="opportunitiesList[0]"></app-home-card>
+        <app-home-card class="col-4" [Opportunity]="opportunitiesList[1]"></app-home-card>
+        <app-home-card class="col-4" [Opportunity]="opportunitiesList[2]"></app-home-card>
+
+        }@else {
+        <h1 class="text-center text-danger">لا يوجد فرص ف الوقت الحالي</h1>
+        }
 
     </div>
 </div>

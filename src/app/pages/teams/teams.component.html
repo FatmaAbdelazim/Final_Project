@@ -51,7 +51,17 @@
         <app-team-card class="col-4 mb-4"></app-team-card>
              <app-team-card class="col-4 mb-4"></app-team-card>
         <app-team-card class="col-4 mb-4"></app-team-card>
-        <app-team-card class="col-4 mb-4"></app-team-card>
+              @if(noTeams == false)
+            {
+            @for (team of teamsList; track $index) {
+                    <app-team-card class="col-4 mb-4" [team]="team"></app-team-card>
+
+            }
+
+            }@else {
+            <h1 class="text-center text-danger">لا يوجد فريق ف الوقت الحالي</h1>
+            }
+
     </div>
     <div class="d-flex justify-content-center align-items-center mb-5">
         <nav class="mb-5 p-2">

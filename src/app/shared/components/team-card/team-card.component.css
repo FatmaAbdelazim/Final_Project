@@ -40,10 +40,10 @@
 }
 .spe{
     background-color: #A1A6F080;
-    width: 59px;
-    height: 36;
+    /* width: 59px; */
+    /* height: 36; */
     border-radius: 12px;
-    margin-right: 75px;
+    /* margin-right: 75px; */
 }
 .pSmall{
 font-size: smaller;

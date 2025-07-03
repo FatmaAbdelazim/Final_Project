@@ -4,7 +4,7 @@
 body {
   font-family: 'Cairo', sans-serif;
   background-color: #ffffff !important;
-  text-align: right;
+  /* text-align: right; */
 }
 
 .btn-color{

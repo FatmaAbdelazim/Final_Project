@@ -21,7 +21,7 @@ export const routes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'opportunities', component: OpportunitiesComponent },
       { path: 'teams', component: TeamsComponent },
-      {path: 'opportunity-details' , component: OpportunityDetailsComponent},
+      {path: 'opportunity-details/:id' , component: OpportunityDetailsComponent},
       { path: 'verify-code', component: VerifyCodeComponent },
       { path: 'reset-pass', component: ResetPasswordComponent },
       { path: 'join-opp', component:  JoinOppComponent},
