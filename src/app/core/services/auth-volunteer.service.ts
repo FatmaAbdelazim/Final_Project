@@ -11,6 +11,8 @@ export class AuthVolunteerService {
   private readonly _HttpClient = inject(HttpClient);
 
   register(data:any):Observable<any>{
-    return this._HttpClient.post(`${environment.baseUrl}/api/Auth/register-volunteer`,data)
+    return this._HttpClient.post(`${environment.baseUrl}/api/Auth/register-volunteer`,data,{
+  responseType: 'text'
+})
   }
 }
