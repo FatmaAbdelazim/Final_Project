@@ -15,12 +15,14 @@ export class OpportunitiesComponent implements OnInit {
   opportunitiesFilterList: Opportunity[] = [];
   pagedOpportunities: Opportunity[] = [];
 
-  noOpportunities: boolean = false;
+  noOpportunities= 0;
 
   OpportunityName: string = '';
   citiesList: any[] = [];
   categoriesList: any[] = [];
 
+  selectedCategoryName: string = 'اختار المجال';
+  selectedCityName: string = 'اختار المدينه';
   currentPage: number = 1;
   itemsPerPage: number = 6;
 
@@ -39,10 +41,9 @@ export class OpportunitiesComponent implements OnInit {
         this.opportunitiesFilterList = response;
         this.currentPage = 1;
         this.updatePagedOpportunities();
-        this.noOpportunities = response.length === 0;
+        this.noOpportunities = response.length;
       },
       error: (e) => {
-        this.noOpportunities = true;
         console.log(e);
       }
     });
@@ -69,9 +70,10 @@ export class OpportunitiesComponent implements OnInit {
     this._OpportunitiesService.searchByLocation(OpportunityLocation).subscribe({
       next: (response) => {
         this.opportunitiesFilterList = response;
+        this.selectedCityName = OpportunityLocation;
         this.currentPage = 1;
         this.updatePagedOpportunities();
-        this.noOpportunities = response.length === 0;
+        this.noOpportunities = response.length;
       }
     });
   }
@@ -82,7 +84,7 @@ export class OpportunitiesComponent implements OnInit {
         this.opportunitiesFilterList = response;
         this.currentPage = 1;
         this.updatePagedOpportunities();
-        this.noOpportunities = response.length === 0;
+        this.noOpportunities = response.length;
       }
     });
   }
@@ -91,9 +93,10 @@ export class OpportunitiesComponent implements OnInit {
     this._OpportunitiesService.searchByCategory(OpportunityCategory).subscribe({
       next: (response) => {
         this.opportunitiesFilterList = response;
+        this.selectedCategoryName = OpportunityCategory;
         this.currentPage = 1;
         this.updatePagedOpportunities();
-        this.noOpportunities = response.length === 0;
+        this.noOpportunities = response.length;
       }
     });
   }

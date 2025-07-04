@@ -1,8 +1,8 @@
 .myCard {
     width: 350px;
-    height: 318px;
+    /* height: 318px; */
     border-radius: 5px;
-    padding: 32px;
+    padding: 22px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* margin-right: 80px !important; */
     border: 1px solid #9333EA;
@@ -44,6 +44,7 @@
     /* height: 36; */
     border-radius: 12px;
     /* margin-right: 75px; */
+
 }
 .pSmall{
 font-size: smaller;

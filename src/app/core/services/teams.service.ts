@@ -8,9 +8,25 @@ import { Team } from '../../models/team';
 })
 export class TeamsService {
 
- constructor(private http:HttpClient) { }
+  constructor(private http: HttpClient) { }
   baseUrl = 'https://tatawwa3.runasp.net';
-  getAllTeams():Observable<Team[]>{
+  getAllTeams(): Observable<Team[]> {
     return this.http.get<Team[]>(`${this.baseUrl}/api/Team/GetAllVolunteerTeams`);
   }
+
+  getAllLocations(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/api/Team/cities`);
   }
+  getAllCategory(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/api/Team/categories`);
+  }
+  searchByLocation(location: string): Observable<Team[]> {
+    return this.http.get<Team[]>(`${this.baseUrl}/api/Team/by-city?city=${location}`);
+  }
+  searchByName(name: string): Observable<Team[]> {
+    return this.http.get<Team[]>(`${this.baseUrl}/api/Team/by-name?name=${name}`);
+  }
+  searchByCategory(category: string): Observable<Team[]> {
+    return this.http.get<Team[]>(`${this.baseUrl}/api/Team/by-category?category=${category}`);
+  }
+}
