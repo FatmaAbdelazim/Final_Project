@@ -7,3 +7,12 @@
 .marl{
     margin-left: 5rem;
 }
+li:hover{
+      cursor: pointer;
+}
+.btn-color{
+   font-weight: bold;
+}
+/* .active{
+    color: #9333EA !important;
+} */

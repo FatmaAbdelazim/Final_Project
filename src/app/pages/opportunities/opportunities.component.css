@@ -8,6 +8,8 @@
 .page-link:hover {
   background-color: #f3e8ff;
   color: #6a00cc;
+    cursor: pointer;
+
 }
 .pagination .page-item.active .page-link {
   background-color: #E9A1F0E5;

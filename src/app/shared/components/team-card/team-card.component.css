@@ -20,6 +20,7 @@
 .details:hover {
     background-color: #7000FF !important;
     color: white;
+      cursor: pointer;
 }
 
 .details {
@@ -27,6 +28,7 @@
     background-color: #FFFFFF !important;
     border: solid 1px #7000FF;
 }
+
 #divM {
     margin-right: 25px;
 }

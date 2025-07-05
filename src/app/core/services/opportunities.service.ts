@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Opportunity } from '../../models/opportunty';
 import { OpportuntyDetails } from '../../models/opportunty-details';
 import { environment } from '../environments/environment';
+import { OppManagment } from '../../models/opp-managment';
 
 @Injectable({
   providedIn: 'root'
@@ -46,5 +47,11 @@ export class OpportunitiesService {
   }
   joinOpp(data:any):Observable<any>{
       return this.http.post(`${environment.baseUrl}/api/ApplayApplication/apply`, data)
+  }
+  oppManagment():Observable<OppManagment[]>{
+    return this.http.get<OppManagment[]>(`${this.baseUrl}/api/VolunteerOpportunity/ forsa-management`);
+  }
+  deleteOpp(id:string):Observable<any>{
+    return this.http.delete<any>(`${this.baseUrl}/api/VolunteerOpportunity/${id}/remove`);
   }
 }

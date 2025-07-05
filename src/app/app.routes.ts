@@ -12,9 +12,15 @@ import { ResetPasswordComponent } from './shared/components/reset-password/reset
 import { JoinOppComponent } from './features/volunteer/join-opp/join-opp.component';
 import { JoinTeamComponent } from './features/volunteer/join-team/join-team.component';
 import { TeamDetailsComponent } from './pages/team-details/team-details/team-details.component';
-import { OrganizathionDashboardComponent } from './features/voluntary_organization/organizathion-dashboard/organizathion-dashboard.component';
 import { ManagmentOppComponent } from './features/voluntary_organization/managment-opp/managment-opp.component';
 import { VerifyEmailComponent } from './shared/components/verify-email/verify-email.component';
+import { OrganizationTeamsComponent } from './features/voluntary_organization/organization-teams/organization-teams.component';
+import { OrganizationSettingsComponent } from './features/voluntary_organization/organization-settings/organization-settings.component';
+import { OrganizationNotificationsComponent } from './features/voluntary_organization/organization-notifications/organization-notifications.component';
+import { OrganizationCertificationsComponent } from './features/voluntary_organization/organization-certifications/organization-certifications.component';
+import { OrganizationHomeComponent } from './features/voluntary_organization/organization-home/organization-home.component';
+import { OrganizationInvitationsComponent } from './features/voluntary_organization/organization-invitations/organization-invitations.component';
+import { OrganizationDashboardComponent } from './features/voluntary_organization/organizathion-dashboard/organizathion-dashboard.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -30,7 +36,19 @@ export const routes: Routes = [
       { path: 'reset-pass', component: ResetPasswordComponent },
       { path: 'join-opp', component: JoinOppComponent },
       { path: 'join-team', component: JoinTeamComponent },
-      { path: 'team-details', component: TeamDetailsComponent },
-      { path: 'organizathionDashboard', component: OrganizathionDashboardComponent },
-      { path: 'managment-opp', component: ManagmentOppComponent }
+      { path: 'team-details/:id', component: TeamDetailsComponent },
+      {
+            path: 'organization-dashboard', component: OrganizationDashboardComponent
+            , children: [
+                  { path: '', component: OrganizationHomeComponent },
+                  { path: 'organization-home', component: OrganizationHomeComponent },
+                  { path: 'organization-teams', component: OrganizationTeamsComponent },
+                  { path: 'organization-settings', component: OrganizationSettingsComponent },
+                  { path: 'organization-notifications', component: OrganizationNotificationsComponent },
+                  { path: 'organization-certifications', component: OrganizationCertificationsComponent },
+                  { path: 'organization-invitations', component: OrganizationInvitationsComponent },
+                  { path: 'managment-opp', component: ManagmentOppComponent }
+            ]
+      },
+
 ];

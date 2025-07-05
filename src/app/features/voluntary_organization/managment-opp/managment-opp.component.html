@@ -1,7 +1,99 @@
-<div class="">
-    <div class="container">
-        <div class="row">
-            <h4></h4>
+<div class="container-fluid bg py-5">
+    <div class="container mt-5">
+        <div class="row py-4 row1 border rounded mt-5">
+            <h4 class="text-center">قائمة الفرص التطوعية</h4>
+        </div>
+        <div class="row ">
+            <table class="fancy-table mt-5">
+                <thead>
+                    <tr>
+                        <th>الاجراءات</th>
+                        <th>التقييم</th>
+                        <th>المتقدمين</th>
+                        <th>الحالة</th>
+                        <th>التاريخ</th>
+                        <th>اسم الفرصة</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if(numberOfOpp != 0 )
+                    {
+                    @for (opp of pagedOpps; track $index) {
+                    <tr>
+                        <td>
+                            <div class="d-flex justify-content-center">
+                                <i class="bi bi-pause-fill me-1 main-color fs-4"></i>
+                                <i class="bi bi-trash-fill me-2 t fs-4" (click)="deletOpp(opp.id)"></i>
+                                <i class="bi bi-pencil-square me-2 e fs-4"></i>
+                                <i class="bi bi-eye-fill me-2 main-color fs-4" [routerLink]="['/opportunity-details',opp.id]"></i>
+                                <i class="bi bi-calendar-check-fill e fs-4"></i>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="row">
+                                <span>{{opp.averageRating}}</span>
+                                <div class="d-flex justify-content-center">
+                                    @for (star of getStarsArray(opp.averageRating); track $index) {
+                                    <i class="bi bi-star-fill text-warning"></i>
+                                    }
+
+
+                                </div>
+                            </div>
+                        </td>
+                        <td>{{opp.applicantsCount}}</td>
+                        <td><span class="status"
+                                [ngClass]="{ 'active': opp.statusDisplay === 'نشطة' , 'compelete': opp.statusDisplay === 'مكتملة' ,'under-observation': opp.statusDisplay === 'قيد المراجعة' }">{{opp.statusDisplay}}</span>
+                        </td>
+                        <td>{{opp.startDate | date:"dd-mm-yyyy"}}</td>
+                        <td ><h5>{{opp.title}}</h5><small class="text-muted">{{opp.description.split(' ').slice(0,4).join('
+                                ')}}</small></td>
+                    </tr>
+                    }
+
+                    }@else {
+                    <h4 class="text-danger text-center">لا يوجد فرص حاليا</h4>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="row mb-5 mt-3">
+            <nav class=" p-2">
+                <ul class="pagination">
+
+                    <!-- Previous -->
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                        <a class="page-link main-color" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <!-- Dynamic Page Numbers -->
+                    @for (page of [].constructor(totalPages); track $index) {
+                    <li class="page-item" [class.active]="currentPage === $index + 1">
+                        <a class="page-link main-color" (click)="goToPage($index + 1)">
+                            {{ $index + 1 }}
+                        </a>
+                    </li>
+                    }
+
+
+                    <!-- Next -->
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                        <a class="page-link main-color" (click)="goToPage(currentPage + 1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
+
+
+        <div class="row justify-content-start">
+            <button class="btn btn-bgColor size">اضافة فرصة تطوعية جديدة</button>
         </div>
     </div>
 </div>

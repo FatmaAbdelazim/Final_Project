@@ -1,4 +1,12 @@
 <div class="container-fluid">
-    <app-managment-opp></app-managment-opp>
-    <app-sidebar-org class="bg-white"></app-sidebar-org>
+    <div class="row">
+        <div class="col-10">
+            <router-outlet></router-outlet>
+        </div>
+        <div class="col-2">
+            <app-sidebar-org></app-sidebar-org>
+        </div>
+
+    </div>
+
 </div>
