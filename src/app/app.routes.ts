@@ -14,6 +14,7 @@ import { JoinTeamComponent } from './features/volunteer/join-team/join-team.comp
 import { TeamDetailsComponent } from './pages/team-details/team-details/team-details.component';
 import { OrganizathionDashboardComponent } from './features/voluntary_organization/organizathion-dashboard/organizathion-dashboard.component';
 import { ManagmentOppComponent } from './features/voluntary_organization/managment-opp/managment-opp.component';
+import { VerifyEmailComponent } from './shared/components/verify-email/verify-email.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -23,12 +24,13 @@ export const routes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'opportunities', component: OpportunitiesComponent },
       { path: 'teams', component: TeamsComponent },
-      {path: 'opportunity-details/:id' , component: OpportunityDetailsComponent},
+      { path: 'opportunity-details/:id', component: OpportunityDetailsComponent },
       { path: 'verify-code', component: VerifyCodeComponent },
+      { path: 'verify-email', component: VerifyEmailComponent },
       { path: 'reset-pass', component: ResetPasswordComponent },
-      { path: 'join-opp', component:  JoinOppComponent},
-      { path: 'join-team', component:  JoinTeamComponent},
-      { path: 'team-details', component:  TeamDetailsComponent},
-      {path: 'organizathionDashboard',component:OrganizathionDashboardComponent},
-      {path:'managment-opp',component:ManagmentOppComponent}
+      { path: 'join-opp', component: JoinOppComponent },
+      { path: 'join-team', component: JoinTeamComponent },
+      { path: 'team-details', component: TeamDetailsComponent },
+      { path: 'organizathionDashboard', component: OrganizathionDashboardComponent },
+      { path: 'managment-opp', component: ManagmentOppComponent }
 ];
