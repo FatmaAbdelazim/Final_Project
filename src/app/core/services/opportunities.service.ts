@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Opportunity } from '../../models/opportunty';
 import { OpportuntyDetails } from '../../models/opportunty-details';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,7 @@ export class OpportunitiesService {
 
   constructor(private http: HttpClient) { }
   baseUrl = 'https://tatawwa3.runasp.net';
+
   getAllOpportunities(): Observable<Opportunity[]> {
     return this.http.get<Opportunity[]>(`${this.baseUrl}/api/HomePage/Opportunities`);
   }
@@ -24,7 +26,7 @@ export class OpportunitiesService {
   //     })
   //   );
   // }
-  getOpportunityDetails(id: string): Observable<OpportuntyDetails> {
+  getOpportunityDetails(id: string | null): Observable<OpportuntyDetails> {
     return this.http.get<OpportuntyDetails>(`${this.baseUrl}/api/VolunteerOpportunity/${id}/Detailes`);
   }
   searchByLocation(location:string):Observable<Opportunity[]>{
@@ -41,5 +43,8 @@ export class OpportunitiesService {
   }
    searchByCategory(category:string):Observable<Opportunity[]>{
         return this.http.get<Opportunity[]>(`${this.baseUrl}/api/VolunteerOpportunity/byCategory?CatName=${category}`);
+  }
+  joinOpp(data:any):Observable<any>{
+      return this.http.post(`${environment.baseUrl}/api/ApplayApplication/apply`, data)
   }
 }

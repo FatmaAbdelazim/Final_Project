@@ -39,7 +39,7 @@
             تذكرنى
           </label>
         </div>
-        <span><a [routerLink]="['/verify-code']" routerLinkActive="router-link-active">نسيت كلمة المرور؟</a></span>
+        <span><a [routerLink]="['/verify-email']" routerLinkActive="router-link-active">نسيت كلمة المرور؟</a></span>
 
       </div>
       <div class="text-center w-75">
@@ -52,8 +52,8 @@
       </div>
       <p class="text-muted mt-2">ليس لديك حساب؟ </p>
       <div class="text-center w-75">
-        <button type="submit" class="btn2">التسجيل كمتطوع</button>
-        <button type="submit" class="btn3">التسجيل كمنظمة</button>
+        <button [routerLink]="['/volunteer_register']" type="submit" class="btn2">التسجيل كمتطوع</button>
+        <button [routerLink]="['/voluntary_organization_register']" type="submit" class="btn3">التسجيل كمنظمة</button>
       </div>
     </div>
   </form>

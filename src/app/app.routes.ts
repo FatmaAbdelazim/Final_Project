@@ -12,6 +12,8 @@ import { ResetPasswordComponent } from './shared/components/reset-password/reset
 import { JoinOppComponent } from './features/volunteer/join-opp/join-opp.component';
 import { JoinTeamComponent } from './features/volunteer/join-team/join-team.component';
 import { TeamDetailsComponent } from './pages/team-details/team-details/team-details.component';
+import { authGuard } from './core/guards/auth.guard';
+import { VerifyEmailComponent } from './shared/components/verify-email/verify-email.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -21,10 +23,11 @@ export const routes: Routes = [
       { path: 'about', component: AboutComponent },
       { path: 'opportunities', component: OpportunitiesComponent },
       { path: 'teams', component: TeamsComponent },
-      {path: 'opportunity-details/:id' , component: OpportunityDetailsComponent},
+      { path: 'opportunity-details/:id' , component: OpportunityDetailsComponent},
+      { path: 'verify-email', component: VerifyEmailComponent },
       { path: 'verify-code', component: VerifyCodeComponent },
       { path: 'reset-pass', component: ResetPasswordComponent },
-      { path: 'join-opp', component:  JoinOppComponent},
-      { path: 'join-team/:id', component:  JoinTeamComponent},
+      { path: 'join-opp/:id', component:  JoinOppComponent, canActivate:[authGuard]},
+      { path: 'join-team/:id', component:  JoinTeamComponent, canActivate:[authGuard]},
       { path: 'Team/:id', component:  TeamDetailsComponent}
 ];

@@ -35,4 +35,11 @@ export class TeamsService {
   searchByCategory(category: string): Observable<Team[]> {
     return this.http.get<Team[]>(`${this.baseUrl}/api/Team/by-category?category=${category}`);
   }
+
+  joinTeam(data: any): Observable<any> {
+  return this.http.post(`${environment.baseUrl}/api/Team/request`, data, {
+    responseType: 'text'  
+  });
+}
+
 }

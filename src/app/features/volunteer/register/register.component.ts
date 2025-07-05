@@ -26,7 +26,7 @@ this.registerForm.get('rePassword')?.valueChanges.subscribe(() => {
   private readonly _AuthVolunteerService = inject(AuthVolunteerService)
   private readonly _Router = inject(Router)
 
-  err:string="";
+  
   isLoading: boolean = false;
   fileName: string | null = null;
   fileToUpload: File | null = null;
@@ -104,13 +104,13 @@ onFileSelected(event: Event): void {
     if(this.registerForm.valid)
     {
       const formData = new FormData();
-  formData.append('FullName', this.registerForm.get("fullName")?.value ?? '');
-  formData.append('Email', this.registerForm.get("email")?.value ?? '');
-  formData.append('PhoneNumber', this.registerForm.get("phone")?.value ?? '');
-  formData.append('City', this.registerForm.get("city")?.value ?? '');
-  formData.append('Password', this.registerForm.get("password")?.value ?? '');
-  formData.append('ConfirmPassword', this.registerForm.get("rePassword")?.value ?? '');
-  formData.append('Interests', JSON.stringify(this.registerForm.get("interests")?.value ?? []));
+      formData.append('FullName', this.registerForm.get("fullName")?.value ?? '');
+      formData.append('Email', this.registerForm.get("email")?.value ?? '');
+      formData.append('PhoneNumber', this.registerForm.get("phone")?.value ?? '');
+      formData.append('City', this.registerForm.get("city")?.value ?? '');
+      formData.append('Password', this.registerForm.get("password")?.value ?? '');
+      formData.append('ConfirmPassword', this.registerForm.get("rePassword")?.value ?? '');
+      formData.append('Interests', JSON.stringify(this.registerForm.get("interests")?.value ?? []));
 
   if (this.fileToUpload) {
     formData.append('ProfileImage', this.fileToUpload, this.fileToUpload.name);
@@ -134,7 +134,6 @@ onFileSelected(event: Event): void {
         },
         error:(err)=>{
           console.log(err);
-          this.err = err;
           this.isLoading = false;
         }
       })

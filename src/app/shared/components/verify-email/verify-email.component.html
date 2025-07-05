@@ -1,0 +1,32 @@
+<section class="container-fluid p-5">
+  <form [formGroup]="emailForm" class="rounded-4 shadow-lg py-4 px-1 m-5 w-40 m-auto bg-white" (ngSubmit)="Send()">
+  <div class="d-flex flex-column align-items-center mb-4">
+    <div class="circle">
+      <i class="fa-solid fa-lock"></i>
+    </div>
+    <p class="fs-4"> البريد الالكتروني </p>
+    <p class="w-50 text-center text-muted">يرجى إدخال  بريدك الالكتروني، لارسال كود التحقق </p>
+
+      <div class="w-90">
+        <label for="email" class="form-label my-3"> البريد الالكتروني </label>
+        <input formControlName="email" class="form-control p-2 rounded-3 text-end" type="email" name="email" id="email" placeholder=" ادخل البريد الالكتروني ">
+        @if(emailForm.get('email')?.errors && (emailForm.get('email')?.dirty || emailForm.get('email')?.touched))
+          {
+            <div class="text-danger">
+              @if(emailForm.get('email')?.getError('required'))
+              {
+                <p>يرجي ادخال البريد الالكتروني </p>
+              }
+              @else if(emailForm.get('email')?.getError('email'))
+              {
+                <p> يرجي ادخال بريد الكتروني صالح</p>
+              }
+            </div>
+          }
+      </div>
+<div class="text-center w-100">
+  <button type="submit" class="btn mt-3"> ارسال الكود</button>
+</div>
+   </div>
+  </form>
+</section>
