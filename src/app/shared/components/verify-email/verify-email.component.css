@@ -2,9 +2,6 @@ section{
   background-color: #F9FAFB;
   text-align: right;
 }
-span a{
-  color: #9333EA;
-}
 .circle{
   width: 80px;
   height: 80px;
@@ -25,13 +22,10 @@ span a{
   padding: 3px 132px;
   border: none;
 }
-hr{
-  color: #6c757d;
-  width: 180px;
-}
 .w-40{
   width: 40%;
 }
-.w-80{
-  width: 80%;
+.w-90{
+  width: 90%;
 }
+

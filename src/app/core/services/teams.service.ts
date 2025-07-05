@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Team } from '../../models/team';
+import { TeamDetails } from '../../models/team-details';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +14,10 @@ export class TeamsService {
   baseUrl = 'https://tatawwa3.runasp.net';
   getAllTeams(): Observable<Team[]> {
     return this.http.get<Team[]>(`${this.baseUrl}/api/Team/GetAllVolunteerTeams`);
+  }
+
+  getTeamDetails(id:string | null):Observable<TeamDetails>{
+    return this.http.get<TeamDetails>(`${environment.baseUrl}/api/Team/${id}/Team-Detailes`);
   }
 
   getAllLocations(): Observable<any> {
@@ -29,4 +35,11 @@ export class TeamsService {
   searchByCategory(category: string): Observable<Team[]> {
     return this.http.get<Team[]>(`${this.baseUrl}/api/Team/by-category?category=${category}`);
   }
+
+  joinTeam(data: any): Observable<any> {
+  return this.http.post(`${environment.baseUrl}/api/Team/request`, data, {
+    responseType: 'text'  
+  });
+}
+
 }

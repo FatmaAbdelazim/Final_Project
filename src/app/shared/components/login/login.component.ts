@@ -30,6 +30,7 @@ export class LoginComponent {
   this._AuthVoluntaryOrganizationService.login(this.loginForm.value).subscribe({
    next: (response) => {
     console.log('Response from server:', response);
+    localStorage.setItem("userToken", response.token)
     alert('تم التسجيل الدخول بنجاح :)');
     this._router.navigate(['/home']);
   },

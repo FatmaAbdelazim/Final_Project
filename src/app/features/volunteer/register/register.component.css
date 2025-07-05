@@ -1,5 +1,6 @@
 section{
   background-color: #F9FAFB;
+  text-align: right;
 }
 h6, span{
   color: #9333EA;
@@ -21,4 +22,17 @@ img{
   border: none;
   font-weight: bold;
   margin-bottom: 20px;
+}
+.upload-area {
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.upload-area:hover {
+  border-color: #999;
+  background-color: #f1f1f1;
+}
+.pointer{
+  cursor: pointer;
 }

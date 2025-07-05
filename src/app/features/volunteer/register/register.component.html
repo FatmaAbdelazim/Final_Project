@@ -6,56 +6,111 @@
   </div>
 
   <div>
-    <form class="rounded-4 shadow-lg p-3 w-75 m-auto bg-white gap-1 pb-5" >
+    <form [formGroup]="registerForm" (ngSubmit)="registerSubmit()" class="rounded-4 shadow-lg p-3 w-75 m-auto bg-white gap-1 pb-5" >
       <div class="d-flex justify-content-end p-3">
         <h6> المعلومات الشخصية </h6>
         <i class="fa-regular fa-user m-1"></i>
       </div>
       <div class="row g-3">
-        <div class="col-12 col-md-6 position-relative">
+        <div class="col-12 col-md-6">
           <label for="phone" class="form-label my-3">رقم الجوال</label>
-          <input class="form-control p-2 rounded-3 text-end" type="tel" name="phone" id="phone" placeholder="01xxxxxxxx">
-          <i class="fa-solid fa-phone position-absolute top-50 end-100 translate-middle-y text-muted opacity-75"></i>
+          <input formControlName="phone" class="form-control p-2 rounded-3 text-end" type="tel" id="phone" placeholder="01xxxxxxxx">
+          <!-- <i class="fa-solid fa-phone position-absolute top-50 end-100 translate-middle-y text-muted opacity-75"></i> -->
+          @if(registerForm.get('phone')?.errors && (registerForm.get('phone')?.dirty || registerForm.get('phone')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(registerForm.get('phone')?.getError('required'))
+              {
+                <p>يرجي ادخال رقم الجوال</p>
+              }
+              @else if(registerForm.get('phone')?.hasError('pattern'))
+              {
+                <p>يرجي ادخال رقم جوال صالح</p>
+              }
+            </div>
+          }
         </div>
-        <div class="col-12 col-md-6 position-relative">
+
+
+        <div class="col-12 col-md-6">
           <label for="name" class="form-label my-3">الاسم الكامل</label>
-          <input class="form-control p-2 rounded-3 text-end" type="text" name="name" id="name" placeholder="ادخل اسمك الكامل">
+          <input formControlName="fullName" class="form-control p-2 rounded-3 text-end" type="text" id="name" placeholder="ادخل اسمك الكامل">
+          @if(registerForm.get('fullName')?.errors && (registerForm.get('fullName')?.dirty || registerForm.get('fullName')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(registerForm.get('fullName')?.getError('required'))
+              {
+                <p>يرجي ادخال الاسم </p>
+              }
+              @else if(registerForm.get('fullName')?.hasError('pattern'))
+              {
+                <p>يرجي ادخال اسم صالح</p>
+              }
+            </div>
+          }
         </div>
       </div>
 
       <div class="row g-3">
         <div class="col-12 col-md-6">
           <label for="dropdownMenuButton" class="form-label my-3">المدينة</label>
-          <div class="dropdown">
-            <button class="form-control dropdown-toggle w-100 text-muted p-2 d-flex flex-row-reverse justify-content-between align-items-center"
-    type="button"
-    id="dropdownMenuButton"
-    data-bs-toggle="dropdown"
-    aria-expanded="false">
-              اختر المدينة
-            </button>
-            <ul class="dropdown-menu col-12 text-end" aria-labelledby="dropdownMenuButton">
-              <li><a class="dropdown-item" href="#">الخيار الأول</a></li>
-              <li><a class="dropdown-item" href="#">الخيار الثاني</a></li>
-              <li><a class="dropdown-item" href="#">الخيار الثالث</a></li>
-            </ul>
-          </div>
-
+          <input formControlName="city" class="form-control p-2 rounded-3 text-end" type="text" id="city" placeholder="ادخل المدينة">
+          @if(registerForm.get('city')?.errors && (registerForm.get('city')?.dirty || registerForm.get('city')?.touched))
+          {
+            <div class="text-danger">
+              @if(registerForm.get('city')?.getError('required'))
+              {
+                <p>يرجي ادخال المدينة</p>
+              }
+            </div>
+          }
         </div>
         <div class="col-12 col-md-6">
           <label for="email" class="form-label my-3">البريد الالكتروني</label>
-          <input class="form-control p-2 rounded-3" type="email" name="email" id="email" placeholder="example@email.com">
+          <input formControlName="email" class="form-control p-2 rounded-3" type="email" name="email" id="email" placeholder="example@email.com">
+          @if(registerForm.get('email')?.errors && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched))
+          {
+            <div class="text-danger">
+              @if(registerForm.get('email')?.getError('required'))
+              {
+                <p>يرجي ادخال البريد الالكتروني </p>
+              }
+              @else if(registerForm.get('email')?.getError('email'))
+              {
+                <p> يرجي ادخال بريد الكتروني صالح</p>
+              }
+            </div>
+          }
         </div>
       </div>
 
       <div class="row g-3">
         <div class="col-12 col-md-6">
           <label for="rePassword" class="form-label my-3">تأكيد كلمة المرور  </label>
-          <input class="form-control p-2 rounded-3 text-end" type="password" name="rePassword" id="rePassword" placeholder="اعد إدخال كلمة المرور">
+          <input formControlName="rePassword" class="form-control p-2 rounded-3 text-end" type="password" id="rePassword" placeholder="اعد إدخال كلمة المرور">
+          @if(registerForm.get('rePassword')?.touched && registerForm.get('rePassword')?.getError('required'))
+                    {
+                    <span class="text-danger mt-1">يرجي تاكيد كلمة المرور </span>
+                    }@else if(registerForm.errors?.['passwordmatch']){
+                    <span class="text-danger mt-1">يجب تطابق تأكيد كلمة المرور مع كلمة المرور</span>
+                    }
         </div>
         <div class="col-12 col-md-6">
           <label for="password" class="form-label my-3"> كلمة المرور </label>
-          <input class="form-control p-2 rounded-3 text-end" type="password" name="password" id="password" placeholder="أدخل كلمة مرور قوية">
+          <input formControlName="password" class="form-control p-2 rounded-3 text-end" type="password" id="password" placeholder="أدخل كلمة مرور قوية">
+          @if(registerForm.get('password')?.errors && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(registerForm.get('password')?.getError('required'))
+              {
+                <p>يرجي ادخال كلمة مرور </p>
+              }
+              @else if(registerForm.get('password')?.hasError('pattern'))
+              {
+                <p>يرجي ادخال قوية تحتوي علي حروف كبيرة وصغيرة وارقام ورموز</p>
+              }
+            </div>
+          }
         </div>
       </div>
 
@@ -66,60 +121,53 @@
         </div>
 
         <div class="row g-3 justify-content-end">
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
-      <input class="form-check-input border-dark" type="checkbox" id="check1">
-      <label class="form-check-label" for="check1">التنمية الاجتماعية</label>
+  @for (interest of interestsList; track interest) {
+    <div class="col-12 col-sm-6 col-md-4">
+      <div class="d-flex flex-row-reverse gap-2 border text-black rounded p-2">
+        <input type="checkbox"
+               class="form-check-input border-dark"
+               [value]="interest"
+               [checked]="interestsArray.includes(interest)"
+               (change)="onCheckboxChange($event)"
+               [id]="interest">
+        <label class="form-check-label" [for]="interest">{{ interest }}</label>
+      </div>
     </div>
-  </div>
-
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
-      <input class="form-check-input border-dark" type="checkbox" id="check2">
-      <label class="form-check-label" for="check2">الأطفال</label>
-    </div>
-  </div>
-
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
-      <input class="form-check-input border-dark" type="checkbox" id="check3">
-      <label class="form-check-label" for="check3">الصحة</label>
-    </div>
-  </div>
-
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
-      <input class="form-check-input border-dark" type="checkbox" id="check4">
-      <label class="form-check-label" for="check4">البيئة</label>
-    </div>
-  </div>
-
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
-      <input class="form-check-input border-dark" type="checkbox" id="check5">
-      <label class="form-check-label" for="check5">التكنولوجيا</label>
-    </div>
-  </div>
-
-  <div class="col-12 col-sm-6 col-md-4">
-    <div class="d-flex flex-row-reverse gap-2 border border-color text-black rounded p-2">
-      <input class="form-check-input border-dark" type="checkbox" id="check6">
-      <label class="form-check-label" for="check6">كبار السن</label>
-    </div>
-  </div>
-</div>
+  }
 </div>
 
-        <div class="form-check form-check-reverse m-5 mx-auto text-center" style="width: fit-content;">
-          <input class="form-check-input border-dark border-opacity-50" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label text-muted" for="flexCheckDefault">
-            أوافق علي <span>سياسة الخصوصية والشروط والاحكام</span>
-          </label>
-        </div>
+</div>
+<div class="m-2 mt-5">
+                    <div class="mb-4 text-end">
+                        <label class="form-label">تحميل الصورة الشخصية</label>
+                        <div class="border rounded-3 p-1 text-center upload-area" (click)="fileInput.click()">
+                            <i class="bi bi-cloud-arrow-up fs-2 text-secondary mb-2"></i>
+                            <p class="mb-1">اضغط لتحميل الصورة الشخصية</p>
+                            <p class="text-muted small">(PNG,SVG, JPG, JPEG — حد أقصى 5MB)</p>
+                            <input type="file" #fileInput accept="image/*" class="form-control d-none"
+                                (change)="onFileSelected($event)">
+                        </div>
+                    </div>
+
+                    @if(fileName != null && fileName != '')
+                    {
+                    <p class="text-muted m-2 smaller text-end">تم اختيار الملف: {{ fileName }}</p>
+                    }
+                    @if(fileName == '')
+                    {
+                    <span class="text-danger mt-1">شعار المنظمة مطلوب</span>
+                    }
+                </div>
+
 <div class="text-center">
-  <button type="submit" class="btn">التسجيل كمتطوع</button><br>
+  <button [disabled]="isLoading" type="submit" class="btn mt-5">
+    @if(isLoading)
+    {
+      <span><i class="fas fa-spin fa-spinner"></i></span>
+    }
+    التسجيل كمتطوع</button><br>
   <p class="text-muted d-inline">لديك حساب بالفعل؟ </p>
-  <span>تسجيل الدخول</span>
+  <span [routerLink]="['/login']" class="pointer">تسجيل الدخول</span>
 </div>
     </form>
   </div>

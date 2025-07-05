@@ -1,90 +1,77 @@
 <section class="p-5 m-3">
     <div>
-        <h2>فريق تطوير التطبيقات</h2>
+        <h2> {{team.name}} </h2>
         <div class="d-flex gap-2 justify-content-end mt-3 align-items-center">
             <p class="mb-0"> عضو </p>
+            {{team.totalMembers}}
             <i class="fa-solid fa-users"></i>
         </div>
         <div class="d-flex gap-2 justify-content-end mt-2">
-            <p> تاسس فى يناير 2022 </p>
+            <p> {{team.creationDate | date : 'longDate'}} </p>
             <i class="fa-solid fa-calendar-days"></i>
         </div>
     </div>
 <hr>
 <div class="my-5">
     <h4>حول الفريق</h4>
-    <p>افريق متخصص في تطوير تطبيقات الهاتف المحمول والويب باستخدام أحدث التقنيات. نهدف إلى إنشاء حلول مبتكرة تلبي احتياجات المستخدمين وتحسن تجربتهم الرقمية </p>
-</div> 
+    <p>{{team.description}} </p>
+</div>
 <div class="my-5">
     <h4> اهداف الفريق</h4>
-    <ul>
-        <li class="my-3">تطوير تطبيقات عالية الجودة</li>
-        <li class="my-3"> تطبيق أفضل الممارسات في البرمجة  </li>
-    </ul>
-</div>    
+    <p>{{team.teamGoals}}</p>
+</div>
 <hr>
 <div class="d-flex justify-content-center m-5">
-    <button class="btn-join mb-3">انضم الآن</button>
+    <button class="btn-join mb-3" [routerLink]="[`/join-team/${id}`]">انضم الآن</button>
 </div>
 <div class="d-flex gap-5 my-5 p-4 perple-border">
     <div class="w-50">
         <h4>اعضاء الفريق</h4>
-        <div class="d-flex gap-4 gray-border justify-content-end px-5 mt-3">
+        @for (member of team.members; track $index)
+        {
+          <div class="d-flex gap-4 gray-border justify-content-end px-5 mt-3">
             <div>
-                <h5>خالد سعيد </h5>
-                <p>محلل انظمة </p>
+                <h5>{{member.fullName}}</h5>
+                <p> {{member.role }}</p>
             </div>
             <div>
-                <img src="" alt="img">
-            </div>
-        </div>
-        <div class="d-flex gap-4 gray-border justify-content-end px-5 mt-3">
-            <div>
-                <h5>خالد سعيد </h5>
-                <p>محلل انظمة </p>
-            </div>
-            <div>
-                <img src="" alt="img">
+                <img [src]="member.image" alt="img">
             </div>
         </div>
+        }
     </div>
     <div class="w-50">
         <h4>الفرص المرتبطة</h4>
-        <div class="gray-border mt-3">
-            <h5>مصمم واجهات</h5>
-            <p>مطلوب مصمم واجهات لتحسين تجربة المستخدم </p>
+        @for (opp of team.opportunities; track $index)
+        {
+          <div class="gray-border mt-3">
+            <h5> {{opp.title}}</h5>
+            <p> {{opp.description}}</p>
             <div class="d-flex justify-content-between px-2">
-                <div class="rounded-4 bg-dark bg-opacity-25 py-3 px-4">متاح</div>
-                <button class="details-btn rounded-3 px-3">التفاصيل</button>
+                <div class="rounded-4 bg-dark bg-opacity-25 py-3 px-4">{{opp.status}}</div>
+                <button class="details-btn rounded-3 px-3" [routerLink]="[ `/opportunity-details/${opp.id}` ]">التفاصيل</button>
             </div>
         </div>
-        <div class="gray-border mt-3">
-            <h5>مصمم واجهات</h5>
-            <p>مطلوب مصمم واجهات لتحسين تجربة المستخدم </p>
-            <div class="d-flex justify-content-between px-2">
-                <div class="rounded-4 bg-dark bg-opacity-25 py-3 px-4">متاح</div>
-                <button class="details-btn rounded-3 px-3">التفاصيل</button>
-            </div>
-        </div>
+        }
     </div>
 </div>
 <div class="shadow rounded-3 my-5 text-center p-4">
     <h5>إحصائيات الفريق</h5>
     <div class="d-flex justify-content-evenly mt-4">
         <div>
-            <h4>12</h4>
+            <h4>{{team.totalMembers}}</h4>
             <p>اجمالى الاعضاء</p>
         </div>
         <div>
-            <h4>8</h4>
+            <h4>{{team.totalProjects}}</h4>
             <p>مشاريع مكتملة</p>
         </div>
         <div>
-            <h4>3</h4>
+            <h4>{{team.availableOpportunities}}</h4>
             <p>فرص متاحة</p>
         </div>
         <div>
-            <h4>95%</h4>
+            <h4>{{team.completionRate}}%</h4>
             <p>معدل نجاح</p>
         </div>
     </div>
