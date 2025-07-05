@@ -12,6 +12,8 @@ import { ResetPasswordComponent } from './shared/components/reset-password/reset
 import { JoinOppComponent } from './features/volunteer/join-opp/join-opp.component';
 import { JoinTeamComponent } from './features/volunteer/join-team/join-team.component';
 import { TeamDetailsComponent } from './pages/team-details/team-details/team-details.component';
+import { OrganizathionDashboardComponent } from './features/voluntary_organization/organizathion-dashboard/organizathion-dashboard.component';
+import { ManagmentOppComponent } from './features/voluntary_organization/managment-opp/managment-opp.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -26,5 +28,7 @@ export const routes: Routes = [
       { path: 'reset-pass', component: ResetPasswordComponent },
       { path: 'join-opp', component:  JoinOppComponent},
       { path: 'join-team', component:  JoinTeamComponent},
-      { path: 'team-details', component:  TeamDetailsComponent}
+      { path: 'team-details', component:  TeamDetailsComponent},
+      {path: 'organizathionDashboard',component:OrganizathionDashboardComponent},
+      {path:'managment-opp',component:ManagmentOppComponent}
 ];
