@@ -23,7 +23,7 @@ import { OrganizationInvitationsComponent } from './features/voluntary_organizat
 import { OrganizationDashboardComponent } from './features/voluntary_organization/organizathion-dashboard/organizathion-dashboard.component';
 import { UpdateOppComponent } from './features/voluntary_organization/update-opp/update-opp/update-opp.component';
 import { CreateTeamComponent } from './features/voluntary_organization/create-team/create-team/create-team.component';
-import { VolunteerManageComponent } from './features/voluntary_organization/volunteer-manage/volunteer-manage/volunteer-manage.component';
+import { ManageVolunteerComponent } from './features/voluntary_organization/manage-volunteer/manage-volunteer/manage-volunteer.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -50,10 +50,10 @@ export const routes: Routes = [
                   { path: 'organization-notifications', component: OrganizationNotificationsComponent },
                   { path: 'organization-certifications', component: OrganizationCertificationsComponent },
                   { path: 'organization-invitations', component: OrganizationInvitationsComponent },
-                  { path: 'managment-opp', component: ManagmentOppComponent }
+                  { path: 'managment-opp/:id', component: ManagmentOppComponent },
+                  { path: 'manage-volunteer/:id', component: ManageVolunteerComponent },
             ]
       },
       { path: 'edit-opp/:id', component: UpdateOppComponent },
       { path: 'create-team', component: CreateTeamComponent },
-      { path: 'volunteers-management/:id', component: VolunteerManageComponent },
 ];
