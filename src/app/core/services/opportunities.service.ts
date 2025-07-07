@@ -61,6 +61,7 @@ export class OpportunitiesService {
   }
   getDataToUpdate(id:string | null):Observable<UpdateOpp>{
     return this.http.get<UpdateOpp>(`${environment.baseUrl}/api/VolunteerOpportunity/updated-databy-id${id}`)
+
   }
   getAllOrgs():Observable<Organization[]>{
     return this.http.get<Organization[]>(`${environment.baseUrl}/api/OrganizationProfile/all`)
