@@ -1,10 +1,12 @@
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Opportunity } from '../../models/opportunty';
+import { Opportunity, UpdateOpp } from '../../models/opportunty';
 import { OpportuntyDetails } from '../../models/opportunty-details';
 import { environment } from '../environments/environment';
 import { OppManagment } from '../../models/opp-managment';
+import { Organization } from '../../models/organization';
+import { Team } from '../../models/team';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +55,17 @@ export class OpportunitiesService {
   }
   deleteOpp(id:string):Observable<any>{
     return this.http.delete<any>(`${this.baseUrl}/api/VolunteerOpportunity/${id}/remove`);
+  }
+  updateOpp(id:string,data:FormData):Observable<any>{
+    return this.http.post(`${environment.baseUrl}/api/VolunteerOpportunity/update/${id}`, data)
+  }
+  getDataToUpdate(id:string | null):Observable<UpdateOpp>{
+    return this.http.get<UpdateOpp>(`${environment.baseUrl}/api/${id}`)
+  }
+  getAllOrgs():Observable<Organization[]>{
+    return this.http.get<Organization[]>(`${environment.baseUrl}/api/OrganizationProfile/all`)
+  }
+  getAllTeams():Observable<Team[]>{
+    return this.http.get<Team[]>(`${environment.baseUrl}/api/Team/GetAllVolunteerTeams`)
   }
 }

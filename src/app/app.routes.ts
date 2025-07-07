@@ -21,6 +21,7 @@ import { OrganizationCertificationsComponent } from './features/voluntary_organi
 import { OrganizationHomeComponent } from './features/voluntary_organization/organization-home/organization-home.component';
 import { OrganizationInvitationsComponent } from './features/voluntary_organization/organization-invitations/organization-invitations.component';
 import { OrganizationDashboardComponent } from './features/voluntary_organization/organizathion-dashboard/organizathion-dashboard.component';
+import { UpdateOppComponent } from './features/voluntary_organization/update-opp/update-opp/update-opp.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -50,5 +51,5 @@ export const routes: Routes = [
                   { path: 'managment-opp', component: ManagmentOppComponent }
             ]
       },
-
+      { path: 'edit-opp/:id', component: UpdateOppComponent },
 ];

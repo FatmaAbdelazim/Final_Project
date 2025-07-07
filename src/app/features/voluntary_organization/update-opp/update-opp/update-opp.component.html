@@ -1,0 +1,215 @@
+<section class="p-5">
+  <form [formGroup]="updateForm" (ngSubmit)="Update()" class="w-75 m-auto">
+    <div class="rounded-4 bg-white shadow p-4 container mb-3">
+      <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
+        <h5>البيانات الأساسية</h5>
+        <div class="icon-bg1">
+          <i class="fa-solid fa-circle-exclamation fs-4 text-white"></i>
+        </div>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+           <label for="Location" class="form-label my-3"> عنوان الفرصة </label>
+          <input formControlName="Location" class="form-control p-2 rounded-3 text-end" type="text" id="Location">
+        </div>
+        <div class="col-12 col-md-6">
+           <label for="Title" class="form-label my-3">اسم الفرصة </label>
+          <input formControlName="Title" class="form-control p-2 rounded-3 text-end" type="text" id="Title">
+        </div>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+           <label for="CategoryName" class="form-label my-3">  المجال/الفئة  </label>
+          <input formControlName="CategoryName" class="form-control p-2 rounded-3 text-end" type="text" id="CategoryName">
+        </div>
+        <div class="col-12 col-md-6">
+          <label for="organizationName" class="form-label my-3">الجهة/المنظمة</label>
+          <select class="form-control p-2 rtl-select" formControlName="organizationName" id="organizationName">
+            <option [ngValue]="opp.organizationName">{{opp.organizationName}}</option>
+            @for (organiz of orgs; track $index) {
+              <option [ngValue]="organiz.id">{{ organiz.organizationName }}</option>
+            }
+          </select>
+        </div>
+      </div>
+      <div class="row g-1">
+        <label>وصف تفصيلى</label>
+        <textarea formControlName="Description" class="mt-3 rounded-2 text-end p-4 brd-color"></textarea>
+      </div>
+      <div class="mt-3">
+                    <div class="mb-4 text-end">
+                        <label class="form-label">صورة تعبيرية (اختياري)</label>
+                        <div class="border rounded-3 p-1 text-center upload-area" (click)="fileInput.click()">
+                            <i class="bi bi-cloud-arrow-up fs-2 text-secondary mb-2"></i>
+                            <p class="mb-1">اضغط لتحميل الصورة </p>
+                            <p class="text-muted small">PNG,SVG,JPG</p>
+                            <input type="file" #fileInput accept="image/*" class="form-control d-none"
+                                (change)="onFileSelected($event)">
+                        </div>
+                    </div>
+      </div>
+    </div>
+
+
+
+    <div class="rounded-4 bg-white shadow p-4 container mb-3">
+      <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
+        <h5>الوقت والحضور</h5>
+        <div class="icon-bg2">
+          <i class="fa-solid fa-clock fs-4 text-white"></i>
+        </div>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+           <label for="Location" class="form-label my-3"> تاريخ الانتهاء </label>
+          <input formControlName="Location" class="form-control p-2 rounded-3" type="date" id="Location">
+        </div>
+        <div class="col-12 col-md-6">
+           <label for="Title" class="form-label my-3"> تاريخ البدء </label>
+          <input formControlName="Title" class="form-control p-2 rounded-3" type="date" id="Title">
+        </div>
+      </div>
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+           <label for="CategoryName" class="form-label my-3">  المدينة </label>
+          <input formControlName="CategoryName" class="form-control p-2 rounded-3 text-end" type="text" id="CategoryName">
+        </div>
+        <div class="col-12 col-md-6">
+           <label for="OrganizationName" class="form-label my-3">وقت الحضور</label>
+          <input formControlName="OrganizationName" class="form-control p-2 rounded-3 text-end" type="text" id="OrganizationName">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="rounded-4 bg-white shadow p-4 container mb-3">
+      <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
+        <h5>المتطوعين المطلوبين</h5>
+        <div class="icon-bg2">
+          <i class="fa-solid fa-users fs-5 text-white"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <label for="genderRequirement" class="form-label my-3">الجنس المطلوب</label>
+          <select class="form-control p-2 rtl-select" formControlName="genderRequirement" id="genderRequirement">
+            <option [ngValue]="'Male'">ذكر</option>
+            <option [ngValue]="'Female'">أنثى</option>
+          </select>
+        </div>
+        <div class="col-12 col-md-6">
+           <label for="" class="form-label my-3">  المجال/الفئة  </label>
+          <input formControlName="CategoryName" class="form-control p-2 rounded-3 text-end" type="text" id="CategoryName">
+        </div>
+      </div>
+
+      <div class="my-4">
+        <label>المهارات المطلوبة</label><br><br>
+        @for (skill of updateForm.value.skills; track $index) {
+          <span class="mx-2 my-5 p-2 rounded brd-color">
+            <i class="fa-solid fa-circle-xmark text-danger mx-1" (click)="del($index)"></i>
+            <span>{{skill}}</span>
+          </span>
+        }
+        <textarea [(ngModel)]="skillsInput" class="p-2 rounded brd-color text-end w-100" placeholder="ادخل المهارت المطلوبة للفرصة"></textarea>
+      </div>
+      <div class="text-start mx-2">
+        <button class="btn" (click)="addSkill()"> اضافة المهارة <i class="fa-solid fa-paper-plane"></i> </button>
+      </div>
+    </div>
+
+
+
+    <div class="rounded-4 bg-white shadow p-4 container mb-3">
+      <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
+        <h5>الحضور والمتابعة</h5>
+        <div class="icon-bg2">
+          <i class="fa-solid fa-calendar-check fs-4 text-white"></i>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-6">
+          <div class="d-flex flex-column my-4">
+            <label for="totalHours" class="form-label"> عدد الساعات المتوقع اعتمادها</label>
+            <input formControlName="totalHours" type="number" class="form-control text-end">
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="d-flex flex-column my-4">
+        <label for="isAttendanceTracked" class="form-label"> هل سيتم تتبع الحضور؟ </label>
+        <div class="d-flex justify-content-end gap-5">
+
+<div class="form-check-reverse form-check-inline">
+          <input class="form-check-input" type="radio" name="isAttendanceTracked" [value]=false
+            formControlName="isAttendanceTracked"
+            id="no">
+          <label class="form-check-label" for="no">لا</label>
+        </div>
+
+        <div class="form-check-reverse form-check-inline">
+          <input class="form-check-input" type="radio" name="isAttendanceTracked" id="yes" [value]=true
+          formControlName="isAttendanceTracked">
+          <label class="form-check-label" for="yes">نعم</label>
+        </div>
+
+        </div>
+
+      </div>
+        </div>
+      </div>
+
+
+      <div class="d-flex flex-column my-2">
+        <label for="isCertificateAvailable" class="form-label"> هل ستصدر الشهادة بعد الانتهاء؟ </label>
+        <div class="d-flex justify-content-end gap-5">
+
+<div class="form-check-reverse form-check-inline">
+          <input class="form-check-input" type="radio" name="isCertificateAvailable" [value]=false
+            formControlName="isCertificateAvailable"
+            id="no">
+          <label class="form-check-label" for="no">لا</label>
+        </div>
+
+        <div class="form-check-reverse form-check-inline">
+          <input class="form-check-input" type="radio" name="isCertificateAvailable" id="yes" [value]=true
+          formControlName="isCertificateAvailable">
+          <label class="form-check-label" for="yes">نعم</label>
+        </div>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+    <div class="rounded-4 bg-white shadow p-4 container mb-3">
+      <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
+        <h5>الربط والتنظيم</h5>
+        <div class="icon-bg3">
+          <i class="fa-solid fa-link fs-5 text-white"></i>
+        </div>
+      </div>
+      <label class="mb-3">ربط الفرصة بقريق تطوعى معين (اختيارى)</label>
+      <select class="form-control rtl-select mb-4" formControlName="teamName" id="teamName">
+        <option [ngValue]="opp.teamName">{{opp.teamName}}</option>
+        @for (team of teams; track $index) {
+          <option [ngValue]="team.id">{{ team.name }}</option>
+        }
+      </select>
+    </div>
+
+
+<div class="d-flex gap-2 mt-5">
+
+  <button [disabled]="isLoading" type="submit" class="btn">
+    @if(isLoading)
+    {
+      <span><i class="fas fa-spin fa-spinner"></i></span>
+    }
+      حفظ التغييرات <i class="fa-solid fa-floppy-disk"></i> </button><br>
+  <button [routerLink]="[`/`]"  class="btn-cancel">  الغاء </button><br>
+</div>
+  </form>
+</section>
