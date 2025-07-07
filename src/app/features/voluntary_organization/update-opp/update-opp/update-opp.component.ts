@@ -82,7 +82,6 @@ this.updateForm.patchValue({
   requiredSkills: cleanedSkills
 });
 
-                // this.updateForm.patchValue(this.opp)
 
               },
               error:(err)=> {

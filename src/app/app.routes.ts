@@ -22,6 +22,8 @@ import { OrganizationHomeComponent } from './features/voluntary_organization/org
 import { OrganizationInvitationsComponent } from './features/voluntary_organization/organization-invitations/organization-invitations.component';
 import { OrganizationDashboardComponent } from './features/voluntary_organization/organizathion-dashboard/organizathion-dashboard.component';
 import { UpdateOppComponent } from './features/voluntary_organization/update-opp/update-opp/update-opp.component';
+import { CreateTeamComponent } from './features/voluntary_organization/create-team/create-team/create-team.component';
+import { VolunteerManageComponent } from './features/voluntary_organization/volunteer-manage/volunteer-manage/volunteer-manage.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -52,4 +54,6 @@ export const routes: Routes = [
             ]
       },
       { path: 'edit-opp/:id', component: UpdateOppComponent },
+      { path: 'create-team', component: CreateTeamComponent },
+      { path: 'volunteers-management/:id', component: VolunteerManageComponent },
 ];
