@@ -1,0 +1,75 @@
+.section1{
+    background-color: #EFF6FF;
+}
+#imgPepole{
+    width: 448px;
+    height: 448px;
+    border-radius: 5px;
+    box-shadow: 0px 2px 25px gray;
+}
+#h1{
+    display: inline;
+}
+.btn-bgcolor{
+    background-color: #7000FF;
+}
+.btn-border{
+    border: solid 1px #7000FF;
+}
+.bt{
+    padding-top: 13px;
+    padding-bottom: 13px;
+    padding-left: 28px;
+    padding-right: 28px;
+}
+#div1{
+    background: linear-gradient(to left, #FAF5FF, #9333EAE5);
+    width: 360px;
+    height: 212px;
+    padding-block: 23px;
+    padding-inline: 146;
+    margin: 10px;
+    border-radius: 10px;
+}
+#div3{
+    background: linear-gradient(to left, #FAF5FF, #A1A6F0E5);
+    width: 360px;
+    height: 212px;
+    padding-block: 23px;
+    padding-inline: 146;
+    margin: 10px;
+        border-radius: 10px;
+}
+#div2{
+    background: linear-gradient(to left, #FAF5FF, #E9A1F0E5);
+    width: 360px;
+    height: 212px;
+    padding-block: 23px;
+    padding-inline: 146;
+    margin: 10px;
+        border-radius: 10px;
+}
+#divSmall1{
+    background-color: #7000FF;
+    border-radius: 40px;
+    width: 70px;
+    height: 70px;
+    padding: 20px;
+}
+#divSmall2{
+    background-color: #E9A1F0;
+    border-radius: 40px;
+    width: 70px;
+    height: 70px;
+    padding: 20px;
+}
+#divSmall3{
+    background-color: #A1A6F0;
+    border-radius: 40px;
+    width: 70px;
+    height: 70px;
+    padding: 20px;
+}
+.section2{
+    background-color: #F9FAFB;
+}

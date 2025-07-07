@@ -1,0 +1,97 @@
+<div class="container">
+    <h3 class="text-end mt-5"> الفرق التطوعية</h3>
+    <h4 class="text-end mb-5 mt-3 text-muted">انضم إلى فريق تطوعي واصنع فرقاً مع مجموعة من المتطوعين المتحمسين</h4>
+</div>
+<div class="container section1">
+    <div class="row justify-content-end align-items-center py-5">
+        <div class="col-2">
+            <div class="dropdown py-3">
+                <button class="btn main-color btn-border dropdown-toggle py-2 px-4 bg-white" type="button"
+                    data-bs-toggle="dropdown">
+                     {{selectedCityName}}
+                </button>
+                <ul class="dropdown-menu">
+                    @for (city of citiesList; track $index) {
+                    <li><a class="dropdown-item text-end"
+                            (click)="searchByLocation(city.name)">{{city.name}}</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-2">
+            <div class="dropdown py-3">
+                <button class="btn main-color btn-border dropdown-toggle py-2 px-4 bg-white" type="button"
+                    data-bs-toggle="dropdown">
+                    {{selectedCategoryName}} 
+                </button>
+                <ul class="dropdown-menu">
+                    @for (category of categoriesList; track $index) {
+                    <li><a class="dropdown-item text-end"
+                            (click)="searchByCategory(category.name)">{{category.name}}</a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="input-group mb-3 py-3" style="max-width: 300px;">
+                <input type="text" class="form-control text-end py-2 section1" placeholder="ابحث عن الفرق التطوعية"
+                    aria-label="Search" (change)="searchByName()" [(ngModel)]="TeamName">
+                <span class="input-group-text main-color text-white">
+                    <i class="fas fa-search"></i>
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <p class="mb-2">تم العثور على {{teamsFilterList.length}} فريق تطوعي</p>
+    <div class="row justify-content-center align-items-center mt-5 mb-5 ">
+        @if(noTeams !=0)
+        {
+        @for (team of pagedTeams; track $index) {
+        <app-team-card class="col-4 mb-4" [team]="team"></app-team-card>
+
+        }
+
+        }@else {
+        <h1 class="text-center text-danger">لا يوجد فريق ف الوقت الحالي</h1>
+        }
+
+    </div>
+    <div class="d-flex justify-content-center align-items-center mb-5">
+        <nav class="mb-5 p-2">
+                            <ul class="pagination">
+
+                        <!-- Previous -->
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <a class="page-link main-color" (click)="goToPage(currentPage - 1)"
+                                aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <!-- Dynamic Page Numbers -->
+                        @for (page of [].constructor(totalPages); track $index) {
+                        <li class="page-item" [class.active]="currentPage === $index + 1">
+                            <a class="page-link main-color"  (click)="goToPage($index + 1)">
+                                {{ $index + 1 }}
+                            </a>
+                        </li>
+                        }
+
+
+                        <!-- Next -->
+                        <li class="page-item" [class.disabled]="currentPage === totalPages">
+                            <a class="page-link main-color" (click)="goToPage(currentPage + 1)"
+                                aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                    </ul>
+        </nav>
+
+    </div>
+</div>

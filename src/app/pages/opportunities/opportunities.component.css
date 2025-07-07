@@ -1,0 +1,24 @@
+.section1{
+    background-color: #F9FAFB;
+}
+.btn-border{
+    border: solid 1px #7000FF;
+}
+
+.page-link:hover {
+  background-color: #f3e8ff;
+  color: #6a00cc;
+    cursor: pointer;
+
+}
+.pagination .page-item.active .page-link {
+  background-color: #E9A1F0E5;
+  border-color:#E9A1F0E5;
+  color: white;
+}
+.main-bg{
+background-color: #ffffff !important;
+box-shadow: none !important;
+  border: none !important;
+
+}

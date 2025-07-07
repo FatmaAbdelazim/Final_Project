@@ -1,0 +1,9 @@
+#imgLogo{
+    width: 72px;
+    height: 72px;
+    border-radius: 9999px;
+    padding: 5px;
+}
+.comCard{
+        border: #CCCCD6 1px solid;
+}

@@ -1,0 +1,52 @@
+<section class="container-fluid p-5">
+  <form [formGroup]="codeForm" class="rounded-4 shadow-lg py-4 px-1 m-5 w-40 m-auto bg-white" (ngSubmit)="Send()">
+  <div class="d-flex flex-column align-items-center mb-4">
+    <div class="circle">
+      <i class="fa-solid fa-lock"></i>
+    </div>
+    <p class="fs-4"> التحقق من البريد الإلكتروني</p>
+    <p class="w-50 text-center text-muted">لقد أرسلنا رمز تحقق إلى بريدك الإلكتروني المسجل. يرجى إدخال الرمز أدناه لإكمال العملية.</p>
+
+    <div class="w-80">
+        <label for="email" class="form-label my-3">البريد الالكتروني</label>
+        <input class="form-control p-2 rounded-3 text-end" type="email" name="email" id="email"
+          placeholder="أدخل بريدك الإلكتروني"  formControlName="email">
+        @if(codeForm.get('email')?.errors && (codeForm.get('email')?.dirty || codeForm.get('email')?.touched))
+        {
+        <span class="text-danger mt-1">البريد الالكتروني مطلوب</span>
+        }
+        @else if(codeForm.get('email')?.getError('email'))
+        {
+        <span class="text-danger mt-1">البريد الالكتروني غير صالح</span>
+        }
+      </div>
+
+      <div class="w-80">
+          <label class="form-label my-2"> رمز التحقق</label>
+          <div class="d-flex justify-content-evenly gap-3">
+            @for (digit of digits; track $index) {
+              <input
+                maxlength="1"
+                class="form-control code-input text-center"
+                [id]="'code' + $index"
+                (input)="onInput($event, $index)"
+                (keydown)="onKeyDown($event, $index)">
+            }
+          </div>
+      </div>
+
+        <p class="text-center text-muted my-3">مكون من 6 أرقام</p>
+        <p class="text-center text-muted my-2">يمكنك إعادة إرسال الرمز خلال ثانية 60 </p>
+<div class="text-center w-100">
+  <button type="submit" class="btn mt-3"> تحقق </button>
+</div>
+
+<a class="d-flex align-items-center gap-2 mt-2" [routerLink]="[ '/login' ]">
+  <p class="text-muted mt-2">الرجوع لتسجيل الدخول</p>
+  <i class="fa-solid fa-arrow-right fs-4 text-muted opacity-50"></i>
+</a>
+
+
+   </div>
+  </form>
+</section>

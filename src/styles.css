@@ -1,0 +1,28 @@
+:root{
+    --btn-color:#9333EA;
+}
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #ffffff !important;
+  /* text-align: right; */
+}
+
+.btn-color{
+    color: var(--btn-color) !important;
+}
+.main-color{
+    color: var(--btn-color) !important;
+}
+.btn-bgColor{
+    background-color: var(--btn-color) !important;
+}
+ul{
+    list-style: none;
+}
+.form-control::placeholder {
+  color: #6c757d;
+}
+a{
+  color: black;
+  text-decoration: none;
+}

@@ -1,0 +1,18 @@
+#divReview {
+    width: 360px;
+    height: 250px;
+    /* padding-top: 23px;
+    padding-bottom: 23px;
+    padding-left: 146px;
+    padding-right: 146px; */
+    padding: 23px;
+    /* margin: 5px; */
+    border-radius: 10px;
+}
+
+#imgReview {
+    width: 92px;
+    height: 92px;
+    border-radius: 9999px;
+    padding: 5px;
+}

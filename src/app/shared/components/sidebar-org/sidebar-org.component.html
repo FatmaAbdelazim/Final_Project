@@ -1,0 +1,34 @@
+<nav id="sidebarMenu" class="d-lg-block sidebar bg-white text-end">
+    <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4 padd">
+            <a class="list-group-item list-group-item-action py-2 ripple" aria-current="true"
+                [routerLink]="['/organization-dashboard/organization-home']" [routerLinkActive]="'bgActive'" [routerLinkActiveOptions]="{ exact: true }">
+                <span>الرئيسيه</span><i class="bi bi-graph-up fw-bold ms-3"></i>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple"
+                [routerLink]="['/organization-dashboard/managment-opp']" [routerLinkActive]="'bgActive'" [routerLinkActiveOptions]="{ exact: true }">
+                <span>ادارة الفرص</span><i class="bi bi-briefcase-fill  ms-3"></i>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple"
+                [routerLink]="['/organization-dashboard/organization-teams']" [routerLinkActive]="'bgActive'" [routerLinkActiveOptions]="{ exact: true }">
+                <span>الفرق</span><i class="bi bi-people-fill ms-3"></i>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple"
+                [routerLink]="['/organization-dashboard/organization-invitations']" [routerLinkActive]="'bgActive'" [routerLinkActiveOptions]="{ exact: true }">
+                <span>الدعوات</span><i class="bi bi-envelope-fill ms-3"></i>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple"
+                [routerLink]="['/organization-dashboard/organization-certifications']" [routerLinkActive]="'bgActive'" [routerLinkActiveOptions]="{ exact: true }">
+                <span>الشهدات</span><i class="bi bi-award-fill ms-3"></i>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple"
+                [routerLink]="['/organization-dashboard/organization-notifications']" [routerLinkActive]="'bgActive'" [routerLinkActiveOptions]="{ exact: true }">
+                <span>الاشعارات</span><i class="bi bi-bell-fill ms-3"></i>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple"
+                [routerLink]="['/organization-dashboard/organization-settings']" [routerLinkActive]="'bgActive'" [routerLinkActiveOptions]="{ exact: true }">
+                <span>الاعدادات</span><i class="bi bi-gear-fill ms-3"></i>
+            </a>
+        </div>
+    </div>
+</nav>
