@@ -1,0 +1,17 @@
+.bg {
+    background-color: #F9FAFB;
+}
+.card{
+    width: 90%;
+}
+.btnAll {
+    background-color: #9333EA;
+    color: white;
+    padding: 10px;
+    border-radius: 17px;
+    width: 100px;
+    height: 46px;
+}
+.colo{
+    color: #E9A1F0;
+}

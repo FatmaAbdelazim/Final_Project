@@ -1,10 +1,10 @@
 <nav id="sidebarMenu" class="d-lg-block sidebar bg-white text-end">
-    <div class="position-sticky">
-        <div class="list-group list-group-flush mx-3 padd">
+    <div>
+        <div class="list-group list-group-flush padd">
             <a class="list-group-item list-group-item-action  ripple" aria-current="true"
                 [routerLink]="['/organization-dashboard/organization-home']" [routerLinkActive]="'bgActive'"
                 [routerLinkActiveOptions]="{ exact: true }">
-                <span>الرئيسيه</span><i class="bi bi-graph-up fw-bold ms-3"></i>
+                <span class="me-3">الرئيسيه</span><i class="bi bi-graph-up fw-bold"></i>
             </a>
             <a class="list-group-item list-group-item-action py-2 ripple"
                 [routerLink]="['/organization-dashboard/managment-opp']" [routerLinkActive]="'bgActive'"
@@ -31,13 +31,13 @@
                 [routerLinkActiveOptions]="{ exact: true }">
                 <span>الاشعارات</span><i class="bi bi-bell-fill ms-3"></i>
             </a>
-            <ul class="nav flex-column mb-5">
+             <ul class="nav flex-column mb-5">
                 <li class="nav-item">
                     <div class="d-flex justify-content-between align-items-center">
                         <a class="nav-link fw-bold d-flex align-items-center justify-content-center"
                             data-bs-toggle="collapse" href="#homeSubmenu" role="button" aria-expanded="true"
                             aria-controls="homeSubmenu">
-                            <i class="bi bi-chevron-down me-5 c"></i>
+                            <i class="bi bi-chevron-down ms-4 c"></i>
                             <span class="c sizeT ms-2">الإعدادات</span>
                         </a>
                         <a>
