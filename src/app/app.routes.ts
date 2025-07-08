@@ -24,6 +24,7 @@ import { OrganizationDashboardComponent } from './features/voluntary_organizatio
 import { UpdateOppComponent } from './features/voluntary_organization/update-opp/update-opp/update-opp.component';
 import { CreateTeamComponent } from './features/voluntary_organization/create-team/create-team/create-team.component';
 import { ManageVolunteerComponent } from './features/voluntary_organization/manage-volunteer/manage-volunteer/manage-volunteer.component';
+import { AttendComponent } from './features/voluntary_organization/attend/attend/attend.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -52,6 +53,7 @@ export const routes: Routes = [
                   { path: 'organization-invitations', component: OrganizationInvitationsComponent },
                   { path: 'managment-opp/:id', component: ManagmentOppComponent },
                   { path: 'manage-volunteer/:id', component: ManageVolunteerComponent },
+                  { path: 'attend/:id', component: AttendComponent },
             ]
       },
       { path: 'edit-opp/:id', component: UpdateOppComponent },
