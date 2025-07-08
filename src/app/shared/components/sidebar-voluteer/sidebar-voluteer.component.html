@@ -1,0 +1,72 @@
+<nav id="sidebarMenu" class="d-lg-block sidebar bg-white text-end">
+    <div class="position-sticky">
+        <div class="list-group list-group-flush mx-2 padd">
+            <a class="list-group-item list-group-item-action  ripple" aria-current="true"
+                [routerLink]="['/volunteer-dashboard/volunteer-home']" [routerLinkActive]="'bgActive'"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <span>الرئيسيه</span><i class="bi bi-graph-up fw-bold ms-2"></i>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple"
+                [routerLink]="['/volunteer-dashboard/attendence-and-certifications']" [routerLinkActive]="'bgActive'"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <span>سجل الحضور والشهادات</span><i class="bi bi-award-fill ms-2"></i>
+            </a>
+            <a class="list-group-item list-group-item-action py-2 ripple"
+                [routerLink]="['/volunteer-dashboard/volunteer-notifications']" [routerLinkActive]="'bgActive'"
+                [routerLinkActiveOptions]="{ exact: true }">
+                <span>الاشعارات</span><i class="bi bi-bell-fill ms-2"></i>
+            </a>
+            <ul class="nav flex-column mb-5">
+                <li class="nav-item">
+                    <div class="d-flex justify-content-between align-items-center" [routerLink]="['/volunteer-dashboard/volunteer-settings']"
+                            [routerLinkActive]="'bgActive'" [routerLinkActiveOptions]="{ exact: true }">
+                        <a class="nav-link fw-bold d-flex align-items-center justify-content-center"
+                            data-bs-toggle="collapse" href="#homeSubmenu" role="button" aria-expanded="true"
+                            aria-controls="homeSubmenu">
+                            <i class="bi bi-chevron-down ms-5 c"></i>
+                            <span class="c sizeT ms-4">الإعدادات</span>
+                        </a>
+                        <a>
+                            <i class="bi bi-gear-fill me-3 c"></i>
+                        </a>
+                    </div>
+
+                    <div class="collapse show mt-3" id="homeSubmenu">
+                        <ul class="nav flex-column submenu pe-3">
+                            <li class="nav-item d-flex align-items-center justify-content-end px-2">
+                                <a class="nav-link text-dark" [routerLink]="['/volunteer-delete-acount']"
+                            [routerLinkActive]="'bgActiveSetting'" [routerLinkActiveOptions]="{ exact: true }">المعلومات الشخصية</a>
+                                <div class="s d-flex align-items-center justify-content-center text-center">
+                                    <i class="bi bi-person-fill"></i>
+                                </div>
+                            </li>
+                            <li class="nav-item d-flex align-items-center justify-content-end px-2">
+                                <a class="nav-link text-dark" [routerLink]="['/volunteer-dashboard/volunteer-change-pass']"
+                            [routerLinkActive]="'bgActiveSetting'" [routerLinkActiveOptions]="{ exact: true }"  data-bs-toggle="modal" data-bs-target="#myModal">تغيير كلمة المرور</a>
+                                <div class="s2 d-flex align-items-center justify-content-center text-center">
+                                    <i class="bi bi-key-fill"></i>
+                                </div>
+                            </li>
+                            <li class="nav-item d-flex align-items-center justify-content-end px-2">
+                                <a class="nav-link text-dark" [routerLink]="['/volunteer-dashboard/volunteer-check-notfication']"
+                            [routerLinkActive]="'bgActiveSetting'" [routerLinkActiveOptions]="{ exact: true }">تفعيلات الاشعارات</a>
+                                <div class="s3 d-flex align-items-center justify-content-center text-center">
+                                    <i class="bi bi-bell-fill"></i>
+                                </div>
+                            </li>
+                            <li class="nav-item d-flex align-items-center justify-content-end mb-5 px-2">
+                                <a class="nav-link text-dark" [routerLink]="['/volunteer-dashboard/volunteer-delete-acount']"
+                            [routerLinkActive]="'bgActiveSetting'" [routerLinkActiveOptions]="{ exact: true }">حذف الحساب</a>
+                                <div class="s4 d-flex align-items-center justify-content-center text-center">
+                                    <i class="bi bi-trash3-fill "></i>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>

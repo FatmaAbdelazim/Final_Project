@@ -30,6 +30,14 @@ import { OrganaiztionDeleteAcountComponent } from './features/voluntary_organiza
 import { AddOppComponent } from './features/voluntary_organization/add-opp/add-opp.component';
 import { EditTeamComponent } from './features/voluntary_organization/edit-team/edit-team.component';
 import { OrganizationChangePassComponent } from './features/voluntary_organization/change-pass/change-pass.component';
+import { VolunteerDashboardComponent } from './features/volunteer/volunteer-dashboard/volunteer-dashboard.component';
+import { VolunteerDeleteAcountComponent } from './features/volunteer/volunteer-delete-acount/volunteer-delete-acount.component';
+import { VolunteerSendNotificationComponent } from './features/volunteer/volunteer-send-notification/volunteer-send-notification.component';
+import { VolunteerChangePassComponent } from './features/volunteer/volunteer-change-pass/volunteer-change-pass.component';
+import { VolunteerAttendanceAndCertificationsComponent } from './features/volunteer/volunteer-attendance-and-certifications/volunteer-attendance-and-certifications.component';
+import { VolunteerNotificationsComponent } from './features/volunteer/volunteer-notifications/volunteer-notifications.component';
+import { VolunteerSettingComponent } from './features/volunteer/volunteer-setting/volunteer-setting.component';
+import { VolunteerHomeComponent } from './features/volunteer/volunteer-home/volunteer-home.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -46,6 +54,19 @@ export const routes: Routes = [
       { path: 'join-opp', component: JoinOppComponent },
       { path: 'join-team', component: JoinTeamComponent },
       { path: 'team-details/:id', component: TeamDetailsComponent },
+      {
+            path: 'volunteer-dashboard', component: VolunteerDashboardComponent
+            , children: [
+                  { path: '', component: VolunteerHomeComponent },
+                  { path: 'volunteer-home', component: VolunteerHomeComponent },
+                  { path: 'volunteer-settings', component: VolunteerSettingComponent },
+                  { path: 'volunteer-notifications', component: VolunteerNotificationsComponent},
+                  { path: 'attendence-and-certifications', component: VolunteerAttendanceAndCertificationsComponent },
+                  { path: 'volunteer-change-pass', component: VolunteerChangePassComponent },
+                  { path: 'volunteer-check-notfication', component: VolunteerSendNotificationComponent },
+                  { path: 'volunteer-delete-acount', component: VolunteerDeleteAcountComponent },
+            ]
+      },
       {
             path: 'organization-dashboard', component: OrganizationDashboardComponent
             , children: [
@@ -66,6 +87,6 @@ export const routes: Routes = [
       },
       { path: 'edit-opp/:id', component: UpdateOppComponent },
       { path: 'create-team', component: CreateTeamComponent },
-         { path: 'add-opp', component: AddOppComponent },
+      { path: 'add-opp', component: AddOppComponent },
       { path: 'edit-team', component: EditTeamComponent },
 ];
