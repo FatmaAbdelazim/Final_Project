@@ -3,12 +3,12 @@
   <div class="d-flex justify-content-between align-items-center">
     <div class="text-center ms-5">
       <p>اجمالى المتطوعين المسجلين</p>
-      <p class="perple">25</p>
+      <p class="perple">{{participants.length}}</p>
     </div>
     <div>
-      <h4><span>فرصة التطوع:  </span>  تنظيف الشاطئ</h4>
+      <h4><span>فرصة التطوع:  </span>{{opp.title}}</h4>
       <div class="d-flex align-items-center justify-content-end gap-2 mt-3">
-      <p>15 يناير 2025 | الوقت :9:00 ص-5:00 مساء</p>
+      <p>{{opp.endDate | date : 'short'}} | {{opp.startDate | date:'short'}} </p>
       <i class="fa-solid fa-calendar-days"></i>
       </div>
     </div>
@@ -23,72 +23,56 @@
       <div class="col-4 text-center">حالة الحضور</div>
       <div class="col-5 text-center">المتطوع</div>
     </div>
-    <div class="row justify-content-between align-items-center bg-white text-center rounded-3 py-2 px-2">
-      <div class="col-3">
-        <div class="brd-color w-50 py-1 rounded-2">
-          0
-        </div>
+    @for (person of participants; track $index) {
+  <div class="row justify-content-between align-items-center bg-white text-center rounded-3 py-2 px-2">
+
+    <div class="col-3">
+      <div class="brd-color w-50 py-1 rounded-2">
+        {{ person.approvedHours }}
       </div>
-      <div class="col-4">
-        <div class="d-flex justify-content-center">
-          <div class="d-flex flex-row-reverse gap-2 text-black rounded p-2">
-        <input type="checkbox"
-               class="form-check-input"
-               value="Notattended">
-        <label class="form-check-label" for="Notattended">لم يحضر</label>
-      </div>
-      <div class="d-flex flex-row-reverse gap-2 text-black rounded p-2">
-        <input type="checkbox"
-               class="form-check-input"
-               value="attended">
-        <label class="form-check-label" for="attended">حضر </label>
-      </div>
-        </div>
-      </div>
-      <div class="col-5">
-        <div class="d-flex align-items-center gap-5 justify-content-end">
-      <div class="text-center">
-        <p class="mb-2">خالد سعيد</p>
-        <p>mohamedgmail.com</p>
-      </div>
-      <img src="" alt="img">
-    </div>
-      </div>
-      <hr class="mt-4 w-97 m-auto">
     </div>
 
-    <div class="row justify-content-between align-items-center bg-white text-center rounded-3 py-2 px-2">
-      <div class="col-3">
-        <div class="brd-color w-50 py-1 rounded-2">
-          0
+    <div class="col-4">
+      <div class="d-flex justify-content-center">
+
+        <div class="d-flex flex-row-reverse gap-2 text-black rounded p-2">
+          <input type="radio"
+                 class="form-check-input"
+                 [value]="'غاب'"
+                 [(ngModel)]="person.attendanceStatus"
+                 name="attendanceStatus-{{ $index }}"
+                 id="absent-{{ $index }}">
+          <label class="form-check-label" for="absent-{{ $index }}">لم يحضر</label>
         </div>
-      </div>
-      <div class="col-4">
-        <div class="d-flex justify-content-center">
-          <div class="d-flex flex-row-reverse gap-2 text-black rounded p-2">
-        <input type="checkbox"
-               class="form-check-input"
-               value="Notattended">
-        <label class="form-check-label" for="Notattended">لم يحضر</label>
-      </div>
-      <div class="d-flex flex-row-reverse gap-2 text-black rounded p-2">
-        <input type="checkbox"
-               class="form-check-input"
-               value="attended">
-        <label class="form-check-label" for="attended">حضر </label>
-      </div>
+
+        <div class="d-flex flex-row-reverse gap-2 text-black rounded p-2">
+          <input type="radio"
+                 class="form-check-input"
+                 [value]="'حضر'"
+                 [(ngModel)]="person.attendanceStatus"
+                 name="attendanceStatus-{{ $index }}"
+                 id="present-{{ $index }}">
+          <label class="form-check-label" for="present-{{ $index }}">حضر</label>
         </div>
-      </div>
-      <div class="col-5">
-        <div class="d-flex align-items-center gap-5 justify-content-end">
-      <div class="text-center">
-        <p class="mb-2">خالد سعيد</p>
-        <p>mohamedgmail.com</p>
-      </div>
-      <img src="" alt="img">
-    </div>
+
       </div>
     </div>
+
+    <div class="col-5">
+      <div class="d-flex align-items-center gap-5 justify-content-end">
+        <div class="text-center">
+          <p class="mb-2">{{ person.fullName }}</p>
+          <p>{{ person.email }}</p>
+        </div>
+        <img src="" alt="img">
+      </div>
+    </div>
+
+    <hr class="mt-4 w-97 m-auto">
+  </div>
+}
+
+
   </div>
 
   <div class="d-flex justify-content-between mt-5">

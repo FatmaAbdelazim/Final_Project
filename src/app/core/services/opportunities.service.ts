@@ -69,10 +69,18 @@ export class OpportunitiesService {
   getAllTeams():Observable<Team[]>{
     return this.http.get<Team[]>(`${environment.baseUrl}/api/Team/GetAllVolunteerTeams`)
   }
+  getParticipants(id : string | null):Observable<any>{
+    return this.http.get(`${environment.baseUrl}/api/Attendance/opportunities/${id}/participants`)
+  }
+
   downloadExcel(id:string|null): Observable<any>{
-    return this.http.get(`${environment.baseUrl}/api/Attendance/${id}/attendance-report/excel`)
+    return this.http.get(`${environment.baseUrl}/api/Attendance/${id}/attendance-report/excel`, {
+    responseType: 'blob' as 'json'
+  } )
   }
   downloadPDF(id:string|null): Observable<any>{
-    return this.http.get(`${environment.baseUrl}/api/Attendance/${id}/attendance-report/pdf`)
+    return this.http.get(`${environment.baseUrl}/api/Attendance/${id}/attendance-report/pdf`, {
+    responseType: 'blob' as 'json'
+  } )
   }
 }
