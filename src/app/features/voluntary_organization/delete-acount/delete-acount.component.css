@@ -1,0 +1,25 @@
+.bgColor{
+    background-color: #DC2626;
+    color: white;
+    width: 180px;
+    padding: 10px;
+    border-radius: 15px;   
+}
+.card{
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.s4{
+  background-color: #FEE2E2;
+    width: 30px;
+  height: 30px;
+  border-radius: 17px;
+  color: #DC2626;
+}
+.co{
+    color: #DC2626;
+}
+.bgco{
+  background-color: #FEF2F2;
+  color: #DC2626;
+  border-radius: 13px;
+}

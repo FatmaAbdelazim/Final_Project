@@ -25,6 +25,11 @@ import { UpdateOppComponent } from './features/voluntary_organization/update-opp
 import { CreateTeamComponent } from './features/voluntary_organization/create-team/create-team/create-team.component';
 import { ManageVolunteerComponent } from './features/voluntary_organization/manage-volunteer/manage-volunteer/manage-volunteer.component';
 import { AttendComponent } from './features/voluntary_organization/attend/attend/attend.component';
+import { OrganaiztionCheckNotificationComponent } from './features/voluntary_organization/check-notification/check-notification.component';
+import { OrganaiztionDeleteAcountComponent } from './features/voluntary_organization/delete-acount/delete-acount.component';
+import { AddOppComponent } from './features/voluntary_organization/add-opp/add-opp.component';
+import { EditTeamComponent } from './features/voluntary_organization/edit-team/edit-team.component';
+import { OrganizationChangePassComponent } from './features/voluntary_organization/change-pass/change-pass.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -51,11 +56,16 @@ export const routes: Routes = [
                   { path: 'organization-notifications', component: OrganizationNotificationsComponent },
                   { path: 'organization-certifications', component: OrganizationCertificationsComponent },
                   { path: 'organization-invitations', component: OrganizationInvitationsComponent },
-                  { path: 'managment-opp/:id', component: ManagmentOppComponent },
+                  { path: 'managment-opp', component: ManagmentOppComponent },
                   { path: 'manage-volunteer/:id', component: ManageVolunteerComponent },
                   { path: 'attend/:id', component: AttendComponent },
+                  { path: 'organization-change-pass', component: OrganizationChangePassComponent },
+                  { path: 'organization-check-notfication', component: OrganaiztionCheckNotificationComponent },
+                  { path: 'organization-delete-acount', component: OrganaiztionDeleteAcountComponent },
             ]
       },
       { path: 'edit-opp/:id', component: UpdateOppComponent },
       { path: 'create-team', component: CreateTeamComponent },
+         { path: 'add-opp', component: AddOppComponent },
+      { path: 'edit-team', component: EditTeamComponent },
 ];

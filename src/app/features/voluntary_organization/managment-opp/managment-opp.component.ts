@@ -23,7 +23,7 @@ export class ManagmentOppComponent implements OnInit {
     this.getAllOppManagment();
   }
   getAllOppManagment() {
-    this._OpportunitiesService.oppManagment().subscribe({
+    this._OpportunitiesService.oppManagment('4a1145a8-5c87-4649-bb88-721ea19f3299').subscribe({
       next: (respone) => {
         this.opportunitiesList = respone;
         this.numberOfOpp = respone.length;

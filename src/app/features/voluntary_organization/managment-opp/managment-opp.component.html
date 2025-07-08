@@ -1,4 +1,4 @@
-<div class="container-fluid bg py-5">
+<div class="container-fluid bg p-5">
     <div class="container mt-5">
         <div class="row py-4 row1 border rounded mt-5">
             <h4 class="text-center">قائمة الفرص التطوعية</h4>
@@ -52,7 +52,7 @@
                     }
 
                     }@else {
-                    <h4 class="text-danger text-center">لا يوجد فرص حاليا</h4>
+                            <h2 class="text-danger text-end">لا يوجد فرص حاليا</h2>
                     }
                 </tbody>
             </table>
@@ -93,7 +93,7 @@
 
 
         <div class="row justify-content-start">
-            <button class="btn btn-bgColor size">اضافة فرصة تطوعية جديدة</button>
+            <button class="btn btn-bgColor size" [routerLink]="['/add-opp']">اضافة فرصة تطوعية جديدة</button>
         </div>
     </div>
 </div>

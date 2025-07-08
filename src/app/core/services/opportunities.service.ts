@@ -50,13 +50,13 @@ export class OpportunitiesService {
   joinOpp(data:any):Observable<any>{
       return this.http.post(`${environment.baseUrl}/api/ApplayApplication/apply`, data)
   }
-  oppManagment():Observable<OppManagment[]>{
-    return this.http.get<OppManagment[]>(`${this.baseUrl}/api/VolunteerOpportunity/ forsa-management`);
+  oppManagment(organizationId:string):Observable<OppManagment[]>{
+    return this.http.get<OppManagment[]>(`${this.baseUrl}/api/VolunteerOpportunity/forsa-management/by-id?organizationId=${organizationId}`);
   }
   deleteOpp(id:string):Observable<any>{
     return this.http.delete<any>(`${this.baseUrl}/api/VolunteerOpportunity/${id}/remove`);
   }
-  updateOpp(id:string,data:FormData):Observable<any>{
+   updateOpp(id:string,data:FormData):Observable<any>{
     return this.http.put(`${environment.baseUrl}/api/VolunteerOpportunity/update/${id}`, data)
   }
   getDataToUpdate(id:string | null):Observable<UpdateOpp>{
