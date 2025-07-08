@@ -6,7 +6,12 @@
     border-radius: 15px;   
 }
 .card{
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+          z-index: 1;
+  border-radius: 15px !important;
+}
+
+.bg {
+  background-color: #686A8666;
 }
 .s3{
   background-color: #FFEDD5;

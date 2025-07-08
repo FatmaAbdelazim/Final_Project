@@ -15,7 +15,6 @@ import { TeamDetailsComponent } from './pages/team-details/team-details/team-det
 import { ManagmentOppComponent } from './features/voluntary_organization/managment-opp/managment-opp.component';
 import { VerifyEmailComponent } from './shared/components/verify-email/verify-email.component';
 import { OrganizationTeamsComponent } from './features/voluntary_organization/organization-teams/organization-teams.component';
-import { OrganizationSettingsComponent } from './features/voluntary_organization/organization-settings/organization-settings.component';
 import { OrganizationNotificationsComponent } from './features/voluntary_organization/organization-notifications/organization-notifications.component';
 import { OrganizationCertificationsComponent } from './features/voluntary_organization/organization-certifications/organization-certifications.component';
 import { OrganizationHomeComponent } from './features/voluntary_organization/organization-home/organization-home.component';
@@ -36,7 +35,6 @@ import { VolunteerSendNotificationComponent } from './features/volunteer/volunte
 import { VolunteerChangePassComponent } from './features/volunteer/volunteer-change-pass/volunteer-change-pass.component';
 import { VolunteerAttendanceAndCertificationsComponent } from './features/volunteer/volunteer-attendance-and-certifications/volunteer-attendance-and-certifications.component';
 import { VolunteerNotificationsComponent } from './features/volunteer/volunteer-notifications/volunteer-notifications.component';
-import { VolunteerSettingComponent } from './features/volunteer/volunteer-setting/volunteer-setting.component';
 import { VolunteerHomeComponent } from './features/volunteer/volunteer-home/volunteer-home.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
@@ -59,7 +57,6 @@ export const routes: Routes = [
             , children: [
                   { path: '', component: VolunteerHomeComponent },
                   { path: 'volunteer-home', component: VolunteerHomeComponent },
-                  { path: 'volunteer-settings', component: VolunteerSettingComponent },
                   { path: 'volunteer-notifications', component: VolunteerNotificationsComponent},
                   { path: 'attendence-and-certifications', component: VolunteerAttendanceAndCertificationsComponent },
                   { path: 'volunteer-change-pass', component: VolunteerChangePassComponent },
@@ -73,7 +70,6 @@ export const routes: Routes = [
                   { path: '', component: OrganizationHomeComponent },
                   { path: 'organization-home', component: OrganizationHomeComponent },
                   { path: 'organization-teams', component: OrganizationTeamsComponent },
-                  { path: 'organization-settings', component: OrganizationSettingsComponent },
                   { path: 'organization-notifications', component: OrganizationNotificationsComponent },
                   { path: 'organization-certifications', component: OrganizationCertificationsComponent },
                   { path: 'organization-invitations', component: OrganizationInvitationsComponent },
