@@ -36,6 +36,8 @@ import { VolunteerChangePassComponent } from './features/volunteer/volunteer-cha
 import { VolunteerAttendanceAndCertificationsComponent } from './features/volunteer/volunteer-attendance-and-certifications/volunteer-attendance-and-certifications.component';
 import { VolunteerNotificationsComponent } from './features/volunteer/volunteer-notifications/volunteer-notifications.component';
 import { VolunteerHomeComponent } from './features/volunteer/volunteer-home/volunteer-home.component';
+import { VolunteerInfoComponent } from './features/volunteer/volunteer-info/volunteer-info/volunteer-info.component';
+import { OrganizationInfoComponent } from './features/voluntary_organization/organization-info/organization-info/organization-info.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -59,6 +61,7 @@ export const routes: Routes = [
                   { path: 'volunteer-home', component: VolunteerHomeComponent },
                   { path: 'volunteer-notifications', component: VolunteerNotificationsComponent},
                   { path: 'attendence-and-certifications', component: VolunteerAttendanceAndCertificationsComponent },
+                  { path: 'volunteer-info', component: VolunteerInfoComponent },
                   { path: 'volunteer-change-pass', component: VolunteerChangePassComponent },
                   { path: 'volunteer-check-notfication', component: VolunteerSendNotificationComponent },
                   { path: 'volunteer-delete-acount', component: VolunteerDeleteAcountComponent },
@@ -76,6 +79,7 @@ export const routes: Routes = [
                   { path: 'managment-opp', component: ManagmentOppComponent },
                   { path: 'manage-volunteer/:id', component: ManageVolunteerComponent },
                   { path: 'attend/:id', component: AttendComponent },
+                  { path: 'organization-info', component: OrganizationInfoComponent },
                   { path: 'organization-change-pass', component: OrganizationChangePassComponent },
                   { path: 'organization-check-notfication', component: OrganaiztionCheckNotificationComponent },
                   { path: 'organization-delete-acount', component: OrganaiztionDeleteAcountComponent },
