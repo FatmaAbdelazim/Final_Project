@@ -1,0 +1,35 @@
+section{
+  background-color: #FDF2F8;
+  text-align: center;
+}
+.img-bg{
+  width: 520px;
+  height: 448px;
+  border-radius: 50%;
+  background-color: #F0DAFA;
+  text-align: center;
+}
+img{
+  width: 448px;
+  height: 448px;
+  border-radius: 16px;
+}
+.down{
+  position: absolute;
+  left: 15px;
+  bottom: 10px;
+  font-weight: bold;
+}
+.icon{
+  color: #9333EA;
+}
+textarea{
+  resize: none;
+}
+.grad{
+  background: linear-gradient(to right,#9333EA, #A1A3F0);
+  color: white;
+  width: 100%;
+  padding-block: 15px;
+  border: none;
+}
