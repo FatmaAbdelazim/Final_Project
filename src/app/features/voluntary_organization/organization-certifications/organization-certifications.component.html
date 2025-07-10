@@ -1,0 +1,100 @@
+<section class="p-5">
+  <h4>قم باصدار شهادات التطوع للمتطوعين اللذين اكملو الفرص التطوعية</h4>
+
+  <div class="bg-white rounded-3 p-3 mt-5">
+    <h5>اختيار الفرصة التطوعية</h5>
+    <div class="d-flex justify-content-between align-items-center mt-4">
+      <div>
+        <p>حالة الفرصة</p>
+        <div class="mt-2 div-bg"><i class="bi bi-check-lg"></i> مكتملة </div>
+      </div>
+      <div class="position-relative w-35">
+        <input type="text" placeholder="ابحث عن الفرص التطوعية" class="text-end brd-perpel p-1">
+        <i class="bi bi-search search text-muted"></i>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="bg-white rounded-3 my-5 text-center py-2">قائمة المتطوعين</h4>
+
+  <div>
+    <div class="row text-center mb-4">
+      <div class="col-2">الاجراءات</div>
+      <div class="col-3">الساعات المعتمدة</div>
+      <div class="col-3">تاريخ المشاركة</div>
+      <div class="col-4">المتطوع</div>
+    </div>
+    <!-- @for (person of participants; track $index) { -->
+  <div class="row justify-content-between align-items-center bg-white text-center rounded-3 py-2 px-1">
+
+    <div class="col-2">
+      @if(true){
+        <button class="btn">اصدار الشهادة <i class="bi bi-brightness-low-fill"></i></button>
+      }
+      @else{
+        <div class="brd-perpel rounded-2 fw-bold w-100 py-2">تم الاصدار</div>
+      }
+    </div>
+
+    <div class="col-3">
+      <p  class="me-5">8 ساعات تطوعية  </p>
+    </div>
+
+    <div class="col-3 text-start">
+      <p>15 ديسمبر 2024</p>
+    </div>
+
+    <div class="col-3">
+      <div class="d-flex align-items-center gap-5 justify-content-end">
+        <div class="text-end">
+          <p class="my-2">خالد سعيد</p>
+          <p class="fs-6">mohamedgmail.com</p>
+        </div>
+        <img src="" alt="img">
+      </div>
+    </div>
+
+    <hr class="mt-4 w-97 m-auto">
+  </div>
+
+  <div class="row justify-content-between align-items-center bg-white text-center rounded-3 py-2 px-1">
+
+    <div class="col-2">
+      @if(false){
+        <button class="btn">اصدار الشهادة <i class="bi bi-brightness-low-fill"></i></button>
+      }
+      @else{
+        <div class="brd-perpel rounded-3 fw-bold w-100 py-2">تم الاصدار</div>
+      }
+    </div>
+
+    <div class="col-3">
+      <p  class="me-5">8 ساعات تطوعية  </p>
+    </div>
+
+    <div class="col-3 text-start">
+      <p>15 ديسمبر 2024</p>
+    </div>
+
+    <div class="col-3">
+      <div class="d-flex align-items-center gap-5 justify-content-end">
+        <div class="text-end">
+          <p class="my-2">خالد سعيد</p>
+          <p class="fs-6">mohamedgmail.com</p>
+        </div>
+        <img src="" alt="img">
+      </div>
+    </div>
+
+    <hr class="mt-4 w-97 m-auto">
+  </div>
+<!-- } -->
+
+
+  </div>
+
+
+<div class="d-flex justify-content-center mt-5">
+  <button class="btn"> اصدار الكل  <i class="bi bi-brightness-low-fill"></i> </button>
+</div>
+</section>

@@ -1,0 +1,55 @@
+section{
+  background-color: #F9FAFB;
+  text-align: right;
+}
+.div-bg{
+  background-color: #F3E6FE;
+}
+span{
+  color: #9333EA;
+  font-weight: bold;
+}
+p{
+  margin-bottom: 0;
+}
+.brd-color{
+  border: 1px #D4D4D4 solid;
+}
+.icon-bg1, .icon-bg2, .icon-bg3{
+  width: 60px;
+  height: 55px;
+}
+.icon-bg1{
+  background-color: #9333EA;
+}
+.icon-bg2{
+  background-color: #E9A1F0;
+}
+.icon-bg3{
+  background-color: #A1A6F0;
+}
+.perple{
+  color: #9333EA;
+}
+.baby-blue{
+  color: #A1A6F0;
+}
+.pink{
+  color: pink;
+}
+select{
+  direction: rtl;
+}
+.mybtn{
+  color: white;
+  background-color:#9333EA ;
+  border-radius: 5px;
+  width: 80%;
+  padding: 7px ;
+  border: none;
+}
+img{
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}

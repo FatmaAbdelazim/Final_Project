@@ -1,0 +1,50 @@
+#imgCard {
+    /* width: 405.33px; */
+    width: 360px;
+
+    height: 192px;
+
+}
+
+.myCard {
+    /* width: 405.33px; */
+    width: 360px;
+    height: 457px;
+    border-radius: 5px;
+    /* margin: 8px; */
+    border: 1px solid #CCCCD6;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.myCard:hover {
+    transform: scale(1.1);
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 35px;
+    z-index: 1;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#divM {
+    margin-right: 95px;
+}
+
+.details:hover {
+    background-color: #7000FF !important;
+    color: white;
+      cursor: pointer;
+}
+
+.details {
+    color: #7000FF;
+    background-color: #FFFFFF !important;
+    border: solid 1px #7000FF;
+}
+
+.btn-bgcolor {
+    background-color: #7000FF;
+}
+
+.btn-border {
+    border: solid 1px #7000FF;
+}

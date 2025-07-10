@@ -1,0 +1,22 @@
+.bgColor{
+    background-color: #9333EA;
+    color: white;
+    width: 180px;
+    padding: 10px;
+    border-radius: 15px;   
+}
+.card{
+          z-index: 1;
+  border-radius: 15px !important;
+}
+
+.bg {
+  background-color: #686A8666;
+}
+.s3{
+  background-color: #FFEDD5;
+    width: 30px;
+  height: 30px;
+  border-radius: 17px;
+  color: #EA580C;
+}

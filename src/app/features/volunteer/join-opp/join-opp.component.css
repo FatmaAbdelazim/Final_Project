@@ -1,0 +1,54 @@
+section{
+  background-color: #F9FAFB;
+  text-align: right;
+}
+h2, .bg-color{
+  color: #9333EA;
+}
+.border-color{
+  border-bottom: #9333EA 2px solid;
+}
+.brd-color{
+  border: 1px #E5E7EB solid;
+}
+textarea {
+  resize: none;
+  height: 122px;
+}
+.custom-upload {
+  border: 1px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.custom-upload:hover {
+  border-color: #999;
+}
+
+.custom-upload i {
+  font-size: 24px;
+  color: #888;
+  margin-bottom: 10px;
+}
+
+.btn{
+  color: white;
+  background-color:#9333EA ;
+  border-radius: 12px;
+  width: 35%;
+  height: 48px;
+  padding: 3px ;
+  border: none;
+  font-weight: bold;
+}
+.btn-cancel{
+  border: #9333EA 1px solid;
+  background-color: white;
+  color: #9333EA;
+  width: 10%;
+  border-radius: 12px;
+  height: 48px;
+}

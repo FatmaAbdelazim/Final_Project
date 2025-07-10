@@ -1,0 +1,37 @@
+section{
+  background-color: #F9FAFB;
+  text-align: right;
+}
+span a{
+  color: #9333EA;
+}
+img{
+  width: 72px;
+  height: 70px;
+}
+.btn, .btn2, .btn3{
+  border-radius: 12px;
+  width: 100%;
+  height: 48px;
+  padding: 3px 132px;
+  border: none;
+  margin-bottom: 20px;
+}
+.btn{
+  color: white;
+  background-color:#9333EA ;
+  font-weight: bold;
+}
+.btn2{
+  background-color: #A1A6F0;
+  color: white;
+}
+.btn3{
+  color: #A1A6F0;
+  background-color: white;
+  border: 1px solid #A1A6F0;
+}
+hr{
+  color: #6c757d;
+  width: 180px;
+}

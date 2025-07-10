@@ -1,0 +1,137 @@
+<section class="p-5">
+  <form [formGroup]="createForm" (ngSubmit)="Create()" class="w-75 m-auto">
+    <div class="rounded-4 bg-white shadow p-4 container mb-3">
+      <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
+        <h5> معلومات الفريق</h5>
+        <div class="icon-bg1">
+          <i class="fa-solid fa-users fs-4 text-white"></i>
+        </div>
+      </div>
+
+      <div class="row g-1">
+        <label> اسم الفريق</label>
+        <input formControlName="description" class="mt-3 rounded-2 text-end p-2 brd-color" placeholder="أدخل اسم الفريق التطوعى">
+      </div>
+
+
+      <div class="row g-3 mb-3">
+        <div class="col-12 col-md-6">
+           <label for="categoryName" class="form-label my-3">  المجال/الفئة  </label>
+          <input formControlName="categoryName" class="form-control p-2 rounded-3 text-end" type="text" id="categoryName">
+        </div>
+
+        <div class="col-12 col-md-6">
+           <label for="location" class="form-label my-3"> المدينة </label>
+          <input formControlName="location" class="form-control p-2 rounded-3 text-end" type="text" id="location">
+        </div>
+      </div>
+
+      <div class="row g-1">
+        <label> وصف الفريق  </label>
+        <textarea formControlName="description" class="mt-3 rounded-2 text-end p-4 brd-color" placeholder="اشرح اهداف الفريق وتخصصه"></textarea>
+      </div>
+    </div>
+
+    <div class="rounded-4 bg-white shadow p-4 container mb-3">
+      <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
+        <h5>ربط الفريق</h5>
+        <div class="icon-bg3">
+          <i class="fa-solid fa-link fs-5 text-white"></i>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column my-4">
+        <label for="isAttendanceTracked" class="form-label"> هل هذا الفريق مرتبط بفرصة معينة ؟</label>
+        <div class="d-flex justify-content-end gap-5">
+
+<div class="form-check-reverse form-check-inline">
+          <input class="form-check-input" type="radio" name="isAttendanceTracked" [value]=false
+            formControlName="isAttendanceTracked"
+            id="no">
+          <label class="form-check-label" for="no">لا</label>
+        </div>
+
+        <div class="form-check-reverse form-check-inline">
+          <input class="form-check-input" type="radio" name="isAttendanceTracked" id="yes" [value]=true
+          formControlName="isAttendanceTracked">
+          <label class="form-check-label" for="yes">نعم</label>
+        </div>
+
+        </div>
+      </div>
+
+      <label class="mb-3">اختيار الفرصة المرتبطة</label>
+      <select class="form-control rtl-select mb-4" formControlName="teamName" id="teamName">
+        <option [ngValue]="null" disabled>جميع الفرص التطوعية</option>
+        @for (opp of opps; track $index) {
+          <option [ngValue]="opp.title">{{ opp.title }}</option>
+        }
+      </select>
+    </div>
+
+
+    <div class="rounded-4 bg-white shadow p-4 container mb-3">
+  <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
+    <h5>اعدادات الفريق</h5>
+    <div class="icon-bg2">
+      <i class="bi bi-gear-fill fs-5 text-white"></i>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="d-flex flex-column my-4">
+        <label for="isAttendanceTracked" class="form-label">من يمكنه الانضمام؟</label>
+        <div class="d-flex justify-content-end gap-5">
+          <div class="form-check-reverse form-check-inline">
+            <input class="form-check-input" type="radio" name="isAttendanceTracked" [value]="false"
+              formControlName="isAttendanceTracked" id="no">
+            <label class="form-check-label" for="no">فقط المتطوعين بدعوة</label>
+          </div>
+
+          <div class="form-check-reverse form-check-inline">
+            <input class="form-check-input" type="radio" name="isAttendanceTracked" id="yes" [value]="true"
+              formControlName="isAttendanceTracked">
+            <label class="form-check-label" for="yes">اى متطوع</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6 ms-auto">
+      <div class="d-flex flex-column my-4">
+        <label for="totalHours" class="form-label">الحد الاقصى لعدد الاعضاء ( اختيارى )</label>
+        <input formControlName="totalHours" type="number" class="form-control text-end" placeholder="مثال 16">
+        <span class="text-muted">اتركه فارغا اذا لم يكن هناك حاجة لحد اقصى</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rounded-4 bg-white shadow p-4 container mb-3">
+      <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
+        <h5> ملاحظات داخلية </h5>
+        <div class="icon-bg1">
+          <i class="bi bi-sticky-fill fs-5 text-white"></i>
+        </div>
+      </div>
+
+      <div class="row g-1">
+        <textarea formControlName="description" class="mt-3 rounded-2 text-end p-4 brd-color" placeholder="اضف اى تعليمات او ملاحظات لا تظهر للمتطوعين"></textarea>
+        <span class="text-muted mt-2">هذه الملاحظة لن تكون مرئية للمتطوعين</span>
+      </div>
+    </div>
+
+
+    <div class="d-flex gap-2 mt-5">
+
+  <button [disabled]="isLoading" type="submit" class="btn">
+    @if(isLoading)
+    {
+      <span><i class="fas fa-spin fa-spinner"></i></span>
+    }
+       انشاء فريق  </button><br>
+  <button [routerLink]="[`/`]"  class="btn-cancel">  الغاء </button><br>
+</div>
+  </form>
+</section>

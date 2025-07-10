@@ -1,0 +1,52 @@
+section{
+  background-color: #F9FAFB;
+  text-align: right;
+}
+.div-bg{
+  background-color: #F3E6FE;
+}
+span{
+  color: #9333EA;
+  font-weight: bold;
+}
+p{
+  margin-bottom: 0;
+}
+.perple{
+  color: #9333EA;
+}
+.brd-color{
+  border: 1px #D4D4D4 solid;
+}
+.w-97{
+  width: 97%;
+}
+img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.btn, .btn-excel, .btn-pdf{
+  color: white;
+  border-radius: 12px;
+  height: 48px;
+  padding: 3px 15px;
+  border: none;
+}
+.btn{
+  background-color:#9333EA ;
+}
+.btn-excel{
+  background-color: #E9A1F0;
+}
+.btn-pdf{
+  background-color: #A1A6F0;
+}
+.btn-cancel{
+  border: #9333EA 1px solid;
+  background-color: white;
+  color: #9333EA;
+  border-radius: 12px;
+  padding: 3px 10px;
+  font-weight: bold;
+}
