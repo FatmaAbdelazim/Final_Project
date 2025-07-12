@@ -1,0 +1,44 @@
+section{
+  background-color: #F9FAFB;
+  text-align: right;
+}
+p{
+  margin-bottom: 0;
+}
+.brd-perpel{
+  border: 1px solid #9333EA;
+  width: 100%;
+}
+.div-bg{
+  background-color: #A1A6F080;
+  color: #9333EA;
+  padding: 8px;
+  border-radius: 10px;
+}
+.brd-color{
+  border: 1px #D4D4D4 solid;
+}
+.w-35{
+  width: 35%;
+}
+.w-97{
+  width: 97%;
+}
+img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.btn{
+  background-color:#9333EA ;
+  color: white;
+  border-radius: 10px;
+  height: 48px;
+  padding: 3px 15px;
+  border: none;
+}
+.search{
+  position: absolute;
+  left: 18px;
+  bottom: 9px;
+}

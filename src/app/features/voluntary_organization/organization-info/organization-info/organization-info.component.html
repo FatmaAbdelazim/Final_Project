@@ -1,0 +1,63 @@
+<section class="bg-color p-5">
+  <div class="w-75 bg-white rounded-3 mt-5 py-5 px-3 m-auto">
+
+    <div class="d-flex align-items-center  gap-2 justify-content-center ">
+      <h4>بيانات المنظمة</h4>
+      <div class="icon-bg text-center pt-1"><i class="bi bi-buildings-fill fs-5 perpel"></i></div>
+    </div>
+
+    <div class="mt-5">
+      <form>
+        <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <label for="phone" class="form-label my-3">رقم الجوال</label>
+          <input formControlName="phone" class="form-control p-2 rounded-3 text-end" type="tel" id="phone" placeholder="01xxxxxxxx">
+        </div>
+
+
+        <div class="col-12 col-md-6">
+          <label for="name" class="form-label my-3">الاسم المنظمة</label>
+          <input formControlName="fullName" class="form-control p-2 rounded-3 text-end" type="text" id="name" placeholder="ادخل اسم المنظمة">
+          </div>
+      </div>
+
+      <div class="row g-3">
+        <div class="col-12 col-md-6">
+          <label for="dropdownMenuButton" class="form-label my-3">المدينة</label>
+          <input formControlName="city" class="form-control p-2 rounded-3 text-end" type="text" id="city" placeholder="ادخل المدينة">
+        </div>
+
+        <div class="col-12 col-md-6">
+          <label for="email" class="form-label my-3">البريد الالكتروني</label>
+          <input formControlName="email" class="form-control p-2 rounded-3" type="email" name="email" id="email" placeholder="example@email.com">
+        </div>
+      </div>
+
+      <div class="m-2 mt-5">
+                    <div class="mb-4 text-end">
+                        <label class="form-label"> ِشعار المنظمة </label>
+                        <div class="d-flex align-items-center justify-content-end mt-2 gap-4">
+                          <div>
+                            <p> ( PNG, JPG ) اختر صورة شعار المنظمة </p>
+                            <div class="d-flex gap-3 mt-4">
+                              <button class="btn-cancel">حذف الصورة</button>
+                              <button class="btn"> رفع صورة جديدة <i class="bi bi-upload"></i></button>
+                            </div>
+                          </div>
+                          <img src="" alt="img">
+                        </div>
+                    </div>
+      </div>
+
+      <div class="text-start">
+        <button [disabled]="isLoading" type="submit" class="btn">
+        @if(isLoading)
+        {
+          <span><i class="fas fa-spin fa-spinner"></i></span>
+        }
+        حفظ التعديلات <i class="fa-solid fa-floppy-disk"></i> </button>
+      </div>
+      </form>
+    </div>
+  </div>
+</section>
