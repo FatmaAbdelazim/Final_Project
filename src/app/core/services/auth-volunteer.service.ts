@@ -10,9 +10,12 @@ export class AuthVolunteerService {
 
   private readonly _HttpClient = inject(HttpClient);
 
-  register(data:any):Observable<any>{
-    return this._HttpClient.post(`${environment.baseUrl}/api/Auth/register-volunteer`,data,{
-  responseType: 'text'
-})
+  register(data: any): Observable<any> {
+    return this._HttpClient.post(`${environment.baseUrl}/api/Auth/register-volunteer`, data, {
+      responseType: 'text'
+    })
+  }
+  deleteVolunteer(volId: string): Observable<any> {
+    return this._HttpClient.delete<any>(`${environment.baseUrl}/api/OrganizationProfile/delete/${volId}`, { responseType: 'text' as 'json' });
   }
 }

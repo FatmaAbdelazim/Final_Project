@@ -1,6 +1,6 @@
 <div class="container-fluid bg">
-     <div class="container py-5">
-        <form class="row mt-5 mb-5 justify-content-center align-items-center">
+    <div class="container py-5">
+        <form class="row mt-5 mb-5 justify-content-center align-items-center" [formGroup]="changeForm" (ngSubmit)="changPass()">
             <div class="card p-4  mb-4">
                 <div class="d-flex justify-content-center align-items-center mb-4">
                     <h4 class="mt-3">تغيير كلمة المرور</h4>
@@ -12,23 +12,41 @@
                     <div class="form-group text-end">
                         <label for="passCurrent" class="mb-2"> كلمة المرور الحالية</label>
                         <input type="password" id="passCurrent" placeholder="ادخل كلمة المرور الحالية"
-                            class="py-3 form-control text-end">
+                            class="py-3 form-control text-end" formControlName="currentPassword">
                     </div>
+                    @if(currentPassword?.touched && currentPassword?.getError('required'))
+                    {
+                    <span class="text-danger mt-1">كلمة المرور مطلوبة</span>
+                    }@else if(currentPassword?.getError('minlength')){
+                    <span class="text-danger mt-1">يجب ان تكون كلمة المرور اكثر من 6 حروف و ارقام</span>
+                    }
                 </div>
                 <div class="row mt-4">
                     <div class="form-group text-end">
                         <label for="passNew" class="mb-2">كلمة المرور الجديدة</label>
                         <input type="password" id="passNew" placeholder="ادخل كلمة المرور الجديدة"
-                            class="py-3 form-control text-end">
+                            class="py-3 form-control text-end" formControlName="newPassword">
                     </div>
                     <p class="text-muted text-end mt-2">يفضل أن تحتوي على رقم وحرف كبير –8 أحرف على الأقل</p>
+                    @if(newPassword?.touched && newPassword?.getError('required'))
+                    {
+                    <span class="text-danger mt-1">كلمة المرور الجديدة مطلوبة</span>
+                    }@else if(newPassword?.getError('minlength')){
+                    <span class="text-danger mt-1">يجب ان تكون كلمة المرور اكثر من 6 حروف و ارقام</span>
+                    }
                 </div>
                 <div class="row mt-4">
                     <div class="form-group text-end">
                         <label for="passConfurim" class="mb-2">تأكيد كلمة المرور الجديدة</label>
                         <input type="password" id="passConfurim" placeholder="اعد ادخال كلمة المرور الجديدة"
-                            class="py-3 form-control text-end">
+                            class="py-3 form-control text-end" formControlName="confirmPassword">
                     </div>
+                    @if(confirmPassword?.touched && confirmPassword?.getError('required'))
+                    {
+                    <span class="text-danger mt-1">تأكيد كلمة المرور مطلوبة</span>
+                    }@else if(changeForm.errors?.['passwordmatch']){
+                    <span class="text-danger mt-1">يجب تطابق تأكيد كلمة المرور مع كلمة المرور</span>
+                    }
                 </div>
                 <div class="row mt-5 mb-3 ms-1">
                     <button class="btn bgColor" type="submit"> تحديث كلمة المرور
@@ -36,7 +54,6 @@
                 </div>
             </div>
         </form>
-    </div> 
-
+    </div>
 
 </div>

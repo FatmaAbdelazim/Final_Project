@@ -1,8 +1,13 @@
 <div class="oppCard mt-3 p-3">
     <div class="d-flex flex-column justify-content-center align-items-end">
-        <h5>مساعدة كبار السن</h5>
-        <p>دار الرعاية الاجتماعية</p>
-        <span>تاريخ التقديم15 مارس 2025</span>
+        <h5>{{volunteerOpp.opportunityTitle}}</h5>
+        <p>{{volunteerOpp.organizationName}}</p>
+        <span>تاريخ التقديم{{volunteerOpp.applicationDate}}</span>
     </div>
-    <div class="divStatus2 d-flex justify-content-center align-items-center">تم قبولك</div>
+    <div class="d-flex justify-content-center align-items-center" [ngClass]="{
+  'divStatus1': volunteerOpp.status === 'تم قبولك',
+  'divStatus2': volunteerOpp.status === 'مرفوض',
+  'divStatus3': volunteerOpp.status === 'قيد المراجعة'
+}">
+        {{volunteerOpp.status}}</div>
 </div>

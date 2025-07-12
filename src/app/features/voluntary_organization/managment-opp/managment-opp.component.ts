@@ -1,3 +1,4 @@
+import { AuthVoluntaryOrganizationService } from './../../../core/services/auth-voluntary-organization.service';
 import { FormsModule } from '@angular/forms';
 import { OpportunitiesService } from './../../../core/services/opportunities.service';
 import { CommonModule } from '@angular/common';
@@ -17,13 +18,16 @@ export class ManagmentOppComponent implements OnInit {
   opportunitiesList!: any;
   pagedOpps: OppManagment[]=[];
   numberOfOpp = 0;
-  constructor(private _OpportunitiesService: OpportunitiesService) {
+  organizationId!:string;
+  constructor(private _OpportunitiesService: OpportunitiesService, private _AuthVoluntaryOrganizationService : AuthVoluntaryOrganizationService) {
+
   }
   ngOnInit(): void {
     this.getAllOppManagment();
+    this.organizationId = this._AuthVoluntaryOrganizationService.userData.id;
   }
   getAllOppManagment() {
-    this._OpportunitiesService.oppManagment('4a1145a8-5c87-4649-bb88-721ea19f3299').subscribe({
+    this._OpportunitiesService.oppManagment(this.organizationId).subscribe({
       next: (respone) => {
         this.opportunitiesList = respone;
         this.numberOfOpp = respone.length;

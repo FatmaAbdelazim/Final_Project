@@ -21,7 +21,7 @@ export class LoginComponent {
 
  login(){
   if (this.loginForm.invalid) {
-      console.log(this.loginForm.value);
+      // console.log(this.loginForm.value);
     alert('الرجاء تعبئة جميع الحقول بشكل صحيح');
     return;
   }
@@ -29,8 +29,9 @@ export class LoginComponent {
   console.log(this.loginForm.value);
   this._AuthVoluntaryOrganizationService.login(this.loginForm.value).subscribe({
    next: (response) => {
-    console.log('Response from server:', response);
+    // console.log('Response from server:', response);
     localStorage.setItem("userToken", response.token)
+    this._AuthVoluntaryOrganizationService.decodeUserData();
     alert('تم التسجيل الدخول بنجاح :)');
     this._router.navigate(['/home']);
   },

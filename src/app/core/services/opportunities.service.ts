@@ -19,16 +19,6 @@ export class OpportunitiesService {
   getAllOpportunities(): Observable<Opportunity[]> {
     return this.http.get<Opportunity[]>(`${this.baseUrl}/api/HomePage/Opportunities`);
   }
-  //  getAllOpportunities(): Observable<Opportunity[]> {
-  //   return this.http.get(`${this.baseUrl}/api/HomePage/Opportunities`).pipe(
-  //     map((opps: any) => {
-  //       return (opps as any[]).map(opp => ({
-  //         ...opp,
-  //         image: this.baseUrl + '/' + opp.image.replace(/\\/g, '/')
-  //       }));
-  //     })
-  //   );
-  // }
   getOpportunityDetails(id: string | null): Observable<OpportuntyDetails> {
     return this.http.get<OpportuntyDetails>(`${this.baseUrl}/api/VolunteerOpportunity/${id}/Detailes`);
   }

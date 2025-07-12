@@ -29,3 +29,24 @@
 .bg {
   background-color: #686A8666;
 }
+
+/* .displayNone{
+  display: none;
+}
+.displayTrue{
+   display: block;
+}
+.cardDis{
+  z-index:9999;
+  background-color: #06109266;
+  width: 300px;
+  height: 130px;
+  border-radius: 20px;
+  color: green;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: 700;
+  position: absolute;
+  top: 0px;
+  left: 500px;
+  
+} */

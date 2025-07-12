@@ -1,0 +1,54 @@
+.bg{
+    background-color: #F9FAFB;
+}
+.smallDiv{
+    background-color: #9333EA;
+    width: 40px;
+    height: 40px;
+    padding: 4px;
+    border-radius: 12px;
+    margin-left: 8px;
+}
+.card{
+      border-radius: 15px !important;
+}
+
+.upload-area {
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  background-color: #f9f9f9;
+}
+
+.upload-area:hover {
+  border-color: #999;
+  background-color: #f1f1f1;
+}
+.skill{
+    width: 150px;
+    height: 30px;
+    border: 1px solid #D1D5DB;
+    border-radius: 12px;
+    text-align: center;
+}
+.bgColor{
+    background-color: #9333EA;
+    color: white;
+    width: 180px;
+    padding: 10px;
+    border-radius: 15px;   
+}
+.bgs{
+    color: #9333EA;
+    width: 100px;
+    padding: 10px;
+    border: 1px solid #9333EA;
+    border-radius: 15px;   
+    margin-left: 15px;
+}
+.card{
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.skill{
+    border: 1px solid #E5E7EB;
+    border-radius: 6px;
+}

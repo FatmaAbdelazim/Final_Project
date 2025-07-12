@@ -36,6 +36,13 @@ import { VolunteerChangePassComponent } from './features/volunteer/volunteer-cha
 import { VolunteerAttendanceAndCertificationsComponent } from './features/volunteer/volunteer-attendance-and-certifications/volunteer-attendance-and-certifications.component';
 import { VolunteerNotificationsComponent } from './features/volunteer/volunteer-notifications/volunteer-notifications.component';
 import { VolunteerHomeComponent } from './features/volunteer/volunteer-home/volunteer-home.component';
+import { AdminDashboardComponent } from './features/admin/admin-dashboard/admin-dashboard.component';
+import { AdminHomeComponent } from './features/admin/admin-home/admin-home.component';
+import { ManagmentVolunteersComponent } from './features/admin/managment-volunteers/managment-volunteers.component';
+import { ManagmentOrganizationComponent } from './features/admin/managment-organization/managment-organization.component';
+import { ManagmentTeamsComponent } from './features/admin/managment-teams/managment-teams.component';
+import { ReviewOppComponent } from './features/admin/review-opp/review-opp.component';
+import { ReviewRatingComponent } from './features/admin/review-rating/review-rating.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -57,7 +64,7 @@ export const routes: Routes = [
             , children: [
                   { path: '', component: VolunteerHomeComponent },
                   { path: 'volunteer-home', component: VolunteerHomeComponent },
-                  { path: 'volunteer-notifications', component: VolunteerNotificationsComponent},
+                  { path: 'volunteer-notifications', component: VolunteerNotificationsComponent },
                   { path: 'attendence-and-certifications', component: VolunteerAttendanceAndCertificationsComponent },
                   { path: 'volunteer-change-pass', component: VolunteerChangePassComponent },
                   { path: 'volunteer-check-notfication', component: VolunteerSendNotificationComponent },
@@ -85,4 +92,17 @@ export const routes: Routes = [
       { path: 'create-team', component: CreateTeamComponent },
       { path: 'add-opp', component: AddOppComponent },
       { path: 'edit-team', component: EditTeamComponent },
+      {
+            path: 'admin-dashboard', component: AdminDashboardComponent,
+            children: [
+                  { path: '', component: AdminHomeComponent },
+                  { path: 'home', component: AdminHomeComponent },
+                  { path: 'managment-volunteers', component: ManagmentVolunteersComponent},
+                  { path: 'managment-organization', component: ManagmentOrganizationComponent},
+                  { path: 'managment-teams', component: ManagmentTeamsComponent},
+                  { path: 'review-opp', component:ReviewOppComponent },
+                  { path: 'review-rating', component: ReviewRatingComponent},
+
+            ]
+      },
 ];
