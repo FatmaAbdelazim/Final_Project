@@ -8,7 +8,7 @@
                     </div>
                     <div>
                         <p>إجمالي المنظمات</p>
-                        <span class="ms-5 fs-2 crtN">234</span>
+                        <span class="ms-5 fs-2 crtN">{{OrganizationStatistics.totalOrganizations}}</span>
                     </div>
                 </div>
                 <div class="cert d-flex justify-content-around align-items-center px-3">
@@ -17,7 +17,7 @@
                     </div>
                     <div>
                         <p>قيد المراجعة</p>
-                        <span class="ms-5 fs-2 crtN3">40</span>
+                        <span class="ms-5 fs-2 crtN3">{{OrganizationStatistics.pendingOrganizations}}</span>
                     </div>
                 </div>
                 <div class="cert d-flex justify-content-around align-items-center px-3">
@@ -26,7 +26,7 @@
                     </div>
                     <div>
                         <p class="ms-4">مرفوضة</p>
-                        <span class="ms-5 fs-2 crtN2">20</span>
+                        <span class="ms-5 fs-2 crtN2">{{OrganizationStatistics.rejectedOrganizations}}</span>
                     </div>
                 </div>
             </div>
@@ -34,21 +34,23 @@
                 <button class="btn btn-bgColor w p-2 mt-5">بحث</button>
                 <div class="form-group text-end w-25 mt-3">
                     <label for="city" class="mb-2">المدينة</label>
-                    <input list="cities" name="city" id="city" class="py-2 form-control text-end" placeholder="اختر اسم المدينه">
+                    <input list="cities" name="city" id="city" class="py-2 form-control text-end"
+                        placeholder="اختر اسم المدينه">
                     <datalist id="cities">
                         <option value="المنيا">
                     </datalist>
                 </div>
                 <div class="form-group text-end w-25 mt-3">
                     <label for="status" class="mb-2">الحالة</label>
-                    <input list="statuss" name="status" id="status" class="py-2 form-control text-end" placeholder="اختر الحاله">
+                    <input list="statuss" name="status" id="status" class="py-2 form-control text-end"
+                        placeholder="اختر الحاله">
                     <datalist id="statuss">
                         <option value="حاله1">
                     </datalist>
                 </div>
                 <div class="form-group w-25 mt-5">
-                    <input type="email" class="form-control py-2 text-end" id="exampleInput1" aria-describedby="emailHelp"
-                        placeholder="البحث عن منظمات">
+                    <input type="email" class="form-control py-2 text-end" id="exampleInput1"
+                        aria-describedby="emailHelp" placeholder="البحث عن منظمات">
                 </div>
             </div>
             <div class="row py-4 border rounded mt-4 bgT">
@@ -77,10 +79,10 @@
                             <td>
                                 <span>24</span>
                             </td>
-                            <td>الرياض</td>
                             <td class="col-2">
                                 <span class="status">نشط</span>
                             </td>
+                            <td>الرياض</td>
                             <td class="col-4">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <div class="me-2">
