@@ -22,11 +22,11 @@
                     <tr>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <i class="bi bi-pause-fill me-1 main-color fs-4"></i>
+                                <i class="bi bi-pause-fill me-1 main-color fs-4" [routerLink]="['/organization-dashboard/manage-volunteer',opp.id]"></i>
                                 <i class="bi bi-trash-fill me-2 t fs-4" (click)="deletOpp(opp.id)"></i>
-                                <i class="bi bi-pencil-square me-2 e fs-4"></i>
+                                <i class="bi bi-pencil-square me-2 e fs-4" [routerLink]="['/edit-opp' , opp.id]"></i>
                                 <i class="bi bi-eye-fill me-2 main-color fs-4" [routerLink]="['/opportunity-details',opp.id]"></i>
-                                <i class="bi bi-calendar-check-fill e fs-4"></i>
+                                <i class="bi bi-calendar-check-fill e fs-4" [routerLink]="['/organization-dashboard/attend',opp.id]"></i>
                             </div>
                         </td>
                         <td>

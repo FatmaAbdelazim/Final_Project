@@ -22,13 +22,13 @@ export class OrganizationDashboardService {
   getOrganizationStatistics(): Observable<any> {
     return this.http.get<any>(`${environment.baseUrl}/GetOrganizationStatistics`);
   }
-  getAllOrganizations(): Observable<OrganizationCard[]> {
-    return this.http.get<OrganizationCard[]>(`${environment.baseUrl}/api/OrganizationProfile/all`);
-  }
-  searchByOrgName(orgName: string): Observable<OrganizationCard[]> {
-    return this.http.get<OrganizationCard[]>(`${environment.baseUrl}/by-Name?name=${orgName}`);
-  }
-  searchByCity(city: string): Observable<OrganizationCard[]> {
-    return this.http.get<OrganizationCard[]>(`${environment.baseUrl}/by-city?city=${city}`);
-  }
+  // getAllOrganizations(): Observable<OrganizationCard[]> {
+  //   return this.http.get<OrganizationCard[]>(`${environment.baseUrl}/api/OrganizationProfile/all`);
+  // }
+  // searchByOrgName(orgName: string): Observable<OrganizationCard[]> {
+  //   return this.http.get<OrganizationCard[]>(`${environment.baseUrl}/by-Name?name=${orgName}`);
+  // }
+  // searchByCity(city: string): Observable<OrganizationCard[]> {
+  //   return this.http.get<OrganizationCard[]>(`${environment.baseUrl}/by-city?city=${city}`);
+  // }
 }

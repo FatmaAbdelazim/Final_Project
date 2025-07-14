@@ -23,8 +23,9 @@ export class ManagmentOppComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    this.getAllOppManagment();
+    this._AuthVoluntaryOrganizationService.decodeUserData();
     this.organizationId = this._AuthVoluntaryOrganizationService.userData.id;
+    this.getAllOppManagment();
   }
   getAllOppManagment() {
     this._OpportunitiesService.oppManagment(this.organizationId).subscribe({
