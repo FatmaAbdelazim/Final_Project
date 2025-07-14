@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Team } from '../../models/team';
+import { createTeam, Team } from '../../models/team';
 import { TeamDetails } from '../../models/team-details';
 import { environment } from '../environments/environment';
 
@@ -38,8 +38,11 @@ export class TeamsService {
 
   joinTeam(data: any): Observable<any> {
   return this.http.post(`${environment.baseUrl}/api/Team/request`, data, {
-    responseType: 'text'  
+    responseType: 'text'
   });
+}
+createTeam(data:any):Observable<any>{
+  return this.http.post(`${environment.baseUrl}/api/Team/CreateTeam`, data)
 }
 
 }

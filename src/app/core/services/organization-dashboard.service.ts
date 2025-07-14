@@ -31,4 +31,8 @@ export class OrganizationDashboardService {
   // searchByCity(city: string): Observable<OrganizationCard[]> {
   //   return this.http.get<OrganizationCard[]>(`${environment.baseUrl}/by-city?city=${city}`);
   // }
+  
+    sendInvetation(data:any):Observable<any>{
+      return this.http.post(`${environment.baseUrl}/api/Invitations`, data)
+    }
 }

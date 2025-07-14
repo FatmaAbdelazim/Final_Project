@@ -56,8 +56,8 @@ export class OpportunitiesService {
   getAllOrgs():Observable<Organization[]>{
     return this.http.get<Organization[]>(`${environment.baseUrl}/api/OrganizationProfile/all`)
   }
-  getAllTeams():Observable<Team[]>{
-    return this.http.get<Team[]>(`${environment.baseUrl}/api/Team/GetAllVolunteerTeams`)
+  getAllTeams(id:string):Observable<Team[]>{
+    return this.http.get<Team[]>(`${environment.baseUrl}/api/Team/${id}/team-names`)
   }
   getParticipants(id : string | null):Observable<any>{
     return this.http.get(`${environment.baseUrl}/api/Attendance/opportunities/${id}/participants`)

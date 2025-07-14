@@ -206,9 +206,8 @@
       </div>
       <label class="mb-3">ربط الفرصة بقريق تطوعى معين (اختيارى)</label>
       <select class="form-control rtl-select mb-4" formControlName="teamName" id="teamName">
-        <option [ngValue]="opp.teamName">{{opp.teamName}}</option>
         @for (team of teams; track $index) {
-          <option [ngValue]="team.id">{{ team.name }}</option>
+          <option [value]="team">{{ team }}</option>
         }
       </select>
     </div>

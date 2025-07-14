@@ -10,7 +10,20 @@
 
       <div class="row g-1">
         <label> اسم الفريق</label>
-        <input formControlName="description" class="mt-3 rounded-2 text-end p-2 brd-color" placeholder="أدخل اسم الفريق التطوعى">
+        <input formControlName="name" class="mt-3 rounded-2 text-end p-2 brd-color" placeholder="أدخل اسم الفريق التطوعى">
+        @if(createForm.get('name')?.errors && (createForm.get('name')?.dirty || createForm.get('name')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(createForm.get('name')?.getError('required'))
+              {
+                <p>يرجي ادخال الاسم </p>
+              }
+              @else if(createForm.get('name')?.hasError('pattern'))
+              {
+                <p>يرجي ادخال اسم صالح</p>
+              }
+            </div>
+          }
       </div>
 
 
@@ -18,17 +31,44 @@
         <div class="col-12 col-md-6">
            <label for="categoryName" class="form-label my-3">  المجال/الفئة  </label>
           <input formControlName="categoryName" class="form-control p-2 rounded-3 text-end" type="text" id="categoryName">
+          @if(createForm.get('categoryName')?.errors && (createForm.get('categoryName')?.dirty || createForm.get('categoryName')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(createForm.get('categoryName')?.getError('required'))
+              {
+                <p>يرجي ادخال المجال </p>
+              }
+            </div>
+          }
         </div>
 
         <div class="col-12 col-md-6">
-           <label for="location" class="form-label my-3"> المدينة </label>
-          <input formControlName="location" class="form-control p-2 rounded-3 text-end" type="text" id="location">
+          <label for="city" class="form-label my-3"> المدينة </label>
+          <input formControlName="city" class="form-control p-2 rounded-3 text-end" type="text" id="city">
+          @if(createForm.get('city')?.errors && (createForm.get('city')?.dirty || createForm.get('city')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(createForm.get('city')?.getError('required'))
+              {
+                <p>يرجي ادخال المدينة </p>
+              }
+            </div>
+          }
         </div>
       </div>
 
       <div class="row g-1">
         <label> وصف الفريق  </label>
         <textarea formControlName="description" class="mt-3 rounded-2 text-end p-4 brd-color" placeholder="اشرح اهداف الفريق وتخصصه"></textarea>
+        @if(createForm.get('description')?.errors && (createForm.get('description')?.dirty || createForm.get('description')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(createForm.get('description')?.getError('required'))
+              {
+                <p>يرجي ادخال وصف الفريق </p>
+              }
+            </div>
+          }
       </div>
     </div>
 
@@ -41,27 +81,36 @@
       </div>
 
       <div class="d-flex flex-column my-4">
-        <label for="isAttendanceTracked" class="form-label"> هل هذا الفريق مرتبط بفرصة معينة ؟</label>
+        <label for="isLinkedToOpportunity" class="form-label"> هل هذا الفريق مرتبط بفرصة معينة ؟</label>
         <div class="d-flex justify-content-end gap-5">
 
 <div class="form-check-reverse form-check-inline">
-          <input class="form-check-input" type="radio" name="isAttendanceTracked" [value]=false
-            formControlName="isAttendanceTracked"
+          <input class="form-check-input" type="radio" name="isLinkedToOpportunity" [value]=false
+            formControlName="isLinkedToOpportunity"
             id="no">
           <label class="form-check-label" for="no">لا</label>
         </div>
 
         <div class="form-check-reverse form-check-inline">
-          <input class="form-check-input" type="radio" name="isAttendanceTracked" id="yes" [value]=true
-          formControlName="isAttendanceTracked">
+          <input class="form-check-input" type="radio" name="isLinkedToOpportunity" id="yes" [value]=true
+          formControlName="isLinkedToOpportunity">
           <label class="form-check-label" for="yes">نعم</label>
         </div>
 
         </div>
+        @if(createForm.get('isLinkedToOpportunity')?.errors && (createForm.get('isLinkedToOpportunity')?.dirty || createForm.get('categoryName')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(createForm.get('isLinkedToOpportunity')?.getError('required'))
+              {
+                <p>يرجي تحديد اذا كان الفريق مرتبط بفرصة ام لا  </p>
+              }
+            </div>
+          }
       </div>
 
       <label class="mb-3">اختيار الفرصة المرتبطة</label>
-      <select class="form-control rtl-select mb-4" formControlName="teamName" id="teamName">
+      <select class="form-control rtl-select mb-4" formControlName="relatedOpp" id="relatedOpp">
         <option [ngValue]="null" disabled>جميع الفرص التطوعية</option>
         @for (opp of opps; track $index) {
           <option [ngValue]="opp.title">{{ opp.title }}</option>
@@ -81,27 +130,36 @@
   <div class="row">
     <div class="col-12">
       <div class="d-flex flex-column my-4">
-        <label for="isAttendanceTracked" class="form-label">من يمكنه الانضمام؟</label>
+        <label for="joinPermission" class="form-label">من يمكنه الانضمام؟</label>
         <div class="d-flex justify-content-end gap-5">
           <div class="form-check-reverse form-check-inline">
-            <input class="form-check-input" type="radio" name="isAttendanceTracked" [value]="false"
-              formControlName="isAttendanceTracked" id="no">
+            <input class="form-check-input" type="radio" name="joinPermission" [value]="false"
+              formControlName="joinPermission" id="no">
             <label class="form-check-label" for="no">فقط المتطوعين بدعوة</label>
           </div>
 
           <div class="form-check-reverse form-check-inline">
-            <input class="form-check-input" type="radio" name="isAttendanceTracked" id="yes" [value]="true"
-              formControlName="isAttendanceTracked">
+            <input class="form-check-input" type="radio" name="joinPermission" id="yes" [value]="true"
+              formControlName="joinPermission">
             <label class="form-check-label" for="yes">اى متطوع</label>
           </div>
         </div>
+        @if(createForm.get('joinPermission')?.errors && (createForm.get('joinPermission')?.dirty || createForm.get('joinPermission')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(createForm.get('joinPermission')?.getError('required'))
+              {
+                <p>يرجي تحديد من يمكنه الانضمام  </p>
+              }
+            </div>
+          }
       </div>
     </div>
 
     <div class="col-6 ms-auto">
       <div class="d-flex flex-column my-4">
-        <label for="totalHours" class="form-label">الحد الاقصى لعدد الاعضاء ( اختيارى )</label>
-        <input formControlName="totalHours" type="number" class="form-control text-end" placeholder="مثال 16">
+        <label for="maxMembers" class="form-label">الحد الاقصى لعدد الاعضاء ( اختيارى )</label>
+        <input formControlName="maxMembers" type="number" class="form-control text-end" placeholder="مثال 16">
         <span class="text-muted">اتركه فارغا اذا لم يكن هناك حاجة لحد اقصى</span>
       </div>
     </div>
@@ -117,8 +175,17 @@
       </div>
 
       <div class="row g-1">
-        <textarea formControlName="description" class="mt-3 rounded-2 text-end p-4 brd-color" placeholder="اضف اى تعليمات او ملاحظات لا تظهر للمتطوعين"></textarea>
+        <textarea formControlName="internalNotes" class="mt-3 rounded-2 text-end p-4 brd-color" placeholder="اضف اى تعليمات او ملاحظات لا تظهر للمتطوعين"></textarea>
         <span class="text-muted mt-2">هذه الملاحظة لن تكون مرئية للمتطوعين</span>
+        @if(createForm.get('internalNotes')?.errors && (createForm.get('internalNotes')?.dirty || createForm.get('internalNotes')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(createForm.get('internalNotes')?.getError('required'))
+              {
+                <p>يرجي كتابة الملاحظات الداخلية </p>
+              }
+            </div>
+          }
       </div>
     </div>
 

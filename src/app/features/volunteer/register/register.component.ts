@@ -26,7 +26,7 @@ this.registerForm.get('rePassword')?.valueChanges.subscribe(() => {
   private readonly _AuthVolunteerService = inject(AuthVolunteerService)
   private readonly _Router = inject(Router)
 
-  
+
   isLoading: boolean = false;
   fileName: string | null = null;
   fileToUpload: File | null = null;
@@ -139,7 +139,6 @@ onFileSelected(event: Event): void {
       })
     }
     else{
-      // this.registerForm.setErrors({mismatch:true});
       Object.values(this.registerForm.controls).forEach(control => {
   control.markAsTouched();
   control.updateValueAndValidity();

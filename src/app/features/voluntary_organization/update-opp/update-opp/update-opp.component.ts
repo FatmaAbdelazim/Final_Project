@@ -5,6 +5,7 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Organization } from '../../../../models/organization';
 import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UpdateOpp } from '../../../../models/opportunty';
+import { AuthVoluntaryOrganizationService } from '../../../../core/services/auth-voluntary-organization.service';
 
 @Component({
   selector: 'app-update-opp',
@@ -14,11 +15,13 @@ import { UpdateOpp } from '../../../../models/opportunty';
 })
 export class UpdateOppComponent implements OnInit{
   private readonly _OpportunitiesService = inject(OpportunitiesService);
+  private readonly _AuthVoluntaryOrganizationService = inject(AuthVoluntaryOrganizationService)
   private readonly _ActivatedRoute = inject(ActivatedRoute);
   private readonly _FormBuilder = inject(FormBuilder)
   private readonly _Router = inject(Router)
 
   id!:string | null;
+  orgID! : string ;
   opp!: UpdateOpp;
   orgs! : Organization[];
   teams! : Team[];
@@ -49,10 +52,13 @@ export class UpdateOppComponent implements OnInit{
     this._ActivatedRoute.paramMap.subscribe({
       next:(value)=> {
         this.id= value.get("id");
+        this._AuthVoluntaryOrganizationService.decodeUserData();
+        this.orgID = this._AuthVoluntaryOrganizationService.userData.id;
+        console.log(this.orgID)
         this._OpportunitiesService.getAllOrgs().subscribe({
           next:(value)=> {
             this.orgs = value;
-            this._OpportunitiesService.getAllTeams().subscribe({
+            this._OpportunitiesService.getAllTeams(this.orgID).subscribe({
               next:(res)=>{
                 this.teams =res;
                 this._OpportunitiesService.getDataToUpdate(this.id).subscribe({
@@ -172,7 +178,6 @@ if (this.fileToUpload) {
   del(index: number): void {
   const currentSkills = this.updateForm.get('requiredSkills')?.value ?? [];
 
-  // نعمل نسخة نظيفة تمامًا
   const updatedSkills = currentSkills
     .map((s: any) => {
       try {
@@ -184,10 +189,9 @@ if (this.fileToUpload) {
     .flat(Infinity)
     .filter((s: any) => typeof s === 'string');
 
-  // نحذف العنصر
-  updatedSkills.splice(index, 1);
 
-  // نعمل نسخة جديدة بالكامل عشان Angular يشوف التغيير
+    updatedSkills.splice(index, 1);
+
   this.updateForm.patchValue({
     requiredSkills: [...updatedSkills]
   });

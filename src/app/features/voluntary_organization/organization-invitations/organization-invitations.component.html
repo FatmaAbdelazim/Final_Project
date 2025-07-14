@@ -7,43 +7,81 @@
   <div class="col-5 my-5">
     <h3>إرسال دعوة للمتطوعين</h3>
     <p class="my-4">ادع المتطوعين للانضمام للفرص والفرق المختلفة</p>
-    <form class="bg-white shadow rounded-4 text-end px-3 pt-5 pb-2">
+    <form [formGroup]="invitation" class="bg-white shadow rounded-4 text-end px-3 pt-5 pb-2" (ngSubmit)="Send()">
       <label class="form-label" for="volunteer">اختيار المتطوع</label>
       <div class="position-relative">
-        <input class="form-control text-end" list="volunteers" type="text" id="volunteer" placeholder="... اختر المتطوع ">
+        <input formControlName="volunteerFullName" class="form-control text-end" list="volunteers" type="text" id="volunteer" placeholder="... اختر المتطوع ">
         <i class="bi bi-chevron-down down"></i>
       </div>
       <datalist id="volunteers">
-        <option value="">
+        @for (volunteer of volunteers; track $index) {
+            <option value={{volunteer.fullName}}></option>
+          }
       </datalist>
+      @if(invitation.get('volunteerFullName')?.errors && (invitation.get('volunteerFullName')?.dirty || invitation.get('volunteerFullName')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(invitation.get('volunteerFullName')?.getError('required'))
+              {
+                <p>يرجي اختيار المتطوع   </p>
+              }
+            </div>
+          }
 
       <label class="form-label mt-4 mb-3">نوع الدعوة <i class="bi bi-envelope-fill icon"></i></label>
       <div class="form-check form-check-reverse mb-3">
-    <input class="form-check-input" type="radio" name="invitationType" id="opportunity" value="opportunity">
+    <input class="form-check-input" type="radio" name="invitationType" id="opportunity" [value]="'opportunity'">
     <label class="form-check-label" for="opportunity">
       دعوة للانضمام لفرصة
     </label>
   </div>
 
   <div class="form-check form-check-reverse mb-4">
-    <input class="form-check-input" type="radio" name="invitationType" id="team" value="team">
+    <input class="form-check-input" type="radio" name="invitationType" id="team" [value]="'team'">
     <label class="form-check-label" for="team">
       دعوة للانضمام لفريق
     </label>
   </div>
+  @if(invitation.get('invitationType')?.errors && (invitation.get('invitationType')?.dirty || invitation.get('invitationType')?.touched))
+          {
+            <div class="text-danger px-3">
+              @if(invitation.get('invitationType')?.getError('required'))
+              {
+                <p>يرجي تحديد نوع الدعوة </p>
+              }
+            </div>
+          }
 
       <div class="position-relative">
-        <input class="form-control text-end" list="volunteers" type="text" id="volunteer" placeholder="اختيار الفرصة / الفريق">
+        <input formControlName="teamName" class="form-control text-end" list="teams" type="text" placeholder="اختيار الفريق">
         <i class="bi bi-chevron-down down"></i>
       </div>
-      <datalist id="volunteers">
-        <option value="">
+      <datalist id="teams">
+        @for (team of teams; track $index) {
+            <option [value]="team"></option>
+          }
+      </datalist>
+
+
+      <div class="position-relative mt-4">
+        <input formControlName="opportunityTitle" class="form-control text-end" list="opportunityTitle" type="text" placeholder="اختيار الفرصة">
+        <i class="bi bi-chevron-down down"></i>
+      </div>
+      <datalist id="opportunityTitle">
+        @for (opp of opps; track $index) {
+            <option [value]="opp.title"></option>
+          }
       </datalist>
 
       <label class="form-label mt-5" for="volunteer">رسالة اختيارية <i class="bi bi-chat-dots-fill icon"></i></label>
-      <textarea class="form-control text-end p-3 my-2" placeholder="اكتب رسالة للمتطوع"></textarea>
+      <textarea formControlName="personalMessage" class="form-control text-end p-3 my-2" placeholder="اكتب رسالة للمتطوع"></textarea>
 
-      <button type="submit" class="btn my-3 grad">ارسال دعوة <i class="bi bi-send-fill text-white"></i></button>
+      <button [disabled]="isLoading" type="submit" class="btn my-3 grad">
+        @if(isLoading)
+    {
+      <span><i class="fas fa-spin fa-spinner"></i></span>
+    }
+        ارسال دعوة <i class="bi bi-send-fill text-white"></i></button>
     </form>
   </div>
 </section>
