@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { OrganizationData } from '../../models/organization-data';
+import { TeamsManagment } from '../../models/teams-managment';
 
 @Injectable({
   providedIn: 'root'
@@ -19,29 +20,7 @@ export class OrganizationDashboardService {
   addOpp(data: FormData): Observable<any> {
     return this.http.post<any>(`${environment.baseUrl}/api/VolunteerOpportunity/nshr forsa`, data);
   }
-  getOrganizationStatistics(): Observable<any> {
-    return this.http.get<any>(`${environment.baseUrl}/GetOrganizationStatistics`);
-  }
-
-  searchByOrgName(orgName: string): Observable<OrganizationData[]> {
-    return this.http.get<OrganizationData[]>(`${environment.baseUrl}/by-Name?name=${orgName}`);
-  }
-  searchByCity(city: string): Observable<OrganizationData[]> {
-    return this.http.get<OrganizationData[]>(`${environment.baseUrl}/by-city?city=${city}`);
-  }
-  searchByStatus(status: string): Observable<OrganizationData[]> {
-    return this.http.get<OrganizationData[]>(`${environment.baseUrl}/by-status?status=${status}`);
-  }
-  sendInvetation(data: any): Observable<any> {
+ sendInvetation(data: any): Observable<any> {
     return this.http.post(`${environment.baseUrl}/api/Invitations`, data)
-  }
-  getAllOrganization(): Observable<OrganizationData[]> {
-    return this.http.get<OrganizationData[]>(`${environment.baseUrl}/all`);
-  }
-    banOrganaization(orgId:string): Observable<any> {
-    return this.http.put(`${environment.baseUrl}/ban/${orgId}`, {})
-  }
-    deleteOrganization(orgId:string): Observable<any> {
-    return this.http.delete<any>(`${environment.baseUrl}/api/OrganizationProfile/delete/${orgId}`,{ responseType: 'text'  as 'json'});
-  }
+  } 
 }

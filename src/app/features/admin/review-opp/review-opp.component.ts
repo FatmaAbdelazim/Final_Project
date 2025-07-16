@@ -23,9 +23,13 @@ export class ReviewOppComponent implements OnInit {
   serchOrgName = "";
   serchCity = "";
   searchFilterData!: OpportunityFilter;
+  countOppDraft!: number;
+   countOppCompleted!: number;
   constructor(private _AdminService: AdminService) { }
   ngOnInit(): void {
     this.getAllPublishedOpp();
+    this.getCountOfOppComplete();
+    this.getCountOfOppDraft();
     this.oppFilterList = this.oppList;
     this.searchFilterData = {
       location: '',
@@ -41,6 +45,28 @@ export class ReviewOppComponent implements OnInit {
         this.oppFilterList = response;
         this.currentPage = 1;
         this.updatePagedOpportunities();
+      },
+      error: (e) => {
+        console.log(e.error);
+      }
+    })
+  }
+  
+  getCountOfOppComplete() {
+    this._AdminService.getCountOfOppCompleted().subscribe({
+      next: (response) => {
+          this.countOppCompleted = response.count;
+      },
+      error: (e) => {
+        console.log(e.error);
+      }
+    })
+  }
+  
+  getCountOfOppDraft() {
+    this._AdminService.getCountOfOppDraft().subscribe({
+      next: (response) => {
+          this.countOppDraft = response.count;
       },
       error: (e) => {
         console.log(e.error);

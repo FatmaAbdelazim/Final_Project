@@ -6,6 +6,7 @@ import { environment } from '../environments/environment';
 import { OppPublished } from '../../models/opp-published';
 import { OpportunityFilter } from '../../models/opportunity-filter';
 import { OrganizationData } from '../../models/organization-data';
+import { TeamsManagment } from '../../models/teams-managment';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,50 @@ export class AdminService {
   searchFilter(filter: OpportunityFilter): Observable<OppPublished[]> {
     return this.http.post<OppPublished[]>(`${environment.baseUrl}/api/VolunteerOpportunity/search-by-filters`, filter);
   }
+  getOrganizationStatistics(): Observable<any> {
+    return this.http.get<any>(`${environment.baseUrl}/GetOrganizationStatistics`);
+  }
 
+  searchByOrgName(orgName: string): Observable<OrganizationData[]> {
+    return this.http.get<OrganizationData[]>(`${environment.baseUrl}/by-Name?name=${orgName}`);
+  }
+  searchByCity(city: string): Observable<OrganizationData[]> {
+    return this.http.get<OrganizationData[]>(`${environment.baseUrl}/by-city?city=${city}`);
+  }
+  searchByStatus(status: string): Observable<OrganizationData[]> {
+    return this.http.get<OrganizationData[]>(`${environment.baseUrl}/by-status?status=${status}`);
+  }
+
+  getAllOrganization(): Observable<OrganizationData[]> {
+    return this.http.get<OrganizationData[]>(`${environment.baseUrl}/all`);
+  }
+  banOrganaization(orgId: string): Observable<any> {
+    return this.http.put(`${environment.baseUrl}/ban/${orgId}`, {})
+  }
+  deleteOrganization(orgId: string): Observable<any> {
+    return this.http.delete<any>(`${environment.baseUrl}/api/OrganizationProfile/delete/${orgId}`, { responseType: 'text' as 'json' });
+  }
+// 
+  approveOrg(orgId: string): Observable<any> {
+    return this.http.put<any>(`${environment.baseUrl}/approve/${orgId}`, {}, { responseType: 'text' as 'json' });
+  }
+
+  getTeamsStatistics(): Observable<any> {
+    return this.http.get<any>(`${environment.baseUrl}/api/MangeVolunteerTeams/GetTeamsStatistics`);
+  }
+  getAllTeams(): Observable<TeamsManagment[]> {
+    return this.http.get<TeamsManagment[]>(`${environment.baseUrl}/api/MangeVolunteerTeams/all`);
+  }
+  searchByTeamName(teamName: string): Observable<TeamsManagment[]> {
+    return this.http.get<TeamsManagment[]>(`${environment.baseUrl}/api/MangeVolunteerTeams/search?name=${teamName}`);
+  }
+  deleteTeam(teamId: string): Observable<any> {
+    return this.http.delete<any>(`${environment.baseUrl}/api/MangeVolunteerTeams/Delet_Team${teamId}`, { responseType: 'text' as 'json' });
+  }
+  getCountOfOppDraft(): Observable<any> {
+    return this.http.get<any>(`${environment.baseUrl}/api/VolunteerOpportunity/count/draft`);
+  }
+  getCountOfOppCompleted(): Observable<any> {
+    return this.http.get<any>(`${environment.baseUrl}/api/VolunteerOpportunity/count/completed`);
+  }
 }

@@ -95,7 +95,7 @@ export const routes: Routes = [
       { path: 'edit-opp/:id', component: UpdateOppComponent },
       { path: 'create-team', component: CreateTeamComponent },
       { path: 'add-opp', component: AddOppComponent },
-      { path: 'edit-team', component: EditTeamComponent },
+      { path: 'edit-team/:id', component: EditTeamComponent },
       {
             path: 'admin-dashboard', component: AdminDashboardComponent,
             children: [

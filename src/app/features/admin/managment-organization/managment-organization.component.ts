@@ -3,6 +3,7 @@ import { OrganizationData } from '../../../models/organization-data';
 import { OrganizationDashboardService } from './../../../core/services/organization-dashboard.service';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AdminService } from '../../../core/services/admin.service';
 
 @Component({
   selector: 'app-managment-organization',
@@ -21,7 +22,7 @@ export class ManagmentOrganizationComponent implements OnInit {
   OrganizationStatistics!: any;
   orgList!: OrganizationData[];
   orgFilterList!: OrganizationData[];
-  constructor(private _OrganizationDashboardService: OrganizationDashboardService) {
+  constructor(private _AdminService: AdminService) {
 
   }
   ngOnInit(): void {
@@ -29,7 +30,7 @@ export class ManagmentOrganizationComponent implements OnInit {
     this.getAllOrganization();
   }
   getOrganizationStatistics() {
-    this._OrganizationDashboardService.getOrganizationStatistics().subscribe({
+    this._AdminService.getOrganizationStatistics().subscribe({
       next: (response) => {
         this.OrganizationStatistics = response;
       },
@@ -39,7 +40,7 @@ export class ManagmentOrganizationComponent implements OnInit {
     })
   }
   getAllOrganization() {
-    this._OrganizationDashboardService.getAllOrganization().subscribe({
+    this._AdminService.getAllOrganization().subscribe({
       next: (response) => {
         this.orgList = response;
         this.orgFilterList = response;
@@ -52,7 +53,7 @@ export class ManagmentOrganizationComponent implements OnInit {
     })
   }
   searchByName() {
-    this._OrganizationDashboardService.searchByOrgName(this.serchName).subscribe({
+    this._AdminService.searchByOrgName(this.serchName).subscribe({
       next: (response) => {
         this.orgFilterList = response;
         this.currentPage = 1;
@@ -64,7 +65,7 @@ export class ManagmentOrganizationComponent implements OnInit {
     })
   }
   searchByStatus() {
-    this._OrganizationDashboardService.searchByStatus(this.serchStatus).subscribe({
+    this._AdminService.searchByStatus(this.serchStatus).subscribe({
       next: (response) => {
         this.orgFilterList = response;
         this.currentPage = 1;
@@ -76,7 +77,7 @@ export class ManagmentOrganizationComponent implements OnInit {
     })
   }
   searchByCity() {
-    this._OrganizationDashboardService.searchByCity(this.serchCity).subscribe({
+    this._AdminService.searchByCity(this.serchCity).subscribe({
       next: (response) => {
         this.orgFilterList = response;
         this.currentPage = 1;
@@ -87,12 +88,25 @@ export class ManagmentOrganizationComponent implements OnInit {
       }
     })
   }
+    approveOrg(orgId: string) {
+    this._AdminService.approveOrg(orgId).subscribe({
+      next: () => {
+        alert(" تم قبول الفرصه");
+        this.getAllOrganization();       
+         this.getOrganizationStatistics();
+      },
+      error: (e) => {
+        console.log(e.error);
+      }
+    })
+  }
 
   banOrganization(orgId: string) {
-    this._OrganizationDashboardService.banOrganaization(orgId).subscribe({
+    this._AdminService.banOrganaization(orgId).subscribe({
       next: () => {
         alert("تم حظر المنظمة بنجاح");
         this.getAllOrganization();
+        this.getOrganizationStatistics();
       },
       error: (e) => {
         console.log(e.error);
@@ -100,10 +114,11 @@ export class ManagmentOrganizationComponent implements OnInit {
     })
   }
   deleteOrganization(orgId: string) {
-    this._OrganizationDashboardService.deleteOrganization(orgId).subscribe({
+    this._AdminService.deleteOrganization(orgId).subscribe({
       next: () => {
         alert("تم حذف المنظمة بنجاح");
         this.getAllOrganization();
+        this.getOrganizationStatistics();
       },
       error: (e) => {
         console.log(e.error);

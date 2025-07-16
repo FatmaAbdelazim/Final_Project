@@ -44,5 +44,10 @@ export class TeamsService {
 createTeam(data:any):Observable<any>{
   return this.http.post(`${environment.baseUrl}/api/Team/CreateTeam`, data)
 }
-
+  getTeamById(teamId:string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/api/Team/getTeamById${teamId}`);
+  }
+  updateTeam(data:any):Observable<any>{
+  return this.http.put(`${environment.baseUrl}/api/Team/updateTeampage`, data)
+}
 }

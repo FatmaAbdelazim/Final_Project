@@ -1,1 +1,125 @@
-<p>managment-teams works!</p>
+<div class="container-fluid bg">
+    <div class="container p-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="row  mb-5 justify-content-between align-items-center px-5">
+                <div class="cert d-flex justify-content-around align-items-center px-3">
+                    <div class="col-3 smallCert d-flex justify-content-center align-items-center">
+                        <i class="bi bi-people-fill fs-3"></i>
+                    </div>
+                    <div>
+                        <p>إجمالي الفرق</p>
+                        <span class="ms-5 fs-2 crtN">{{teamStatistics?.totalTeams}}</span>
+                    </div>
+                </div>
+                <div class="cert d-flex justify-content-around align-items-center px-3">
+                    <div class="col-3 smallCert3 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-check-lg fs-3"></i>
+                    </div>
+                    <div>
+                        <p>الفرق النشطة</p>
+                        <span class="ms-5 fs-2 crtN3">{{teamStatistics?.activeTeams}}</span>
+                    </div>
+                </div>
+                <div class="cert d-flex justify-content-around align-items-center px-3">
+                    <div class="col-3 smallCert2 d-flex justify-content-center align-items-center">
+                        <i class="fa-solid fa-people-group fs-3"></i>
+                    </div>
+                    <div>
+                        <p class="ms-4">اجمالى الاعضاء</p>
+                        <span class="ms-5 fs-2 crtN2">{{teamStatistics?.totalMembers}}</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row row1 p-4 justify-content-end align-items-center">
+                <div class="form-group w-25 mt-5">
+                    <input type="email" class="form-control py-2 text-end" id="exampleInput1"
+                        aria-describedby="emailHelp" placeholder="البحث عن فريق تطوعى" [(ngModel)]="serchName"
+                        (change)="searchByTeamName()">
+                </div>
+            </div>
+            <div class="row py-4 border rounded mt-4 bgT">
+                <h4 class="text-end">قائمة الفرق التطوعية</h4>
+            </div>
+            <div class="row ">
+                <table class="fancy-table mt-5">
+                    <thead>
+                        <tr class="border rounded py-3">
+                            <th>الاجراءات</th>
+                            <th>عدد الاعضاء</th>
+                            <th>المنظمة التابعة</th>
+                            <th>الحالة</th>
+                            <th>تاريخ الانشاء</th>
+                            <th>اسم الفريق</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (team of pagedOpps; track $index) {
+                        <tr>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <i class="bi bi-pencil-square me-2 t2 fs-5"
+                                        [routerLink]="['/edit-team' , team.id]"></i>
+                                    <i class="bi bi-trash-fill me-2 t fs-5" (click)="deleteTeam(team.id)"></i>
+                                    <i class="bi bi-eye-fill me-2 main-color fs-5"
+                                        [routerLink]="['/team-details' , team.id]"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <span>{{team.actualMembersCount}}</span>
+                            </td>
+                            <td>
+                                <span>{{team.organizationName}}</span>
+                            </td>
+                            <td class="col-2">
+                                <span class="status">{{team.status}}</span>
+                            </td>
+                            <td>{{team.creationDate | date:"MMM d, y"}}</td>
+                            <td class="col-3">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="me-2">
+                                        <h5>{{team.name}}</h5><small
+                                            class="text-muted">{{team.description.slice(1,40).split('').join('')}}</small>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="row mb-5 mt-3">
+                <nav class=" p-2">
+                    <ul class="pagination">
+
+                        <!-- Previous -->
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <a class="page-link main-color" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <!-- Dynamic Page Numbers -->
+                        @for (page of [].constructor(totalPages); track $index) {
+                        <li class="page-item" [class.active]="currentPage === $index + 1">
+                            <a class="page-link main-color" (click)="goToPage($index + 1)">
+                                {{ $index + 1 }}
+                            </a>
+                        </li>
+                        }
+
+
+                        <!-- Next -->
+                        <li class="page-item" [class.disabled]="currentPage === totalPages">
+                            <a class="page-link main-color" (click)="goToPage(currentPage + 1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
