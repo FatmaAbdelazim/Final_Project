@@ -42,8 +42,8 @@ export class ManagmentOppComponent implements OnInit {
   }
   deletOpp(id:string){
     this._OpportunitiesService.deleteOpp(id).subscribe({
-      next:(response)=>{
-        alert(response.message);
+      next:()=>{
+        alert("تم حذف الفرصة بنجاح");
         this.getAllOppManagment();
       },
       error:(e)=>{

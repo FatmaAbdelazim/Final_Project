@@ -15,7 +15,7 @@ export class VolunteerDashboardService {
   constructor(private http: HttpClient) { }
 
   getMyOpportunites(id: string): Observable<VolunteerOpportuinties[]> {
-    return this.http.get<VolunteerOpportuinties[]>(`${environment.baseUrl}/api/VolunteerDashboard/my-Opportunites?volunteerId=${id}`)
+    return this.http.get<VolunteerOpportuinties[]>(`${environment.baseUrl}/api/VolunteerDashboard/submitted/${id}`)
   }
   getRecommendedOpportunities(id: string): Observable<VolunteerRecommendedOpportunities[]> {
     return this.http.get<VolunteerRecommendedOpportunities[]>(`${environment.baseUrl}/api/VolunteerDashboard/recommended?volunteerId=${id}`)

@@ -16,6 +16,6 @@ export class AuthVolunteerService {
     })
   }
   deleteVolunteer(volId: string): Observable<any> {
-    return this._HttpClient.delete<any>(`${environment.baseUrl}/api/OrganizationProfile/delete/${volId}`, { responseType: 'text' as 'json' });
+    return this._HttpClient.delete<any>(`${environment.baseUrl}/api/VolunteersProfile/deleteVolunter/${volId}`, { responseType: 'text' as 'json' });
   }
 }

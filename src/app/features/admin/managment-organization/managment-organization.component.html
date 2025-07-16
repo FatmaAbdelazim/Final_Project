@@ -8,7 +8,7 @@
                     </div>
                     <div>
                         <p>إجمالي المنظمات</p>
-                        <span class="ms-5 fs-2 crtN">{{OrganizationStatistics.totalOrganizations}}</span>
+                        <span class="ms-5 fs-2 crtN">{{OrganizationStatistics?.totalOrganizations}}</span>
                     </div>
                 </div>
                 <div class="cert d-flex justify-content-around align-items-center px-3">
@@ -17,7 +17,7 @@
                     </div>
                     <div>
                         <p>قيد المراجعة</p>
-                        <span class="ms-5 fs-2 crtN3">{{OrganizationStatistics.pendingOrganizations}}</span>
+                        <span class="ms-5 fs-2 crtN3">{{OrganizationStatistics?.pendingOrganizations}}</span>
                     </div>
                 </div>
                 <div class="cert d-flex justify-content-around align-items-center px-3">
@@ -26,31 +26,31 @@
                     </div>
                     <div>
                         <p class="ms-4">مرفوضة</p>
-                        <span class="ms-5 fs-2 crtN2">{{OrganizationStatistics.rejectedOrganizations}}</span>
+                        <span class="ms-5 fs-2 crtN2">{{OrganizationStatistics?.rejectedOrganizations}}</span>
                     </div>
                 </div>
             </div>
-            <div class="row row1 p-4 justify-content-around align-items-center">
-                <button class="btn btn-bgColor w p-2 mt-5">بحث</button>
+            <div class="row row1 p-4 justify-content-end align-items-center">
+                <!-- <button class="btn btn-bgColor w p-2 mt-5">بحث</button> -->
                 <div class="form-group text-end w-25 mt-3">
                     <label for="city" class="mb-2">المدينة</label>
                     <input list="cities" name="city" id="city" class="py-2 form-control text-end"
-                        placeholder="اختر اسم المدينه">
-                    <datalist id="cities">
-                        <option value="المنيا">
-                    </datalist>
+                        placeholder="اكتب اسم المدينه" [(ngModel)]="serchCity" (change)="searchByCity()">
                 </div>
                 <div class="form-group text-end w-25 mt-3">
                     <label for="status" class="mb-2">الحالة</label>
                     <input list="statuss" name="status" id="status" class="py-2 form-control text-end"
-                        placeholder="اختر الحاله">
+                        placeholder="اختر الحاله" [(ngModel)]="serchStatus" (change)="searchByStatus()">
                     <datalist id="statuss">
-                        <option value="حاله1">
+                        <option value="Pending">
+                        <option value="Rejected">
+                        <option value="Approved">
                     </datalist>
                 </div>
                 <div class="form-group w-25 mt-5">
                     <input type="email" class="form-control py-2 text-end" id="exampleInput1"
-                        aria-describedby="emailHelp" placeholder="البحث عن منظمات">
+                        aria-describedby="emailHelp" placeholder="البحث عن منظمات" [(ngModel)]="serchName"
+                        (change)="searchByName()">
                 </div>
             </div>
             <div class="row py-4 border rounded mt-4 bgT">
@@ -62,42 +62,78 @@
                         <tr class="border rounded py-3">
                             <th>الاجراءات</th>
                             <th>عدد الفرص</th>
+                            <th>عدد الفرق</th>
                             <th>الحالة</th>
                             <th>المدينة</th>
                             <th>المنظمة</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @for (org of pagedOpps; track $index) {
                         <tr>
                             <td>
                                 <div class="d-flex justify-content-center">
-                                    <i class="bi bi-ban me-2 t fs-5 te1"></i>
-                                    <i class="bi bi-trash-fill me-2 t fs-5"></i>
+                                    <i class="bi bi-ban me-2 t fs-5 te1" (click)="banOrganization(org.id)"></i>
+                                    <i class="bi bi-trash-fill me-2 t fs-5" (click)="deleteOrganization(org.id)"></i>
                                     <i class="bi bi-eye-fill me-2 main-color fs-5"></i>
                                 </div>
                             </td>
                             <td>
-                                <span>24</span>
+                                <span>{{org.opportunitiesCount}}</span>
+                            </td>
+                            <td>
+                                <span>{{org.teamsCount}}</span>
                             </td>
                             <td class="col-2">
-                                <span class="status">نشط</span>
+                                <span class="status">{{org.status}}</span>
                             </td>
-                            <td>الرياض</td>
+                            <td>{{org.city}}</td>
                             <td class="col-4">
                                 <div class="d-flex justify-content-center align-items-center">
                                     <div class="me-2">
-                                        <h5>جمعية الخير</h5><small class="text-muted">Khairgmail.com</small>
+                                        <h5>{{org.name}}</h5><small class="text-muted">{{org.email}}</small>
                                     </div>
-                                    <img src="/assets/review.jpg" alt="" class="imgSponser">
+                                    <img src="{{org.profileImage}}" alt="" class="imgSponser">
                                 </div>
                             </td>
                         </tr>
 
+                        }
                     </tbody>
                 </table>
 
             </div>
+ <div class="row mb-5 mt-3">
+            <nav class=" p-2">
+                <ul class="pagination">
 
+                    <!-- Previous -->
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                        <a class="page-link main-color" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <!-- Dynamic Page Numbers -->
+                    @for (page of [].constructor(totalPages); track $index) {
+                    <li class="page-item" [class.active]="currentPage === $index + 1">
+                        <a class="page-link main-color" (click)="goToPage($index + 1)">
+                            {{ $index + 1 }}
+                        </a>
+                    </li>
+                    }
+
+
+                    <!-- Next -->
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                        <a class="page-link main-color" (click)="goToPage(currentPage + 1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
+        </div>
         </div>
     </div>
 </div>

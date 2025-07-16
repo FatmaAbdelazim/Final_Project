@@ -1,10 +1,11 @@
 import { AuthVolunteerService } from './../../../core/services/auth-volunteer.service';
 import { Component, OnInit } from '@angular/core';
 import { AuthVoluntaryOrganizationService } from '../../../core/services/auth-voluntary-organization.service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-volunteer-delete-acount',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './volunteer-delete-acount.component.html',
   styleUrl: './volunteer-delete-acount.component.css'
 })
