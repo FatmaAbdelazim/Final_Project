@@ -1,17 +1,17 @@
 <section class="p-5">
   <div class="p-4 rounded-3 div-bg">
-    <h4><span>فرصة التطوع:  </span>  تنظيف الشاطئ</h4>
+    <h4><span>فرصة التطوع:  </span>  {{opp.title}}</h4>
     <div class="d-flex justify-content-end mt-3 gap-5">
       <div class="d-flex align-items-center justify-content-end gap-2">
-      <p>15 يناير 2025</p>
+      <p>{{opp.startDate | date : 'short'}}</p>
       <i class="fa-solid fa-calendar-days"></i>
       </div>
       <div class="d-flex align-items-center justify-content-end gap-2">
-      <p>اسيوط</p>
+      <p>{{opp.location}}</p>
       <i class="bi bi-geo-alt-fill"></i>
       </div>
       <div class="d-flex align-items-center justify-content-end gap-2">
-      <p>45 متقدم</p>
+      <p> متقدم {{opp.volunteerCount}} </p>
       <i class="fa-solid fa-users"></i>
       </div>
     </div>
@@ -25,7 +25,7 @@
       </div>
       <div>
         <h6>مرفوض</h6>
-        <h3 class="perple mb-0">7</h3>
+        <h3 class="perple mb-0">{{statistic.rejected}}</h3>
       </div>
     </div>
   </div>
@@ -37,7 +37,7 @@
       </div>
       <div>
         <h6>مقبول</h6>
-        <h3 class="baby-blue mb-0">20</h3>
+        <h3 class="baby-blue mb-0">{{statistic.accepted}}</h3>
       </div>
     </div>
   </div>
@@ -49,7 +49,7 @@
       </div>
       <div>
         <h6>قيد المراجعة</h6>
-        <h3 class="pink mb-0">18</h3>
+        <h3 class="pink mb-0">{{statistic.pending}}</h3>
       </div>
     </div>
   </div>
@@ -61,7 +61,7 @@
       </div>
       <div>
         <h6>إجمالي المتقدمين</h6>
-        <h3 class="perple mb-0">45</h3>
+        <h3 class="perple mb-0">{{statistic.total}}</h3>
       </div>
     </div>
   </div>
@@ -75,51 +75,75 @@
     </div>
     <div class="col-3">
       <label class="form-label">الحالة</label>
-      <select class="form-control" type="date" placeholder="ادخل اسم المتطوع">
+      <select class="form-control">
         <option>نشط</option>
       </select>
     </div>
     <div class="col-3">
       <label class="form-label">تاريخ التقديم</label>
-      <input class="form-control" type="date" placeholder="ادخل اسم المتطوع">
+      <input [(ngModel)]="applyDate" (change)="searchByDate()" class="form-control" type="datetime-local">
     </div>
     <div class="col-3">
       <label class="form-label">اسم المتطوع</label>
-      <input class="form-control text-end" type="text" placeholder="ادخل اسم المتطوع">
+      <input [(ngModel)]="volunteerName" (input)="searchByName()" class="form-control text-end" type="text" placeholder="ادخل اسم المتطوع">
     </div>
   </div>
 </div>
 
-<div class="brd-color p-5 bg-white mt-4 rounded-3">
+<div class="brd-color p-5 bg-white mt-4 rounded-3 pb-2">
   <h5 class="mb-5">قائمة المتطوعين</h5>
-  <div class="d-flex align-items-center justify-content-between brd-color rounded-3 px-4">
+  @for (volunteer of pagedVolunteers; track $index) {
+    <div class="d-flex align-items-center justify-content-between brd-color rounded-3 px-4">
     <div class="d-flex align-items-center gap-3">
-      <button class="btn btn-danger px-4">رفض</button>
-      <button class="btn btn-success px-4">قبول</button>
-      <button class="btn btn-outline-primary">عرض الملف الشخصى</button>
+      <button (click)="reject(volunteer.id)" class="btn btn-danger px-4">رفض</button>
+      <button (click)="accept(volunteer.id)" class="btn btn-success px-4">قبول</button>
+      <button [routerLink]="['/']" class="btn-cancle">عرض الملف الشخصى</button>
     </div>
     <div class="d-flex align-items-center">
       <div class="text-center">
-        <p class="mb-2">خالد سعيد</p>
-        <p>تاريخ التقديم: 10 يناير 2025</p>
+        <p class="mb-2">{{volunteer.fullName}}</p>
+        <p>تاريخ التقديم: {{volunteer.appliedAt | date : 'short'}}</p>
       </div>
-      <img src="" alt="img">
+      <img [src]="volunteer.profileImage" alt="img">
     </div>
   </div>
-  <div class="d-flex align-items-center justify-content-between brd-color rounded-3 px-4">
-    <div class="d-flex align-items-center gap-3">
-      <button class="btn btn-danger px-4">رفض</button>
-      <button class="btn btn-success px-4">قبول</button>
-      <button class="btn btn-outline-primary">عرض الملف الشخصى</button>
-    </div>
-    <div class="d-flex align-items-center">
-      <div class="text-center">
-        <p class="mb-2">خالد سعيد</p>
-        <p>تاريخ التقديم: 10 يناير 2025</p>
-      </div>
-      <img src="" alt="img">
-    </div>
-  </div>
+  }
+
+  <div class="d-flex justify-content-start align-items-center mt-4">
+            <nav class="p-2">
+                    <ul class="pagination">
+
+                        <!-- Previous -->
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <a class="page-link main-color" (click)="goToPage(currentPage - 1)"
+                                aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <!-- Dynamic Page Numbers -->
+                        @for (page of [].constructor(totalPages); track $index) {
+                        <li class="page-item" [class.active]="currentPage === $index + 1">
+                            <a class="page-link main-color"  (click)="goToPage($index + 1)">
+                                {{ $index + 1 }}
+                            </a>
+                        </li>
+                        }
+
+
+                        <!-- Next -->
+                        <li class="page-item" [class.disabled]="currentPage === totalPages">
+                            <a class="page-link main-color" (click)="goToPage(currentPage + 1)"
+                                aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+        </div>
+
 </div>
 
 </section>

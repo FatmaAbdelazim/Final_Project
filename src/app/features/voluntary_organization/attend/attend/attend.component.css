@@ -50,3 +50,8 @@ img{
   padding: 3px 10px;
   font-weight: bold;
 }
+.pagination .page-item.active .page-link {
+  background-color: #E9A1F0E5;
+  border-color:#E9A1F0E5;
+  color: white;
+}
