@@ -110,7 +110,7 @@
       </div>
 
       <label class="mb-3">اختيار الفرصة المرتبطة</label>
-      <select class="form-control rtl-select mb-4" formControlName="relatedOpp" id="relatedOpp">
+      <select class="form-control rtl-select mb-4" formControlName="opportunityTitle" id="opportunityTitle">
         <option [ngValue]="null" disabled>جميع الفرص التطوعية</option>
         @for (opp of opps; track $index) {
           <option [ngValue]="opp.title">{{ opp.title }}</option>
@@ -133,13 +133,13 @@
         <label for="joinPermission" class="form-label">من يمكنه الانضمام؟</label>
         <div class="d-flex justify-content-end gap-5">
           <div class="form-check-reverse form-check-inline">
-            <input class="form-check-input" type="radio" name="joinPermission" [value]="false"
+            <input class="form-check-input" type="radio" name="joinPermission" [value]="1"
               formControlName="joinPermission" id="no">
             <label class="form-check-label" for="no">فقط المتطوعين بدعوة</label>
           </div>
 
           <div class="form-check-reverse form-check-inline">
-            <input class="form-check-input" type="radio" name="joinPermission" id="yes" [value]="true"
+            <input class="form-check-input" type="radio" name="joinPermission" id="yes" [value]="0"
               formControlName="joinPermission">
             <label class="form-check-label" for="yes">اى متطوع</label>
           </div>

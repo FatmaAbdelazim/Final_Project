@@ -42,3 +42,8 @@ img{
   left: 18px;
   bottom: 9px;
 }
+.pagination .page-item.active .page-link {
+  background-color: #E9A1F0E5;
+  border-color:#E9A1F0E5;
+  color: white;
+}

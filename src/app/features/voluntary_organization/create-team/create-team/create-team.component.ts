@@ -28,10 +28,10 @@ export class CreateTeamComponent implements OnInit{
     description : ['', Validators.required],
     categoryName : ['', Validators.required],
     city: ['', Validators.required],
-    relatedOpp :[''],
+    opportunityTitle :[''],
     isLinkedToOpportunity : ['', Validators.required],
     joinPermission : ['', Validators.required],
-    maxMembers : [0],
+    maxMembers : [''],
     internalNotes :['', Validators.required]
   })
 
@@ -52,8 +52,9 @@ export class CreateTeamComponent implements OnInit{
       const formData = {
       ...this.createForm.value,
       organizationID: this.ordID,
-      id:0
+      id:"0"
       };
+      console.log(formData);
       this._TeamsService.createTeam(formData).subscribe({
       next:(res) =>{
           this.isLoading = false;

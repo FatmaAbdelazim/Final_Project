@@ -7,7 +7,7 @@
     </div>
 
     <div class="mt-5">
-      <form>
+      <form [formGroup]="form" (ngSubmit)="update()">
         <div class="row g-3">
         <div class="col-12 col-md-6">
           <label for="phone" class="form-label my-3">رقم الجوال</label>
@@ -40,11 +40,13 @@
                           <div>
                             <p> ( PNG, JPG ) اختر صورة شعار المنظمة </p>
                             <div class="d-flex gap-3 mt-4">
-                              <button class="btn-cancel">حذف الصورة</button>
-                              <button class="btn"> رفع صورة جديدة <i class="bi bi-upload"></i></button>
+                              <button class="btn-cancel" (click)="deleteLogo()">حذف الصورة</button>
+                              <input type="file" #fileInput accept="image/*" class="form-control d-none"
+                                (change)="onFileSelected($event)">
+                              <button class="btn" (click)="triggerFileInput()"> رفع صورة جديدة <i class="bi bi-upload"></i></button>
                             </div>
                           </div>
-                          <img src="" alt="img">
+                          <img [src]="org.logoFile" alt="img">
                         </div>
                     </div>
       </div>

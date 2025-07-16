@@ -18,5 +18,5 @@ export interface createTeam {
   internalNotes: string;
   organizationID: string;
   joinPermission : string;
-  relatedOpp : string
+  opportunityTitle : string
 }
