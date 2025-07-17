@@ -4,7 +4,7 @@ export interface OppPublished {
     location: string;
     startDate: string;
     status: string;
-    descraption:string;
+    description:string;
     organizationName: string;
 }
 

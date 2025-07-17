@@ -16,7 +16,7 @@ export class TeamsService {
     return this.http.get<Team[]>(`${this.baseUrl}/api/Team/GetAllVolunteerTeams`);
   }
 
-  getTeamDetails(id:string | null):Observable<TeamDetails>{
+  getTeamDetails(id: string | null): Observable<TeamDetails> {
     return this.http.get<TeamDetails>(`${environment.baseUrl}/api/Team/${id}/Team-Detailes`);
   }
 
@@ -37,17 +37,17 @@ export class TeamsService {
   }
 
   joinTeam(data: any): Observable<any> {
-  return this.http.post(`${environment.baseUrl}/api/Team/request`, data, {
-    responseType: 'text'
-  });
-}
-createTeam(data:any):Observable<any>{
-  return this.http.post(`${environment.baseUrl}/api/Team/CreateTeam`, data)
-}
-  getTeamById(teamId:string): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/api/Team/request`, data, {
+      responseType: 'text'
+    });
+  }
+  createTeam(data: any): Observable<any> {
+    return this.http.post(`${environment.baseUrl}/api/Team/CreateTeam`, data)
+  }
+  getTeamByIdForUpdate(teamId: string| null): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/api/Team/getTeamById${teamId}`);
   }
-  updateTeam(data:any):Observable<any>{
-  return this.http.put(`${environment.baseUrl}/api/Team/updateTeampage`, data)
-}
+  updateTeam(data: any): Observable<any> {
+    return this.http.put(`${environment.baseUrl}/api/Team/updateTeampage`, data)
+  }
 }

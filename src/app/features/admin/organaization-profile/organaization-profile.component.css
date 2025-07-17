@@ -1,0 +1,72 @@
+.cert{
+    width: 280px;
+    height: 138px;
+    background-color: #FFFFFF;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px 0 rgba(17, 16, 16, 0.16), 0 2px 10px 0 rgb(0 0 0 / 12%) !important;
+}
+.smallCert{
+    width: 62px;
+    height: 56px;
+    background-color: #9333EA;
+    border-radius: 15px;
+    color: #FFFFFF;
+}
+.smallCert2{
+    width: 62px;
+    height: 56px;
+    background-color: #A1A6F0;
+    border-radius: 15px;
+    color: #FFFFFF;
+}
+.smallCert3{
+    width: 62px;
+    height: 56px;
+    background-color: #E9A1F0;
+    border-radius: 15px;
+    color: #FFFFFF;
+}
+.crtN{
+    color: #9333EA;
+}
+.crtN3{
+    color: #E9A1F0;
+}
+.crtN2{
+    color: #A1A6F0;
+}
+.active {
+    background: #E9A1F066;
+}
+.t {
+    color: #E9A1F0;
+}
+.e{
+  color: #A1A6F0;
+}
+.size{
+      padding: 8px 14px;
+      width: 23%;
+      color: white;
+}
+.bgT{
+    background-color: #FFFFFF;
+}
+.img {
+    width: 128px;
+    height: 128px;
+    border-radius: 70px;
+    border: #16A34A solid 3px;
+}
+.row1{
+    background-color: #FFFFFF;
+    border-radius: 5px;
+}
+.w{
+    width: 15%;
+    color: #FFFFFF;
+}
+/*  */
+.bg{
+    background-color: #FDF2F8;
+}

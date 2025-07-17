@@ -42,7 +42,7 @@
                     <input list="statuss" name="status" id="status" class="py-2 form-control text-end"
                         placeholder="اختر الحاله" [(ngModel)]="serchStatus" (change)="searchByStatus()">
                     <datalist id="statuss">
-                        <option value="Pending">
+                        <!-- <option value="Pending"> -->
                         <option value="Rejected">
                         <option value="Approved">
                     </datalist>
@@ -70,13 +70,14 @@
                     </thead>
                     <tbody>
                         @for (org of pagedOpps; track $index) {
+                            
                         <tr>
                             <td>
                                 <div class="d-flex justify-content-center">
                                     <i class="bi bi-check-lg  me-2 t fs-4 te2" (click)="approveOrg(org.id)"></i>
                                     <i class="bi bi-ban me-2 t fs-5 te1" (click)="banOrganization(org.id)"></i>
                                     <i class="bi bi-trash-fill me-2 t fs-5" (click)="deleteOrganization(org.id)"></i>
-                                    <i class="bi bi-eye-fill me-2 main-color fs-5"></i>
+                                    <i class="bi bi-eye-fill me-2 main-color fs-5" [routerLink]="['/admin-dashboard/organization-profile']"></i>
                                 </div>
                             </td>
                             <td>

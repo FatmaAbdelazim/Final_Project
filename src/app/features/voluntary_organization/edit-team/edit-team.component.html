@@ -1,6 +1,8 @@
 <div class="container-fluid bg">
     <div class="container py-5">
-        <form class="row mt-5 justify-content-center align-items-center mb-5">
+       @if(updateForm){
+          <form class="row mt-5 justify-content-center align-items-center mb-5" [formGroup]="updateForm"
+            (ngSubmit)="updateTeam()">
             <div class="card p-4 w-75 mb-4">
                 <div class="d-flex justify-content-end align-items-center mb-4">
                     <h4 class="mt-3">معلومات الفريق</h4>
@@ -11,24 +13,24 @@
                 <div class="row">
                     <div class="form-group text-end">
                         <label for="name" class="mb-2">اسم الفريق</label>
-                        <input type="text" id="name" value="فريق توعية" class="py-3 form-control text-end">
+                        <input type="text" id="name" class="py-3 form-control text-end" formControlName="name">
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="form-group text-end w-50">
-                        <label for="add" class="mb-2">المجال/الفئة</label>
-                        <input type="text" id="add" value="البيئة" class="py-3 form-control text-end">
+                        <label for="category" class="mb-2">المجال/الفئة</label>
+                        <input type="text" id="category" class="py-3 form-control text-end" formControlName="categoryName">
                     </div>
                     <div class="form-group text-end w-50">
-                        <label for="add" class="mb-2">المدينة</label>
-                        <input type="text" id="add" value="اسيوط" class="py-3 form-control text-end">
+                        <label for="city" class="mb-2">المدينة</label>
+                        <input type="text" id="city" class="py-3 form-control text-end" formControlName="city">
                     </div>
                 </div>
                 <div class="row mt-4">
                     <div class="form-group text-end">
                         <label for="des" class="mb-2">وصف الفريق</label>
                         <textarea class="form-control text-end" id="des" rows="3"
-                            value="فريق متخصص في نشر الوعي البيئي وتنظيم الأنشطة التطوعية المتعلقة بحماية البيئة والاستدامة فى المتجمع المحلى"></textarea>
+                            formControlName="description"></textarea>
                     </div>
                 </div>
                 <div class="d-flex justify-content-end align-items-center mb-4 mt-4">
@@ -41,27 +43,29 @@
                     <p class="mb-4">هل هذا الفريق مرتبط بفرصة معينة ؟</p>
                     <div class="d-flex py-2">
                         <div class="form-check">
-
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-                                value="option1" checked>
-                            <label class="form-check-label" for="gridRadios1">
+                            <input class="form-check-input" type="radio" name="isLinkedToOpportunity" id="gridRadiosT1"
+                                [value]="true" formControlName="isLinkedToOpportunity" />
+                            <label class="form-check-label" for="gridRadiosT1">
                                 نعم
                             </label>
                         </div>
                         <div class="form-check ms-5">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
-                                value="option1" checked>
-                            <label class="form-check-label" for="gridRadios2">
+                            <input class="form-check-input" type="radio" name="isLinkedToOpportunity" id="gridRadiosT2"
+                                [value]="false" formControlName="isLinkedToOpportunity" />
+                            <label class="form-check-label" for="gridRadiosT2">
                                 لا
                             </label>
                         </div>
                     </div>
+
                 </div>
                 <div class="row mt-4 mb-5">
                     <div class="form-group text-end">
                         <label for="nameOrg" class="mb-2">اختيار الفرصة المرتبطة</label>
-                        <select class="form-control py-3">
-                            <option class="text-end">مبادرة تنظيف الشواطىء</option>
+                        <select class="form-control py-3" formControlName="opportunityName">
+                            @for (opp of oppList; track $index) {
+                            <option class="text-end">{{opp.title}}</option>
+                            }
                         </select>
                     </div>
                 </div>
@@ -78,15 +82,15 @@
                     <div class="d-flex py-2">
                         <div class="form-check">
 
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-                                value="option1" checked>
+                            <input class="form-check-input" type="radio" name="joinPermission" id="gridRadios1"
+                                formControlName="joinPermission" value="InviteOnly">
                             <label class="form-check-label" for="gridRadios1">
                                 فقط المتطوعين بدعوة
                             </label>
                         </div>
                         <div class="form-check ms-5">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2"
-                                value="option1" checked>
+                            <input class="form-check-input" type="radio" name="joinPermission" id="gridRadios2"
+                                formControlName="joinPermission" value="Anyone">
                             <label class="form-check-label" for="gridRadios2">
                                 اى متطوع
                             </label>
@@ -96,12 +100,12 @@
                 <div class="row mb-3 mt-4">
                     <div class="form-group text-end">
                         <label for="name" class="mb-2">الحد الاقصى لعدد الاعضاء ( اختيارى )</label>
-                        <input type="number" id="name" value="16" class="py-3 form-control text-end">
+                        <input type="number" id="name" class="py-3 form-control text-end" formControlName="maxMembers">
                     </div>
                     <p class="text-end mt-4 text-muted">اتركه فارغا اذا لم يكن هناك حاجة لحد اقصى</p>
                 </div>
             </div>
-             <div class="card p-4 w-75 mb-4">
+            <div class="card p-4 w-75 mb-4">
                 <div class="d-flex justify-content-end align-items-center mb-4">
                     <h4 class="mt-3">ملاحظات داخلية</h4>
                     <div class="smallDiv d-flex justify-content-center align-items-center">
@@ -111,7 +115,7 @@
                 <div class="row mt-2 mb-4">
                     <div class="form-group text-end">
                         <textarea class="form-control text-end" id="des" rows="3"
-                            value="هذا الفريق يحتاج إلى متابعة خاصة لضمان تنفيذ الأنشطة وفقاً للمعايير البيئية المطلوبة.يُفضل اختيار متطوعين لديهم خبرة سابقة في المجال البيئي"></textarea>
+                            formControlName="internalNotes"></textarea>
                     </div>
                     <p class="text-end mt-4 text-muted">هذه الملاحظة لن تكون مرئية للمتطوعين</p>
                 </div>
@@ -124,5 +128,6 @@
                 </button>
             </div>
         </form>
+       }
     </div>
 </div>

@@ -63,7 +63,7 @@
                                 <div class="d-flex justify-content-center">
                                     <i class="bi bi-x-lg me-2 t fs-4 text-danger" (click)="rejectOpp(opp.id)"></i>
                                     <i class="bi bi-check-lg  me-2 t fs-4 te1" (click)="approveOpp(opp.id)"></i>
-                                    <i class="bi bi-pencil-square me-2 t fs-4 te2" [routerLink]="['/edit-opp',]"></i>
+                                    <i class="bi bi-pencil-square me-2 t fs-4 te2" [routerLink]="['/edit-opp',opp.id]"></i>
                                     <i class="bi bi-eye-fill me-2 main-color fs-4" [routerLink]="['/opportunity-details',opp.id]"></i>
                                 </div>
                             </td>
@@ -77,7 +77,7 @@
                             <td>
                                 <div class="row justify-content-center align-items-center">
                                     <h5>{{opp.title}}</h5>
-                                    <small class="text-muted">{{opp.descraption}}</small>
+                                    <small class="text-muted">{{opp.description}}</small>
                                 </div>
                             </td>
                         </tr>

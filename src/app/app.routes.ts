@@ -45,6 +45,7 @@ import { ManagmentOrganizationComponent } from './features/admin/managment-organ
 import { ManagmentTeamsComponent } from './features/admin/managment-teams/managment-teams.component';
 import { ReviewOppComponent } from './features/admin/review-opp/review-opp.component';
 import { ReviewRatingComponent } from './features/admin/review-rating/review-rating.component';
+import { OrganaizationProfileComponent } from './features/admin/organaization-profile/organaization-profile.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -101,11 +102,12 @@ export const routes: Routes = [
             children: [
                   { path: '', component: AdminHomeComponent },
                   { path: 'home', component: AdminHomeComponent },
-                  { path: 'managment-volunteers', component: ManagmentVolunteersComponent},
-                  { path: 'managment-organization', component: ManagmentOrganizationComponent},
-                  { path: 'managment-teams', component: ManagmentTeamsComponent},
-                  { path: 'review-opp', component:ReviewOppComponent },
-                  { path: 'review-rating', component: ReviewRatingComponent},
+                  { path: 'managment-volunteers', component: ManagmentVolunteersComponent },
+                  { path: 'managment-organization', component: ManagmentOrganizationComponent },
+                  { path: 'organization-profile', component: OrganaizationProfileComponent },
+                  { path: 'managment-teams', component: ManagmentTeamsComponent },
+                  { path: 'review-opp', component: ReviewOppComponent },
+                  { path: 'review-rating', component: ReviewRatingComponent },
 
             ]
       },
