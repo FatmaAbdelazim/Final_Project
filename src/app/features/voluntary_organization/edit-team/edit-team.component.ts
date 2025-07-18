@@ -1,5 +1,5 @@
 import { OpportunitiesService } from './../../../core/services/opportunities.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TeamsService } from '../../../core/services/teams.service';
@@ -7,7 +7,7 @@ import { TeamModel } from '../../../models/team-model';
 
 @Component({
   selector: 'app-edit-team',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule,RouterLink],
   templateUrl: './edit-team.component.html',
   styleUrl: './edit-team.component.css'
 })
@@ -16,7 +16,7 @@ export class EditTeamComponent implements OnInit {
   oppList!: any[];
   teamId!: string | null;
   team!: TeamModel;
-  constructor(private _TeamsService: TeamsService, private _Router: ActivatedRoute, private _OpportunitiesService: OpportunitiesService) {
+  constructor(private _TeamsService: TeamsService, private _Router: ActivatedRoute,private _router:Router , private _OpportunitiesService: OpportunitiesService) {
   }
   ngOnInit(): void {
     this.teamId = this._Router.snapshot.paramMap.get('id');
@@ -74,7 +74,8 @@ export class EditTeamComponent implements OnInit {
     this._TeamsService.updateTeam(this.updateForm.value).subscribe({
       next: () => {
         alert("تم تحديث الفريق بنجاح (:");
-        console.log(this.updateForm.value);
+        this._router.navigate(['/']);
+        // console.log(this.updateForm.value);
       },
       error: (e) => {
         alert(e.error);

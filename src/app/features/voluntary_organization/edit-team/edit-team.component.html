@@ -83,7 +83,7 @@
                         <div class="form-check">
 
                             <input class="form-check-input" type="radio" name="joinPermission" id="gridRadios1"
-                                formControlName="joinPermission" value="InviteOnly">
+                                formControlName="joinPermission" value="InvitationOnly">
                             <label class="form-check-label" for="gridRadios1">
                                 فقط المتطوعين بدعوة
                             </label>
@@ -124,7 +124,7 @@
                 <button class="btn bgColor" type="submit">حفظ التغيرات
                     <i class="bi bi-floppy-fill ms-2"></i>
                 </button>
-                <button class="btn bgs">الغاء
+                <button class="btn bgs" [routerLink]="['/']">الغاء
                 </button>
             </div>
         </form>

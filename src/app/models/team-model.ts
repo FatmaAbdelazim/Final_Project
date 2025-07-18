@@ -4,7 +4,7 @@ export interface TeamModel {
   categoryId: string;
   city: string;
   isLinkedToOpportunity: boolean;
-  joinPermission: 'Anyone' | 'InviteOnly' | number; 
+  joinPermission: 'Anyone' | 'InvitationOnly' | number; 
   //  joinPermission: string; 
   maxMembers: number;
   internalNotes?: string;

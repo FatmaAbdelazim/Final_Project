@@ -1,6 +1,6 @@
 <div class="container">
-    <div  class="row mt-4">
-                 <img [src]="'https://tatawwa3.runasp.net/uploads/' + Opportunity.image" alt="CardImage" id="divSection1">
+    <div class="row mt-4">
+        <img [src]="'https://tatawwa3.runasp.net/uploads/' + Opportunity.image" alt="CardImage" id="divSection1">
     </div>
     <!-- <div [ngStyle]="backgroundImageStyle" id="divSection1" class="row  mt-4 justify-content-center align-items-center" >
     
@@ -44,7 +44,10 @@
                     </div>
 
                 </div>
-                <button class="text-center mt-3 btn btn-bgcolor text-white mb-4" [routerLink]="['/join-opp',OpportunityId]">انضم الان</button>
+                <div class="row justify-content-center">
+                    <button class="text-center mt-5 btn btn-bgcolorA text-white mb-4"
+                        [routerLink]="['/join-opp',OpportunityId]">انضم الان</button>
+                </div>
             </div>
 
         </div>
@@ -67,7 +70,7 @@
                     }
                     }
 
-              </div>
+                </div>
                 <div class="row justify-content-end align-items-center mb-5">
                     <div class="div row  justify-content-end  align-items-center mb-3">
                         <div class="d-flex justify-content-end text-center  align-items-center" id="divM">
