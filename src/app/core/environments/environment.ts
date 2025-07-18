@@ -1,3 +1,3 @@
 export const environment = {
-  baseUrl : 'https://tatawwa3.runasp.net'
+  baseUrl : 'https://tatawwa3.runasp.net',
 }

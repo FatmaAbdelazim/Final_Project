@@ -35,7 +35,9 @@ export class OrganizationDashboardService {
     return this.http.get<OrganizationData[]>(`${environment.baseUrl}/by-status?status=${status}`);
   }
   sendInvetation(data: any): Observable<any> {
-    return this.http.post(`${environment.baseUrl}/api/Invitations`, data)
+    return this.http.post(`${environment.baseUrl}/api/Invitations`, data, {
+      responseType: 'text' as 'json'
+    })
   }
   updateAttendance(data: Participant[]): Observable<any> {
     return this.http.put(`${ environment.baseUrl }/api/Attendance/attendance/update`, data, {

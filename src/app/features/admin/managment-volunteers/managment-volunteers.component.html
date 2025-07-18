@@ -1,1 +1,118 @@
-<p>managment-volunteers works!</p>
+<div class="container-fluid bg">
+    <div class="container p-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="row row1 p-4 justify-content-end align-items-center">
+                 <div class="form-group text-end w-25 mt-3">
+                    <label for="city" class="mb-2">ساعات التطوع</label>
+                    <input list="cities" name="city" id="city" class="py-2 form-control text-end"
+                        placeholder="اكتب ساعات التطوع" [(ngModel)]="serchHours" (input)="searchByHours()">
+                </div>
+                <div class="form-group text-end w-25 mt-3">
+                    <label for="city" class="mb-2">المدينة</label>
+                    <input list="cities" name="city" id="city" class="py-2 form-control text-end"
+                        placeholder="اكتب اسم المدينه" [(ngModel)]="serchCity" (input)="searchByCity()">
+                </div>
+                <div class="form-group text-end w-25 mt-3">
+                    <label for="status" class="mb-2">الحالة</label>
+                    <input list="statuss" name="status" id="status" class="py-2 form-control text-end"
+                        placeholder="اختر الحاله" [(ngModel)]="serchStatus" (input)="searchByStatus()">
+                    <datalist id="statuss">
+                        <option value="Pending">
+                        <option value="Rejected">
+                        <option value="Approved">
+                    </datalist>
+                </div>
+                <div class="form-group w-25 mt-3 text-end">
+                  <label for="name" class="mb-2">اسم المتطوع</label>
+                    <input type="text" class="form-control py-2 text-end" id="exampleInput1"
+                        aria-describedby="emailHelp" placeholder="ادخل اسم المتطوع" [(ngModel)]="serchName"
+                        (input)="searchByName()">
+                </div>
+            </div>
+            <div class="row py-4 border rounded mt-4 bgT text-end">
+                <h4>قائمة المتطوعين</h4>
+                <p class="text-muted pb-0">إجمالي المتطوعين: {{volList.length}}</p>
+            </div>
+            <div class="row justify-content-center">
+                <table class="fancy-table mt-5">
+                    <thead>
+                        <tr class="border rounded py-3">
+                            <th>الاجراءات</th>
+                            <th>عدد الساعات</th>
+                            <th>عدد الفرص</th>
+                            <th>الحالة</th>
+                            <th>المدينة</th>
+                            <th>تاريخ التسجيل</th>
+                            <th>المتطوع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (vol of pagedVols; track $index) {
+                        <tr>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <i class="bi bi-ban me-2 t fs-5 te1" (click)="banVol(vol.id)"></i>
+                                    <i class="bi bi-trash-fill me-2 t fs-5" (click)="deleteVol(vol.id)"></i>
+                                    <i class="bi bi-eye-fill me-2 main-color fs-5" [routerLink]="['/admin-dashboard/volunteer-profile',vol.id]"></i>
+                                </div>
+                            </td>
+                            <td>
+                                <span>{{vol.volunteerHours}}</span>
+                            </td>
+                            <td>
+                                <span>{{vol.opportunitiesAppliedCount}}</span>
+                            </td>
+                            <td>
+                                <span class="status">{{vol.status}}</span>
+                            </td>
+                            <td>{{vol.city}}</td>
+                            <td>{{vol.joinDate | date : 'short'}}</td>
+                            <td>
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <div class="me-2">
+                                        <h5>{{vol.fullName}}</h5><small class="text-muted">{{vol.email}}</small>
+                                    </div>
+                                    <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + vol.image" alt="" class="imgSponser">
+                                </div>
+                            </td>
+                        </tr>
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="row mb-5 mt-3">
+                <nav class=" p-2">
+                    <ul class="pagination">
+
+                        <!-- Previous -->
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <a class="page-link main-color" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <!-- Dynamic Page Numbers -->
+                        @for (page of [].constructor(totalPages); track $index) {
+                        <li class="page-item" [class.active]="currentPage === $index + 1">
+                            <a class="page-link main-color" (click)="goToPage($index + 1)">
+                                {{ $index + 1 }}
+                            </a>
+                        </li>
+                        }
+
+
+                        <!-- Next -->
+                        <li class="page-item" [class.disabled]="currentPage === totalPages">
+                            <a class="page-link main-color" (click)="goToPage(currentPage + 1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

@@ -6,9 +6,9 @@ import { OpportunitiesService } from '../../../core/services/opportunities.servi
 import { opportunities } from '../../../models/team-details';
 import { Team } from '../../../models/team';
 import { AdminService } from '../../../core/services/admin.service';
-import { Volunteer } from '../../../models/volunteer-certificate';
 import { OrganizationDashboardService } from '../../../core/services/organization-dashboard.service';
 import { CommonModule } from '@angular/common';
+import { volunteersForAdmin } from '../../../models/volunteersForAdmin';
 
 @Component({
   selector: 'app-organization-invitations',
@@ -27,7 +27,7 @@ export class OrganizationInvitationsComponent implements OnInit{
   ordID! : string ;
   opps! : opportunities[];
   teams! : Team[];
-  volunteers! : Volunteer[];
+  volunteers! : volunteersForAdmin[];
   isLoading : boolean = false;
 
   invitation = this._FormBuilder.group({
@@ -39,7 +39,7 @@ export class OrganizationInvitationsComponent implements OnInit{
   })
 
   ngOnInit(): void {
-    this._AdminService.manageVolunteers().subscribe({
+    this._AdminService.getAllVolunnteers().subscribe({
       next:(value)=> {
         this.volunteers = value;
         this._AuthVoluntaryOrganizationService.decodeUserData();
