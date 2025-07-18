@@ -13,10 +13,10 @@ import { TeamModel } from '../../../models/team-model';
 })
 export class EditTeamComponent implements OnInit {
 
-  oppList!:any[];
+  oppList!: any[];
   teamId!: string | null;
   team!: TeamModel;
-  constructor(private _TeamsService: TeamsService, private _Router: ActivatedRoute,private _OpportunitiesService : OpportunitiesService) {
+  constructor(private _TeamsService: TeamsService, private _Router: ActivatedRoute, private _OpportunitiesService: OpportunitiesService) {
   }
   ngOnInit(): void {
     this.teamId = this._Router.snapshot.paramMap.get('id');
@@ -26,33 +26,38 @@ export class EditTeamComponent implements OnInit {
   updateForm!: FormGroup
   get name() { return this.updateForm.get('name'); }
   get description() { return this.updateForm.get('description'); }
-  // get categoryId() { return this.updateForm.get('categoryId'); }
+  get categoryId() { return this.updateForm.get('categoryId'); }
   get city() { return this.updateForm.get('city'); }
   get isLinkedToOpportunity() { return this.updateForm.get('isLinkedToOpportunity'); }
   get joinPermission() { return this.updateForm.get('joinPermission'); }
   get maxMembers() { return this.updateForm.get('maxMembers'); }
   get internalNotes() { return this.updateForm.get('internalNotes'); }
-  // get organizationID() { return this.updateForm.get('organizationID'); }
-  // get opportunityTitle() { return this.updateForm.get('opportunityTitle'); }
+  get organizationID() { return this.updateForm.get('organizationID'); }
+  get opportunityTitle() { return this.updateForm.get('opportunityTitle'); }
   get id() { return this.updateForm.get('id'); }
   get categoryName() { return this.updateForm.get('categoryName'); }
   get opportunityName() { return this.updateForm.get('opportunityName'); }
 
   getTeamById() {
+    // if (this.joinPermission?.value === "InviteOnly") {
+    //   this.joinPermission.setValue(1);
+    // } else if (this.joinPermission?.value === "Anyone") {
+    //   this.joinPermission.setValue(0);
+    // }
     this._TeamsService.getTeamByIdForUpdate(this.teamId).subscribe({
       next: (response) => {
         this.team = response;
         this.updateForm = new FormGroup({
           name: new FormControl(this.team.name),
           description: new FormControl(this.team.description),
-          // categoryId: new FormControl(this.team.categoryId),
+          categoryId: new FormControl(this.team.categoryId),
           city: new FormControl(this.team.city),
           isLinkedToOpportunity: new FormControl(this.team.isLinkedToOpportunity),
           joinPermission: new FormControl(this.team.joinPermission),
           maxMembers: new FormControl(this.team.maxMembers),
           internalNotes: new FormControl(this.team.internalNotes),
-          // organizationID: new FormControl(this.team.organizationID),
-          // opportunityTitle: new FormControl(this.team.opportunityTitle),
+          organizationID: new FormControl(this.team.organizationID),
+          opportunityTitle: new FormControl(this.team.opportunityTitle),
           id: new FormControl(this.team.id),
           categoryName: new FormControl(this.team.categoryName),
           opportunityName: new FormControl(this.team.opportunityName)
@@ -65,6 +70,7 @@ export class EditTeamComponent implements OnInit {
   }
 
   updateTeam() {
+    console.log(this.updateForm.value);
     this._TeamsService.updateTeam(this.updateForm.value).subscribe({
       next: () => {
         alert("تم تحديث الفريق بنجاح (:");
@@ -75,7 +81,7 @@ export class EditTeamComponent implements OnInit {
       }
     })
   }
-    allOpp() {
+  allOpp() {
     this._OpportunitiesService.getAllOpportunities().subscribe({
       next: (response) => {
         this.oppList = response;

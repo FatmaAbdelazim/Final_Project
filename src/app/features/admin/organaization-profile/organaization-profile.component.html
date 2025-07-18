@@ -1,64 +1,105 @@
 <div class="container-fluid bg">
     <div class="container p-5">
         <div class="row justify-content-center align-items-center">
-            <div class="d-flex row1 p-4 justify-content-end align-items-center mb-5">
-                <div class="row me-4">
-                    <h2 class="text-end">منظمة التطوير المجتمعى</h2>
-                    <div class="d-flex justify-content-around align-items-center">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <p>القاهرة، مصر</p>
-                            <i class="bi bi-geo-alt-fill"></i>
-                        </div>
-                        <div class="d-flex justify-content-center align-items-center">
-                            <p>تم انشائها منذ يناير 2023</p>
-                            <i class="bi bi-calendar-month-fill"></i>
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-around align-items-center">
-                        <div class="d-flex justify-content-center align-items-center">
-                            <p>sara.ahmedemail.com</p>
-                            <i class="bi bi-envelope-fill"></i>
-                        </div>
-                        <div class="d-flex justify-content-center align-items-center">
-                            <p>+20 123 456 7890</p>
-                            <i class="bi bi-telephone-fill"></i>
+            <div class="d-flex row1 p-5 justify-content-end align-items-center mb-5">
+                <div class="col-8">
+                    <div class="row justify-content-end align-items-center">
+                        <h2 class="text-end mb-4 me-5">{{orgInfo.organizationName}}</h2>
+                        <div class="row justify-content-around align-items-center me-5">
+                            <div class="col-5 me-5">
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <span class="me-2">{{orgInfo.city}}</span>
+                                    <i class="bi bi-geo-alt-fill crtN"></i>
+                                </div>
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <span class="me-2">{{orgInfo.createdAt | date:'MMMM d, y' }} تم انشائها منذ</span>
+                                    <i class="bi bi-calendar-month-fill crtN2"></i>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <span class="me-2">{{orgInfo.email}}</span>
+                                    <i class="bi bi-envelope-fill crtN3"></i>
+                                </div>
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <span class="me-2">{{orgInfo.phone}}</span>
+                                    <i class="bi bi-telephone-fill crtN"></i>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-2">
-                    <img src="/public/assets/review.jpg" alt="" class="img">
-                </div>
-            </div>
-            <div class="row  mb-5 justify-content-between align-items-center px-5">
-                <div class="cert d-flex justify-content-around align-items-center px-3">
-                    <div class="col-3 smallCert d-flex justify-content-center align-items-center">
-                        <i class="bi bi-bank2 fs-3"></i>
-                    </div>
                     <div>
-                        <p>إجمالي المنظمات</p>
-                        <span class="ms-5 fs-2 crtN"></span>
-                    </div>
-                </div>
-                <div class="cert d-flex justify-content-around align-items-center px-3">
-                    <div class="col-3 smallCert3 d-flex justify-content-center align-items-center">
-                        <i class="bi bi-clock-fill fs-3"></i>
-                    </div>
-                    <div>
-                        <p>قيد المراجعة</p>
-                        <span class="ms-5 fs-2 crtN3"></span>
-                    </div>
-                </div>
-                <div class="cert d-flex justify-content-around align-items-center px-3">
-                    <div class="col-3 smallCert2 d-flex justify-content-center align-items-center">
-                        <i class="bi bi-x-lg fs-3"></i>
-                    </div>
-                    <div>
-                        <p class="ms-4">مرفوضة</p>
-                        <span class="ms-5 fs-2 crtN2"></span>
+                        <img  [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + orgInfo.profileImage" alt="" class="img">
                     </div>
                 </div>
             </div>
-            <div class="row py-4 border rounded mt-4 bgT">
+            <div class="row  mb-5 justify-content-between align-items-center ">
+                <div class="cert cert1 d-flex justify-content-around align-items-center ">
+                    <div class="smallCert d-flex justify-content-center align-items-center">
+                        <i class="bi bi-calendar-heart-fill "></i>
+                    </div>
+                    <div>
+                        <span class="fs-2 crtN">{{orgInfo.totalVolunteers}}</span>
+                        <p>المتطوعون</p>
+                    </div>
+                </div>
+                <div class="cert cert2 d-flex justify-content-around align-items-center ">
+                    <div class="smallCert3 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-patch-check-fill"></i>
+                    </div>
+                    <div>
+                        <span class="ms-5 fs-2 crtN3">{{orgInfo.totalCertificates}}</span>
+                        <p>الشهادات الصادرة</p>
+                    </div>
+                </div>
+                <div class="cert cert3 d-flex justify-content-around align-items-center">
+                    <div class="smallCert2 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div>
+                        <span class="ms-5 fs-2 crtN2">{{orgInfo.totalTeams}}</span>
+                        <p class="ms-4">الفرق التطوعية</p>
+                    </div>
+                </div>
+                <div class="cert cert4 d-flex justify-content-around align-items-center">
+                    <div class="smallCert d-flex justify-content-center align-items-center">
+                        <i class="bi bi-heart-fill"></i>
+                    </div>
+                    <div>
+                        <span class="ms-5 fs-2 crtN2">{{orgInfo.totalOpportunities}}</span>
+                        <p class="ms-4">الفرص التطوعية</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row p-4 border rounded mt-4 mb-5 bgT justify-content-center align-items-center">
+                <div class="d-flex justify-content-end align-items-center mb-4">
+                    <h3 class="me-3">الفرق الخاصة بالمنظمة</h3>
+                    <div class="small1 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-people-fill fs-3"></i>
+                    </div>
+                </div>
+                <div class="row mb-4 mt-4">
+                    @for (team of orgInfo.teams; track $index) {
+                    <app-organaization-profile-team-card [team]="team"></app-organaization-profile-team-card>
+                    }
+                </div>
+
+            </div>
+            <div class="row p-4 border rounded mt-5 mb-5 bgT justify-content-center align-items-center">
+                <div class="d-flex justify-content-end align-items-center mb-4">
+                    <h3 class="me-3">فرص التطوع الخاصة بالمنظمة</h3>
+                    <div class="small2 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-bag-fill fs-3"></i>
+                    </div>
+                </div>
+                <div class="row mb-4 mt-4">
+                    @for (opp of orgInfo.opportunities; track $index) {
+                    <app-organaization-profile-opp-card [opp]="opp"></app-organaization-profile-opp-card>
+                    }
+                </div>
+
             </div>
         </div>
     </div>

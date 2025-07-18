@@ -8,28 +8,33 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-opportunity-details',
-  imports: [CommentCardComponent,CommonModule],
+  imports: [CommentCardComponent, CommonModule],
   templateUrl: './opportunity-details.component.html',
   styleUrl: './opportunity-details.component.css'
 })
 export class OpportunityDetailsComponent implements OnInit {
   Opportunity!: OpportuntyDetails;
   OpportunityId!: string;
-  constructor(private _OpportunitiesService:OpportunitiesService , private _Route:ActivatedRoute){}
+  constructor(private _OpportunitiesService: OpportunitiesService, private _Route: ActivatedRoute) { }
   ngOnInit(): void {
-  this.OpportunityId = this._Route.snapshot.paramMap.get('id') || '';
-  this.getDetails();
+    this.OpportunityId = this._Route.snapshot.paramMap.get('id') || '';
+    this.getDetails();
   }
 
-  getDetails(){
+  getDetails() {
     this._OpportunitiesService.getOpportunityDetails(this.OpportunityId).subscribe({
-      next: (response)=>{
+      next: (response) => {
         this.Opportunity = response;
         console.log(response);
       },
-      error: (e)=>{
+      error: (e) => {
         alert(e);
       }
     })
+  }
+  get backgroundImageStyle() {
+    return {
+      'background-image': `url(https://tatawwa3.runasp.net/uploads/${this.Opportunity.image})`
+    };
   }
 }

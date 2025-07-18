@@ -78,4 +78,7 @@ export class AdminService {
   getCountOfOppCompleted(): Observable<any> {
     return this.http.get<any>(`${environment.baseUrl}/api/VolunteerOpportunity/count/completed`);
   }
+   getOrganaizationProfile(orgId: string | null): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.baseUrl}/api/OrganizationProfile/admin/organizations/${orgId}`);
+  }
 }

@@ -104,7 +104,7 @@ export const routes: Routes = [
                   { path: 'home', component: AdminHomeComponent },
                   { path: 'managment-volunteers', component: ManagmentVolunteersComponent },
                   { path: 'managment-organization', component: ManagmentOrganizationComponent },
-                  { path: 'organization-profile', component: OrganaizationProfileComponent },
+                  { path: 'organization-profile/:id', component: OrganaizationProfileComponent },
                   { path: 'managment-teams', component: ManagmentTeamsComponent },
                   { path: 'review-opp', component: ReviewOppComponent },
                   { path: 'review-rating', component: ReviewRatingComponent },

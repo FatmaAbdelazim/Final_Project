@@ -1,8 +1,8 @@
     <div class=" myCard text-end">
-            <img [src]="Opportunity.image" alt="CardImage" id="imgCard">
+            <img [src]="'https://tatawwa3.runasp.net/uploads/' + Opportunity.image" alt="CardImage" id="imgCard">
             <div class="p-2 mt-3">
                 <h4>{{Opportunity.title}}</h4>
-                <p>{{Opportunity.description}}</p>
+                <p>{{Opportunity.description?.slice(0,40)}}</p>
               <div class="d-flex justify-content-end mb-2">
                   <div class="d-flex" id="divM">
                     <p class="me-2">{{Opportunity.startDate | date: 'dd/MM/yyyy'}}</p>

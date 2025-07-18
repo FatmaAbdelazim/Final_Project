@@ -1,7 +1,7 @@
 #divSection1{
     height: 400px;
     width: 100%;
-    background-image: url(/assets/oppDetails.jpg);
+    /* background-image: url("'https://tatawwa3.runasp.net/uploads/' + Opportunity.image"); */
     background-size: cover;
     background-position: center;
     border-radius: 8px;
