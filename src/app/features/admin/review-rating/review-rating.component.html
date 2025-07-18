@@ -1,1 +1,129 @@
-<p>review-rating works!</p>
+<div class="container-fluid bg">
+    <div class="container p-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="row  mb-5 justify-content-between align-items-center px-5">
+                <div class="cert d-flex justify-content-around align-items-center px-3">
+                    <div class="col-3 smallCert d-flex justify-content-center align-items-center">
+                        <i class="bi bi-trash-fill fs-3"></i>
+                    </div>
+                    <div>
+                        <p> التقييمات المحذوفة</p>
+                        <span class="ms-5 fs-2 crtN">{{ReviewStatistics.deletedReviews}}</span>
+                    </div>
+                </div>
+                <div class="cert d-flex justify-content-around align-items-center px-3">
+                    <div class="col-3 smallCert3 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-graph-up fs-3"></i>
+                    </div>
+                    <div>
+                        <p> متوسط التقييم</p>
+                        <span class="ms-5 fs-2 crtN3">{{ReviewStatistics.averageRating}}</span>
+                    </div>
+                </div>
+                <div class="cert d-flex justify-content-around align-items-center px-3">
+                    <div class="col-3 smallCert d-flex justify-content-center align-items-center">
+                        <i class="bi bi-star-fill fs-3"></i>
+                    </div>
+                    <div>
+                        <p class="ms-4"> إجمالي التقييمات</p>
+                        <span class="ms-5 fs-2 crtN">{{ReviewStatistics.totalReviews}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row row1 p-4 justify-content-end align-items-center">
+                <div class="form-group w-25">
+                    <input type="text" class="form-control py-2 text-end" id="exampleInput1"
+                        aria-describedby="emailHelp" placeholder="البحث عن تقييمات" [(ngModel)]="serchNumber"
+                        (change)="searchByNumber()">
+                </div>
+            </div>
+
+            <div class="row py-4 border rounded mt-4 bgT">
+                <h4 class="text-end">قائمة التقييمات</h4>
+            </div>
+
+            <div class="row px-0">
+                <table class="fancy-table mt-4">
+                    <thead>
+                        <tr class="border rounded py-3">
+                            <th>الاجراءات</th>
+                            <th>التاريخ </th>
+                            <th> التعليق</th>
+                            <th>التقييم</th>
+                            <th>اسم الفرصة</th>
+                            <th>اسم المتطوع</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (review of pagedReviews; track $index) {
+                        <tr>
+                            <td>
+                                <div class="d-flex justify-content-center">
+                                    <i class="bi bi-trash-fill me-2 t fs-5" (click)="deleteReview(review.reviewId)"></i>
+                                    <i class="bi bi-eye-slash-fill me-2 t2 fs-5"
+                                        (click)="hideReview(review.reviewId)"></i>
+                                    <i class="bi bi-eye-fill me-2 main-color fs-5"
+                                        [routerLink]="['/opportunity-details' , review.opportunityId]"></i>
+                                </div>
+                            </td>
+                            <td class="col-2">
+                                <span>{{review.createdAt | date : 'short'}}</span>
+                            </td>
+                            <td>
+                                <span>{{review.comment.length > 30 ? review.comment.slice(0, 30) + '...' : review.comment}}</span>
+                            </td>
+                            <td class="col-2">
+                                <span>{{review.rating}}</span><br>
+                                @for (rate of [].constructor(review.rating); track $index) {
+                                  <i class="bi bi-star-fill fs-5 text-warning"></i>
+                                }
+                            </td>
+                            <td>{{review.opportunityName}}</td>
+                            <td>
+                                    <div class="me-2 d-flex justify-content-center align-items-center gap-2">
+                                        <p class="mb-0">{{review.userName}}</p>
+                                        <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + review.userImage" alt="" class="imgSponser">
+                                    </div>
+                            </td>
+                        </tr>
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="row mb-5 mt-3">
+                <nav class=" p-2">
+                    <ul class="pagination">
+
+                        <!-- Previous -->
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <a class="page-link main-color" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <!-- Dynamic Page Numbers -->
+                        @for (page of [].constructor(totalPages); track $index) {
+                        <li class="page-item" [class.active]="currentPage === $index + 1">
+                            <a class="page-link main-color" (click)="goToPage($index + 1)">
+                                {{ $index + 1 }}
+                            </a>
+                        </li>
+                        }
+
+
+                        <!-- Next -->
+                        <li class="page-item" [class.disabled]="currentPage === totalPages">
+                            <a class="page-link main-color" (click)="goToPage(currentPage + 1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

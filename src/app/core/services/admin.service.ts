@@ -7,6 +7,7 @@ import { OpportunityFilter } from '../../models/opportunity-filter';
 import { OrganizationData } from '../../models/organization-data';
 import { TeamsManagment } from '../../models/teams-managment';
 import { volunteersForAdmin } from '../../models/volunteersForAdmin';
+import { Review, ReviewStats } from '../../models/review';
 
 @Injectable({
   providedIn: 'root'
@@ -98,5 +99,20 @@ export class AdminService {
   }
   deleteVol(id: string): Observable<any> {
     return this.http.delete<any>(`${environment.baseUrl}/api/VolunteersProfile/deleteVolunter/${id}`, { responseType: 'text' as 'json' });
+  }
+  getReviewsStatistics(): Observable<ReviewStats> {
+    return this.http.get<ReviewStats>(`${environment.baseUrl}/api/ReviewComment/review-stats`);
+  }
+  getAllReviews(): Observable<Review[]> {
+    return this.http.get<Review[]>(`${environment.baseUrl}/api/ReviewComment/reviews/all`);
+  }
+  searchByNumber(rate: number): Observable<Review[]> {
+    return this.http.get<Review[]>(`${environment.baseUrl}/api/ReviewComment/search-by-rating?rating=${rate}`);
+  }
+  hideComment(id:string):Observable<any>{
+    return this.http.put(`${environment.baseUrl}/api/ReviewComment/hide-review/${id}`, {})
+  }
+  deleteReview(id: string): Observable<any> {
+    return this.http.delete<any>(`${environment.baseUrl}/api/ReviewComment/delete/${id}`, { responseType: 'text' as 'json' });
   }
 }
