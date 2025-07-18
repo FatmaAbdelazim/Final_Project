@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="card p-3 mt-4 br">
-                    <button class="text-center mt-3 btn btn-bgcolor text-white mb-4">معلومات المنظمة</button>
+                    <div class="text-center mt-3 btn btn-bgcolor text-white mb-4">معلومات المنظمة</div>
                     <div class="d-flex justify-content-center">
                         <p class="text-muted me-2">{{Opportunity.volunteerCount}} متطوع مسجل</p>
                         <i class="bi bi-people"></i>
@@ -44,6 +44,7 @@
                     </div>
 
                 </div>
+                <button class="text-center mt-3 btn btn-bgcolor text-white mb-4" [routerLink]="['/join-opp',OpportunityId]">انضم الان</button>
             </div>
 
         </div>
@@ -66,13 +67,7 @@
                     }
                     }
 
-                    <!--                     
-                    <div class="spe justify-content-center align-items-center row me-4 mb-1 main-color">التصميم</div>
-                    <div class="spe justify-content-center align-items-center row me-4 mb-1 main-color">التصميم</div>
-                    <div class="spe justify-content-center align-items-center row me-4 mb-1 main-color">التصميم</div>
-                    <div class="spe justify-content-center align-items-center row me-4 mb-1 main-color">التصميم</div>
-                    <div class="spe justify-content-center align-items-center row main-color mb-1">التصميم</div> -->
-                </div>
+              </div>
                 <div class="row justify-content-end align-items-center mb-5">
                     <div class="div row  justify-content-end  align-items-center mb-3">
                         <div class="d-flex justify-content-end text-center  align-items-center" id="divM">

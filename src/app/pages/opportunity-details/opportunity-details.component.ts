@@ -1,4 +1,4 @@
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { OpportunitiesService } from './../../core/services/opportunities.service';
 import { Opportunity } from './../../models/opportunty';
 import { Component, OnInit } from '@angular/core';
@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-opportunity-details',
-  imports: [CommentCardComponent, CommonModule],
+  imports: [CommentCardComponent, CommonModule,RouterLink],
   templateUrl: './opportunity-details.component.html',
   styleUrl: './opportunity-details.component.css'
 })

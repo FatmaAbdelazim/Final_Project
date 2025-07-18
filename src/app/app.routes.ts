@@ -59,8 +59,8 @@ export const routes: Routes = [
       { path: 'verify-code', component: VerifyCodeComponent },
       { path: 'verify-email', component: VerifyEmailComponent },
       { path: 'reset-pass', component: ResetPasswordComponent },
-      { path: 'join-opp', component: JoinOppComponent },
-      { path: 'join-team', component: JoinTeamComponent },
+      { path: 'join-opp/:id', component: JoinOppComponent },
+      { path: 'join-team/:id', component: JoinTeamComponent },
       { path: 'team-details/:id', component: TeamDetailsComponent },
       {
             path: 'volunteer-dashboard', component: VolunteerDashboardComponent
@@ -91,11 +91,11 @@ export const routes: Routes = [
                   { path: 'organization-change-pass', component: OrganizationChangePassComponent },
                   { path: 'organization-check-notfication', component: OrganaiztionCheckNotificationComponent },
                   { path: 'organization-delete-acount', component: OrganaiztionDeleteAcountComponent },
+                  { path: 'create-team', component: CreateTeamComponent },
+                  { path: 'add-opp', component: AddOppComponent },
             ]
       },
       { path: 'edit-opp/:id', component: UpdateOppComponent },
-      { path: 'create-team', component: CreateTeamComponent },
-      { path: 'add-opp', component: AddOppComponent },
       { path: 'edit-team/:id', component: EditTeamComponent },
       {
             path: 'admin-dashboard', component: AdminDashboardComponent,

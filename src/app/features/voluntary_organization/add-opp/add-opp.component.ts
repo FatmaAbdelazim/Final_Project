@@ -1,10 +1,11 @@
 import { OrganizationDashboardService } from './../../../core/services/organization-dashboard.service';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-add-opp',
-  imports: [FormsModule, ReactiveFormsModule],
+  imports: [FormsModule, ReactiveFormsModule,RouterLink],
   templateUrl: './add-opp.component.html',
   styleUrl: './add-opp.component.css'
 })
