@@ -14,7 +14,10 @@ import { OrgTeamCardComponent } from "../../../shared/components/org-team-card/o
   styleUrl: './organization-teams.component.css'
 })
 export class OrganizationTeamsComponent implements OnInit {
-  teamId="";
+  currentPage: number = 1;
+  itemsPerPage: number = 4;
+  opportunitiesList!: any;
+  pagedOpps: any[] = [];
   orgId!: string;
   membersList!: any[];
   orgTeamsList!: any[];
@@ -29,6 +32,8 @@ export class OrganizationTeamsComponent implements OnInit {
     this._OrganizationDashboardService.getAllteamsForOrg(this.orgId).subscribe({
       next: (response) => {
         this.orgTeamsList = response;
+        this.currentPage = 1;
+        this.updatePagedOpportunities();
       },
       error: (e) => {
         console.log(e.error);
@@ -36,7 +41,7 @@ export class OrganizationTeamsComponent implements OnInit {
     })
   }
 
-  getAllMembers(teamId:string) {
+  getAllMembers(teamId: string) {
     this._OrganizationDashboardService.getAllVolunteersForTeam(teamId).subscribe({
       next: (response) => {
         this.membersList = response;
@@ -56,5 +61,28 @@ export class OrganizationTeamsComponent implements OnInit {
         console.log(e.error);
       }
     })
+  }
+
+
+  updatePagedOpportunities() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.pagedOpps = this.orgTeamsList.slice(startIndex, endIndex);
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updatePagedOpportunities();
+    }
+  }
+
+
+  get totalPages(): number {
+    return Math.ceil(this.orgTeamsList.length / this.itemsPerPage);
+  }
+  getStarsArray(rating: number): any[] {
+    const rounded = Math.floor(rating || 0);
+    return Array(rounded);
   }
 }
