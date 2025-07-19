@@ -1,11 +1,4 @@
-.bg {
-    background-color: #F9FAFB;
-}
-.cr{
-    background-color: #FFFFFF;
-    border-radius: 12px;
-    box-shadow: 4px 5px 4px 4px #00000040;
-}
+
 .smallDiv{
     background-color: #A1A6F0;
     color: #FFFFFF;
@@ -16,16 +9,7 @@
 .smallDiv:hover{
     cursor: pointer;
 }
-.btn1{
-    background-color: #9333EA;
-    color: #FFFFFF;
-}
-.co{
-   color: #A1A6F0;
-}
-.co2{
-    color: #3E59EB;
-}
+
 .imgSmall{
     width: 38px;
     height: 38px;

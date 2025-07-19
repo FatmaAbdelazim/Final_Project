@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { OrganizationData } from '../../models/organization-data';
@@ -40,36 +40,45 @@ export class OrganizationDashboardService {
     })
   }
   updateAttendance(data: Participant[]): Observable<any> {
-    return this.http.put(`${ environment.baseUrl }/api/Attendance/attendance/update`, data, {
+    return this.http.put(`${environment.baseUrl}/api/Attendance/attendance/update`, data, {
       responseType: 'text' as 'json'
     })
   }
   getOrgInfo(id: string): Observable<Organization> {
-    return this.http.get<Organization>(`${ environment.baseUrl }/api/OrganizationProfile/getupdatedata/${ id }`)
+    return this.http.get<Organization>(`${environment.baseUrl}/api/OrganizationProfile/getupdatedata/${id}`)
   }
   updateOrgInfo(data: FormData): Observable<any> {
-    return this.http.put(`${ environment.baseUrl }/api/OrganizationProfile/update`, data)
+    return this.http.put(`${environment.baseUrl}/api/OrganizationProfile/update`, data)
   }
   getVolunteersStatistics(id: string | null): Observable<any> {
-    return this.http.get(`${ environment.baseUrl }/api/VolunteerMangment/statistics?opp_id=${ id }`)
+    return this.http.get(`${environment.baseUrl}/api/VolunteerMangment/statistics?opp_id=${id}`)
   }
   getVolunteerApplications(id: string | null): Observable<VolunteerApplications[]> {
-    return this.http.get<VolunteerApplications[]>(`${ environment.baseUrl }/api/VolunteerMangment/opportunity-applications?OppId=${ id }`)
+    return this.http.get<VolunteerApplications[]>(`${environment.baseUrl}/api/VolunteerMangment/opportunity-applications?OppId=${id}`)
   }
   reject(id: string | null): Observable<string> {
-    return this.http.put<string>(`${ environment.baseUrl }/api/VolunteerMangment/${ id }/reject`, {}, {
+    return this.http.put<string>(`${environment.baseUrl}/api/VolunteerMangment/${id}/reject`, {}, {
       responseType: 'text' as 'json'
     })
   }
   accept(id: string | null): Observable<string> {
-    return this.http.put<string>(`${ environment.baseUrl }/api/VolunteerMangment/${ id }/accept`, {}, {
+    return this.http.put<string>(`${environment.baseUrl}/api/VolunteerMangment/${id}/accept`, {}, {
       responseType: 'text' as 'json'
     })
   }
   searchVolByName(name: string, id: string | null): Observable<VolunteerApplications[]> {
-    return this.http.get<VolunteerApplications[]>(`${ environment.baseUrl }/api/VolunteerMangment/by-name?name=${ name }&opp_id=${ id }`)
+    return this.http.get<VolunteerApplications[]>(`${environment.baseUrl}/api/VolunteerMangment/by-name?name=${name}&opp_id=${id}`)
   }
   searchVolByDate(date: Date, id: string | null): Observable<VolunteerApplications[]> {
-    return this.http.get<VolunteerApplications[]>(`${ environment.baseUrl }/api/VolunteerMangment/by-date?date=${ date }&opp_id=${ id }`)
+    return this.http.get<VolunteerApplications[]>(`${environment.baseUrl}/api/VolunteerMangment/by-date?date=${date}&opp_id=${id}`)
+  }
+  getAllteamsForOrg(orgId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.baseUrl}/api/ManageTeamsForOrganization/ManageTeams/${orgId}`);
+  }
+  getAllVolunteersForTeam(teamId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.baseUrl}/api/ManageTeamsForOrganization/${teamId}/members`);
+  }
+  deleteVolunteerFromTeam(teamId: string,volunteerId:string): Observable<any[]> {
+    return this.http.get<any[]>(`${environment.baseUrl}/api/ManageTeamsForOrganization/${teamId}/volunteers/${volunteerId}`);
   }
 }

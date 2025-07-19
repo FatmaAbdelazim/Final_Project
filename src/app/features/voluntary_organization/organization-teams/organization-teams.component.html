@@ -3,89 +3,52 @@
         <div class="row justify-content-center align-items-center">
             <h3 class="text-end mb-3 mt-4">الفرق التطوعية</h3>
             <p class="text-end mb-5">ادارة وتنظيم الفرق التطوعية فى المنظمة</p>
-            <div class="row justify-content-around align-items-center p-4">
-                <div class="col-5 cr p-4">
+            <div class="row justify-content-around align-items-center">
+                @for (team of orgTeamsList; track $index) {
+                <div class="cr col-5 p-4 mb-5">
                     <div class="d-flex justify-content-between align-items-center mb-2">
                         <div class="d-flex justify-content-end align-items-center">
-                            <i class="bi bi-trash-fill text-danger me-2"></i>
-                            <i class="bi bi-pencil-square co2"></i>
+                            <i class="bi bi-trash-fill text-danger me-2" (click)="deleteTeam(team.id)"></i>
+                            <i class="bi bi-pencil-square co2" [routerLink]="['/edit-team',team.id]"></i>
                         </div>
-                        <h5>فريق كبار السن</h5>
+                        <h5>{{team.name}}</h5>
                     </div>
                     <div class="d-flex justify-content-end align-items-center mb-2">
-                        <span>12 متطوع</span>
+                        <span>متطوع</span>
+                        <span class="ms-1"> {{team.membersCount}}</span>
                         <i class="fa-solid fa-people-group ms-2 co"></i>
                     </div>
                     <div class="d-flex justify-content-end align-items-center mb-2">
-                        <span>تم الانشاء : 5 يناير 2025</span>
+                        <span> {{team.creationDate | date : 'MMM d, y'}} : تم الانشاء</span>
                         <i class="bi bi-calendar-day-fill ms-2 co"></i>
                     </div>
                     <div class="d-flex justify-content-end align-items-center mb-2">
                         <p> : أعضاء الفريق</p>
                     </div>
                     <div class="d-flex justify-content-end align-items-center mb-4">
-                        <div class="smallDivImg d-flex justify-content-start align-items-center">
+                        @if(team.membersCount != 0)
+                        {
+                        <div class="smallDivImg d-flex justify-content-start align-items-center"
+                            [routerLink]="['/organization-dashboard/team-members',team.id]">
                             <i class="bi bi-plus"></i>
-                            <span>9</span>
+                            <span>{{team.membersCount}}</span>
                         </div>
-                        <div class="imgSmall">
-                            <img src="/assets/member.jpg" alt="" class="imgSmall">
-                        </div>
-                        <div class="imgSmall">
-                            <img src="/assets/member2.jpg" alt="" class="imgSmall">
-                        </div>
-                        <div class="imgSmall">
-                            <img src="/assets/member.jpg" alt="" class="imgSmall">
-                        </div>
+                        <app-org-team-card  [teamId]="team.id"></app-org-team-card>
+
+                        }@else {
+                        <p class="text-muted text-end">لا يوجد اي اعضاء ف الفريق حتي الان</p>
+                        }
                     </div>
                     <div class="d-flex justify-content-around align-items-center mb-2">
                         <div class="smallDiv justify-content-center align-items-center d-flex">
-                            <i class="bi bi-person-plus-fill fs-4"></i>
+                            <i class="bi bi-person-plus-fill fs-4"
+                                [routerLink]="['/organization-dashboard/organization-invitations']"></i>
                         </div>
-                        <button class="btn btn1 p-2 w-75">عرض الفريق</button>
+                        <button class="btn btn1 p-2 w-75" [routerLink]="['/team-details',team.id]">عرض الفريق</button>
                     </div>
                 </div>
-                 <div class="col-5 cr p-4">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <div class="d-flex justify-content-end align-items-center">
-                            <i class="bi bi-trash-fill text-danger me-2"></i>
-                            <i class="bi bi-pencil-square co2" [routerLink]="['/edit-team']"></i>
-                        </div>
-                        <h5>فريق كبار السن</h5>
-                    </div>
-                    <div class="d-flex justify-content-end align-items-center mb-2">
-                        <span>12 متطوع</span>
-                        <i class="fa-solid fa-people-group ms-2 co"></i>
-                    </div>
-                    <div class="d-flex justify-content-end align-items-center mb-2">
-                        <span>تم الانشاء : 5 يناير 2025</span>
-                        <i class="bi bi-calendar-day-fill ms-2 co"></i>
-                    </div>
-                    <div class="d-flex justify-content-end align-items-center mb-2">
-                        <p> : أعضاء الفريق</p>
-                    </div>
-                    <div class="d-flex justify-content-end align-items-center mb-4">
-                        <div class="smallDivImg d-flex justify-content-start align-items-center">
-                            <i class="bi bi-plus"></i>
-                            <span>9</span>
-                        </div>
-                        <div class="imgSmall">
-                            <img src="/assets/member.jpg" alt="" class="imgSmall">
-                        </div>
-                        <div class="imgSmall">
-                            <img src="/assets/member2.jpg" alt="" class="imgSmall">
-                        </div>
-                        <div class="imgSmall">
-                            <img src="/assets/member.jpg" alt="" class="imgSmall">
-                        </div>
-                    </div>
-                    <div class="d-flex justify-content-around align-items-center mb-2">
-                        <div class="smallDiv justify-content-center align-items-center d-flex">
-                            <i class="bi bi-person-plus-fill fs-4"></i>
-                        </div>
-                        <button class="btn btn1 p-2 w-75" [routerLink]="['/team-details']">عرض الفريق</button>
-                    </div>
-                </div>
+                <!-- <app-org-team-card class="col-5" [team]="team"></app-org-team-card> -->
+                }
             </div>
         </div>
     </div>

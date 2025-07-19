@@ -1,7 +1,7 @@
 <div class="container-fluid bg">
     <div class="container py-5">
-       @if(updateForm){
-          <form class="row mt-5 justify-content-center align-items-center mb-5" [formGroup]="updateForm"
+        @if(updateForm){
+        <form class="row mt-5 justify-content-center align-items-center mb-5" [formGroup]="updateForm"
             (ngSubmit)="updateTeam()">
             <div class="card p-4 w-75 mb-4">
                 <div class="d-flex justify-content-end align-items-center mb-4">
@@ -18,8 +18,15 @@
                 </div>
                 <div class="row mt-4">
                     <div class="form-group text-end w-50">
-                        <label for="category" class="mb-2">المجال/الفئة</label>
-                        <input type="text" id="category" class="py-3 form-control text-end" formControlName="categoryName">
+                        <label for="category" class="mb-2">اختيار المجال/الفئة</label>
+                        <input list="cats" name="cat" id="cat" class="py-3 form-control text-end"
+                            placeholder="اختر المنظمة" formControlName="categoryName">
+                        <datalist id="cats">
+                            @for (cat of categoryList; track $index) {
+                            <option class="text-end" value="{{cat.name}}">
+                                }
+                        </datalist>
+    
                     </div>
                     <div class="form-group text-end w-50">
                         <label for="city" class="mb-2">المدينة</label>
@@ -128,6 +135,6 @@
                 </button>
             </div>
         </form>
-       }
+        }
     </div>
 </div>

@@ -46,6 +46,7 @@ import { ManagmentTeamsComponent } from './features/admin/managment-teams/managm
 import { ReviewOppComponent } from './features/admin/review-opp/review-opp.component';
 import { ReviewRatingComponent } from './features/admin/review-rating/review-rating.component';
 import { OrganaizationProfileComponent } from './features/admin/organaization-profile/organaization-profile.component';
+import { TeamMembersComponent } from './features/voluntary_organization/team-members/team-members.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -93,6 +94,7 @@ export const routes: Routes = [
                   { path: 'organization-delete-acount', component: OrganaiztionDeleteAcountComponent },
                   { path: 'create-team', component: CreateTeamComponent },
                   { path: 'add-opp', component: AddOppComponent },
+                  {path: 'team-members/:id', component: TeamMembersComponent}
             ]
       },
       { path: 'edit-opp/:id', component: UpdateOppComponent },

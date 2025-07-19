@@ -16,12 +16,14 @@ export class EditTeamComponent implements OnInit {
   oppList!: any[];
   teamId!: string | null;
   team!: TeamModel;
+  categoryList!:any[];
   constructor(private _TeamsService: TeamsService, private _Router: ActivatedRoute,private _router:Router , private _OpportunitiesService: OpportunitiesService) {
   }
   ngOnInit(): void {
     this.teamId = this._Router.snapshot.paramMap.get('id');
     this.getTeamById();
     this.allOpp();
+    this.allCategory();
   }
   updateForm!: FormGroup
   get name() { return this.updateForm.get('name'); }
@@ -86,6 +88,16 @@ export class EditTeamComponent implements OnInit {
     this._OpportunitiesService.getAllOpportunities().subscribe({
       next: (response) => {
         this.oppList = response;
+      },
+      error: (e) => {
+        alert(e.error);
+      }
+    })
+  }
+  allCategory(){
+        this._OpportunitiesService.getAllCategory().subscribe({
+      next: (response) => {
+        this.categoryList = response;
       },
       error: (e) => {
         alert(e.error);

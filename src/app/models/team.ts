@@ -3,7 +3,7 @@ export interface Team {
   name: string;
   description: string;
   organizationName: string;
-  maxMembers: number;
+  currentMembersCount: number;
   city: string;
   categoryName: string;
 }

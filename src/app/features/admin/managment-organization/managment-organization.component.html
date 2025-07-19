@@ -8,7 +8,7 @@
                     </div>
                     <div>
                         <p>إجمالي المنظمات</p>
-                        <span class="ms-5 fs-2 crtN">{{OrganizationStatistics?.totalOrganizations}}</span>
+                        <span class="ms-5 fs-2 crtN">{{orgList.length}}</span>
                     </div>
                 </div>
                 <div class="cert d-flex justify-content-around align-items-center px-3">
@@ -95,7 +95,7 @@
                                     <div class="me-2">
                                         <h5>{{org.name}}</h5><small class="text-muted">{{org.email}}</small>
                                     </div>
-                                    <img [src]="'https://tatawwa3.runasp.net/' + org.profileImage" alt="" class="imgSponser">
+                                    <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + org.profileImage" alt="" class="imgSponser">
                                 </div>
                             </td>
                         </tr>

@@ -1,0 +1,8 @@
+<div class="d-flex">
+    @for (member of membersList; track $index) {
+    <div class="imgSmall">
+        <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + member.profileImageUrl" alt=""
+            class="imgSmall">
+    </div>
+    }
+</div>
