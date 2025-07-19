@@ -8,7 +8,7 @@
                     </div>
                     <div>
                         <p>إجمالي المنظمات</p>
-                        <span class="ms-5 fs-2 crtN">{{orgList.length}}</span>
+                        <span class="ms-5 fs-2 crtN">{{OrganizationStatistics.totalOrganizations}}</span>
                     </div>
                 </div>
                 <div class="cert d-flex justify-content-around align-items-center px-3">
@@ -42,7 +42,7 @@
                     <input list="statuss" name="status" id="status" class="py-2 form-control text-end"
                         placeholder="اختر الحاله" [(ngModel)]="serchStatus" (change)="searchByStatus()">
                     <datalist id="statuss">
-                        <!-- <option value="Pending"> -->
+                        <option value="Pending">
                         <option value="Rejected">
                         <option value="Approved">
                     </datalist>

@@ -19,7 +19,7 @@ export class OrganizationDashboardService {
     return this.http.put<any>(`${environment.baseUrl}/api/Notifications/org-preferences`, data, { responseType: 'text' as 'json' });
   }
   addOpp(data: FormData): Observable<any> {
-    return this.http.post<any>(`${environment.baseUrl}/api/VolunteerOpportunity/nshr forsa`, data);
+    return this.http.post<any>(`${environment.baseUrl}/api/VolunteerOpportunity/nshr`, data);
   }
   getOrganizationStatistics(): Observable<any> {
     return this.http.get<any>(`${environment.baseUrl}/GetOrganizationStatistics`);
@@ -81,4 +81,5 @@ export class OrganizationDashboardService {
   deleteVolunteerFromTeam(teamId: string,volunteerId:string): Observable<any[]> {
     return this.http.get<any[]>(`${environment.baseUrl}/api/ManageTeamsForOrganization/${teamId}/volunteers/${volunteerId}`);
   }
+  
 }
