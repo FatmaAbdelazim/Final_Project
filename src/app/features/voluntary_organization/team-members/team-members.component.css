@@ -1,0 +1,23 @@
+section{
+  background-color: #686A8666;
+  text-align: right;
+  height: 100vh;
+}
+.icon-bg{
+  background-color: #E8DEF1;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+.perpel{
+  color: #9333EA;
+}
+.imgSponser {
+    width: 65px;
+    height: 65px;
+    border-radius: 70px;
+} 
+.border-color{
+  border: solid 1px rgb(224, 224, 224);
+  border-radius: 10px;
+}

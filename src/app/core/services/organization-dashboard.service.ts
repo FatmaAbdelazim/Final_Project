@@ -75,13 +75,15 @@ export class OrganizationDashboardService {
   getAllteamsForOrg(orgId: string): Observable<any[]> {
     return this.http.get<any[]>(`${environment.baseUrl}/api/ManageTeamsForOrganization/ManageTeams/${orgId}`);
   }
-  getAllVolunteersForTeam(teamId: string): Observable<any[]> {
+  getAllVolunteersForTeam(teamId: string | null): Observable<any[]> {
     return this.http.get<any[]>(`${environment.baseUrl}/api/ManageTeamsForOrganization/${teamId}/members`);
   }
-  deleteVolunteerFromTeam(teamId: string,volunteerId:string): Observable<any[]> {
-    return this.http.get<any[]>(`${environment.baseUrl}/api/ManageTeamsForOrganization/${teamId}/volunteers/${volunteerId}`);
+  deleteVolunteerFromTeam(teamId: string | null,volunteerId:string): Observable<any> {
+    return this.http.delete(`${environment.baseUrl}/api/ManageTeamsForOrganization/${teamId}/volunteers/${volunteerId}`, {
+      responseType: 'text' as 'json'
+    });
   }
-  
+
   searchVolByState(state: string, id: string | null): Observable<VolunteerApplications[]> {
     return this.http.get<VolunteerApplications[]>(`${ environment.baseUrl }/api/VolunteerMangment/by-status?status=${ state }&opp_id=${ id }`)
   }

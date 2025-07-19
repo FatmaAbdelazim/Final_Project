@@ -1,0 +1,128 @@
+<div class="container-fluid bg">
+    <div class="container p-5">
+        <div class="row justify-content-center align-items-center">
+            <div class="d-flex row1 p-5 justify-content-end align-items-center mb-5">
+                <div class="col-8">
+                    <div class="row justify-content-end align-items-center">
+                        <h2 class="text-end mb-4 me-5">{{volInfo.fullName}}</h2>
+                        <div class="row justify-content-around align-items-center me-5">
+                            <div class="col-5 me-5">
+                                <div class="d-flex justify-content-end align-items-center mb-3">
+                                    <span class="me-2">{{volInfo.city}}</span>
+                                    <i class="bi bi-geo-alt-fill crtN"></i>
+                                </div>
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <span class="me-2">{{volInfo.joinedAt | date:'MMMM d, y' }} عضو  منذ</span>
+                                    <i class="bi bi-calendar-month-fill crtN2"></i>
+                                </div>
+                            </div>
+                            <div class="col-5">
+                                <div class="d-flex justify-content-end align-items-center mb-3">
+                                    <span class="me-2">{{volInfo.email}}</span>
+                                    <i class="bi bi-envelope-fill crtN3"></i>
+                                </div>
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <span class="me-2">{{volInfo.phone}}</span>
+                                    <i class="bi bi-telephone-fill crtN"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div>
+                        <img  [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + volInfo.profileImage" alt="" class="img">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row  mb-4 justify-content-between align-items-center ">
+                <div class="cert cert1 d-flex justify-content-between align-items-center px-5">
+                    <div class="smallCert d-flex justify-content-center align-items-center">
+                        <i class="bi bi-calendar-heart-fill "></i>
+                    </div>
+                    <div class="text-end">
+                        <span class="fs-2 crtN">{{volInfo.totalOpportunities}}</span>
+                        <p>فرص التطوع</p>
+                    </div>
+                </div>
+                <div class="cert cert2 d-flex justify-content-around align-items-center ">
+                    <div class="smallCert3 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-patch-check-fill"></i>
+                    </div>
+                    <div>
+                        <span class="ms-5 fs-2 crtN3">{{volInfo.totalCertificates}}</span>
+                        <p>الشهادات </p>
+                    </div>
+                </div>
+                <div class="cert cert3 d-flex justify-content-around align-items-center">
+                    <div class="smallCert2 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-people-fill"></i>
+                    </div>
+                    <div>
+                        <span class="ms-5 fs-2 crtN2">{{volInfo.totalJoinedTeams}}</span>
+                        <p class="ms-4">الفرق </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mb-3">
+              <div class="col-6 p-4 border rounded mt-5 mb-5 bgT justify-content-center align-items-center">
+                <div class="d-flex justify-content-end align-items-center mb-4">
+                    <h4 class="me-3"> الشهادات </h4>
+                    <div class="small3 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-patch-check-fill fs-3"></i>
+                    </div>
+                </div>
+                <div class="row mb-4 mt-4">
+                    @for (cer of volInfo.certificates; track $index) {
+                    <div class="smallCard text-end align-items-center mb-4 p-3">
+                      <h5>{{cer.title}}</h5>
+                      <p>{{cer.issueDate | date:'MMMM d, y'}}</p>
+                    </div>
+                    }
+                </div>
+
+              </div>
+
+              <div class="col-6 p-4 border rounded mt-5 mb-5 bgT justify-content-center align-items-center ms-4">
+                <div class="d-flex justify-content-end align-items-center mb-4">
+                    <h4 class="me-3">فرص التطوع </h4>
+                    <div class="small2 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-bag-fill fs-3"></i>
+                    </div>
+                </div>
+                <div class="row mb-4 mt-4">
+                    @for (opp of volInfo.opportunities; track $index) {
+                    <div class="smallCard text-end align-items-center mb-4 p-3">
+                      <h5>{{opp.title}}</h5>
+                      <p>{{opp.joinedAt | date:'MMMM d, y'}}</p>
+                    </div>
+                    }
+                </div>
+
+              </div>
+            </div>
+
+            <div class="row p-4 border rounded mt-4 mb-5 bgT justify-content-center align-items-center">
+                <div class="d-flex justify-content-end align-items-center mb-4">
+                    <h4 class="me-3">الفرق المشترك بها</h4>
+                    <div class="small1 d-flex justify-content-center align-items-center">
+                        <i class="bi bi-people-fill fs-4"></i>
+                    </div>
+                </div>
+                <div class="row mb-4 mt-4">
+                    @for (team of volInfo.teams; track $index) {
+                    <div class="smallCard text-end align-items-center mb-4 p-3">
+                      <h5>{{team.teamName}}</h5>
+                      <p> {{team.role}}</p>
+                    </div>
+                    }
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>

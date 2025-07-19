@@ -1,24 +1,26 @@
 <section class="bg-color p-5">
   <div class="w-75 bg-white rounded-3 mt-5 py-5 px-3 m-auto">
 
-    <div class="d-flex align-items-center  gap-2 justify-content-center mb-5">
+    <div class="d-flex align-items-center  gap-2 justify-content-center mb-4">
       <h4>المعلومات الشخصية</h4>
       <div class="icon-bg1 text-center pt-1"><i class="bi bi-person-fill fs-5 perpel"></i></div>
     </div>
 
-    <div class="mt-5">
-      <form>
-        <div class="text-center">
+    <div>
+      <form [formGroup]="form" (ngSubmit)="update()">
+        <div class="text-center mb-4">
           <div class="position-relative d-inline-block mx-auto">
-            <img src="" alt="img">
-            <button class="icon-bg2 text-center"><i class="bi bi-camera-fill text-white"></i></button>
+            <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + vol.image" alt="img" class="imgSponser">
+            <input type="file" #fileInput accept="image/*" class="form-control d-none"
+                                (change)="onFileSelected($event)">
+            <div (click)="triggerFileInput()" class="icon-bg2 text-center"><i class="bi bi-camera-fill text-white"></i></div>
           </div>
         </div>
 
         <div class="row g-3">
         <div class="col-12 col-md-6">
           <label for="phone" class="form-label my-3">رقم الجوال</label>
-          <input formControlName="phone" class="form-control p-2 rounded-3 text-end" type="tel" id="phone" placeholder="01xxxxxxxx">
+          <input formControlName="phoneNumber" class="form-control p-2 rounded-3 text-end" type="tel" id="phone" placeholder="01xxxxxxxx">
         </div>
 
 
@@ -30,7 +32,7 @@
 
       <div class="row g-3">
         <div class="col-12 col-md-6">
-          <label for="dropdownMenuButton" class="form-label my-3">المدينة</label>
+          <label for="city" class="form-label my-3">المدينة</label>
           <input formControlName="city" class="form-control p-2 rounded-3 text-end" type="text" id="city" placeholder="ادخل المدينة">
         </div>
 

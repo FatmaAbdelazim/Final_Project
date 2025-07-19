@@ -47,6 +47,7 @@ import { ReviewOppComponent } from './features/admin/review-opp/review-opp.compo
 import { ReviewRatingComponent } from './features/admin/review-rating/review-rating.component';
 import { OrganaizationProfileComponent } from './features/admin/organaization-profile/organaization-profile.component';
 import { TeamMembersComponent } from './features/voluntary_organization/team-members/team-members.component';
+import { VolProfileComponent } from './pages/vol-profile/vol-profile/vol-profile.component';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -113,4 +114,5 @@ export const routes: Routes = [
 
             ]
       },
+      { path: 'volunteer-profile/:id', component: VolProfileComponent },
 ];

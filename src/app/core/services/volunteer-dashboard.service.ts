@@ -5,7 +5,7 @@ import { VolunteerOpportuinties } from '../../models/volunteer-opportuinties';
 import { Observable } from 'rxjs';
 import { VolunteerRecommendedOpportunities } from '../../models/volunteer-recommended-opportunities';
 import { VolunteerOppAttendence } from '../../models/volunteer-opp-attendence';
-import { VolunteerCertificate } from '../../models/volunteer-certificate';
+import { Volunteer, VolunteerCertificate } from '../../models/volunteer-certificate';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +43,14 @@ export class VolunteerDashboardService {
   }
   updatePreferencesNotif(data: object): Observable<any> {
     return this.http.put<any>(`${environment.baseUrl}/api/Notifications/ UpdatePreferencesNotif`, data,{ responseType: 'text' as 'json' });
+  }
+  profile(id:string | null): Observable<any>{
+    return this.http.get(`${environment.baseUrl}/api/VolunteersProfile/${id}/profile-details`)
+  }
+  getData(id:string):Observable<Volunteer>{
+    return this.http.get<Volunteer>(`${environment.baseUrl}/api/VolunteerSettings/${id}`)
+  }
+  updateVolInfo(id:string,data: any): Observable<any> {
+    return this.http.put(`${environment.baseUrl}/api/VolunteerSettings/${id}`, data, { responseType: 'text' as 'json' })
   }
 }
