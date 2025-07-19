@@ -30,8 +30,12 @@
       <div class="row g-3 mb-3">
         <div class="col-12 col-md-6">
            <label for="categoryName" class="form-label my-3">  المجال/الفئة  </label>
-          <input formControlName="categoryName" class="form-control p-2 rounded-3 text-end" type="text" id="categoryName">
-          @if(createForm.get('categoryName')?.errors && (createForm.get('categoryName')?.dirty || createForm.get('categoryName')?.touched))
+           <select class="form-control rtl-select mb-4" formControlName="categoryName" id="categoryName">
+          @for (c of cat; track $index) {
+          <option [ngValue]="c.name">{{ c.name }}</option>
+        }
+      </select>
+      @if(createForm.get('categoryName')?.errors && (createForm.get('categoryName')?.dirty || createForm.get('categoryName')?.touched))
           {
             <div class="text-danger px-3">
               @if(createForm.get('categoryName')?.getError('required'))

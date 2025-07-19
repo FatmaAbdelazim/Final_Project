@@ -40,7 +40,7 @@
                  [value]="'Absent'"
                  [(ngModel)]="person.attendanceStatus"
                  name="attendanceStatus-{{ $index }}"
-                 id="absent-{{ $index }}"> 
+                 id="absent-{{ $index }}">
           <label class="form-check-label" for="absent-{{ $index }}">لم يحضر</label>
         </div>
 
@@ -63,7 +63,7 @@
           <p class="mb-2">{{ person.fullName }}</p>
           <p>{{ person.email }}</p>
         </div>
-        <img [src]="" alt="img">
+        <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + person.profileImage" alt="" class="imgSponser">
       </div>
     </div>
 

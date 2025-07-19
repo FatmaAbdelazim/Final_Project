@@ -21,10 +21,10 @@ p{
 .w-97{
   width: 97%;
 }
-img{
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
+.imgSponser {
+    width: 65px;
+    height: 65px;
+    border-radius: 70px;
 }
 .btn, .btn-excel, .btn-pdf{
   color: white;
