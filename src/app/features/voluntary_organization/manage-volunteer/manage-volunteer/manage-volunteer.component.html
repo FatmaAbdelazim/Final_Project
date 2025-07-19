@@ -75,8 +75,8 @@
     </div>
     <div class="col-3">
       <label class="form-label">الحالة</label>
-      <select class="form-control">
-        <option value="Accepted" disabled>اختر الحالة</option> 
+      <select class="form-control" (change)="searchByState()" [(ngModel)]="state">
+        <option value="Pending">متقدم</option>
         <option value="Accepted">مقبول</option>
         <option value="Rejected">مرفوض</option>
       </select>
@@ -97,16 +97,24 @@
   @for (volunteer of pagedVolunteers; track $index) {
     <div class="d-flex align-items-center justify-content-between brd-color rounded-3 px-4">
     <div class="d-flex align-items-center gap-3">
-      <button (click)="reject(volunteer.id)" class="btn btn-danger px-4">رفض</button>
-      <button (click)="accept(volunteer.id)" class="btn btn-success px-4">قبول</button>
-      <button [routerLink]="['/']" class="btn-cancle">عرض الملف الشخصى</button>
+      @if (volunteer.status === 'Accepted') {
+        <button class="btn btn-outline-success px-4">مقبول</button>
+      }
+      @else if (volunteer.status === 'Rejected') {
+        <button class="btn btn-outline-danger px-4">مرفوض</button>
+      }
+      @else {
+        <button (click)="reject(volunteer.id)" class="btn btn-danger px-4">رفض</button>
+        <button (click)="accept(volunteer.id)" class="btn btn-success px-4">قبول</button>
+      }
+      <button [routerLink]="['/volProfile', volunteer.id]" class="btn-cancle">عرض الملف الشخصى</button>
     </div>
-    <div class="d-flex align-items-center">
-      <div class="text-center">
+    <div class="d-flex align-items-center gap-2 p-3">
+      <div class="text-end">
         <p class="mb-2">{{volunteer.fullName}}</p>
         <p>تاريخ التقديم: {{volunteer.appliedAt | date : 'short'}}</p>
       </div>
-      <img [src]="volunteer.profileImage" alt="img">
+      <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + volunteer.profileImage" alt="" class="imgSponser">
     </div>
   </div>
   }

@@ -28,6 +28,7 @@ export class ManageVolunteerComponent implements OnInit{
   itemsPerPage: number = 4;
   pagedVolunteers: VolunteerApplications[] = [];
   noVolunteers= 0;
+  state! : string;
 
   statistic! :{
     total: 0,
@@ -87,7 +88,25 @@ export class ManageVolunteerComponent implements OnInit{
     return;
   }
 
+
   this._OrganizationDashboardService.searchVolByName(this.volunteerName, this.oppId).subscribe({
+    next: (response) => {
+      this.VolunteersFilterList = response;
+      this.currentPage = 1;
+      this.updatePagedVolunteers();
+      this.noVolunteers = response.length;
+    }
+  });
+}
+searchByState(){
+  if (!this.state || this.state.trim() === '') {
+    this.VolunteersFilterList = [...this.volunteers];
+    this.currentPage = 1;
+    this.updatePagedVolunteers();
+    this.noVolunteers = this.VolunteersFilterList.length;
+    return;
+  }
+  this._OrganizationDashboardService.searchVolByState(this.state, this.oppId).subscribe({
     next: (response) => {
       this.VolunteersFilterList = response;
       this.currentPage = 1;

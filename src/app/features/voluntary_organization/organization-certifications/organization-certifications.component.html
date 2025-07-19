@@ -9,7 +9,7 @@
         <div class="mt-2 div-bg"><i class="bi bi-check-lg"></i> مكتملة </div>
       </div>
       <div class="position-relative w-35">
-        <input type="text" placeholder="ابحث عن الفرص التطوعية" class="text-end brd-perpel p-1">
+        <input [(ngModel)]="oppName" (input)="searchByName()" type="text" placeholder="ابحث عن الفرص التطوعية" class="text-end brd-perpel p-1">
         <i class="bi bi-search search text-muted"></i>
       </div>
     </div>
@@ -24,44 +24,13 @@
       <div class="col-3">تاريخ المشاركة</div>
       <div class="col-4">المتطوع</div>
     </div>
-    <!-- @for (person of participants; track $index) { -->
-  <div class="row justify-content-between align-items-center bg-white text-center rounded-3 py-2 px-1">
-
-    <div class="col-2">
-      @if(true){
-        <button class="btn">اصدار الشهادة <i class="bi bi-brightness-low-fill"></i></button>
-      }
-      @else{
-        <div class="brd-perpel rounded-2 fw-bold w-100 py-2">تم الاصدار</div>
-      }
-    </div>
-
-    <div class="col-3">
-      <p  class="me-5">8 ساعات تطوعية  </p>
-    </div>
-
-    <div class="col-3 text-start">
-      <p>15 ديسمبر 2024</p>
-    </div>
-
-    <div class="col-3">
-      <div class="d-flex align-items-center gap-5 justify-content-end">
-        <div class="text-end">
-          <p class="my-2">خالد سعيد</p>
-          <p class="fs-6">mohamedgmail.com</p>
-        </div>
-        <img src="" alt="img">
-      </div>
-    </div>
-
-    <hr class="mt-4 w-97 m-auto">
-  </div>
+    @for (person of pagedVolunteers; track $index) {
 
   <div class="row justify-content-between align-items-center bg-white text-center rounded-3 py-2 px-1">
 
     <div class="col-2">
-      @if(false){
-        <button class="btn">اصدار الشهادة <i class="bi bi-brightness-low-fill"></i></button>
+      @if(!person.certificateId){
+        <button (click)="getCertificate(person.id,person.totalHours, person.opportunityTitle)" class="btn">اصدار الشهادة <i class="bi bi-brightness-low-fill"></i></button>
       }
       @else{
         <div class="brd-perpel rounded-3 fw-bold w-100 py-2">تم الاصدار</div>
@@ -69,32 +38,69 @@
     </div>
 
     <div class="col-3">
-      <p  class="me-5">8 ساعات تطوعية  </p>
+      <p  class="me-5">{{person.totalHours}}
+        ساعات تطوعية  </p>
     </div>
 
     <div class="col-3 text-start">
-      <p>15 ديسمبر 2024</p>
+      <p>{{person.participationDate | date : 'short'}}</p>
     </div>
 
     <div class="col-3">
       <div class="d-flex align-items-center gap-5 justify-content-end">
         <div class="text-end">
-          <p class="my-2">خالد سعيد</p>
-          <p class="fs-6">mohamedgmail.com</p>
+          <p class="my-2">{{person.fullName}}</p>
+          <p class="fs-6">{{person.email}}</p>
         </div>
-        <img src="" alt="img">
+        <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + person.profileImage" alt="" class="imgSponser">
       </div>
     </div>
 
     <hr class="mt-4 w-97 m-auto">
   </div>
-<!-- } -->
+}
 
 
   </div>
 
+<div class="d-flex justify-content-start align-items-center mt-4">
+            <nav class="p-2">
+                    <ul class="pagination">
 
+                        <!-- Previous -->
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <a class="page-link main-color" (click)="goToPage(currentPage - 1)"
+                                aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+
+                        <!-- Dynamic Page Numbers -->
+                        @for (page of [].constructor(totalPages); track $index) {
+                        <li class="page-item" [class.active]="currentPage === $index + 1">
+                            <a class="page-link main-color"  (click)="goToPage($index + 1)">
+                                {{ $index + 1 }}
+                            </a>
+                        </li>
+                        }
+
+
+                        <!-- Next -->
+                        <li class="page-item" [class.disabled]="currentPage === totalPages">
+                            <a class="page-link main-color" (click)="goToPage(currentPage + 1)"
+                                aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+
+        </div>
+@if(oppName && VolunteersFilterList.length > 0){
 <div class="d-flex justify-content-center mt-5">
-  <button class="btn"> اصدار الكل  <i class="bi bi-brightness-low-fill"></i> </button>
+  <button class="btn" (click)="all(pagedVolunteers[0].opp_id,pagedVolunteers[0].totalHours,pagedVolunteers[0].opportunityTitle)"> اصدار الكل  <i class="bi bi-brightness-low-fill"></i> </button>
 </div>
+}
+
 </section>

@@ -20,6 +20,7 @@ export class CreateTeamComponent implements OnInit{
   private readonly _Router = inject(Router)
 
   opps! : opportunities[];
+  cat! : {name:string}[];
   isLoading : boolean = false;
   ordID! : string;
 
@@ -38,10 +39,15 @@ export class CreateTeamComponent implements OnInit{
   ngOnInit(): void {
     this._AuthVoluntaryOrganizationService.decodeUserData();
     this.ordID = this._AuthVoluntaryOrganizationService.userData.id;
-    this._OpportunitiesService.oppManagment(this.ordID).subscribe({
-      next:(value) =>{
+    this._OpportunitiesService.getAllCategory().subscribe({
+      next:(value)=> {
+        this.cat = value;
+        this._OpportunitiesService.oppManagment(this.ordID).subscribe({
+        next:(value) =>{
         console.log(value);
         this.opps = value;
+      },
+    })
       },
     })
   }
@@ -59,6 +65,8 @@ export class CreateTeamComponent implements OnInit{
       next:(res) =>{
           this.isLoading = false;
           console.log(res)
+          alert("تم انشاء الفريق بنجاح");
+          this._Router.navigate(['/volunteer-dashboard/volunteer-home'])
         },
         error:(err)=>{
           console.log(err);

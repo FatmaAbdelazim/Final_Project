@@ -59,10 +59,10 @@ select{
   color: white;
   background-color: #A1A6F0;
 }
-img{
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+.imgSponser {
+    width: 65px;
+    height: 65px;
+    border-radius: 70px;
 }
 .pagination .page-item.active .page-link {
   background-color: #E9A1F0E5;

@@ -3,7 +3,7 @@ import { ElementRef, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { OrganizationData } from '../../models/organization-data';
-import { Participant } from '../../models/participant';
+import { Participant, VolunteerParticipationForCertificates } from '../../models/participant';
 import { Organization, VolunteerApplications } from '../../models/organization';
 
 @Injectable({
@@ -80,5 +80,24 @@ export class OrganizationDashboardService {
   }
   deleteVolunteerFromTeam(teamId: string,volunteerId:string): Observable<any[]> {
     return this.http.get<any[]>(`${environment.baseUrl}/api/ManageTeamsForOrganization/${teamId}/volunteers/${volunteerId}`);
+  }
+  searchVolByState(state: string, id: string | null): Observable<VolunteerApplications[]> {
+    return this.http.get<VolunteerApplications[]>(`${ environment.baseUrl }/api/VolunteerMangment/by-status?status=${ state }&opp_id=${ id }`)
+  }
+  getVolCertificaties(): Observable<VolunteerParticipationForCertificates[]>{
+    return this.http.get<VolunteerParticipationForCertificates[]>(`${ environment.baseUrl }/api/Certificate/completed-participants/org`)
+  }
+  searchByOppName(name: string): Observable<VolunteerParticipationForCertificates[]> {
+    return this.http.get<VolunteerParticipationForCertificates[]>(`${ environment.baseUrl }/api/Certificate/completed-participants?opp_title=${ name }`)
+  }
+  getCertificate(data:any):Observable<any>{
+    return this.http.post(`${environment.baseUrl}/api/Certificate/issue`, data, {
+      responseType: 'text' as 'json'
+    })
+  }
+  allCertificates(data:any):Observable<any>{
+    return this.http.post(`${environment.baseUrl}/api/Certificate/issue-group`, data, {
+      responseType: 'text' as 'json'
+    })
   }
 }
