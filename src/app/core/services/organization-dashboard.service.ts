@@ -78,29 +78,30 @@ export class OrganizationDashboardService {
   getAllVolunteersForTeam(teamId: string | null): Observable<any[]> {
     return this.http.get<any[]>(`${environment.baseUrl}/api/ManageTeamsForOrganization/${teamId}/members`);
   }
-  deleteVolunteerFromTeam(teamId: string | null,volunteerId:string): Observable<any> {
+  deleteVolunteerFromTeam(teamId: string | null, volunteerId: string): Observable<any> {
     return this.http.delete(`${environment.baseUrl}/api/ManageTeamsForOrganization/${teamId}/volunteers/${volunteerId}`, {
       responseType: 'text' as 'json'
     });
   }
 
   searchVolByState(state: string, id: string | null): Observable<VolunteerApplications[]> {
-    return this.http.get<VolunteerApplications[]>(`${ environment.baseUrl }/api/VolunteerMangment/by-status?status=${ state }&opp_id=${ id }`)
+    return this.http.get<VolunteerApplications[]>(`${environment.baseUrl}/api/VolunteerMangment/by-status?status=${state}&opp_id=${id}`)
   }
-  getVolCertificaties(): Observable<VolunteerParticipationForCertificates[]>{
-    return this.http.get<VolunteerParticipationForCertificates[]>(`${ environment.baseUrl }/api/Certificate/completed-participants/org`)
+  getVolCertificaties(): Observable<VolunteerParticipationForCertificates[]> {
+    return this.http.get<VolunteerParticipationForCertificates[]>(`${environment.baseUrl}/api/Certificate/completed-participants/org`)
   }
   searchByOppName(name: string): Observable<VolunteerParticipationForCertificates[]> {
-    return this.http.get<VolunteerParticipationForCertificates[]>(`${ environment.baseUrl }/api/Certificate/completed-participants?opp_title=${ name }`)
+    return this.http.get<VolunteerParticipationForCertificates[]>(`${environment.baseUrl}/api/Certificate/completed-participants?opp_title=${name}`)
   }
-  getCertificate(data:any):Observable<any>{
+  getCertificate(data: any): Observable<any> {
     return this.http.post(`${environment.baseUrl}/api/Certificate/issue`, data, {
       responseType: 'text' as 'json'
     })
   }
-  allCertificates(data:any):Observable<any>{
+  allCertificates(data: any): Observable<any> {
     return this.http.post(`${environment.baseUrl}/api/Certificate/issue-group`, data, {
       responseType: 'text' as 'json'
     })
   }
+
 }

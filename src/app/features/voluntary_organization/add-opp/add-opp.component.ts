@@ -1,7 +1,11 @@
+import { AuthVoluntaryOrganizationService } from './../../../core/services/auth-voluntary-organization.service';
+import { AdminService } from './../../../core/services/admin.service';
 import { OrganizationDashboardService } from './../../../core/services/organization-dashboard.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Organization } from '../../../models/organization';
+import { OpportunitiesService } from '../../../core/services/opportunities.service';
 
 @Component({
   selector: 'app-add-opp',
@@ -9,9 +13,24 @@ import { RouterLink } from '@angular/router';
   templateUrl: './add-opp.component.html',
   styleUrl: './add-opp.component.css'
 })
-export class AddOppComponent {
+export class AddOppComponent implements OnInit {
 
-  constructor(private _OrganizationDashboardService: OrganizationDashboardService) { }
+  categoryList!: any[];
+  allOrg!: Organization[];
+  teamsList!: any[];
+  orgId!: string;
+  constructor(private _OrganizationDashboardService: OrganizationDashboardService,
+    private _OpportunitiesService: OpportunitiesService,
+    private _AuthVoluntaryOrganizationService: AuthVoluntaryOrganizationService
+    , private _AdminService: AdminService) { }
+  ngOnInit(): void {
+    
+    this._AuthVoluntaryOrganizationService.decodeUserData();
+    this.orgId = this._AuthVoluntaryOrganizationService.userData.id;
+    this.getAllOrgNames();
+    this.allCategory();
+    this.allTeams();
+  }
 
   fileToUpload!: File | null;
   fileName!: string | null;
@@ -40,9 +59,9 @@ export class AddOppComponent {
     IsAttendanceTracked: new FormControl(null, [Validators.required]),
     IsCertificateAvailable: new FormControl(null, [Validators.required]),
     TotalHours: new FormControl(null, [Validators.required]),
-    TeamName: new FormControl(null, [Validators.required]),
+    TeamName: new FormControl(null),
     RequiredSkillsIds: new FormControl(null, [Validators.required]),
-    Image: new FormControl<File | null>(null, [Validators.required])
+    // Image: new FormControl<File | null>(null, [Validators.required])
   });
 
   get Title() { return this.addForm.get('Title'); }
@@ -60,7 +79,7 @@ export class AddOppComponent {
   get TotalHours() { return this.addForm.get('TotalHours'); }
   get TeamName() { return this.addForm.get('TeamName'); }
   get RequiredSkillsIds() { return this.addForm.get('RequiredSkillsIds'); }
-  get Image() { return this.addForm.get('Image'); }
+  // get Image() { return this.addForm.get('Image'); }
 
   addOpp() {
     if (this.addForm.invalid) {
@@ -73,7 +92,6 @@ export class AddOppComponent {
     formData.append('CategoryName', this.CategoryName?.value ?? '');
     formData.append('OrganizationName', this.OrganizationName?.value ?? '');
     formData.append('TeamName', this.TeamName?.value ?? '');
-    formData.append('Image', this.Image?.value ?? '');
     formData.append('GenderRequirement', this.GenderRequirement?.value ?? '');
     formData.append('TotalHours', this.TotalHours?.value ?? '');
     formData.append('RequiredSkillsIds', this.RequiredSkillsIds?.value ?? '');
@@ -83,11 +101,45 @@ export class AddOppComponent {
     formData.append('Location', this.Location?.value ?? '');
     formData.append('StartDate', this.StartDate?.value ?? '');
     formData.append('EndDate', this.EndDate?.value ?? '');
-
+    if (this.fileToUpload) {
+          formData.append('Image',  this.fileToUpload, this.fileToUpload.name);
+    }
+      console.log(formData);
 
     this._OrganizationDashboardService.addOpp(formData).subscribe({
       next: () => {
         alert("تم نشر الفرصة بنجاح :)");
+      },
+      error: (e) => {
+        alert(e.message);
+        console.log(e)
+      }
+    })
+  }
+  getAllOrgNames() {
+    this._OpportunitiesService.getAllOrgs().subscribe({
+      next: (res) => {
+        this.allOrg = res;
+      },
+      error: (e) => {
+        alert(e.error);
+      }
+    })
+  }
+  allCategory() {
+    this._OpportunitiesService.getAllCategory().subscribe({
+      next: (response) => {
+        this.categoryList = response;
+      },
+      error: (e) => {
+        alert(e.error);
+      }
+    })
+  }
+  allTeams() {
+    this._OrganizationDashboardService.getAllteamsForOrg(this.orgId).subscribe({
+      next: (response) => {
+        this.teamsList = response;
       },
       error: (e) => {
         alert(e.error);

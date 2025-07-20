@@ -1,1 +1,103 @@
-<p>volunteer-notifications works!</p>
+<div class="container-fluid bg">
+    <div class="container p-5">
+        <div class="row justify-content-center align-items-center">
+            <h3 class="text-end me-5 mb-5 mt-2">تابع اخر التحديثات والانشطة</h3>
+            <div class="row justify-content-center align-items-center">
+                @for (notification of NotificationList; track $index) {
+                @if(notification.title.includes("تم قبول طلب الانضمام لفريق")){
+                <div class="oppCard mt-3 py-2 row justify-content-between align-items-center"
+                    [class.bg-light]="!notification.isRead">
+                    <div class="d-flex justify-content-start align-items-center col-3">
+                        <div class="cir me-3"></div>
+                        <span>{{notification.createdAt | date :'M/d/yy, h:mm a'}}</span>
+                    </div>
+                    <div class="row justify-content-end align-items-center px-4 col-9">
+                        <div class="text-end col-9">
+                            <h5 class="mb-2">تم قبول طلب الانضمام لفريق</h5>
+                            <p>{{notification.message}}</p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center smallDiv3 mb-5">
+                            <i class="bi bi-person-fill-check fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+                }
+                @if(notification.title.includes("تم رفض طلبك")){
+                <div class="oppCard mt-3 py-2 row justify-content-between align-items-center"
+                    [class.bg-light]="!notification.isRead">
+                    <div class="d-flex justify-content-start align-items-center col-3">
+                        <div class="cir me-3"></div>
+                        <span>{{notification.createdAt | date :'M/d/yy, h:mm a'}}</span>
+                    </div>
+                    <div class="row justify-content-end align-items-center px-4 col-9">
+                        <div class="col-9 text-end ">
+                            <h5 class="mb-2">تم رفض طلبك</h5>
+                            <p>{{notification.message}}</p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center smallDiv2 mb-5 ">
+                            <i class="bi bi-sign-no-left-turn-fill fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+                }
+                @if(notification.title.includes("تم قبول طلبك")){
+                <div class="oppCard mt-3 py-2 row justify-content-between align-items-center"
+                    [class.bg-light]="!notification.isRead">
+                    <div class="d-flex justify-content-start align-items-center col-3">
+                        <div class="cir me-3"></div>
+                        <span>{{notification.createdAt | date :'M/d/yy, h:mm a'}}</span>
+                    </div>
+                    <div class="row justify-content-end align-items-center px-4 col-9">
+                        <div class="col-9 text-end">
+                            <h5 class="mb-2">تم قبول طلبك</h5>
+                            <p>{{notification.message}}</p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center smallDiv mb-5">
+                            <i class="bi bi-sign-turn-left-fill fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+                }
+                @if(notification.title.includes("تم رفض طلب الانضمام لفريق")){
+                <div class="oppCard mt-3 py-2 row justify-content-between align-items-center"
+                    [class.bg-light]="!notification.isRead">
+                    <div class="d-flex justify-content-start align-items-center col-3">
+                        <div class="cir me-3"></div>
+                        <span>{{notification.createdAt | date :'M/d/yy, h:mm a'}}</span>
+                    </div>
+                    <div class="row justify-content-end align-items-center px-4 col-9">
+                        <div class="col-9 text-end ">
+                            <h5 class="mb-2">تم رفض طلب الانضمام لفريق</h5>
+                            <p>{{notification.message}}</p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center smallDiv2 mb-5 ">
+                            <i class="bi bi-person-fill-x fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+                }
+                @if(notification.title.includes(" دعوة جديدة")){
+                <div class="oppCard mt-3 py-2 row justify-content-between align-items-center"
+                    [class.bg-light]="!notification.isRead">
+                    <div class="d-flex justify-content-start align-items-center col-3">
+                        <button class="rej me-3 d-flex justify-content-center align-items-center btn"
+                            (click)="rejectInvitations(notification.invitationId)">رفض</button>
+                        <button class="ace d-flex justify-content-center align-items-center btn"
+                            (click)="rejectInvitations(notification.invitationId)">قبول</button>
+                    </div>
+                    <div class="row justify-content-end align-items-center px-4 col-9">
+                        <div class="col-9 text-end ">
+                            <h5 class="mb-2">دعوة جديدة</h5>
+                            <p>{{notification.message}}</p>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center smallDiv4 mb-5">
+                            <i class="bi bi-chat-right-dots-fill fs-4"></i>
+                        </div>
+                    </div>
+                </div>
+                }
+                }
+            </div>
+        </div>
+    </div>
+</div>

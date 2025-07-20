@@ -53,4 +53,5 @@ export class VolunteerDashboardService {
   updateVolInfo(id:string,data: any): Observable<any> {
     return this.http.put(`${environment.baseUrl}/api/VolunteerSettings/${id}`, data, { responseType: 'text' as 'json' })
   }
+    
 }

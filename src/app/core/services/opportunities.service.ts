@@ -7,6 +7,7 @@ import { environment } from '../environments/environment';
 import { OppManagment } from '../../models/opp-managment';
 import { Organization } from '../../models/organization';
 import { Team } from '../../models/team';
+import { Review } from '../../models/review';
 
 @Injectable({
   providedIn: 'root'
@@ -72,5 +73,11 @@ export class OpportunitiesService {
     return this.http.get(`${environment.baseUrl}/api/Attendance/${id}/attendance-report/pdf`, {
     responseType: 'blob' as 'json'
   } )
+  }
+   getAllComments(oppId : string):Observable<Review[]>{
+    return this.http.get<Review[]>(`${environment.baseUrl}/api/ReviewComment/table/${oppId}`)
+  }
+   addComment(comment : any):Observable<any>{
+    return this.http.post(`${environment.baseUrl}/api/ReviewComment/add-with signalr`,comment);
   }
 }

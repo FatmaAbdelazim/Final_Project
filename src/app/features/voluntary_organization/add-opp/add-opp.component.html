@@ -15,7 +15,7 @@
                         <input type="text" id="name" class="py-3 form-control text-end"
                             placeholder="أدخل اسم الفرصة التطوعية" formControlName="Title">
                     </div>
-                    @if(Title?.touched){
+                    @if(Title?.touched && Title?.invalid){
                     <span class="text-danger">اسم الفرصه مطلوب</span>
                     }
                     <!-- <div class="form-group text-end w-50">
@@ -27,28 +27,31 @@
                 <div class="row mt-4">
                     <div class="col-6">
                         <div class="form-group text-end ">
-                            <label for="cat" class="mb-2">المجال/الفئة</label>
-                            <input type="text" id="cate" class="py-3 form-control text-end" placeholder="ادخل المجال"
-                                formControlName="CategoryName">
+                            <label for="category" class="mb-2">اختيار المجال/الفئة</label>
+                            <input list="cats" name="cat" id="cat" class="py-3 form-control text-end"
+                                placeholder="اختر المجال" formControlName="CategoryName">
+                            <datalist id="cats">
+                                @for (cat of categoryList; track $index) {
+                                <option class="text-end" [value]="cat.name">
+                                    }
+                            </datalist>
                         </div>
-                        @if(CategoryName?.touched){
+                        @if(CategoryName?.touched && CategoryName?.invalid){
                         <span class="text-danger">اسم المجال مطلوب</span>
                         }
                     </div>
                     <div class="col-6">
                         <div class="form-group text-end ">
                             <label for="add" class="mb-2">المنظمة</label>
-                            <input list="browsers" name="browser" id="browser" class="py-3 form-control text-end"
+                            <input list="orgs" name="org" id="org" class="py-3 form-control text-end"
                                 placeholder="اختر المنظمة" formControlName="OrganizationName">
-                            <datalist id="browsers">
-                                <option value="Edge">
-                                <option value="Firefox">
-                                <option value="Chrome">
-                                <option value="Opera">
-                                <option value="Safari">
+                            <datalist id="orgs">
+                                @for (org of allOrg; track $index) {
+                                <option [value]="org.organizationName">
+                                    }
                             </datalist>
                         </div>
-                        @if(OrganizationName?.touched){
+                        @if(OrganizationName?.touched && OrganizationName?.invalid){
                         <span class="text-danger">اسم المنظمة مطلوب</span>
                         }
                     </div>
@@ -60,7 +63,7 @@
                             placeholder="اكتب وصف تفصيلى عن الفرصة التطوعية واهدافها"
                             formControlName="Description"></textarea>
                     </div>
-                    @if(Description?.touched){
+                    @if(Description?.touched && Description?.invalid){
                     <span class="text-danger">يجب وضع وصف للفرصه</span>
                     }
                 </div>
@@ -72,9 +75,18 @@
                             <p class="mb-1">اضغط لتحميل الصورة</p>
                             <p class="text-muted small">(PNG,SVG, JPG, JPEG — حد أقصى 5MB)</p>
                             <input type="file" #fileInput accept="image/*" class="form-control d-none"
-                                (change)="onFileSelected($event)" formControlName="Image">
+                                (change)="onFileSelected($event)" >
                         </div>
                     </div>
+                    
+                    @if(fileName != null && fileName != '')
+                    {
+                    <p class="text-muted mt-3 me-2 mb-4 smaller text-end">تم اختيار الملف: {{ fileName }}</p>
+                    }
+                    @if(fileName == '')
+                    {
+                    <span class="text-danger mt-2 mb-4">صورة الفرصه مطلوبة</span>
+                    }
                     <!-- @if(fileName == null){
                     <span class="text-danger">صورة الفرصه مطلوبة</span>
                     } -->
@@ -90,19 +102,19 @@
                 <div class="row mb-3 mt-4">
                     <div class="col-6">
                         <div class="form-group text-end">
-                            <label for="name" class="mb-2">تاريخ البدء</label>
-                            <input type="date" id="name" class="py-3 form-control text-end" formControlName="StartDate">
+                            <label for="sD" class="mb-2">تاريخ البدء</label>
+                            <input type="date" id="sD" class="py-3 form-control text-end" formControlName="StartDate">
                         </div>
-                        @if(StartDate?.touched){
+                        @if(StartDate?.touched && StartDate?.invalid){
                         <span class="text-danger">تاريخ البدء مطلوب</span>
                         }
                     </div>
                     <div class="col-6">
                         <div class="form-group text-end">
-                            <label for="name" class="mb-2">تاريخ الانتهاء</label>
-                            <input type="date" id="name" class="py-3 form-control text-end" formControlName="EndDate">
+                            <label for="eD" class="mb-2">تاريخ الانتهاء</label>
+                            <input type="date" id="eD" class="py-3 form-control text-end" formControlName="EndDate">
                         </div>
-                        @if(EndDate?.touched){
+                        @if(EndDate?.touched && EndDate?.invalid){
                         <span class="text-danger">تاريح الانتهاء مطلوب</span>
                         }
                     </div>
@@ -110,21 +122,21 @@
                 <div class="row mb-3 mt-4">
                     <div class="col-6">
                         <div class="form-group text-end">
-                            <label for="name" class="mb-2">وقت الحضور</label>
-                            <input type="number" id="name" class="py-3 form-control text-end"
+                            <label for="att" class="mb-2">وقت الحضور</label>
+                            <input type="number" id="att" class="py-3 form-control text-end"
                                 placeholder="مثال من 8-11 صباحا" formControlName="Conditions">
                         </div>
-                        @if(Conditions?.touched){
+                        @if(Conditions?.touched && Conditions?.invalid){
                         <span class="text-danger">وقت الحضور مطلوب</span>
                         }
                     </div>
                     <div class="col-6">
                         <div class="form-group text-end">
-                            <label for="name" class="mb-2">المدينة</label>
-                            <input type="text" id="name" class="py-3 form-control text-end"
+                            <label for="nameCity" class="mb-2">المدينة</label>
+                            <input type="text" id="nameCity" class="py-3 form-control text-end"
                                 placeholder="ادخل اسم المدينه" formControlName="Location">
                         </div>
-                        @if(Location?.touched){
+                        @if(Location?.touched && Location?.invalid){
                         <span class="text-danger">اسم المدينة مطلوبة</span>
                         }
                     </div>
@@ -140,35 +152,35 @@
                 <div class="row mb-3 mt-4">
                     <div class="col-6">
                         <div class="form-group text-end">
-                            <label for="name" class="mb-2">عدد المتطوعين المطلوبين</label>
-                            <input type="number" id="name" class="py-3 form-control text-end"
+                            <label for="vol" class="mb-2">عدد المتطوعين المطلوبين</label>
+                            <input type="number" id="vol" class="py-3 form-control text-end"
                                 formControlName="RequiredVolunteers">
                         </div>
-                        @if(RequiredVolunteers?.touched){
+                        @if(RequiredVolunteers?.touched && RequiredVolunteers?.invalid){
                         <span class="text-danger">تحديد عدد المتطوعين مطلوب</span>
                         }
                     </div>
                     <div class="col-6">
                         <div class="form-group text-end">
-                            <label for="name" class="mb-2">الجنس المطلوب</label>
+                            <label for="gender" class="mb-2">الجنس المطلوب</label>
                             <select class="form-control py-3" formControlName="GenderRequirement">
-                                <option class="text-end">الكل</option>
-                                <option class="text-end">ذكر</option>
-                                <option class="text-end">انثي</option>
+                                <!-- <option class="text-end">الكل</option> -->
+                                <option class="text-end" value="Male">ذكر</option>
+                                <option class="text-end" value="Female">انثي</option>
                             </select>
                         </div>
-                        @if(GenderRequirement?.touched){
+                        @if(GenderRequirement?.touched && GenderRequirement?.invalid){
                         <span class="text-danger">جنس المتطوع مطلوب </span>
                         }
                     </div>
                 </div>
                 <div class="row mt-2 mb-4">
                     <div class="form-group text-end">
-                        <label for="name" class="mb-2">اضافة المهارات المطلوبة</label>
-                        <input type="text" id="name" class="py-3 form-control text-end"
+                        <label for="skills" class="mb-2">اضافة المهارات المطلوبة</label>
+                        <input type="text" id="skills" class="py-3 form-control text-end"
                             placeholder="ادخل المهارت المطلوبة للفرصة" formControlName="RequiredSkillsIds">
                     </div>
-                    @if(RequiredSkillsIds?.touched){
+                    @if(RequiredSkillsIds?.touched && RequiredSkillsIds?.invalid){
                     <span class="text-danger">يجب تحديد المهارات المطلوبة</span>
                     }
                 </div>
@@ -193,11 +205,11 @@
                 <div class="row mb-3 mt-4">
                     <div class="col-6">
                         <div class="form-group text-end">
-                            <label for="name" class="mb-2">عدد الساعات المتوقع اعتمادها</label>
-                            <input type="number" id="name" class="py-3 form-control text-end" placeholder="مثال 16"
+                            <label for="hours" class="mb-2">عدد الساعات المتوقع اعتمادها</label>
+                            <input type="number" id="hours" class="py-3 form-control text-end" placeholder="مثال 16"
                                 formControlName="TotalHours">
                         </div>
-                        @if(TotalHours?.touched){
+                        @if(TotalHours?.touched && TotalHours?.invalid){
                         <span class="text-danger">عدد الساعات مطلوبه</span>
                         }
                     </div>
@@ -205,20 +217,20 @@
                         <p class="mb-2">هل سيتم تتبع الحضور؟</p>
                         <div class="d-flex py-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="attendance" id="attendanceYes"
-                                    [value]="true" formControlName="IsAttendanceTracked">
+                                <input class="form-check-input" type="radio" name="IsAttendanceTracked"
+                                    id="attendanceYes" [value]="true" formControlName="IsAttendanceTracked">
                                 <label class="form-check-label" for="gridRadios1">
                                     نعم
                                 </label>
                             </div>
                             <div class="form-check ms-5">
-                                <input class="form-check-input ms-5" type="radio" name="attendance" id="attendanceNo"
-                                    [value]="false" formControlName="IsAttendanceTracked">
+                                <input class="form-check-input ms-5" type="radio" name="IsAttendanceTracked"
+                                    id="attendanceNo" [value]="false" formControlName="IsAttendanceTracked">
                                 <label class="form-check-label" for="gridRadios2">
                                     لا </label>
                             </div>
                         </div>
-                        @if(IsAttendanceTracked?.touched){
+                        @if(IsAttendanceTracked?.touched && IsAttendanceTracked?.invalid){
                         <span class="text-danger">يجب تحديد سيتم تتبع الحضور ام لا</span>
                         }
                     </div>
@@ -228,20 +240,20 @@
                         <p class="mb-2">هل ستصدر الشهادة بعد الانتهاء؟</p>
                         <div class="d-flex py-2">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="certificate" id="certificateYes"
-                                    [value]="true" formControlName="IsCertificateAvailable">
+                                <input class="form-check-input" type="radio" name="IsCertificateAvailable"
+                                    id="certificateYes" [value]="true" formControlName="IsCertificateAvailable">
                                 <label class="form-check-label" for="gridRadios1">
                                     نعم
                                 </label>
                             </div>
                             <div class="form-check ms-5">
-                                <input class="form-check-input ms-5" type="radio" name="certificate" id="certificateNo"
-                                    [value]="false" formControlName="IsCertificateAvailable">
+                                <input class="form-check-input ms-5" type="radio" name="IsCertificateAvailable"
+                                    id="certificateNo" [value]="false" formControlName="IsCertificateAvailable">
                                 <label class="form-check-label" for="gridRadios2">
                                     لا </label>
                             </div>
                         </div>
-                        @if(IsCertificateAvailable?.touched){
+                        @if(IsCertificateAvailable?.touched && IsCertificateAvailable?.invalid){
                         <span class="text-danger">يجب تحديد اذا تريد اصدار شهادة ام لا </span>
                         }
                     </div>
@@ -256,10 +268,14 @@
                 </div>
                 <div class="row mt-4 mb-5">
                     <div class="form-group text-end">
-                        <label for="nameOrg" class="mb-2">ربط الفرصة بقريق تطوعى معين (اختيارى)</label>
-                        <select class="form-control py-3" formControlName="TeamName">
-                            <option class="text-end">اختر فريق</option>
-                        </select>
+                        <label for="team" class="mb-2">ربط الفرصة بقريق تطوعى معين (اختيارى)</label>
+                        <input list="teams" name="tea" id="team" class="py-3 form-control text-end"
+                            placeholder="اختر فريق" formControlName="TeamName">
+                        <datalist id="teams">
+                            @for (team of teamsList; track $index) {
+                            <option [value]="team.name">
+                                }
+                        </datalist>
                     </div>
                     <!-- @if(TeamName?.touched){
                          <span class="text-danger">اسم الفريق مطلوب</span>

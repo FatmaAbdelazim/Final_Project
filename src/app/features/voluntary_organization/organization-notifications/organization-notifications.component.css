@@ -70,3 +70,17 @@
     background-color: #FEF9C3;
     color: #CA8A04;
 }
+.rej{
+    background-color: #EF4444;
+    color: #FFFFFF;
+    width: 81px;
+    height: 42px;
+    border-radius: 6px;
+}
+.ace{
+    background-color: #25A655;
+    color: #FFFFFF;
+    width: 81px;
+    height: 42px;
+    border-radius: 6px;
+}
