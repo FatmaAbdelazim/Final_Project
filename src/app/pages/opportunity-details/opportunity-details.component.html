@@ -1,4 +1,6 @@
-<div class="container">
+@if(Opportunity)
+{
+    <div class="container">
     <div class="row mt-4">
         <img [src]="'https://tatawwa3.runasp.net/uploads/' + Opportunity.image" alt="CardImage" id="divSection1">
     </div>
@@ -16,7 +18,7 @@
                             <p>{{Opportunity.organizationType}}</p>
                         </div>
                         <!-- <img src="/assets/review.jpg" alt="" id="imgLogo"> -->
-                        <img [src]="'https://tatawwa3.runasp.net/uploads/' + Opportunity.image" alt="" id="imgLogo">
+                        <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + Opportunity.organizationImage" alt="" id="imgLogo">
 
                     </div>
                     <div class="d-flex justify-content-end ">
@@ -52,10 +54,10 @@
 
         </div>
         <div class="col-lg-8 mt-5 mb-5 col-sm-12">
-            <div class="card text-end p-5">
-                <h2 class="mt-5 mb-5">{{Opportunity.title}}</h2>
+            <div class="card text-end p-4">
+                <h2 class="mt-5 mb-3">{{Opportunity.title}}</h2>
                 <span class="fw-bold">الوصف</span>
-                <p class="text-muted mt-3 mb-5">{{Opportunity.description}}</p>
+                <p class="text-muted mt-3 mb-3">{{Opportunity.description}}</p>
                 <div class="d-flex justify-content-end align-items-center">
                     <span class="me-3 fw-bold">المهارات المطلوبة</span>
                     <i class="bi bi-star-fill main-color fs-3"></i>
@@ -71,7 +73,7 @@
                     }
 
                 </div>
-                <div class="row justify-content-end align-items-center mb-5">
+                <div class="row justify-content-end align-items-center mb-4">
                     <div class="div row  justify-content-end  align-items-center mb-3">
                         <div class="d-flex justify-content-end text-center  align-items-center" id="divM">
                             <p class="m-2">المدة</p>
@@ -111,9 +113,14 @@
             <h4 class="text-end">التقييمات والتعليقات</h4>
         </div>
         <div class="row justify-content-center align-items-center px-4">
+            @if(commentList){
             @for (comment of commentList; track $index) {
             <app-comment-card [Comment]="comment"></app-comment-card>
             }
+            }@else {
+                <h3 class="text-danger text-center mb-4">لا يوجد اي تعليقات علي الفرصة حتي الان</h3>
+            }
+
         </div>
     </div>
    <form (ngSubmit)="addComment()" #commentForm="ngForm" class="row card justify-content-center align-items-center mb-5">
@@ -157,3 +164,4 @@
 </form>
 
 </div>
+}

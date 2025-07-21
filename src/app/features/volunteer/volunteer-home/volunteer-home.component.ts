@@ -1,3 +1,4 @@
+import { OpportunitiesService } from './../../../core/services/opportunities.service';
 import { VoluntaryOrganizationRegisterComponent } from './../../voluntary_organization/register/register.component';
 import { AuthVoluntaryOrganizationService } from './../../../core/services/auth-voluntary-organization.service';
 import { VolunteerRecommendedOpportunities } from './../../../models/volunteer-recommended-opportunities';
@@ -6,6 +7,7 @@ import { VolunteerDashboardService } from './../../../core/services/volunteer-da
 import { Component, OnInit } from '@angular/core';
 import { OppCardVoluteerComponent } from "../../../shared/components/opp-card-voluteer/opp-card-voluteer.component";
 import { OppCardSuggationVoluteerComponent } from "../../../shared/components/opp-card-suggation-voluteer/opp-card-suggation-voluteer.component";
+import { Opportunity } from '../../../models/opportunty';
 
 @Component({
   selector: 'app-volunteer-home',
@@ -16,8 +18,8 @@ import { OppCardSuggationVoluteerComponent } from "../../../shared/components/op
 export class VolunteerHomeComponent implements OnInit{
   volunteerId!: string;
   volunteerOpportuintiesList!: VolunteerOpportuinties[];
-  volunteerRecommendedOpportunitiesList!: VolunteerRecommendedOpportunities[];
-  constructor(private _VolunteerDashboardService: VolunteerDashboardService , private _VoluntaryOrganizationRegisterComponent : AuthVoluntaryOrganizationService) { }
+  volunteerRecommendedOpportunitiesList!: Opportunity[];
+  constructor(private _VolunteerDashboardService: VolunteerDashboardService ,private _OpportunitiesService : OpportunitiesService, private _VoluntaryOrganizationRegisterComponent : AuthVoluntaryOrganizationService) { }
   ngOnInit(): void {
     this._VoluntaryOrganizationRegisterComponent.decodeUserData();
     this.volunteerId = this._VoluntaryOrganizationRegisterComponent.userData.id;
@@ -37,7 +39,7 @@ export class VolunteerHomeComponent implements OnInit{
     })
   }
   getAllVolunteerRecommendedOpportunities() {
-    this._VolunteerDashboardService.getRecommendedOpportunities(this.volunteerId).subscribe({
+    this._OpportunitiesService.getAllOpportunities().subscribe({
       next: (response) => {
         this.volunteerRecommendedOpportunitiesList = response;
       },

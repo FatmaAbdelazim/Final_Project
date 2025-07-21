@@ -1,4 +1,6 @@
-<div class="row card comCard mb-3 p-2">
+@if(Comment)
+{
+    <div class="row card comCard mb-3 p-2">
     <div class="d-flex justify-content-between align-items-center">
         <div class="d-flex justify-content-end align-items-center">
             @for (rate of getStarsArray(Comment.rating); track $index) {
@@ -14,3 +16,4 @@
 
     <p class="text-end mt-3">{{Comment.comment}}</p>
 </div>
+}

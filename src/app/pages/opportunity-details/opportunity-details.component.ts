@@ -11,7 +11,7 @@ import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-opportunity-details',
-  imports: [CommentCardComponent, CommonModule, RouterLink , FormsModule],
+  imports: [CommentCardComponent, CommonModule, RouterLink, FormsModule],
   templateUrl: './opportunity-details.component.html',
   styleUrl: './opportunity-details.component.css'
 })
@@ -25,7 +25,7 @@ export class OpportunityDetailsComponent implements OnInit {
     rating: 0
   };
   constructor(private _OpportunitiesService: OpportunitiesService, private _Route: ActivatedRoute,
-    private _AuthVoluntaryOrganizationService:AuthVoluntaryOrganizationService
+    private _AuthVoluntaryOrganizationService: AuthVoluntaryOrganizationService
   ) { }
   ngOnInit(): void {
     this.OpportunityId = this._Route.snapshot.paramMap.get('id') || '';
@@ -42,7 +42,7 @@ export class OpportunityDetailsComponent implements OnInit {
         console.log(response);
       },
       error: (e) => {
-        alert(e);
+        console.log(e);
       }
     })
   }
@@ -58,7 +58,12 @@ export class OpportunityDetailsComponent implements OnInit {
         console.log(response);
       },
       error: (e) => {
-        alert(e);
+        if (e.status === 404) {
+          this.commentList = []; // ممكن يكون طبيعي مفيش تعليقات
+        }
+        else{
+        console.log(e.error);
+        }
       }
     })
   }
@@ -76,7 +81,7 @@ export class OpportunityDetailsComponent implements OnInit {
         this.getAllComments();
       },
       error: (e) => {
-        alert(e);
+        console.log(e);
       }
     })
   }

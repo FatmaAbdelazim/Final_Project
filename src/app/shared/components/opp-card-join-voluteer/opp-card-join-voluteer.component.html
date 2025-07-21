@@ -1,13 +1,14 @@
 <div class="oppCard mt-4 p-3 d-flex justify-content-between align-items-center">
     <div class="d-flex justify-content-center align-items-center">
-        <p class="me-4 mt-2"> ساعات تطوعية {{volAttendence.hours}}</p>
+        <p class="me-1 mt-2"> ساعات تطوعية</p>
+        <span class="me-5 mb-1">{{volAttendence.hours}}</span>
         <div class="divStatus2 d-flex justify-content-center align-items-center" [ngClass]="{
-  'divStatus1': volAttendence.status === 'حاضر',
-  'divStatus2': volAttendence.status === 'متغيب'}">{{volAttendence.status}}</div>
+  'divStatus1': volAttendence.status === 'Completed',
+  'divStatus2': volAttendence.status === 'Registered'}">{{volAttendence.status}}</div>
     </div>
     <div class="row flex-column justify-content-end align-items-end">
         <h5>{{volAttendence.opportunityTitle}}</h5>
         <p class="mt-1 text-muted">{{volAttendence.opportunity_discrption}}</p>
-        <span class="text-muted">{{volAttendence.date | date:"EEEE, MMMM d, y" }}</span>
+        <span class="text-muted">{{volAttendence.date | date:'M/d/yy' }}</span>
     </div>
 </div>

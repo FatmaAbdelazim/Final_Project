@@ -78,6 +78,8 @@ export class ReviewOppComponent implements OnInit {
       next: () => {
         alert("تم رفض الفرصه");
         this.getAllPublishedOpp();
+        this.getCountOfOppComplete();
+        this.getCountOfOppDraft();
       },
       error: (e) => {
         console.log(e.error);
@@ -89,6 +91,8 @@ export class ReviewOppComponent implements OnInit {
       next: () => {
         alert(" تم قبول الفرصه");
         this.getAllPublishedOpp();
+        this.getCountOfOppComplete();
+        this.getCountOfOppDraft();
       },
       error: (e) => {
         console.log(e.error);

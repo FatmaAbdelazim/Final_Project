@@ -48,7 +48,7 @@
     <div class="container mt-5">
         <p class="mb-2">تم العثور على {{opportunitiesFilterList.length}} فرصة تطوعية</p>
         <div class="row justify-content-center align-items-center mt-5 mb-5">
-            @if(noOpportunities !=0)
+            @if(opportunitiesFilterList.length !=0)
             {
             @for (opp of pagedOpportunities; track $index) {
             <app-home-card class="col-4 mb-5 bg-white" [Opportunity]="opp"></app-home-card>

@@ -11,44 +11,53 @@ import { NotificationService } from '../../../core/services/notification-service
   templateUrl: './volunteer-notifications.component.html',
   styleUrl: './volunteer-notifications.component.css'
 })
-export class VolunteerNotificationsComponent implements OnInit{
+export class VolunteerNotificationsComponent implements OnInit {
 
+  Flag = false;
+  currentPage: number = 1;
+  itemsPerPage: number = 4;
+  opportunitiesList!: any;
+  pagedOpps: Notification[] = [];
   NotificationList!: Notification[];
-  constructor(private _NotificationService : NotificationService,  
+  constructor(private _NotificationService: NotificationService,
     private signalRService: SignalRService,
-    private toastr: ToastrService){}
+    private toastr: ToastrService) { }
   ngOnInit(): void {
     this.getAllNotification();
     this.setupSignalR();
   }
 
-  getAllNotification(){
+  getAllNotification() {
     this._NotificationService.getAllNotifications().subscribe({
-      next:(response)=>{
-          this.NotificationList = response;
+      next: (response) => {
+        this.NotificationList = response;
+        this.currentPage = 1;
+        this.updatePagedOpportunities();
       },
-      error:(e)=>{
-          console.log(e.error);
+      error: (e) => {
+        console.log(e.error);
       }
     })
   }
-   acceptInvitations(InvitationsId:string){
+  acceptInvitations(InvitationsId: string) {
     this._NotificationService.acceptInvitations(InvitationsId).subscribe({
-      next:()=>{
+      next: () => {
         alert("تم قبول الدعوة بنجاح (:");
+        // this.Flag = true;
       },
-      error:(e)=>{
-          console.log(e.error);
+      error: (e) => {
+        console.log(e.error);
       }
     })
   }
-    rejectInvitations(InvitationsId:string){
+  rejectInvitations(InvitationsId: string) {
     this._NotificationService.rejectInvitations(InvitationsId).subscribe({
-      next:()=>{
+      next: () => {
         alert("تم رفض الدعوة بنجاح (:");
+                // this.Flag = true;
       },
-      error:(e)=>{
-          console.log(e.error);
+      error: (e) => {
+        console.log(e.error);
       }
     })
   }
@@ -58,6 +67,25 @@ export class VolunteerNotificationsComponent implements OnInit{
       this.NotificationList.unshift(newNotif); // نضيفه في أول الليست
       this.toastr.info(newNotif.message, `📢 ${newNotif.title}`);
     });
+    this.currentPage = 1;
+    this.updatePagedOpportunities();
+  }
+  updatePagedOpportunities() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.pagedOpps = this.NotificationList.slice(startIndex, endIndex);
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updatePagedOpportunities();
+    }
+  }
+
+
+  get totalPages(): number {
+    return Math.ceil(this.NotificationList.length / this.itemsPerPage);
   }
 }
 

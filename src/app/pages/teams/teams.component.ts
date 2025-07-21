@@ -57,9 +57,11 @@ export class TeamsComponent implements OnInit {
     }
   }
 
-  get totalPages(): number {
-    return Math.ceil(this.teamsFilterList.length / this.itemsPerPage);
-  }
+ get totalPages(): number {
+  if (!this.teamsFilterList) return 0;
+  return Math.ceil(this.teamsFilterList.length / this.itemsPerPage);
+}
+
   getAllLocations() {
     this._TeamsService.getAllLocations().subscribe({
       next: (respons) => {

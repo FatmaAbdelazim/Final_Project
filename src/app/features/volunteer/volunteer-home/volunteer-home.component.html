@@ -26,16 +26,18 @@
                     <h4 class="text-end mt-2 me-2">فرص مقترحة لك</h4>
                 </div>
                 <div class="row mt-3 mb-3">
-                    @if(volunteerRecommendedOpportunitiesList.length == 0)
+                    <!-- @if(volunteerRecommendedOpportunitiesList.length == 0)
                     {
                     <h1 class="text-danger text-center">لم يسبق لك التقديم في اي فرصة</h1>
                     }
-                    @else {
-                    @for (volOppRecommended of volunteerRecommendedOpportunitiesList; track $index) {
-                    <app-opp-card-suggation-voluteer class="col-4" [volunteerOppRecommended]="volOppRecommended"></app-opp-card-suggation-voluteer>
+                    @else { -->
+                    <!-- @for (volOppRecommended of volunteerRecommendedOpportunitiesList; track $index) { -->
+                    <app-opp-card-suggation-voluteer class="col-4" [volunteerOppRecommended]="volunteerRecommendedOpportunitiesList[0]"></app-opp-card-suggation-voluteer>
+                    <app-opp-card-suggation-voluteer class="col-4" [volunteerOppRecommended]="volunteerRecommendedOpportunitiesList[1]"></app-opp-card-suggation-voluteer>
+                    <app-opp-card-suggation-voluteer class="col-4" [volunteerOppRecommended]="volunteerRecommendedOpportunitiesList[2]"></app-opp-card-suggation-voluteer>
 
-                    }
-                    }
+                    <!-- } -->
+                    <!-- } -->
                 </div>
             </div>
         </div>

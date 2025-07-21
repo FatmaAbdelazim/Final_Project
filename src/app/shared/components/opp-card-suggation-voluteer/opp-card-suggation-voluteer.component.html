@@ -1,9 +1,9 @@
 <div class="oppCard mt-3">
     <div class="d-flex flex-column justify-content-center align-items-end">
-        <div class="cate  d-flex justify-content-center  align-items-center mb-3">
-            {{volunteerOppRecommended.category}}
+        <div class="d-flex justify-content-center  align-items-center mb-3">
+            <!-- {{volunteerOppRecommended.category}} -->
         </div>
-        <h5>{{volunteerOppRecommended.opportunityTitle}}</h5>
+        <h5>{{volunteerOppRecommended.title}}</h5>
         <div class="d-flex justify-content-center align-items-center">
             <div class="d-flex justify-content-center align-items-center me-4">
                 <span class="me-1">{{volunteerOppRecommended.location}}</span>
@@ -15,5 +15,5 @@
             </div>
         </div>
     </div>
-    <div class="divdDtails d-flex justify-content-center align-items-center mt-4" [routerLink]="['/opportunity-details',volunteerOppRecommended.opportunityId]">التفاصيل</div>
+    <div class="divdDtails d-flex justify-content-center align-items-center mt-4" [routerLink]="['/opportunity-details',volunteerOppRecommended.id]">التفاصيل</div>
 </div>

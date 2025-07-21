@@ -3,7 +3,7 @@
         <div class="row justify-content-center align-items-center">
             <h3 class="text-end me-5 mb-5 mt-2">تابع اخر التحديثات والانشطة</h3>
             <div class="row justify-content-center align-items-center">
-                @for (notification of NotificationList; track $index) {
+                @for (notification of pagedOpps; track $index) {
                 @if(notification.title.includes("تم قبول طلب الانضمام لفريق")){
                 <div class="oppCard mt-3 py-2 row justify-content-between align-items-center"
                     [class.bg-light]="!notification.isRead">
@@ -83,7 +83,7 @@
                         <button class="rej me-3 d-flex justify-content-center align-items-center btn"
                             (click)="rejectInvitations(notification.invitationId)">رفض</button>
                         <button class="ace d-flex justify-content-center align-items-center btn"
-                            (click)="rejectInvitations(notification.invitationId)">قبول</button>
+                            (click)="acceptInvitations(notification.invitationId)" >قبول</button>
                     </div>
                     <div class="row justify-content-end align-items-center px-4 col-9">
                         <div class="col-9 text-end ">
@@ -98,6 +98,37 @@
                 }
                 }
             </div>
+        </div>
+               <div class="row mb-5 mt-3">
+            <nav class=" p-2">
+                <ul class="pagination">
+
+                    <!-- Previous -->
+                    <li class="page-item" [class.disabled]="currentPage === 1">
+                        <a class="page-link main-color" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+
+                    <!-- Dynamic Page Numbers -->
+                    @for (page of [].constructor(totalPages); track $index) {
+                    <li class="page-item" [class.active]="currentPage === $index + 1">
+                        <a class="page-link main-color" (click)="goToPage($index + 1)">
+                            {{ $index + 1 }}
+                        </a>
+                    </li>
+                    }
+
+
+                    <!-- Next -->
+                    <li class="page-item" [class.disabled]="currentPage === totalPages">
+                        <a class="page-link main-color" (click)="goToPage(currentPage + 1)" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

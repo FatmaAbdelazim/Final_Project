@@ -104,10 +104,10 @@
         <button class="btn btn-outline-danger px-4">مرفوض</button>
       }
       @else {
-        <button (click)="reject(volunteer.id)" class="btn btn-danger px-4">رفض</button>
-        <button (click)="accept(volunteer.id)" class="btn btn-success px-4">قبول</button>
+        <button (click)="reject(volunteer.volunteerId)" class="btn btn-danger px-4">رفض</button>
+        <button (click)="accept(volunteer.volunteerId)" class="btn btn-success px-4">قبول</button>
       }
-      <button [routerLink]="['/volProfile', volunteer.id]" class="btn-cancle">عرض الملف الشخصى</button>
+      <button [routerLink]="['/volunteer-profile', volunteer.volunteerId]" class="btn-cancle">عرض الملف الشخصى</button>
     </div>
     <div class="d-flex align-items-center gap-2 p-3">
       <div class="text-end">

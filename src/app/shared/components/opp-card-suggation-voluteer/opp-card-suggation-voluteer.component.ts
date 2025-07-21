@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { VolunteerRecommendedOpportunities } from '../../../models/volunteer-recommended-opportunities';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { Opportunity } from '../../../models/opportunty';
 
 @Component({
   selector: 'app-opp-card-suggation-voluteer',
@@ -10,5 +11,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './opp-card-suggation-voluteer.component.css'
 })
 export class OppCardSuggationVoluteerComponent {
-      @Input() volunteerOppRecommended!: VolunteerRecommendedOpportunities;
+      @Input() volunteerOppRecommended!: Opportunity;
 }

@@ -13,15 +13,15 @@ export class NotificationService {
       return this.http.get<any[]>(`${environment.baseUrl}/api/Notifications?page=1&pageSize=10`)
     }
       acceptVoluntterinTeam(requestId:string): Observable<any> {
-      return this.http.put<any>(`${environment.baseUrl}/api/Notifications/${requestId}/accept`,{});
+      return this.http.put<any>(`${environment.baseUrl}/api/Notifications/${requestId}/accept`,{},{ responseType: 'text' as 'json' });
     }
       rejectVoluntterinTeam(requestId:string): Observable<any[]> {
-      return this.http.put<any>(`${environment.baseUrl}/api/Notifications/${requestId}/reject`,{});
+      return this.http.put<any>(`${environment.baseUrl}/api/Notifications/${requestId}/reject`,{} , { responseType: 'text' as 'json' });
     }
       acceptInvitations(InvitationsId:string): Observable<any> {
-    return this.http.put<any>(`${environment.baseUrl}/api/Notifications/invitations/${InvitationsId}/accept`,{});
+    return this.http.put<any>(`${environment.baseUrl}/api/Notifications/invitations/${InvitationsId}/accept`,{},{ responseType: 'text' as 'json' });
   }
     rejectInvitations(InvitationsId:string): Observable<any[]> {
-    return this.http.put<any>(`${environment.baseUrl}/api/Notifications/invitations/${InvitationsId}/reject`,{});
+    return this.http.put<any>(`${environment.baseUrl}/api/Notifications/invitations/${InvitationsId}/reject`,{},{ responseType: 'text' as 'json' });
   }
 }
