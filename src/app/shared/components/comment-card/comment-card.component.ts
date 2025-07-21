@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './comment-card.component.css'
 })
 export class CommentCardComponent {
-  @Input() Comment !: Review;
+  @Input() CommentObject !: Review;
     getStarsArray(rating: number): number[] {
     return Array(rating).fill(0);
   }

@@ -75,7 +75,7 @@ export class OpportunitiesService {
   } )
   }
    getAllComments(oppId : string):Observable<Review[]>{
-    return this.http.get<Review[]>(`${environment.baseUrl}/api/ReviewComment/table/${oppId}`,{responseType: 'text' as 'json'})
+    return this.http.get<Review[]>(`${environment.baseUrl}/api/ReviewComment/table/${oppId}`)
   }
    addComment(comment : any):Observable<any>{
     return this.http.post(`${environment.baseUrl}/api/ReviewComment/add-with signalr`,comment);
