@@ -10,8 +10,11 @@
       <form [formGroup]="form" (ngSubmit)="update()">
         <div class="text-center mb-4">
           <div class="position-relative d-inline-block mx-auto">
-            <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + vol.image" alt="img" class="imgSponser">
-            <input type="file" #fileInput accept="image/*" class="form-control d-none"
+@if (previewImageUrl) {
+  <img [src]="previewImageUrl" class="imgSponser">
+} @else {
+  <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + vol.image" class="imgSponser">
+}            <input type="file" #fileInput accept="image/*" class="form-control d-none"
                                 (change)="onFileSelected($event)">
             <div (click)="triggerFileInput()" class="icon-bg2 text-center"><i class="bi bi-camera-fill text-white"></i></div>
           </div>

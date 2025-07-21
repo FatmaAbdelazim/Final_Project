@@ -46,7 +46,11 @@
                               <button class="btn" (click)="triggerFileInput()"> رفع صورة جديدة <i class="bi bi-upload"></i></button>
                             </div>
                           </div>
-                          <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + org.logoFile" alt="img">
+@if (previewImageUrl) {
+  <img [src]="previewImageUrl">
+} @else {
+  <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + org.logoFile">
+}
                         </div>
                     </div>
       </div>

@@ -18,7 +18,7 @@
 </div>
 <div class="my-5">
     <h4> اهداف الفريق</h4>
-    <p>{{team.teamGoals}}</p>
+    <p>{{team.internalNotes}}</p>
 </div>
 <hr>
 <div class="d-flex justify-content-center m-5">
@@ -35,7 +35,7 @@
                 <p> {{member.role }}</p>
             </div>
             <div>
-                <img [src]="member.image" alt="img">
+                <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + member.image" alt="img" class="imgSponser">
             </div>
         </div>
         }
