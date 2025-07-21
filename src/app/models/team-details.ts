@@ -8,6 +8,7 @@ export interface TeamDetails {
   categoryName:string,
   organizationName: string,
   teamGoals: string,
+  internalNotes :string,
   members : members[],
   opportunities: opportunities[],
   totalMembers: number,

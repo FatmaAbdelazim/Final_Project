@@ -22,6 +22,7 @@ export class VolunteerInfoComponent {
     id! : string
     fileName: string | null = null;
     fileToUpload: File | null = null;
+    previewImageUrl :string |null= ''
 
     form = this._FormBuilder.group({
       fullName: ['', [Validators.required, Validators.pattern(/^[\u0621-\u064Aa-zA-Z ]{2,}$/)]],
@@ -46,51 +47,57 @@ export class VolunteerInfoComponent {
     }
 
     onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      this.fileName = input.files[0].name;
-      this.fileToUpload = input.files[0];
-    } else {
-      this.fileName = null;
-      this.fileToUpload = null;
-    }
+  const input = event.target as HTMLInputElement;
+
+  if (input.files && input.files.length > 0) {
+    this.fileToUpload = input.files[0];
+    this.fileName = this.fileToUpload.name;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.previewImageUrl = reader.result as string;
+    };
+    reader.readAsDataURL(this.fileToUpload);
+  } else {
+    this.fileToUpload = null;
+    this.fileName = null;
+    this.previewImageUrl = null;
   }
+}
 
-    update():void{
-      if(this.form.valid)
-      {
-      let data = {
-        id: this.id ?? '',
-        fullName: this.form.get("fullName")?.value ?? '',
-        email: this.form.get("email")?.value ?? '',
-        phoneNumber: this.form.get("phoneNumber")?.value ?? '',
-        city: this.form.get("city")?.value ?? '',
-        image: ''
-      }
+
+    update(): void {
+  if (this.form.valid) {
+    const formData = new FormData();
+    formData.append('Id', this.id ?? '');
+    formData.append('FullName', this.form.get('fullName')?.value ?? '');
+    formData.append('Email', this.form.get('email')?.value ?? '');
+    formData.append('PhoneNumber', this.form.get('phoneNumber')?.value ?? '');
+    formData.append('City', this.form.get('city')?.value ?? '');
+
     if (this.fileToUpload) {
-      data.image =this.fileToUpload?.name;
+      formData.append('Image', this.fileToUpload);
     }
+for (const pair of formData.entries()) {
+  console.log(pair[0], pair[1]);
+}
 
-        this.isLoading = true;
-        console.log(data);
-        this._VolunteerDashboardService.updateVolInfo(this.id,data).subscribe({
-          next: (value)=>{
-            this.isLoading = false;
-            console.log(value)
-            alert("تم التعديل")
-          },
-          error:(err)=>{
-            console.log(err);
-            this.isLoading = false;
-          }
-        })
+    this.isLoading = true;
+    this._VolunteerDashboardService.updateVolInfo(this.id, formData).subscribe({
+      next: (res) => {
+        this.isLoading = false;
+        alert("تم التعديل");
+      },
+      error: (err) => {
+        this.isLoading = false;
+        console.error(err);
       }
-      else{
-        Object.values(this.form.controls).forEach(control => {
-    control.markAsTouched();
-    control.updateValueAndValidity();
-  });
-
-      }
-    }
+    });
+  } else {
+    Object.values(this.form.controls).forEach(control => {
+      control.markAsTouched();
+      control.updateValueAndValidity();
+    });
+  }
+}
 }

@@ -7,8 +7,9 @@
         </button>
         <div class="collapse navbar-collapse me-4" id="collapsibleNavId">
             <ul class="navbar-nav mt-2 me-2 mt-lg-0">
-                <div class="d-flex mar">
+                <div class="d-flex mar align-items-center">
 
+                  @if(!isLoggedIn){
                     <li class="nav-item dropdown btn-bgColor border rounded mar me-2">
                         <a class="nav-link dropdown-toggle text-light" href="#" id="dropdownId" data-bs-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false" >انشاء حساب</a>
@@ -17,8 +18,43 @@
                             <a class="dropdown-item" [routerLink]="['/voluntary_organization_register']" [routerLinkActive]="'btn-color'">منظمة</a>
                         </div>
                     </li>
-                    <button class="btn btn-login me-4 p-1" [routerLink]="['/login']">تسجيل الدخول</button>
-                </div>
+                    <button class="btn btn-login me-4 p-2" [routerLink]="['/login']">تسجيل الدخول</button>
+
+                  }
+                  @if(isLoggedIn) {
+                    <button class="btn btn-outline-danger" (click)="logout()">تسجيل الخروج</button>
+
+              @if(role === 'Organization'){
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/organization-dashboard/organization-home']">
+              <img [src]="getImage()" class="rounded-circle" width="40" height="40" alt="User" /></a>
+            </li>
+<li class="nav-item">
+                <a class="nav-link" [routerLink]="['/organization-dashboard/organization-notifications']">
+                <i class="bi bi-bell-fill text-dark fs-4"></i>
+              </a>
+              </li>
+              }
+              @else if (role === 'Volunteer') {
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/volunteer-dashboard/volunteer-home']">
+              <img [src]="getImage()" class="rounded-circle" width="40" height="40" alt="User" /></a>
+            </li>
+                <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/volunteer-dashboard/volunteer-notifications']">
+                <i class="bi bi-bell-fill text-dark fs-4"></i>
+              </a>
+              </li>
+              }
+              @else if (role === 'Admin') {
+                <li class="nav-item">
+                  <a class="nav-link" [routerLink]="['/admin-dashboard/home']">
+              <img [src]="getImage()" class="rounded-circle" width="40" height="40" alt="User" /></a>
+            </li>
+              }
+
+                  }
+                  </div>
                 <div class="d-flex marl">
                     <!-- <li class="nav-item">
                         <a class="nav-link" [routerLink]="['/chatbot']" [routerLinkActive]="'btn-color'">المساعد الذكى</a>

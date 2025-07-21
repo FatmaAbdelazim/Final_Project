@@ -22,6 +22,7 @@ export class OrganizationInfoComponent implements OnInit{
   id! : string
   fileName: string | null = null;
   fileToUpload: File | null = null;
+  previewImageUrl :string = ''
 
   form = this._FormBuilder.group({
     fullName: ['', [Validators.required, Validators.pattern(/^[\u0621-\u064Aa-zA-Z ]{2,}$/)]],
@@ -52,6 +53,13 @@ export class OrganizationInfoComponent implements OnInit{
 
   onFileSelected(event: Event): void {
   const input = event.target as HTMLInputElement;
+  const reader = new FileReader();
+reader.onload = () => {
+  this.org.logoFile = '';
+  this.previewImageUrl = reader.result as string;
+};
+reader.readAsDataURL(this.fileToUpload!);
+
   if (input.files && input.files.length > 0) {
     this.fileName = input.files[0].name;
     this.fileToUpload = input.files[0];

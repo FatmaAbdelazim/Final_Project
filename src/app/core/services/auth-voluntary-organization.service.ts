@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../environments/environment';
 import { jwtDecode } from 'jwt-decode';
 import { UserData } from '../../models/user-data';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -22,13 +23,27 @@ export class AuthVoluntaryOrganizationService {
         email: decodedToken["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress"],
         role: decodedToken["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
       };
+      this.role$.next(this.userData.role);
       console.log(this.userData);
     }
   }
+  private loggedIn = new BehaviorSubject<boolean>(this.hasToken());
+isLoggedIn$ = this.loggedIn.asObservable();
+
+private hasToken(): boolean {
+  return !!localStorage.getItem('userToken');
+}
+
+setLoggedIn(status: boolean) {
+  this.loggedIn.next(status);
+}
+role$ = new BehaviorSubject<string | null>(null);
+
   register(organization: FormData): Observable<any> {
     return this.http.post(`${this.baseUrl}/api/Auth/register-organization`, organization);
   }
   login(organization: any): Observable<any> {
+    this.setLoggedIn(true);
     return this.http.post(`${this.baseUrl}/api/Auth/login`, organization);
   }
   sendEmail(email: object): Observable<any> {

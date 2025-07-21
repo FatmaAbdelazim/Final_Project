@@ -19,6 +19,6 @@
             <button class="btn details py-2 px-2" [routerLink]="['/team-details' , team.id]">التفاصيل</button>
                 <p class="pSmall">.....{{team.description.split(' ').slice(0,4).join(' ')}}</p>
         </div>
-        <button class="btn btn-bgcolor w-100 text-light py-2 mb-4" [routerLink]="['/join-team']">انضم الان</button>
+        <button class="btn btn-bgcolor w-100 text-light py-2 mb-4" [routerLink]="['/join-team', team.id]">انضم الان</button>
     </div>
 </div>
