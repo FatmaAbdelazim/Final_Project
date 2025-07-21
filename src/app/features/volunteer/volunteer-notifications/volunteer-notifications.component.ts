@@ -25,6 +25,7 @@ export class VolunteerNotificationsComponent implements OnInit {
   ngOnInit(): void {
     this.getAllNotification();
     this.setupSignalR();
+
   }
 
   getAllNotification() {
@@ -54,7 +55,7 @@ export class VolunteerNotificationsComponent implements OnInit {
     this._NotificationService.rejectInvitations(InvitationsId).subscribe({
       next: () => {
         alert("تم رفض الدعوة بنجاح (:");
-                // this.Flag = true;
+        // this.Flag = true;
       },
       error: (e) => {
         console.log(e.error);
@@ -64,12 +65,16 @@ export class VolunteerNotificationsComponent implements OnInit {
   setupSignalR() {
     this.signalRService.startConnection();
     this.signalRService.onNotification((newNotif: Notification) => {
-      this.NotificationList.unshift(newNotif); // نضيفه في أول الليست
+      this.NotificationList.unshift(newNotif);
+      // this.toastr.success(newNotif.message, `📢 ${newNotif.title}`);
       this.toastr.info(newNotif.message, `📢 ${newNotif.title}`);
+
+      this.updatePagedOpportunities();
     });
     this.currentPage = 1;
     this.updatePagedOpportunities();
   }
+
   updatePagedOpportunities() {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;

@@ -3,7 +3,7 @@ import { provideRouter, withViewTransitions } from '@angular/router';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+import { provideToastr, ToastrModule } from 'ngx-toastr';
 
 import { routes } from './app.routes';
 import { headerInterceptor } from './core/interceptors/header.interceptor';
@@ -13,7 +13,7 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withViewTransitions()),
     provideHttpClient(withFetch(), withInterceptors([headerInterceptor])),
-
+       provideToastr(),
     // ✅ ضيفي الموديولات دي كده
     importProvidersFrom(
       BrowserAnimationsModule,

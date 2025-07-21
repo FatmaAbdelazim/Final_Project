@@ -68,7 +68,7 @@
                                 </div>
                             </td>
                             <td class="col-2">
-                                <span>{{review.createdAt | date : 'short'}}</span>
+                                <span>{{review.createdAt | date:"dd-mm-yyyy"}}</span>
                             </td>
                             <td>
                                 <span>{{review.comment.length > 30 ? review.comment.slice(0, 30) + '...' : review.comment}}</span>

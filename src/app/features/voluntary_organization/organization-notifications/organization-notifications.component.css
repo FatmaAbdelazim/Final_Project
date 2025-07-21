@@ -84,3 +84,16 @@
     height: 42px;
     border-radius: 6px;
 }
+.page-link:hover {
+  background-color: #f3e8ff;
+  color: #6a00cc;
+  cursor: pointer;
+}
+.pagination .page-item.active .page-link {
+  background-color: #E9A1F0E5;
+  border-color:#E9A1F0E5;
+  color: white;
+}
+i:hover{
+  cursor: pointer;
+}

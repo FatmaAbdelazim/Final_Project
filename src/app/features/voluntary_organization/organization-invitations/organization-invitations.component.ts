@@ -75,6 +75,7 @@ export class OrganizationInvitationsComponent implements OnInit{
       this._OrganizationDashboardService.sendInvetation(this.invitation.value).subscribe({
       next:(res) =>{
           this.isLoading = false;
+          alert("تم ارسال الدعوة بنجاح");
           console.log(res)
         },
         error:(err)=>{

@@ -16,7 +16,10 @@ import { Opportunity } from '../../../models/opportunty';
   styleUrl: './volunteer-home.component.css'
 })
 export class VolunteerHomeComponent implements OnInit{
+
+  volunteerName!:string;
   volunteerId!: string;
+  volunteer!:any;
   volunteerOpportuintiesList!: VolunteerOpportuinties[];
   volunteerRecommendedOpportunitiesList!: Opportunity[];
   constructor(private _VolunteerDashboardService: VolunteerDashboardService ,private _OpportunitiesService : OpportunitiesService, private _VoluntaryOrganizationRegisterComponent : AuthVoluntaryOrganizationService) { }
@@ -25,6 +28,7 @@ export class VolunteerHomeComponent implements OnInit{
     this.volunteerId = this._VoluntaryOrganizationRegisterComponent.userData.id;
     this.getAllVolunteerOpportunites();
     this.getAllVolunteerRecommendedOpportunities();
+    this.getName();
   }
 
 
@@ -32,6 +36,17 @@ export class VolunteerHomeComponent implements OnInit{
     this._VolunteerDashboardService.getMyOpportunites(this.volunteerId).subscribe({
       next: (response) => {
         this.volunteerOpportuintiesList = response;
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
+  }
+    getName() {
+    this._VolunteerDashboardService.getData(this.volunteerId).subscribe({
+      next: (response) => {
+        this.volunteer = response;
+        this.volunteerName = this.volunteer.fullName;
       },
       error: (e) => {
         console.log(e);

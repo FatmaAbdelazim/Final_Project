@@ -48,6 +48,7 @@ import { ReviewRatingComponent } from './features/admin/review-rating/review-rat
 import { OrganaizationProfileComponent } from './features/admin/organaization-profile/organaization-profile.component';
 import { TeamMembersComponent } from './features/voluntary_organization/team-members/team-members.component';
 import { VolProfileComponent } from './pages/vol-profile/vol-profile/vol-profile.component';
+import { RoleGuard } from './core/guards/auth.guard';
 export const routes: Routes = [
       { path: '', component: HomeComponent },
       { path: 'home', component: HomeComponent },
@@ -61,12 +62,20 @@ export const routes: Routes = [
       { path: 'verify-code', component: VerifyCodeComponent },
       { path: 'verify-email', component: VerifyEmailComponent },
       { path: 'reset-pass', component: ResetPasswordComponent },
-      { path: 'join-opp/:id', component: JoinOppComponent },
-      { path: 'join-team/:id', component: JoinTeamComponent },
+      {
+            path: 'join-opp/:id', component: JoinOppComponent, canActivate: [RoleGuard],
+            data: { role: 'Volunteer' },
+      },
+      {
+            path: 'join-team/:id', component: JoinTeamComponent, canActivate: [RoleGuard],
+            data: { role: 'Volunteer' },
+      },
       { path: 'team-details/:id', component: TeamDetailsComponent },
       {
-            path: 'volunteer-dashboard', component: VolunteerDashboardComponent
-            , children: [
+            path: 'volunteer-dashboard', component: VolunteerDashboardComponent,
+            canActivate: [RoleGuard],
+            data: { role: 'Volunteer' },
+            children: [
                   { path: '', component: VolunteerHomeComponent },
                   { path: 'volunteer-home', component: VolunteerHomeComponent },
                   { path: 'volunteer-notifications', component: VolunteerNotificationsComponent },
@@ -78,8 +87,10 @@ export const routes: Routes = [
             ]
       },
       {
-            path: 'organization-dashboard', component: OrganizationDashboardComponent
-            , children: [
+            path: 'organization-dashboard', component: OrganizationDashboardComponent,
+            canActivate: [RoleGuard],
+            data: { role: 'Organization' },
+            children: [
                   { path: '', component: OrganizationHomeComponent },
                   { path: 'organization-home', component: OrganizationHomeComponent },
                   { path: 'organization-teams', component: OrganizationTeamsComponent },
@@ -95,13 +106,15 @@ export const routes: Routes = [
                   { path: 'organization-delete-acount', component: OrganaiztionDeleteAcountComponent },
                   { path: 'create-team', component: CreateTeamComponent },
                   { path: 'add-opp', component: AddOppComponent },
-                  {path: 'team-members/:id', component: TeamMembersComponent}
+                  { path: 'team-members/:id', component: TeamMembersComponent }
             ]
       },
       { path: 'edit-opp/:id', component: UpdateOppComponent },
       { path: 'edit-team/:id', component: EditTeamComponent },
       {
             path: 'admin-dashboard', component: AdminDashboardComponent,
+            // canActivate: [RoleGuard],
+            // data: { role: 'Admin' },
             children: [
                   { path: '', component: AdminHomeComponent },
                   { path: 'home', component: AdminHomeComponent },

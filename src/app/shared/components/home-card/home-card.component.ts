@@ -13,6 +13,8 @@ import { CommonModule } from '@angular/common';
 })
 export class HomeCardComponent {
   @Input() Opportunity!: Opportunity;
-
+ getStarsArray(rating: number): number[] {
+    return Array(rating).fill(0);
+  }
   constructor() {}
 }

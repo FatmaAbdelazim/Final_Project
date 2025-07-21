@@ -1,25 +1,29 @@
-    <div class=" myCard text-end">
-            <img [src]="'https://tatawwa3.runasp.net/uploads/' + Opportunity.image" alt="CardImage" id="imgCard">
-            <div class="p-2 mt-3">
-                <h4>{{Opportunity.title}}</h4>
-                <p>{{Opportunity.description?.slice(0,40)}}</p>
-              <div class="d-flex justify-content-end mb-2">
-                  <div class="d-flex" id="divM">
-                    <p class="me-2">{{Opportunity.startDate | date: 'dd/MM/yyyy'}}</p>
-                    <i class="bi bi-calendar4-week"></i>
-                </div>
-                <div class="d-flex">
-                    <p class="me-2">{{Opportunity.location}}</p>
-                    <i class="bi bi-geo-alt-fill"></i>
-                </div>
-              </div>
-                <div class="d-flex justify-content-between mb-4 align-items-center ">
-                    <button class="btn p-2 mx-4 bg-white  details" [routerLink]="['/opportunity-details',Opportunity.id]">التفاصيل</button>
-                    <div>
-                        <i class="bi bi-star me-2"></i>
-                        <span>{{Opportunity.ratingCount}}</span>
-                    </div>
-                </div>
-                <button class="btn btn-bgcolor w-100 text-light" [routerLink]="['/join-opp',Opportunity.id]">انضم الان</button>
+<div class=" myCard text-end">
+    <img [src]="'https://tatawwa3.runasp.net/uploads/' + Opportunity.image" alt="CardImage" id="imgCard">
+    <div class="p-2 mt-3">
+        <h4>{{Opportunity.title}}</h4>
+        <p>{{Opportunity.description?.slice(0,40)}}</p>
+        <div class="d-flex justify-content-end mb-2">
+            <div class="d-flex" id="divM">
+                <p class="me-2">{{Opportunity.startDate | date: 'dd/MM/yyyy'}}</p>
+                <i class="bi bi-calendar4-week"></i>
+            </div>
+            <div class="d-flex">
+                <p class="me-2">{{Opportunity.location}}</p>
+                <i class="bi bi-geo-alt-fill"></i>
             </div>
         </div>
+        <div class="d-flex justify-content-between mb-4 align-items-center ">
+            <button class="btn p-2 mx-4 bg-white  details"
+                [routerLink]="['/opportunity-details',Opportunity.id]">التفاصيل</button>
+            <div>
+                @for (rate of getStarsArray(Opportunity.ratingCount); track $index) {
+                <i class="bi bi-star-fill text-warning"></i>
+                }
+                <!-- <i class="bi bi-star me-2"></i> -->
+                <span class="ms-2 me-2">{{Opportunity.ratingCount}}</span>
+            </div>
+        </div>
+        <button class="btn btn-bgcolor w-100 text-light" [routerLink]="['/join-opp',Opportunity.id]">انضم الان</button>
+    </div>
+</div>

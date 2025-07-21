@@ -1,4 +1,3 @@
-// src/app/core/services/signalr.service.ts
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 
@@ -8,13 +7,14 @@ export class SignalRService {
 
   startConnection() {
     this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://tatawwa3.runasp.net/hub/notifications') 
+      .withUrl('https://tatawwa3.runasp.net/hub/notifications')
       .withAutomaticReconnect()
       .build();
 
-    this.hubConnection.start()
-      .then(() => console.log('SignalR Connected'))
-      .catch(err => console.error('SignalR Error:', err));
+    this.hubConnection
+      .start()
+      .then(() => console.log("✅ SignalR connection started"))
+      .catch(err => console.error("❌ SignalR connection error:", err));
   }
 
   onNotification(callback: (notification: any) => void) {
