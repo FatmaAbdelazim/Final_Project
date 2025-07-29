@@ -26,60 +26,62 @@
                         <p> : أعضاء الفريق</p>
                     </div>
                     <div class="d-flex justify-content-end align-items-center mb-4">
-                        @if(team.membersCount != 0)
+                        @if(team.membersCount > 2)
                         {
                         <div class="smallDivImg d-flex justify-content-start align-items-center"
                             [routerLink]="['/organization-dashboard/team-members',team.id]">
                             <i class="bi bi-plus"></i>
-                            <span>{{team.membersCount}}</span>
+                            <span>{{team.membersCount - 2}}</span>
                         </div>
-                        <app-org-team-card  [teamId]="team.id"></app-org-team-card>
-
-                        }@else {
-                        <p class="text-muted text-end">لا يوجد اي اعضاء ف الفريق حتي الان</p>
-                        }
+                        <app-org-team-card [teamId]="team.id" [falg]="false"></app-org-team-card>
+                        }@else if(team.membersCount <= 2 && team.membersCount !=0) { <app-org-team-card
+                            [teamId]="team.id"></app-org-team-card>
+                            }
+                            @else {
+                            <p class="text-muted text-end">لا يوجد اي اعضاء ف الفريق حتي الان</p>
+                            }
                     </div>
                     <div class="d-flex justify-content-around align-items-center mb-2">
-                        <div class="smallDiv justify-content-center align-items-center d-flex">
+                        <!-- <div class="smallDiv justify-content-center align-items-center d-flex">
                             <i class="bi bi-person-plus-fill fs-4"
                                 [routerLink]="['/organization-dashboard/organization-invitations']"></i>
-                        </div>
-                        <button class="btn btn1 p-2 w-75" [routerLink]="['/team-details',team.id]">عرض الفريق</button>
+                        </div> -->
+                        <button class="btn btn1 p-2 w-100" [routerLink]="['/team-details',team.id]">عرض الفريق</button>
                     </div>
                 </div>
                 <!-- <app-org-team-card class="col-5" [team]="team"></app-org-team-card> -->
                 }
             </div>
-                   <div class="row mb-5 mt-3">
-            <nav class=" p-2">
-                <ul class="pagination">
+            <div class="row mb-5 mt-3">
+                <nav class=" p-2">
+                    <ul class="pagination">
 
-                    <!-- Previous -->
-                    <li class="page-item" [class.disabled]="currentPage === 1">
-                        <a class="page-link main-color" (click)="goToPage(currentPage - 1)" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
+                        <!-- Previous -->
+                        <li class="page-item" [class.disabled]="currentPage === 1">
+                            <a class="page-link main-color" (click)="goToPage(currentPage - 1)" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
 
-                    <!-- Dynamic Page Numbers -->
-                    @for (page of [].constructor(totalPages); track $index) {
-                    <li class="page-item" [class.active]="currentPage === $index + 1">
-                        <a class="page-link main-color" (click)="goToPage($index + 1)">
-                            {{ $index + 1 }}
-                        </a>
-                    </li>
-                    }
+                        <!-- Dynamic Page Numbers -->
+                        @for (page of [].constructor(totalPages); track $index) {
+                        <li class="page-item" [class.active]="currentPage === $index + 1">
+                            <a class="page-link main-color" (click)="goToPage($index + 1)">
+                                {{ $index + 1 }}
+                            </a>
+                        </li>
+                        }
 
 
-                    <!-- Next -->
-                    <li class="page-item" [class.disabled]="currentPage === totalPages">
-                        <a class="page-link main-color" (click)="goToPage(currentPage + 1)" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
+                        <!-- Next -->
+                        <li class="page-item" [class.disabled]="currentPage === totalPages">
+                            <a class="page-link main-color" (click)="goToPage(currentPage + 1)" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
 
-                </ul>
-            </nav>
-        </div>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </div>

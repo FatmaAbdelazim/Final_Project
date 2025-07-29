@@ -103,5 +103,16 @@ export class OrganizationDashboardService {
       responseType: 'text' as 'json'
     })
   }
-
+  getHomeStatistics():Observable<any>{
+    return this.http.get(`${environment.baseUrl}/api/OrganizationManagement/getStatistics`);
+  }
+  getPieStatistics():Observable<any>{
+    return this.http.get(`${environment.baseUrl}/api/OrganizationManagement/GetOpportunitiesPercentageByCategory`);
+  }
+  GetVolunteersPercentage():Observable<any>{
+    return this.http.get(`${environment.baseUrl}/api/OrganizationManagement/GetVolunteersPercentage`);
+  }
+  GetNewVolunteersPercentage():Observable<any>{
+    return this.http.get(`${environment.baseUrl}/api/OrganizationManagement/GetNewVolunteersPercentage`);
+  }
 }

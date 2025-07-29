@@ -132,7 +132,7 @@
   </div>
 
   <div class="row">
-    <div class="col-12">
+    <!-- <div class="col-12">
       <div class="d-flex flex-column my-4">
         <label for="joinPermission" class="form-label">من يمكنه الانضمام؟</label>
         <div class="d-flex justify-content-end gap-5">
@@ -158,13 +158,13 @@
             </div>
           }
       </div>
-    </div>
+    </div> -->
 
     <div class="col-6 ms-auto">
       <div class="d-flex flex-column my-4">
         <label for="maxMembers" class="form-label">الحد الاقصى لعدد الاعضاء ( اختيارى )</label>
         <input formControlName="maxMembers" type="number" class="form-control text-end" placeholder="مثال 16">
-        <span class="text-muted">اتركه فارغا اذا لم يكن هناك حاجة لحد اقصى</span>
+        <span class="text-muted mt-2">اتركه فارغا اذا لم يكن هناك حاجة لحد اقصى</span>
       </div>
     </div>
   </div>
@@ -172,21 +172,20 @@
 
 <div class="rounded-4 bg-white shadow p-4 container mb-3">
       <div class="d-flex justify-content-end align-items-center gap-2 mb-3">
-        <h5> ملاحظات داخلية </h5>
+        <h5> اهداف الفريق</h5>
         <div class="icon-bg1">
           <i class="bi bi-sticky-fill fs-5 text-white"></i>
         </div>
       </div>
 
       <div class="row g-1">
-        <textarea formControlName="internalNotes" class="mt-3 rounded-2 text-end p-4 brd-color" placeholder="اضف اى تعليمات او ملاحظات لا تظهر للمتطوعين"></textarea>
-        <span class="text-muted mt-2">هذه الملاحظة لن تكون مرئية للمتطوعين</span>
+        <textarea formControlName="internalNotes" class="mt-3 rounded-2 text-end p-4 brd-color" placeholder="ادخل اهداف الفريق"></textarea>
         @if(createForm.get('internalNotes')?.errors && (createForm.get('internalNotes')?.dirty || createForm.get('internalNotes')?.touched))
           {
             <div class="text-danger px-3">
               @if(createForm.get('internalNotes')?.getError('required'))
               {
-                <p>يرجي كتابة الملاحظات الداخلية </p>
+                <p>يرجي كتابة اهداف الفريق  </p>
               }
             </div>
           }

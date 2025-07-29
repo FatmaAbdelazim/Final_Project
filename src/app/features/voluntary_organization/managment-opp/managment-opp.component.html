@@ -22,16 +22,19 @@
                     <tr>
                         <td>
                             <div class="d-flex justify-content-center">
-                                <i class="bi bi-pause-fill me-1 main-color fs-4" [routerLink]="['/organization-dashboard/manage-volunteer',opp.id]"></i>
+                                <i class="bi bi-pause-fill me-1 main-color fs-4"
+                                    [routerLink]="['/organization-dashboard/manage-volunteer',opp.id]"></i>
                                 <i class="bi bi-trash-fill me-2 t fs-4" (click)="deletOpp(opp.id)"></i>
                                 <i class="bi bi-pencil-square me-2 e fs-4" [routerLink]="['/edit-opp' , opp.id]"></i>
-                                <i class="bi bi-eye-fill me-2 main-color fs-4" [routerLink]="['/opportunity-details',opp.id]"></i>
-                                <i class="bi bi-calendar-check-fill e fs-4" [routerLink]="['/organization-dashboard/attend',opp.id]"></i>
+                                <i class="bi bi-eye-fill me-2 main-color fs-4"
+                                    [routerLink]="['/opportunity-details',opp.id]"></i>
+                                <i class="bi bi-calendar-check-fill e fs-4"
+                                    [routerLink]="['/organization-dashboard/attend',opp.id]"></i>
                             </div>
                         </td>
                         <td>
                             <div class="row">
-                                <span>{{opp.averageRating}}</span>
+                                <span>{{ opp.averageRating | number:'1.0-0' }}</span>
                                 <div class="d-flex justify-content-center">
                                     @for (star of getStarsArray(opp.averageRating); track $index) {
                                     <i class="bi bi-star-fill text-warning"></i>
@@ -46,13 +49,16 @@
                                 [ngClass]="{ 'active': opp.statusDisplay === 'نشطة' , 'compelete': opp.statusDisplay === 'مكتملة' ,'under-observation': opp.statusDisplay === 'قيد المراجعة' }">{{opp.statusDisplay}}</span>
                         </td>
                         <td>{{opp.startDate | date:"dd-mm-yyyy"}}</td>
-                        <td ><h5>{{opp.title}}</h5><small class="text-muted">{{opp.description.split(' ').slice(0,4).join('
-                                ')}}</small></td>
+                        <td>
+                            <h5>{{opp.title}}</h5><small class="text-muted">{{opp.description.split('
+                                ').slice(0,4).join('
+                                ')}}</small>
+                        </td>
                     </tr>
                     }
 
                     }@else {
-                            <h2 class="text-danger text-end">لا يوجد فرص حاليا</h2>
+                    <h2 class="text-danger text-end">لا يوجد فرص حاليا</h2>
                     }
                 </tbody>
             </table>
@@ -91,9 +97,10 @@
             </nav>
         </div>
 
-
+<!-- 
         <div class="row justify-content-start">
-            <button class="btn btn-bgColor size" [routerLink]="['/organization-dashboard/add-opp']">اضافة فرصة تطوعية جديدة</button>
-        </div>
+            <button class="btn btn-bgColor size" [routerLink]="['/organization-dashboard/add-opp']">اضافة فرصة تطوعية
+                جديدة</button>
+        </div> -->
     </div>
 </div>

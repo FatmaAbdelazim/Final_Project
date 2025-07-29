@@ -8,11 +8,6 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
-export class AboutComponent implements OnInit{
-constructor(private toastr: ToastrService) {}
-
-ngOnInit() {
-  this.toastr.success('تم تحميل الصفحة');
-}
+export class AboutComponent {
 
 }

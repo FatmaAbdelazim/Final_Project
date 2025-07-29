@@ -1,5 +1,5 @@
 import { Notification } from './../../../models/notification';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SignalRService } from '../../../core/services/signal-rservice.service';
 import { ToastrService } from 'ngx-toastr';
@@ -13,6 +13,8 @@ import { NotificationService } from '../../../core/services/notification-service
 })
 export class OrganizationNotificationsComponent implements OnInit {
 
+
+  @Input() noti!:number;
   currentPage: number = 1;
   itemsPerPage: number = 4;
   opportunitiesList!: any;

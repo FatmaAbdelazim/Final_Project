@@ -115,4 +115,11 @@ export class AdminService {
   deleteReview(id: string): Observable<any> {
     return this.http.delete<any>(`${environment.baseUrl}/api/ReviewComment/delete/${id}`, { responseType: 'text' as 'json' });
   }
+
+getHomeStatistics():Observable<any>{
+    return this.http.get(`${environment.baseUrl}/api/AdminDashboard`);
+  }
+  getchartStatistics():Observable<any>{
+    return this.http.get(`${environment.baseUrl}/api/AdminDashboard/nzra sare3a`);
+  }
 }

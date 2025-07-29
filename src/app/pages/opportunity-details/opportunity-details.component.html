@@ -113,12 +113,14 @@
             <h4 class="text-end">التقييمات والتعليقات</h4>
         </div>
         <div class="row justify-content-center align-items-center px-4">
-            @for (comment of commentList; track $index) {
+            @if(commentList.length != 0){
+              @for (comment of commentList; track $index) {
             <app-comment-card [CommentObject]="comment"></app-comment-card>
             }
-            <!-- }@else {
+            }
+            @else {
                 <h3 class="text-danger text-center mb-4">لا يوجد اي تعليقات علي الفرصة حتي الان</h3>
-            } -->
+            }
 
         </div>
     </div>

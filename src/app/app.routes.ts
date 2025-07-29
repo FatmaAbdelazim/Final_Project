@@ -113,8 +113,8 @@ export const routes: Routes = [
       { path: 'edit-team/:id', component: EditTeamComponent },
       {
             path: 'admin-dashboard', component: AdminDashboardComponent,
-            // canActivate: [RoleGuard],
-            // data: { role: 'Admin' },
+            canActivate: [RoleGuard],
+            data: { role: 'Admin' },
             children: [
                   { path: '', component: AdminHomeComponent },
                   { path: 'home', component: AdminHomeComponent },

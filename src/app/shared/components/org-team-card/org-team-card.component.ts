@@ -10,6 +10,7 @@ import { OrganizationDashboardService } from '../../../core/services/organizatio
 })
 export class OrgTeamCardComponent implements OnInit {
   @Input() teamId!: any;
+  @Input() falg! : boolean;
   membersList!: any[];
   constructor(private _OrganizationDashboardService: OrganizationDashboardService) { }
   ngOnInit(): void {

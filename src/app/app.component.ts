@@ -33,5 +33,7 @@ export class AppComponent implements OnInit {
     }, 500);
 
   }
+  orgNotification:number = 0;
+  volNotification:number = 0;
   title = 'بصمه';
 }

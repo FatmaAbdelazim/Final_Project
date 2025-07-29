@@ -1,8 +1,21 @@
 <div class="d-flex">
+
+    @if(membersList.length > 2){
+    <div class="imgSmall">
+        <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + membersList[0].profileImageUrl" alt=""
+            class="imgSmall">
+    </div>
+    <div class="imgSmall">
+        <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + membersList[1].profileImageUrl" alt=""
+            class="imgSmall">
+    </div>
+    }
+    @else {
     @for (member of membersList; track $index) {
     <div class="imgSmall">
         <img [src]="'https://tatawwa3.runasp.net/uploads/ProfileImages/' + member.profileImageUrl" alt=""
             class="imgSmall">
     </div>
+    }
     }
 </div>
