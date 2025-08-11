@@ -11,7 +11,7 @@
                     <h1 class="text-danger text-center">لم يسبق لك التقديم في اي فرصة</h1>
                     }
                     @else {
-                    @for (volOpp of volunteerOpportuintiesList; track $index) {
+                    @for (volOpp of volunteerOpportuintiesList.slice(0, 4); track $index) {
                     <app-opp-card-voluteer [volunteerOpp]="volOpp"></app-opp-card-voluteer>
                     }
                     }

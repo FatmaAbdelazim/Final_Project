@@ -18,9 +18,9 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(
       BrowserAnimationsModule,
       ToastrModule.forRoot({
-        timeOut: 3000,
-        positionClass: 'toast-bottom-right',
-        preventDuplicates: true
+        timeOut: 4000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
       })
     )
   ]

@@ -14,7 +14,7 @@ import { NotificationService } from '../../../core/services/notification-service
 export class OrganizationNotificationsComponent implements OnInit {
 
 
-  @Input() noti!:number;
+  @Input() noti!: number;
   currentPage: number = 1;
   itemsPerPage: number = 4;
   opportunitiesList!: any;
@@ -62,13 +62,17 @@ export class OrganizationNotificationsComponent implements OnInit {
   }
   setupSignalR() {
     this.signalRService.startConnection();
-    this.signalRService.onNotification((newNotif: Notification) => {
-      this.NotificationList.unshift(newNotif);
-      // this.toastr.success(newNotif.message, `📢 ${newNotif.title}`);
-      this.toastr.info(newNotif.message, `📢 ${newNotif.title}`);
+   setTimeout(() => {
+      this.signalRService.onNotification((data: any) => {
+        console.log("إشعار واصل من SignalR:", data);
+        this.toastr.info(data.Message, `${data.Title}`);
+        this.NotificationList.unshift(data.Title);
 
-      this.updatePagedOpportunities();
-    });
+        this.updatePagedOpportunities();
+      });
+    }, 1000);
+
+
     this.currentPage = 1;
     this.updatePagedOpportunities();
   }

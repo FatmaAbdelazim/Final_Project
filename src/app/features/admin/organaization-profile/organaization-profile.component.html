@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="row mb-4 mt-4">
-                    @for (team of orgInfo.teams; track $index) {
+                    @for (team of orgInfo.teams.slice(0,5); track $index) {
                     <app-organaization-profile-team-card [team]="team"></app-organaization-profile-team-card>
                     }
                 </div>
@@ -95,7 +95,7 @@
                     </div>
                 </div>
                 <div class="row mb-4 mt-4">
-                    @for (opp of orgInfo.opportunities; track $index) {
+                    @for (opp of orgInfo.opportunities.slice(0,5); track $index) {
                     <app-organaization-profile-opp-card [opp]="opp"></app-organaization-profile-opp-card>
                     }
                 </div>

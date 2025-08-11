@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AuthVoluntaryOrganizationService } from '../../../core/services/auth-voluntary-organization.service';
+import { SignalRService } from '../../../core/services/signal-rservice.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +16,11 @@ export class NavbarComponent implements OnInit{
   userImage: string = '/assets/user.png';
   role! : string;
 
+
+  notificationCount = 0;
+
+  constructor(private signalRService: SignalRService) {}
+
   ngOnInit() {
   this._AuthVoluntaryOrganizationService.isLoggedIn$.subscribe((status) => {
     this.isLoggedIn = status;
@@ -25,7 +31,17 @@ export class NavbarComponent implements OnInit{
   });
 
   this._AuthVoluntaryOrganizationService.decodeUserData();
+    
+    this.signalRService.startConnection();
+    this.signalRService.onNotification((notification) => {
+      console.log('📩 إشعار جديد:', notification);
+      this.notificationCount++;
+    });
 }
+
+  clearNotifications() {
+    this.notificationCount = 0;
+  }
 
 getImage(){
   if(localStorage.getItem('Image')){

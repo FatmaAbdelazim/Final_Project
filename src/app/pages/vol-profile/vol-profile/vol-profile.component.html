@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="row mb-4 mt-4">
-                    @for (team of volInfo.teams; track $index) {
+                    @for (team of volInfo.teams.slice(0, 5); track $index) {
                     <div class="smallCard text-end align-items-center mb-4 p-3">
                       <h5>{{team.teamName}}</h5>
                       <p> {{team.role}}</p>

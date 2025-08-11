@@ -5,19 +5,32 @@ import * as signalR from '@microsoft/signalr';
 export class SignalRService {
   private hubConnection!: signalR.HubConnection;
 
-  startConnection() {
-    this.hubConnection = new signalR.HubConnectionBuilder()
-      .withUrl('https://tatawwa3.runasp.net/hub/notifications')
-      .withAutomaticReconnect()
-      .build();
+ startConnection() {
+  this.hubConnection = new signalR.HubConnectionBuilder()
+    .withUrl('https://tatawwa3.runasp.net/hub/notifications', {
+      accessTokenFactory: () => localStorage.getItem('userToken') || ''
+    })
+    .withAutomaticReconnect()
+    .build();
 
-    this.hubConnection
-      .start()
-      .then(() => console.log("✅ SignalR connection started"))
-      .catch(err => console.error("❌ SignalR connection error:", err));
-  }
+  this.hubConnection
+    .start()
+    .then(() => {
+      console.log("✅ SignalR connection started");
 
-  onNotification(callback: (notification: any) => void) {
-    this.hubConnection.on('ReceiveNotification', callback);
-  }
+      this.hubConnection.on('ReceiveNotification', data => {
+        console.log("✅ وصل إشعار من السيرفر:", data);
+      });
+    })
+    .catch(err => console.error("❌ SignalR connection error:", err));
+}
+
+onNotification(callback: (notification: any) => void) {
+  console.log("🟡 Preparing to listen for notifications...");
+  this.hubConnection.on('ReceiveNotification', (data) => {
+    console.log("🟢 Notification received:", data);
+    callback(data);
+  });
+}
+
 }
